@@ -1,0 +1,16 @@
+# == Schema Information
+#
+# Table name: bookmarks
+#
+#  id       :bigint           not null, primary key
+#  album_id :integer          not null
+#  user_id  :integer          not null
+#
+
+one:
+  user_id: 1
+  album_id: 1
+
+two:
+  user_id: 1
+  album_id: 1
