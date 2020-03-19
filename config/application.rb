@@ -17,3 +17,9 @@ module Japanizer
     # the framework and any gems in your application.
   end
 end
+
+module Japanizer
+  class Application < Rails::Application
+    config.generators.template_engine = :slim #slimに変更
+  end
+end
