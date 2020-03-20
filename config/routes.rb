@@ -1,19 +1,18 @@
 Rails.application.routes.draw do
   mount RailsAdmin::Engine => '/admin', as: 'rails_admin'
-  get 'genres/index'
-  get 'bookmarks/index'
-  get 'likes/index'
-  get 'albums/index'
-  get 'albums/edit'
-  get 'posts/show'
-  get 'posts/edit'
-  get 'searches/search'
-  get 'plans/edit'
-  get 'users/show'
-  get 'users/edit'
-  get 'users/withdraw'
-  get 'homes/about'
-  get 'homes/top'
   devise_for :users
+
+  root to: 'homes#top', as: 'top'
+  get 'homes/about', to: 'homes#about', as: 'about'
+  get 'searches', to: 'searchees#search', as: 'search'
+
+  resources :users, only: %i[ show edit update]
+  resources :posts, only: %i[ show edit create update destroy ] do
+    resource :post_comments, only: %i[ create update destroy ]
+  end
+  resources :genres, only: %i[ index create update destroy ]
+  resources :albums, only: %i[ index edit create update destroy ]
+  resources :plans, only:  %i[ edit create update destroy ]
+  resources :bookmarks, only: %i[ index create destroy ]
   # For details on the DSL available within this file, see http://guides.rubyonrails.org/routing.html
 end

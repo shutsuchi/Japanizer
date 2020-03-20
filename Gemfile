@@ -80,8 +80,8 @@ gem 'refile', require: 'refile/rails', github: 'manfe/refile'
 # For Resize Image Uploaded
 gem 'refile-mini_magick'
 
-# Bootstrap v4
-gem 'bootstrap', '~> 4.3.1'
+# Bootstrap v3
+gem 'bootstrap-sass', '~> 3.4.1'
 gem 'jquery-rails'
 
 # ENV-mng
@@ -111,6 +111,6 @@ gem 'cancancan', '~> 3.1.0'
 gem 'rails_admin', '~> 2.0.2'
 
 ### Template-Engine
-gem 'slim-rails', '~> 4.0.1'
+gem 'slim-rails', '~> 3.2.0'
 # change html.erb into html.slim
 gem 'html2slim', '~> 0.2.0'
