@@ -69,7 +69,7 @@ end
 gem 'tzinfo-data', platforms: [:mingw, :mswin, :x64_mingw, :jruby]
 
 # For UserFunc
-gem 'devise'
+gem 'devise', '~> 4.7.1'
 
 # For PagingFunc
 gem 'kaminari', '~> 1.1.1'
@@ -85,32 +85,32 @@ gem 'bootstrap', '~> 4.3.1'
 gem 'jquery-rails'
 
 # ENV-mng
-gem 'dotenv-rails'
+gem 'dotenv-rails', '~> 2.7.5'
 
 # Google-map
-gem 'geocoder'
+gem 'geocoder', '~> 1.6.2'
 
 # For SearchFunc
-gem 'ransack'
+gem 'ransack', '~> 2.3.2'
 
 # For Logical-deletion
-gem 'paranoia'
+gem 'paranoia', '~> 2.4.2'
 # For calenderFunc
-gem 'fullcalendar'
+gem 'fullcalendar', '~> 3.9.0'
 
 # For Readable-code
-gem 'rubocop'
+gem 'rubocop', '~> 0.80.1'
 
 # For Internationalization
-gem 'rails-i18n'
+gem 'rails-i18n', '~> 5.1.3'
 
 ### For Management
 # For Authority-mng
-gem 'cancancan'
+gem 'cancancan', '~> 3.1.0'
 # For Admin-browser
-gem 'rails_admin'
+gem 'rails_admin', '~> 2.0.2'
 
 ### Template-Engine
-gem 'slim-rails'
+gem 'slim-rails', '~> 4.0.1'
 # change html.erb into html.slim
-gem 'html2slim'
+gem 'html2slim', '~> 0.2.0'
