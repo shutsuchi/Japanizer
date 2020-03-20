@@ -81,8 +81,8 @@ gem 'refile', require: 'refile/rails', github: 'manfe/refile'
 gem 'refile-mini_magick'
 
 # Bootstrap v4
-gem 'bootstrap', '~> 4.1.1'
-gem 'jquery-rails', '~> 4.3.5'
+gem 'bootstrap', '~> 4.3.1'
+gem 'jquery-rails'
 
 # ENV-mng
 gem 'dotenv-rails', '~> 2.7.5'
