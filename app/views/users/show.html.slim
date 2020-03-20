@@ -1,2 +1,6 @@
-h1 Users#show
-p Find me in app/views/users/show.html.slim
+- if current_user.admin?
+  h4 管理者ページ
+
+- else
+  h1 Users#show
+  p Find me in app/views/users/show.html.slim

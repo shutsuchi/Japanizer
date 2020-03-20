@@ -108,7 +108,7 @@ gem 'rails-i18n'
 # For Authority-mng
 gem 'cancancan'
 # For Admin-browser
-gem 'rails-admin'
+gem 'rails_admin'
 
 ### Template-Engine
 gem 'slim-rails'
