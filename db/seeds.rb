@@ -13,7 +13,7 @@ User.create!(
   age:             26,
   country:         "JP",
   withdrawal_flag: "true",
-  password:        "admin"
+  password:        "adminadmin"
 )
 
 5.times do |n|
@@ -28,34 +28,33 @@ User.create!(
 end
 
 ### Plan data
-User.all.each do |user|
-  User.plans.create!(
-    genre_id:    n + 1,
-    first_date: "2020/0#{n + 1}/0#{n + 1}",
-    last_date:  "2020/0#{n + 1}/0#{n + 1}",
-    budget:      n + 1,
-    mean:       "車",
-    purpose:    "家族旅行",
-    people:      n + 1,
-    memo:       "test#{n + 1}"
-  )
-end
+#User.all.each do |user|
+#  User.plans.create!(
+#    genre_id:    n + 1,
+#    first_date: "2020/0#{n + 1}/0#{n + 1}",
+#    last_date:  "2020/0#{n + 1}/0#{n + 1}",
+#    budget:      n + 1,
+#    mean:       "車",
+#    purpose:    "家族旅行",
+#    people:      n + 1,
+#    memo:       "test#{n + 1}"
+#  )
+#end
 
 ### Genre data
-[
-  ["デート"],
-  ["一人旅"],
-  ["ショッピング"],
-  ["都市観光"],
-  ["ツーリング"],
-  ["グルメ"],
-  ["アクティビティ"],
-  ["ドライブ"],
-  ["自然"],
-].each do |name|
-  Genre.create!(
-    { name: name }
-  )
+Genre.create!(
+  [
+    { name: "デート" },
+    { name: "一人旅" },
+    { name: "ショッピング" },
+    { name: "都市観光" },
+    { name: "ツーリング" },
+    { name: "グルメ" },
+    { name: "アクティビティ" },
+    { name: "ドライブ" },
+    { name: "自然" },
+  ]
+)
 
 ### Prefecture & City data
 require 'csv'
