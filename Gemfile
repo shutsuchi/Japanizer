@@ -100,8 +100,15 @@ gem 'fullcalendar'
 
 # For Readable-code
 gem 'rubocop'
-# For Authorization-mng
+
+# For Internationalization
+gem 'rails-i18n'
+
+### For Management
+# For Authority-mng
 gem 'cancancan'
+# For Admin-browser
+gem 'rails-admin'
 
 ### Template-Engine
 gem 'slim-rails'
