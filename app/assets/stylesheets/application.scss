@@ -13,3 +13,15 @@
  *= require_tree .
  *= require_self
  */
+/* Bootstrap Sass */
+@import "bootstrap-sprockets";
+@import "bootstrap";
+/* Partial */
+@import "bookmarks";
+@import "genres";
+@import "homes";
+@import "likes";
+@import "plans";
+@import "posts";
+@import "searches";
+@import "users";
