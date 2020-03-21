@@ -8,4 +8,20 @@ html
     = stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track': 'reload'
     = javascript_include_tag 'application', 'data-turbolinks-track': 'reload'
   body
+    div.container
+      div.row
+        header.navbar.navbar-fixed-top.navbar-inverse
+          div.col-xs-2
+            span.logo
+             = link_to "Japanizer", top_path
+          div.col-xs-10
+            ul.nav.navbar-nav.navbar-right
+              li
+                = link_to "Login", new_user_session_path, class:"glyphicon glyphicon-flag"
+              li
+                = link_to "Signin", new_user_registration_path, class:""
+
+
     = yield
+
+    footer

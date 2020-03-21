@@ -1,2 +1,33 @@
-h1 Homes#about
-p Find me in app/views/homes/about.html.slim
+div.wrapper
+  div.row.title-row
+    div.col-xs-12
+      div.title-row__row-title Japanizer
+
+  div.row.black-row
+    div.col-xs-12
+      div.col-xs-6
+        div.black-row__pic
+
+      div.col-xs-6
+        div.black-row__row-title About Japanizer
+        p.black-row__row-text
+          | Find me in app/views/homes/about.html.slim
+
+  div.row.white-row
+    div.col-xs-12
+      div.col-xs-6
+        div.white-row__row-title Search
+        p.white-row__row-text
+         | Let's Search the Journey Post You like
+         //= form_with
+      div.col-xs-6
+        div.white-row__row-btn
+          = link_to "Give It Go", top_path, class:"btn btn-primary"
+
+  div.row.black-row
+    div.col-xs-12
+      div.col-xs-6
+      div.col-xs-6
+        div.black-row__row-title and More
+        p.black-row__row-text
+            | contack with us

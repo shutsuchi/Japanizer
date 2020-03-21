@@ -1,0 +1,131 @@
+// Place all the styles related to the homes controller here.
+// They will automatically be included in application.css.
+// You can use Sass (SCSS) here: http://sass-lang.com/
+
+// About Page
+.wrapper {
+  margin-top: 50px;
+}
+
+.title-row {
+  width: 100%;
+  text-align: center;
+  background-color: white;
+  color: red;
+  height: 300px;
+
+  &__row-title {
+    font-size: 100px;
+    font-family: 'Impact', Chalkduster, "Bradley Hand", Courier, "Segoe Print", sans-serif;
+    line-height: 300px;
+  }
+}
+
+.black-row {
+  //width: 100%;
+  background-color: black;
+  color: white;
+  height: 300px;
+
+  &__row-title {
+    text-align: center;
+    font-size: 50px;
+  }
+  &__row-text {
+    text-align: center;
+    font-size: 30px;
+  }
+  &__row-box {
+    //width: 50%;
+  }
+  &__pic {
+    width: 25%;
+    height: 150px;
+    background-image: url(img/jp_flag.jpg);
+    background-size: cover;
+    background-position: center;
+  }
+}
+
+.white-row {
+  width: 100%;
+  text-align: center;
+  background-color: white;
+  color: black;
+  height: 300px;
+
+  &__row-title {
+    text-align: center;
+    font-size: 50px;
+  }
+  &__row-text {
+    text-align: center;
+    font-size: 30px;
+  }
+  &__row-btn {
+    margin: 100px auto;
+    top: 0;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    position: absolute;
+  }
+}
+
+// Top Page
+.top-wrapper {
+  margin-top: 50px;
+  margin-left: 50px
+}
+
+.map-box {
+  margin: 20px auto;
+  height: 500px;
+  width: 95%;
+  border: 1px solid #000000;
+  background-color: #66CCFF;
+}
+.sidebar-outline {
+  margin: 0 auto;
+  height: 1500px;
+  width: 100%;
+  background-color: #333333;
+  &__title-box {
+    padding-left: 5px;
+  }
+  &__title {
+    color: white;
+    margin-left: 20px;
+  }
+  &__search-title-box {
+    margin: 0 auto;
+    padding-left: 5px;
+    height: 30px;
+    width: 80%;
+    background-color: #ffffff;
+    border: 1px solid #333333;
+  }
+  &__search-body-box {
+    margin: 0 auto;
+    padding-left: 5px;
+    margin-bottom: 10px;
+    height: 200px;
+    width: 80%;
+    background-color: #ffffff;
+    border: 1px solid #333333;
+  }
+
+  &__ranking-box {
+    margin-top: 5px;
+    color: #333333;
+  }
+  &__rank-body-box {
+    margin: 0 auto;
+    padding-left: 5px;
+    margin-bottom: 10px;
+    height: 600px;
+    width: 80%;
+    background-color: #ffffff;
+    border: 1px solid #333333;
+  }
+}
