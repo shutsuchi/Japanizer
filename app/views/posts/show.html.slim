@@ -1,2 +1,59 @@
-h1 Posts#show
-p Find me in app/views/posts/show.html.slim
+.container
+  .row
+    .col-xs-2
+      h1
+        | Post Detail
+      p
+        | Find me in app/views/posts/show.html.slim
+      .user-image-box
+        = attachment_image_tag @thepost.user, :image, fallback:"img/no_image.png", class:"field", size:"40x40"
+      .post-image-box
+        = attachment_image_tag @thepost, :image, fallback:"", class:"field", size:"40x40"
+      .post-body-box
+        = @post.title
+    .col-xs-10
+      .row
+        .post-detail
+          .post-detail__image
+            = attachment_image_tag @thepost, :image, fallback:"", class:"field", size:"40x40"
+          .post-details__comment
+            = @thepost.comment
+      .row
+        .post-detail__new-form
+          = form_with(model: [@thepost, @comment], local: true) do |f|
+            .form-group
+              = f.label :title
+              = f.text_field :title, placeholder:"Title"
+            .form-group
+              = f.label :comment
+              = f.text_area :comment, rows:'5', placeholder:"comment here"
+            .field
+              = f.submit "Post", class:"btn btn-md btn-base-1 btn-default pull-right"
+  .row
+    .col-xs-12
+      h2
+        | Comments(
+        = @post.post_comments.count
+        | )
+      = @comments.each do |comm|
+        .post-comment-box
+          .row
+            .col-xs-10
+              .row
+                .post-comment-box__user_name
+                  = comm.user.name
+                .post-comment-box__rate
+                  = comm.rate
+                .post-comment-btn
+                  = link_to 'delete', post_post_comments_path(id: comm, post_id: @post.id), method: :delete, class:"btn btn-danger btn-sm"
+              .row
+                .post-comment-box__title
+                  = comm.title
+                .post-comment-box__comment
+                  = comm.comment
+
+            .col-xs-2
+              .row
+                .post-comment-box__like
+              .row
+                .post-comment-box__reply

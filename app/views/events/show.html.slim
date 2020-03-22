@@ -1,0 +1,39 @@
+p#notice = notice
+
+p
+  strong User:
+  = @event.user_id
+p
+  strong Genre:
+  = @event.genre_id
+p
+  strong Title:
+  = @event.title
+p
+  strong Description:
+  = @event.description
+p
+  strong Start date:
+  = @event.start_date
+p
+  strong End date:
+  = @event.end_date
+p
+  strong Budget:
+  = @event.budget
+p
+  strong Mean:
+  = @event.mean
+p
+  strong Purpose:
+  = @event.purpose
+p
+  strong People:
+  = @event.people
+p
+  strong Memo:
+  = @event.memo
+
+=> link_to 'Edit', edit_event_path(@event)
+'|
+=< link_to 'Back', events_path

@@ -12,11 +12,14 @@
  *
  *= require_tree .
  *= require_self
+ *= require fullcalendar
  */
-/* Bootstrap Sass */
+/*-------- Bootstrap Sass --------*/
 @import "bootstrap-sprockets";
 @import "bootstrap";
-/* Partial */
+/*-------- Calendar For --------*/
+@import "bootstrap-datetimepicker";
+/*----------- Partial -----------*/
 @import "bookmarks";
 @import "genres";
 @import "homes";
@@ -25,3 +28,15 @@
 @import "posts";
 @import "searches";
 @import "users";
+
+/*----------- Common -----------*/
+* {
+  box-sizing: border-box
+}
+
+.form-window {
+  margin-bottom: 10px;
+}
+.form-submit {
+  margin-top: 20px;
+}

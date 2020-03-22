@@ -96,7 +96,9 @@ gem 'ransack', '~> 2.3.2'
 # For Logical-deletion
 gem 'paranoia', '~> 2.4.2'
 # For calenderFunc
-gem 'fullcalendar', '~> 3.9.0'
+gem 'fullcalendar-rails'
+gem 'momentjs-rails'
+gem 'bootstrap3-datetimepicker-rails'
 
 # For Readable-code
 gem 'rubocop', '~> 0.80.1'
@@ -114,3 +116,6 @@ gem 'rails_admin', '~> 2.0.2'
 gem 'slim-rails', '~> 3.2.0'
 # change html.erb into html.slim
 gem 'html2slim', '~> 0.2.0'
+
+# Country & Area-name
+gem 'carmen-rails', :git => 'https://github.com/Studiosity/carmen-rails.git', :branch => 'master'
