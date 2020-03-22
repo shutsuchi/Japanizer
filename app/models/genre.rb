@@ -9,6 +9,6 @@
 #
 class Genre < ApplicationRecord
   has_many :posts
-  has_many :plans
+  has_many :events
   has_many :albums
 end

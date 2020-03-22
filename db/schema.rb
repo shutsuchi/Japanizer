@@ -10,17 +10,17 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2020_03_19_125418) do
+ActiveRecord::Schema.define(version: 2020_03_22_083836) do
 
   create_table "albums", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8", force: :cascade do |t|
     t.integer "user_id", null: false
-    t.integer "plan_id", null: false
+    t.integer "event_id", null: false
     t.integer "genre_id", null: false
     t.string "title", null: false
     t.string "image"
-    t.integer "post_quantity", null: false
+    t.integer "post_quantity", default: 0, null: false
     t.text "comment"
-    t.float "rate", default: 0.0
+    t.float "rate", default: 0.0, null: false
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
   end
@@ -33,6 +33,21 @@ ActiveRecord::Schema.define(version: 2020_03_19_125418) do
   create_table "cities", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8", force: :cascade do |t|
     t.integer "prefecture_id", null: false
     t.string "name", null: false
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+  end
+
+  create_table "events", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8", force: :cascade do |t|
+    t.integer "user_id", null: false
+    t.integer "genre_id", null: false
+    t.string "title"
+    t.text "description"
+    t.datetime "start_date"
+    t.datetime "end_date"
+    t.string "budget"
+    t.string "mean"
+    t.integer "people"
+    t.string "memo"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
   end
@@ -50,38 +65,24 @@ ActiveRecord::Schema.define(version: 2020_03_19_125418) do
     t.datetime "updated_at", null: false
   end
 
-  create_table "plans", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8", force: :cascade do |t|
-    t.integer "user_id", null: false
-    t.integer "genre_id", null: false
-    t.date "first_date", null: false
-    t.date "last_date", null: false
-    t.string "budget", null: false
-    t.string "mean", null: false
-    t.string "purpose", null: false
-    t.integer "people"
-    t.string "memo"
-    t.datetime "created_at", null: false
-    t.datetime "updated_at", null: false
-  end
-
   create_table "post_comments", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8", force: :cascade do |t|
     t.integer "user_id", null: false
     t.integer "post_id", null: false
     t.string "title", null: false
     t.text "comment", null: false
-    t.float "rate", null: false
+    t.float "rate", default: 0.0, null: false
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
   end
 
   create_table "posts", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8", force: :cascade do |t|
     t.integer "user_id", null: false
-    t.integer "album_id"
+    t.integer "album_id", null: false
     t.integer "city_id", null: false
     t.integer "genre_id", null: false
     t.string "image"
     t.string "title", null: false
-    t.float "rate", default: 0.0
+    t.float "rate", default: 0.0, null: false
     t.text "comment", null: false
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
@@ -99,10 +100,12 @@ ActiveRecord::Schema.define(version: 2020_03_19_125418) do
     t.string "reset_password_token"
     t.datetime "reset_password_sent_at"
     t.datetime "remember_created_at"
-    t.string "name"
-    t.integer "age"
-    t.string "country"
-    t.boolean "withdrawal_flag"
+    t.string "name", null: false
+    t.integer "age", null: false
+    t.string "country_code", null: false
+    t.string "state_code"
+    t.boolean "withdrawal_flag", default: false, null: false
+    t.boolean "admin", default: false, null: false
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.index ["email"], name: "index_users_on_email", unique: true

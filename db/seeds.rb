@@ -5,27 +5,47 @@
 #
 #   movies = Movie.create([{ name: 'Star Wars' }, { name: 'Lord of the Rings' }])
 #   Character.create(name: 'Luke', movie: movies.first)
+#require './db/seeds/genre.rb'
+#require './db/seeds/pre_city.rb'
+#require './db/seeds/user.rb'
+require './db/seeds/event.rb'
+require './db/seeds/album.rb'
+require './db/seeds/post.rb'
+require './db/seeds/post_comment.rb'
+
 
 ### User data
-User.create!(
-  name:            "admin",
-  email:           "admin@admin",
-  age:             26,
-  country:         "JP",
-  withdrawal_flag: "true",
-  password:        "adminadmin"
-)
+#User.create!(
+#  name:            "admin",
+#  email:           "admin@admin",
+#  age:             26,
+#  country:         "JP",
+#  withdrawal_flag: "true",
+#  password:        "adminadmin"
+#)
 
-5.times do |n|
-  User.create!(
-    name:            "test#{n + 1}",
-    email:           "test#{n + 1}@test",
-    age:             n + 1,
-    country:         "US",
-    withdrawal_flag: "false",
-    password:        "111111"
-  )
-end
+#5.times do |n|
+#  User.create!(
+#    name:            "test#{n + 1}",
+#    email:           "test#{n + 1}@test",
+#    age:             n + 1,
+#    country:         "US",
+#    withdrawal_flag: "false",
+#    password:        "111111"
+#  )
+#end
+
+### Post data
+#User.all.each do |user|
+#  5.times do |n|
+#    user.posts.create!(
+#      city_id:  n + 1,
+#      genre_id: n + 1,
+#      title:    "徒然日記#{n + 1}",
+#      comment:  "最高",
+#    )
+#  end
+#end
 
 ### Plan data
 #User.all.each do |user|
@@ -42,29 +62,29 @@ end
 #end
 
 ### Genre data
-Genre.create!(
-  [
-    { name: "デート" },
-    { name: "一人旅" },
-    { name: "ショッピング" },
-    { name: "都市観光" },
-    { name: "ツーリング" },
-    { name: "グルメ" },
-    { name: "アクティビティ" },
-    { name: "ドライブ" },
-    { name: "自然" },
-  ]
-)
+#Genre.create!(
+#  [
+#    { name: "デート" },
+#    { name: "一人旅" },
+#    { name: "ショッピング" },
+#    { name: "都市観光" },
+#    { name: "ツーリング" },
+#    { name: "グルメ" },
+#    { name: "アクティビティ" },
+#    { name: "ドライブ" },
+#    { name: "自然" },
+#  ]
+#)
 
 ### Prefecture & City data
-require 'csv'
+#require 'csv'
 
-CSVROW_PREFNAME = 6
-CSVROW_CITYNAME = 7
-
-CSV.foreach('db/csv/prefecture.CSV', encoding: "Shift_JIS:UTF-8") do |row|
-  prefecture_name = row[CSVROW_PREFNAME]
-  city_name = row[CSVROW_CITYNAME]
-  prefecture = Prefecture.find_or_create_by(name: prefecture_name)
-  City.find_or_create_by(name: city_name, prefecture_id: prefecture.id)
-end
+#CSVROW_PREFNAME = 6
+#CSVROW_CITYNAME = 7
+#
+#CSV.foreach('db/csv/prefecture.CSV', encoding: "Shift_JIS:UTF-8") do |row|
+#  prefecture_name = row[CSVROW_PREFNAME]
+#  city_name = row[CSVROW_CITYNAME]
+#  prefecture = Prefecture.find_or_create_by(name: prefecture_name)
+#  City.find_or_create_by(name: city_name, prefecture_id: prefecture.id)
+#end
