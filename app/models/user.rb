@@ -16,6 +16,7 @@
 #  withdrawal_flag        :boolean          default("0"), not null
 #  created_at             :datetime         not null
 #  updated_at             :datetime         not null
+#  image_id               :string(255)
 #
 # Indexes
 #
