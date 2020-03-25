@@ -29,10 +29,6 @@
                   td.post-sedebar__title
                     = @thepost.user.name
                 tr
-                  th.active Title
-                  td.post-sedebar__title
-                    = @thepost.title
-                tr
                   th.active Recommendation-rate
                   td.post-sedebar__title
                     h5.md-3
@@ -48,6 +44,18 @@
                           readOnly  : true,
                           score     : #{@thepost.rate},
                         });
+                tr
+                  th.active Title
+                  td.post-sedebar__title
+                    = @thepost.title
+                tr
+                  th.active Prefecture
+                  td.post-sedebar__title
+                    = @thepost.prefecture.name
+                tr
+                  th.active City
+                  td.post-sedebar__title
+                    = @thepost.city.name
                 tr
                   th.active Genre
                   td.post-sedebar__title
@@ -86,7 +94,7 @@
             = @comments.count
             | )
           .col-xs-12
-            - @commentspg.each do |comm|
+            - @comments_pg.each do |comm|
               .post-comment-box
                 .row
                   .col-xs-10
@@ -119,5 +127,5 @@
                             td.post-comment-box__comment
                               .col-xs-10
                                 = comm.comment
-            = paginate @commentspg
+            = paginate @comments_pg
 

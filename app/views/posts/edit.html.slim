@@ -128,9 +128,6 @@
                   .form-window.row
                     = f.label :album, class:"post-main__color"
                     br
-                    = f.collection_check_boxes :album_id, @useralbums, :id, :title, prompt: "Please select",
-                      include_hidden: false, class:"post-main__color" do |a|
-                        = a.check_box
-                        = a.label { a.text }
+                    = f.collection_select :album_id, @user_albums, :id, :title, prompt: "Please select"
                   .form-submit.row
                     = f.submit "Update", class:"btn btn-md btn-base-1 btn-primary pull-left"

@@ -58,7 +58,7 @@
         - unless current_user.albums.nil?
             h2
               | Your Posts
-            - @userpostspg.each do |userpost|
+            - @user_posts_pg.each do |userpost|
               .col-xs-3
                 .post-index-box
                   .post-index-box__image
@@ -84,5 +84,5 @@
                       .col-xs-12
                         .post-index-box__comment
                           = userpost.comment
-            = paginate @userpostspg
+            = paginate @user_posts_pg
   .row
