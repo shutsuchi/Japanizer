@@ -1,2 +1,138 @@
-h1 Albums#index
-p Find me in app/views/albums/index.html.slim
+.wrapper
+.container
+  .row
+    .post-new-form
+      .post-new-form__title
+        h2
+          | New Album
+    = form_with(model: @album, url: albums_path, method: :post, local: true) do |f|
+      .post-new-form__image
+        .form-window.row
+        ul#previews
+          li.input
+            br
+            label.upload-label
+              .input-area
+                = f.label :image
+                br
+                = f.attachment_field :image, class: "image_upload"
+      .post-new-form__others
+        .form-window.row
+          = f.label :title
+          br
+          = f.text_field :title
+          // 下記javascript対応箇所
+        .form-window.row#star
+          = f.label :rate
+          br
+          = f.hidden_field :rate, id: :review_star
+          //rate 評価javascript
+          javascript:
+              $('#star').raty({
+                size      : 36,
+                starOff   : '#{asset_path('star-off.png')}',
+                starOn    : '#{asset_path('star-on.png')}',
+                starHalf  : '#{asset_path('star-half.png')}',
+                scoreName : 'album[rate]',
+                half      : true,
+              });
+        .form-window.row
+          = f.label :comment
+          br
+          = f.text_area :comment
+        .form-window.row
+          = f.label :genre_id, "Type of Journey"
+          br
+          = f.collection_select :genre_id, Genre.all, :id, :name, prompt: "Please select"
+        /.form-window.row
+        /  = f.label :posts
+        /  br
+        /  - if @user_no_posts.nil?
+        /    p
+        /      | 該当なし
+        /  - else
+        /    = f.collection_check_boxes :post_quantity, @user_no_posts, :id, :title, prompt: "Please select",
+        /      include_hidden: false, class:"post-main__color" do |a|
+        /        = a.check_box
+        /        = a.label { a.text }
+        .form-submit.row
+          = f.submit "Create post", class:"btn btn-primary col-xs-5"
+  .row
+    .album-index
+      .album-index__title
+        - unless current_user.albums.nil?
+            h2
+              | Your Album
+            - @user_albums_pg.each do |useralbum|
+              .col-xs-3
+                .post-index-box
+                  .post-index-box__image
+                    .post-index-box__icon
+                      = attachment_image_tag useralbum, :image, fallback:"img/no_photo.png", class:"field", size:"100x100"
+                  .post-index-box__image
+                    .row
+                      .col-xs-6
+                        .col-xs-6
+                          .post-index-box__like-icon
+                            span.glyphicon.glyphicon-thumbs-up style="font-size:40px;"
+                        .col-xs-6
+                          .post-index-box__like
+                            | like
+                      .col-xs-6
+                        .col-xs-6
+                          .post-index-box__comment-icon
+                            span.glyphicon.glyphicon-comment style="font-size:40px;"
+                        .col-xs-6
+                          .post-index-box__comment
+                            | 3
+                    .row
+                      .col-xs-12
+                        .post-index-box__comment
+                          = useralbum.comment
+            = paginate @user_albums_pg
+  .row
+    .album-index
+      .album-index__title
+        h2
+          | Album Index
+      - @albums_pg.each do |album|
+          .col-xs-3
+            .post-index-box
+              .post-index-box__image
+                .post-index-box__icon
+                  = attachment_image_tag album, :image, fallback:"img/no_photo.png", class:"field", size:"100x100"
+              .post-index-box__image
+                .row
+                  .col-xs-6
+                    .col-xs-6
+                      .post-index-box__like-icon
+                        span.glyphicon.glyphicon-thumbs-up style="font-size:40px;"
+                    .col-xs-6
+                      .post-index-box__like
+                        | like
+                  .col-xs-6
+                    .col-xs-6
+                      .post-index-box__comment-icon
+                        span.glyphicon.glyphicon-comment style="font-size:40px;"
+                    .col-xs-6
+                      .post-index-box__comment
+                        | 3
+                .row
+                  .col-xs-12
+                    .post-index-box__comment
+                      = album.comment
+                .album-index__lists
+                  .album-index_image
+                  .album-index_user
+                    = album.user.name
+                  .album-index_rate
+                    = album.rate
+                  .album-index_title
+                    = album.title
+                  .album-index_genre
+                    = album.genre.name
+                  .album-index_posts
+                    = album.title
+                  .album-index_comment
+                    = album.comment
+      = paginate @albums_pg

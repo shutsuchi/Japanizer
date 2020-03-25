@@ -14,13 +14,12 @@ ActiveRecord::Schema.define(version: 2020_03_22_083836) do
 
   create_table "albums", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8", force: :cascade do |t|
     t.integer "user_id", null: false
-    t.integer "event_id", null: false
     t.integer "genre_id", null: false
     t.string "title", null: false
-    t.string "image"
+    t.string "image_id"
     t.integer "post_quantity", default: 0, null: false
     t.text "comment"
-    t.float "rate", default: 0.0, null: false
+    t.float "rate", null: false
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
   end
@@ -78,11 +77,12 @@ ActiveRecord::Schema.define(version: 2020_03_22_083836) do
   create_table "posts", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8", force: :cascade do |t|
     t.integer "user_id", null: false
     t.integer "album_id", null: false
+    t.integer "prefecture_id", null: false
     t.integer "city_id", null: false
     t.integer "genre_id", null: false
-    t.string "image"
+    t.string "image_id"
     t.string "title", null: false
-    t.float "rate", default: 0.0, null: false
+    t.float "rate", null: false
     t.text "comment", null: false
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
@@ -101,6 +101,7 @@ ActiveRecord::Schema.define(version: 2020_03_22_083836) do
     t.datetime "reset_password_sent_at"
     t.datetime "remember_created_at"
     t.string "name", null: false
+    t.string "image_id"
     t.integer "age", null: false
     t.string "country_code", null: false
     t.string "state_code"

@@ -3,11 +3,12 @@ class CreatePosts < ActiveRecord::Migration[5.2]
     create_table :posts do |t|
       t.integer :user_id, null: false
       t.integer :album_id, null: false
+      t.integer :prefecture_id, null: false
       t.integer :city_id, null: false
       t.integer :genre_id, null: false
-      t.string :image
+      t.string :image_id
       t.string :title, null: false
-      t.float :rate, null: false, default: 0
+      t.float :rate, null: false
       t.text :comment, null: false
 
       t.timestamps
