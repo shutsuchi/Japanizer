@@ -5,7 +5,7 @@ class CreateAlbums < ActiveRecord::Migration[5.2]
       t.integer :genre_id, null: false
       t.string :title, null: false
       t.string :image_id
-      t.integer :post_quantity, null: false
+      t.integer :post_quantity, null: false, default: 0
       t.text :comment
       t.float :rate, null: false
 

@@ -33,10 +33,9 @@
                 starOff   : '#{asset_path('star-off.png')}',
                 starOn    : '#{asset_path('star-on.png')}',
                 starHalf  : '#{asset_path('star-half.png')}',
-                scoreName : 'post[rate]',
+                scoreName : 'album[rate]',
                 half      : true,
               });
-
         .form-window.row
           = f.label :comment
           br
@@ -45,13 +44,17 @@
           = f.label :genre_id, "Type of Journey"
           br
           = f.collection_select :genre_id, Genre.all, :id, :name, prompt: "Please select"
-        .form-window.row
-          = f.label :posts
-          br
-          = f.collection_check_boxes :post_quantity, @user_no_posts, :id, :title, prompt: "Please select",
-            include_hidden: false, class:"post-main__color" do |a|
-              = a.check_box
-              = a.label { a.text }
+        /.form-window.row
+        /  = f.label :posts
+        /  br
+        /  - if @user_no_posts.nil?
+        /    p
+        /      | 該当なし
+        /  - else
+        /    = f.collection_check_boxes :post_quantity, @user_no_posts, :id, :title, prompt: "Please select",
+        /      include_hidden: false, class:"post-main__color" do |a|
+        /        = a.check_box
+        /        = a.label { a.text }
         .form-submit.row
           = f.submit "Create post", class:"btn btn-primary col-xs-5"
   .row

@@ -10,5 +10,5 @@
 #require './db/seeds/user.rb'
 #require './db/seeds/event.rb'
 require './db/seeds/album.rb'
-require './db/seeds/post.rb'
+#require './db/seeds/post.rb'
 #require './db/seeds/post_comment.rb'

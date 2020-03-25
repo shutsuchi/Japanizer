@@ -17,7 +17,7 @@ ActiveRecord::Schema.define(version: 2020_03_22_083836) do
     t.integer "genre_id", null: false
     t.string "title", null: false
     t.string "image_id"
-    t.integer "post_quantity", null: false
+    t.integer "post_quantity", default: 0, null: false
     t.text "comment"
     t.float "rate", null: false
     t.datetime "created_at", null: false

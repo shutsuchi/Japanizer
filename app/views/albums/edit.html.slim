@@ -78,15 +78,11 @@
                           i.fas.fa-file-upload.add
                     = f.attachment_field :image, style:"display:none;", id:"file"
                   .form-window.row
-                    = f.label :rate, class:"post-main__color"
-                    br
-                    /= f.collection_select :genre_id, Genre.all, :id, :name, prompt: "Please select"
-                  .form-window.row
                     = f.label :title, class:"post-main__color"
                     br
                     = f.text_field :title, placeholder:"Title"
                   .form-window.row#star
-                    = f.label :rate
+                    = f.label :rate, class:"post-main__color"
                     br
                     = f.hidden_field :rate, id: :review_star
                     //rate 評価javascript
@@ -96,7 +92,7 @@
                           starOff   : '#{asset_path('star-off.png')}',
                           starOn    : '#{asset_path('star-on.png')}',
                           starHalf  : '#{asset_path('star-half.png')}',
-                          scoreName : 'post[rate]',
+                          scoreName : 'album[rate]',
                           half      : true,
                         });
                   .form-window.row
@@ -110,7 +106,7 @@
                   .form-window.row
                     = f.label :posts, class:"post-main__color"
                     br
-                    = f.collection_check_boxes :post_quantity, @userposts, :id, :title, prompt: "Please select",
+                    = f.collection_check_boxes :post_quantity, @user_posts, :id, :title, prompt: "Please select",
                       include_hidden: false, class:"post-main__color" do |a|
                         = a.check_box
                         = a.label { a.text }
