@@ -89,7 +89,8 @@
                       .col-xs-12
                         .post-index-box__comment
                           = useralbum.comment
-            = paginate @user_albums_pg
+            .text-center
+              = paginate @user_albums_pg
   .row
     .album-index
       .album-index__title
@@ -135,4 +136,5 @@
                     = album.title
                   .album-index_comment
                     = album.comment
-      = paginate @albums_pg
+      .text-center
+        = paginate @albums_pg

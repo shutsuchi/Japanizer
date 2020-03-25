@@ -11,6 +11,7 @@ Rails.application.routes.draw do
 
   resources :users, only: %i[ show edit update]
   resources :posts, only: %i[ index show edit create update destroy ] do
+    resource :likes, only: %i[ index create destroy ]
     resource :post_comments, only: %i[ create update destroy ]
     collection do
       get :cities_select

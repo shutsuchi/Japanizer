@@ -5,6 +5,18 @@ class PostsController < ApplicationController
     @post = Post.new
     @posts_pg = Post.page(params[:page]).reverse_order.per(8)
     @user_posts_pg = current_user.posts.page(params[:page]).reverse_order.per(4)
+      # current_user 以外の投稿
+    #@other_users = User.where.not(id: current_user.id).select(:id).shuffle
+    @others_posts_pg = Post.includes(:user).where.not(user_id: current_user.id).page(params[:page]).reverse_order.per(8)
+      #other_users.each do |user|
+      #   user.posts
+      #i = 1
+      #c = other_users.count
+      #while i < c do
+      #  other_users[0].concat(other_users[i].posts)
+      #  i += 1
+      #end
+      #@other_posts_pg = other_user_posts.shuffle.page(params[:page]).reverse.order.per(8)
   end
 
   # GET /post/:id
