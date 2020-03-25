@@ -1,4 +1,7 @@
 class AlbumsController < ApplicationController
+
+  # GET /albums
+  # albums_path
   def index
     @album = Album.new
     @albums_pg = Album.page(params[:page]).reverse_order.per(8)
@@ -6,16 +9,21 @@ class AlbumsController < ApplicationController
     @user_no_posts = Post.where(album_id: current_user.albums.first.id)
   end
 
+  # GET /album/:id
+  # album_path
   def show
     @thealbum = find_album(params[:id])
-
   end
 
+  # GET /album/:id/edit
+  # edit_album_path
   def edit
     @thealbum = find_album(params[:id])
     @user_posts = current_user.posts
   end
 
+  # POST /albums
+  # albums_path
   def create
     album = Album.new(album_params)
     album.user_id = current_user.id
@@ -24,9 +32,13 @@ class AlbumsController < ApplicationController
     end
     if album.save!
       redirect_to album
+    else
+      render albums_path
     end
   end
 
+  # PATCH /albums/:id
+  # album_path
   def update
     thealbum = find_album(params[:id])
 
@@ -61,7 +73,7 @@ class AlbumsController < ApplicationController
     end
   end
   def rate_update(album)
-    if params[:album][:rate].nil?
+    if params[:album][:rate].blank?
       # 評価をゼロに更新したい可能性は一時的に無視
       album.rate.to_i
     else
