@@ -1,2 +1,121 @@
-h1 Genres#index
-p Find me in app/views/genres/index.html.slim
+.wrapper
+  .container
+    .row
+      .col-xs-8
+        h1 Genres Search
+        p choose genre you want browse posts
+        .genre-image-search
+          .col-xs-12
+            .genre-search-bar
+              | SEARCH BAR
+          - @genres.each do |genre|
+            .genre-change-list__boxes
+              .genre-change-list__box
+                .genre-change-list__each
+                  .col-xs-3
+                    = link_to genres_path(id: genre.id)
+                      = genre.name
+      .col-xs-4
+        h1 Genres Ranking
+        p monthly popular post
+        .genre-change-list
+          ul
+          - @genres.each do |genre|
+            .genre-change-list__boxes
+              .genre-change-list__box
+                .genre-change-list__each
+                  li
+                    = link_to genres_path(id: genre.id)
+                      = genre.name
+                .genre-change-list__text
+                .genre-change-list__nature
+                .genre-change-list__date
+                .genre-change-list__food
+.wrapper
+  .container
+    .row
+      .genre
+      h1 Genres#index
+      p Find me in app/views/genres/index.html.slim
+.wrapper
+  .container
+    .row
+      .col-xs-12
+        h1 Posts
+        - if @pickgenre_posts.present?
+          h4 = @pickgenre_posts.first.genre.name
+          - @pickgenre_posts.each do |post|
+        - else
+          - @posts.each do |post|
+            .col-xs-3
+              .post-index-box
+                .post-index-box__image
+                  .post-index-box__icon
+                    = attachment_image_tag post, :image, fallback:"img/no_photo.png", class:"field", size:"100x100"
+                .post-index-box__image
+                  .row
+                    .col-xs-6
+                      .col-xs-6
+                        .post-index-box__like-icon
+                          span.glyphicon.glyphicon-thumbs-up style="font-size:40px;"
+                      .col-xs-6
+                        .post-index-box__like
+                          | like
+                    .col-xs-6
+                      .col-xs-6
+                        .post-index-box__comment-icon
+                          span.glyphicon.glyphicon-comment style="font-size:40px;"
+                      .col-xs-6
+                        .post-index-box__comment
+                          | 3
+                  .row
+                    .col-xs-12
+                      .post-index-box__comment
+                        = link_to post_path(post) do
+                          = post.title
+                          = post.genre.name
+                          = post.comment
+        - if @pickgenre_posts.present?
+          = paginate @pickgenre_posts
+        - else
+          = paginate @posts
+.wrapper
+  .container
+    .row
+      .col-xs-12
+        h1 Albums
+        - if @pickgenre_albums.present?
+          - @pickgenre_albums.each do |album|
+        - else
+          - @albums.each do |album|
+            .col-xs-3
+              .post-index-box
+                .post-index-box__image
+                  .post-index-box__icon
+                    = attachment_image_tag album, :image, fallback:"img/no_photo.png", class:"field", size:"100x100"
+                .post-index-box__image
+                  .row
+                    .col-xs-6
+                      .col-xs-6
+                        .post-index-box__like-icon
+                          span.glyphicon.glyphicon-thumbs-up style="font-size:40px;"
+                      .col-xs-6
+                        .post-index-box__like
+                          | like
+                    .col-xs-6
+                      .col-xs-6
+                        .post-index-box__comment-icon
+                          span.glyphicon.glyphicon-comment style="font-size:40px;"
+                      .col-xs-6
+                        .post-index-box__comment
+                          | 3
+                  .row
+                    .col-xs-12
+                      .post-index-box__comment
+                        =link_to album_path(album)
+                          = album.title
+                          = album.comment
+        - if @pickgenre_albums.present?
+          = paginate @pickgenre_albums
+        - else
+          = paginate @albums
