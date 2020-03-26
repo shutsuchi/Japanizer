@@ -1,0 +1,16 @@
+.col-xs-6
+  .post-index-box__like-icon
+    - if album.bookmarked_by?(current_user)
+      = link_to album_bookmarks_path(album), method: :delete, remote: true do
+        i.fas.fa-bookmark aria-hidden="true" style="font-size:40px; color:#0099cc;"
+    - else
+      = link_to album_bookmarks_path(album), method: :post, remote: true do
+        i.far.fa-bookmark aria-hidden="true" style="font-size:40px;"
+.col-xs-6
+  .post-index-box__like
+    - if album.bookmarks.nil?
+      span
+        | 0
+    - else
+      span
+        = album.bookmarks.count

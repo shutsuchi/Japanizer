@@ -1,0 +1,31 @@
+.col-xs-3
+  .post-index-box
+    .post-index-box__image
+      .post-index-box__icon
+        = attachment_image_tag album, :image, fallback:"img/no_photo.png", class:"field", size:"100x100"
+    .post-index-box__image
+      .row
+        .col-xs-6
+          /.col-xs-6
+            .post-index-box__comment-icon
+              span.glyphicon.glyphicon-comment style="font-size:40px;"
+          /.col-xs-6
+            .post-index-box__comment
+              - if album.comment.nil?
+                span
+                  | 0
+              -else
+                span
+                  = album.comment.count
+        .col-xs-6 id="bookmarks_buttons_#{ album.id }"
+          = render 'albums/bookmark', album: album
+      .row
+        .col-xs-12
+          .post-index-box__comment
+            .post-index-box__user-name.bg-info
+              = link_to user_path(album.user), method: :get do
+                = album.user.name
+            .post-index-box__title
+              = album.title
+            .post-index-box__comment-count
+              = album.comment

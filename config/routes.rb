@@ -17,9 +17,11 @@ Rails.application.routes.draw do
       get :cities_select
     end
   end
+  resources :albums, only: %i[ index show edit create update destroy ] do
+    resource :bookmarks, only: %i[ index create destroy ]
+  end
+
   resources :genres, only: %i[ index create update destroy ]
-  resources :albums, only: %i[ index show edit create update destroy ]
   resources :events, only:  %i[ edit create update destroy ]
-  resources :bookmarks, only: %i[ index create destroy ]
   # For details on the DSL available within this file, see http://guides.rubyonrails.org/routing.html
 end
