@@ -1,22 +1,30 @@
 class PostCommentsController < ApplicationController
+  protect_from_forgery
 
   def create
-    post = find_post(params[:post_id])
+    @thepost = find_post(params[:post_id])
+    @comments_pg = @thepost.post_comments.page(params[:page]).reverse_order.per(5)
     comment = current_user.post_comments.new(post_comment_params)
-    comment.post_id = post.id
-    if comment.save
-      redirect_to post
+    comment.post_id = @thepost.id
+    respond_to do |format|
+      if comment.save!
+        format.js
+      end
     end
   end
 
   def update
+    @comment = find_comment(params[:id])
+    @comment.update!(post_comment_params)
+    render json: @comment
   end
 
   def destroy
-    post = find_post(params[:post_id])
-    comment = find_comment(params[:id])
-    if comment.destroy
-      redirect_to post
+    @comment = find_comment(params[:id])
+    respond_to do |format|
+      if @comment.destroy!
+        format.js
+      end
     end
   end
 

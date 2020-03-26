@@ -20,8 +20,69 @@
 //= require bootstrap-sprockets
 //= require_tree .
 
-
-// FullCalendar機能実装
+//--------------------------  Comment非同期編集 機能実装
+//$(function () {
+//  $(document).on("click", ".post-comment-box--edit", function () {
+//    const commentId = $(this).data('comment-id');
+//    const commentLabelArea = $('#js-comment-label-' + commentId);
+//    const commentTextArea = $('#js-comment-textarea-' + commentId);
+//    const commentButton = $('#js-comment-button-' + commentId);
+//
+//    commentLabelArea.hide();
+//    commentTextArea.show();
+//    commentButton.show();
+//  });
+//});
+//// コメント編集エリア非表示
+//$(function () {
+//  $(document).on("click", ".comment-cancel-button", function () {
+//    const commentId = $(this).data('cancel-id');
+//    const commentLabelArea = $('#js-comment-label-' + commentId);
+//    const commentTextArea = $('#js-comment-textarea-' + commentId);
+//    const commentButton = $('#js-comment-button-' + commentId);
+//    const commentError = $('#js-comment-post-error-' + commentId);
+//
+//    commentLabelArea.show();
+//    commentTextArea.hide();
+//    commentButton.hide();
+//    commentError.hide();
+//  });
+//});
+//// コメント更新ボタン
+//$(function () {
+//  $(document).on("click", ".comment-update-button", function () {
+//    const path = location.pathname;
+//    const commentId = $(this).data('update-id');
+//    const textField = $('#js-comment-textarea-' + commentId);
+//    const body = textField.val();
+//
+//
+//    $.ajax({
+//      url: path + '/post_comments/' + commentId,
+//      type: 'PATCH',
+//      data: {
+//        post_comment: {
+//          comment: body
+//        }
+//      }
+//    })
+//      .done(function () {
+//        const commentLabelArea = $('#js-comment-label-' + commentId);
+//        const commentTextArea = $('#js-comment-textarea-' + commentId);
+//        const commentButton = $('#js-comment-button-' + commentId);
+//        const commentError = $('#js-comment-post-error-' + commentId);
+//
+//        commentLabelArea.show();
+//        commentLabelArea.text(data.body);
+//        commentTextArea.hide();
+//        commentButton.hide();
+//        commentError.hide();
+//      })
+//  });
+//});
+//
+//
+////--------------------------  FullCalendar機能実装
 $(function () {
   // 画面遷移を検知
   $(document).on('turbolinks:load', function() {
@@ -61,7 +122,7 @@ $(function () {
 });
 
 
-// DateTimePicker-calendarForm
+//-------------------------- DateTimePicker-calendarForm
 var data = {'data-date-format': 'YYYY-MM-DD hh:mm' };
 $(function(){
   $('.datetimepicker').attr(data);
@@ -72,7 +133,7 @@ $(function(){
 
 
 
-// Post-ShowPage-Image
+//-------------------------- Post-ShowPage-Image
 $(function(){
   $fileField = $('#file')
 
@@ -97,7 +158,7 @@ $(function(){
   });
 });
 
-// Album-NewPage-Image
+//-------------------------- Album-NewPage-Image
 $(document).on('click', '.image_upload', function(){
   //inputの要素はクリックされておらず、inputの親要素であるdivが押されている。
   //だからdivのクラス名をclickした時にイベントが作動。
@@ -143,7 +204,7 @@ $(document).on('click', '.image_upload', function(){
 });
 
 
-// スター評価 jquery.raty.js
+//-------------------------- スター評価 jquery.raty.js
 /*!
  * jQuery Raty - A Star Rating Plugin
  *
