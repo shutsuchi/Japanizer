@@ -22,7 +22,9 @@ class LikesController < ApplicationController
     end
   end
 
-  def find_post(post_id)
-    Post.find(post_id)
-  end
+  private
+
+    def find_post(post_id)
+      Post.find(post_id)
+    end
 end

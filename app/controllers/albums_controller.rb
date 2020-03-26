@@ -4,9 +4,13 @@ class AlbumsController < ApplicationController
   # albums_path
   def index
     @album = Album.new
-    @albums_pg = Album.page(params[:page]).reverse_order.per(8)
-    @user_albums_pg = current_user.albums.page(params[:page]).reverse_order.per(4)
+    @albums_pg = Album.page(params[:page]).reverse_order.per(4)
+      # 空アルバム
     @user_no_posts = Post.where(album_id: current_user.albums.first.id)
+      # current_user のアルバム
+    @user_albums_pg = current_user.albums.page(params[:page]).reverse_order.per(4)
+      # current_user以外のアルバム
+    @others_albums_pg = Album.includes(:user).where.not(user_id: current_user.id).page(params[:page]).reverse_order.per(4)
   end
 
   # GET /album/:id
