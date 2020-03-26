@@ -1,0 +1,11 @@
+.col-xs-6
+  .post-index-box__comment-icon
+    span.glyphicon.glyphicon-comment style="font-size:40px;"
+.col-xs-6
+  .post-index-box__comment
+    - if post.post_comments.nil?
+      span
+        | 0
+    - else
+      span
+      = post.post_comments.count

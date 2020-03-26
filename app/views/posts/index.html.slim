@@ -60,32 +60,9 @@
         - unless current_user.posts.nil?
             h2
               | Your Posts
-            - @user_posts_pg.each do |userpost|
-              .col-xs-3
-                .post-index-box
-                  .post-index-box__image
-                    .post-index-box__icon
-                      = attachment_image_tag userpost, :image, fallback:"img/no_photo.png", class:"field", size:"100x100"
-                  .post-index-box__image
-                    .row
-                      .col-xs-6
-                        .col-xs-6
-                          .post-index-box__like-icon
-                            span.glyphicon.glyphicon-thumbs-up style="font-size:40px;"
-                        .col-xs-6
-                          .post-index-box__like
-                            | like
-                      .col-xs-6
-                        .col-xs-6
-                          .post-index-box__comment-icon
-                            span.glyphicon.glyphicon-comment style="font-size:40px;"
-                        .col-xs-6
-                          .post-index-box__comment
-                            | 3
-                    .row
-                      .col-xs-12
-                        .post-index-box__comment
-                          = userpost.comment
+            / current_userの投稿一覧
+            = render @user_posts_pg
+
             .text-center
               = paginate @user_posts_pg
         - else
@@ -97,37 +74,11 @@
   .row
     .album-index
       .album-index__title
-        - unless @posts_pg.nil?
+        - unless @others_posts_pg.nil?
             h2
               | Other Posts
-            /- @posts_pg.each do |post|
-            - @others_posts_pg.each do |post|
-              .col-xs-3
-                .post-index-box
-                  .post-index-box__image
-                    .post-index-box__icon
-                      = attachment_image_tag post, :image, fallback:"img/no_photo.png", class:"field", size:"100x100"
-                  .post-index-box__image
-                    .row
-                      .col-xs-6
-                        .col-xs-6
-                          .post-index-box__like-icon
-                            span.glyphicon.glyphicon-thumbs-up style="font-size:40px;"
-                        .col-xs-6
-                          .post-index-box__like
-                            | like
-                      .col-xs-6
-                        .col-xs-6
-                          .post-index-box__comment-icon
-                            span.glyphicon.glyphicon-comment style="font-size:40px;"
-                        .col-xs-6
-                          .post-index-box__comment
-                            | 3
-                    .row
-                      .col-xs-12
-                        .post-index-box__comment
-                          = post.user.name
-                          = post.title
-                          = post.comment
+            / current_user以外userの投稿一覧
+            = render @others_posts_pg
+
             .text-center
               = paginate @others_posts_pg
