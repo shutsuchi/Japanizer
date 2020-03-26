@@ -1,13 +1,17 @@
-- if post.liked_by?(current_user)
-  = link_to post_likes_path(post), method: :delete, remote: true do
-    i.fa.fa-heart aria-hidden="true" style="color: red;"
-- else
-  = link_to post_likes_path(post), method: :post, remote: true do
-    i.fa.fa-heart-o aria-hidden="true"
+.col-xs-6
+  .post-index-box__like-icon
+    - if post.liked_by?(current_user)
+      = link_to post_likes_path(post), method: :delete, remote: true do
+        i.fa.fa-heart aria-hidden="true" style="color: red; font-size:40px;"
+    - else
+      = link_to post_likes_path(post), method: :post, remote: true do
+        i.fa.fa-heart-o aria-hidden="true" style="font-size: 40px;"
 
-- if post.likes.nil?
-  span
-    | 0
-- else
-  span
-    = post.likes.count
+.col-xs-6
+  .post-index-box__like
+    - if post.likes.nil?
+      span
+        | 0
+    - else
+      span
+        = post.likes.count
