@@ -2,35 +2,6 @@
   .row
     .col-xs-10
       .row
-        - comments.each do |comment|
-          table.table.table-bordered#table-comment-js
-            thead
-              tr
-                th.post-comment-box__user-name
-                  .col-xs-3
-                    = comment.user.name
-                  .col-xs-2
-                    = comment.created_at
-                  .col-xs-2
-                    .post-comment-box__rate
-                      = comment.rate
-                  .col-xs-1
-                      .post-comment-box__like
-                        | like
-                  .col-xs-1
-                      .post-comment-box__reply
-                        | repy
-                  .col-xs-3
-                    .pot-comment-box__btn--delete id="comment-#{ comment.id }"
-                      = link_to '', post_post_comments_path(id: comment, post_id: post.id), method: :delete, remote: true, class:"fa fa-trash pull-right", style:"color:#ee0000; font-size:20px;"
-              tr
-                td.post-comment-box__title
-                  .col-xs-5
-                    = comment.title
-              tr
-                td.post-comment-box__comment
-                  .col-xs-10
-                    = comment.comment
-                  .col-xs-2
-                    .post-comment-box__btn--edit
-                      = link_to '', post_post_comments_path(id: comment, post_id: post.id), method: :patch, remote: true, class:"fas fa-edit pull-right text-primary", style:"font-size:20px;"
+        table.table.table-bordered#table-comment-js
+
+          = render 'posts/comment', comments: comments, post: post
