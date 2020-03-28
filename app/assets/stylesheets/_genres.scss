@@ -1,3 +1,97 @@
 // Place all the styles related to the genres controller here.
 // They will automatically be included in application.css.
 // You can use Sass (SCSS) here: http://sass-lang.com/
+.padding-3 {
+  padding: 3px;
+}
+.genre-change-list {
+  &__boxes {
+    margin: 0 auto;
+  }
+  &__box {
+    height: 200px;
+  }
+  &__icon {
+  }
+  &__text {
+    color: white;
+  }
+}
+#box-1 {
+  background-color: #ff1493;
+}
+#box-2 {
+  background-color: #da70d6;
+}
+#box-3 {
+  background-color: #0000cd;
+}
+#box-4 {
+  background-color: #ffd700;
+}
+#box-5 {
+  //background-color: pink;
+  padding: 0.5em 1em;
+  background: -moz-linear-gradient(#2c7cff, #bad3ff);
+  background: -webkit-linear-gradient(#2c7cff, #bad3ff);
+  background: linear-gradient(#2c7cff, #bad3ff);
+  //background: -moz-linear-gradient(#ffb03c, #ff708d);
+  //background: -webkit-linear-gradient(#ffb03c, #ff708d);
+  //background: linear-gradient(to right, #ffb03c, #ff708d);
+  color: #FFF;
+}
+#box-6 {
+  background-color: #ff6347;
+}
+#box-7 {
+  background-color: #4b0082;
+}
+#box-8 {
+  background-color: #ffad90;
+}
+#box-9 {
+  background-color: #8fbc8f;
+}
+
+.genre-post-rank {
+  margin: 0 auto;
+  height: 400px;
+  &__margin-bottom {
+    margin-bottom: 20px;
+  }
+  &__number {
+    padding-left: 10px;
+  }
+  &__left-box {
+    margin: 0 auto;
+  }
+  &__image-box {
+    width: 100%;
+    height: 70px;
+    border: 3px solid #333333;
+    text-align: center;
+  }
+  &__icon-box {
+    width: 100%;
+    height: 50px;
+    border: 3px solid #333333;
+    text-align: center;
+  }
+  &__icon {
+    padding: 1px;
+  }
+  &__like-icon {
+  }
+  &__like-count {
+  }
+  &__comment-icon {
+  }
+  &__comment-count {
+  }
+  &__bookmark-icon {
+    padding: 10px;
+  }
+  &__bookmark-count {
+    padding: 10px;
+  }
+}
