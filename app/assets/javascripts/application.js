@@ -18,7 +18,6 @@
 //= require fullcalendar
 //= require bootstrap-datetimepicker
 //= require bootstrap-sprockets
-//= require_tree .
 
 //--------------------------  Comment非同期編集 機能実装
 //$(function () {
