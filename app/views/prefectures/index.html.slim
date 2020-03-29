@@ -1,8 +1,10 @@
 .top-wrapper
   .row
     .col-xs-12.text-center
-      h1 Japan Area Map
-      p choose destination of your journey
+      h1
+        = t('.title')
+      p
+        = t('.page_description')
     .col-xs-7
       .area-pick
         ul#imagemap
@@ -43,41 +45,41 @@
         ul#area
           .col-xs-12
             li
-              = link_to 'Hokkaido Area', prefectures_path(area_id: 1)
+              = link_to t('.hokkaido_area'), prefectures_path(area_id: 1)
           .col-xs-12
             li
-              = link_to 'Tohoku Area', prefectures_path(area_id: 2)
+              = link_to t('.tohoku_area'), prefectures_path(area_id: 2)
           .col-xs-12
             li
-              = link_to 'Hokuriku Area', prefectures_path(area_id: 3)
+              = link_to t('.hokuriku_area'), prefectures_path(area_id: 3)
           .col-xs-12
             li
-              = link_to 'Kanto Area', prefectures_path(area_id: 4)
+              = link_to t('.kanto_area'), prefectures_path(area_id: 4)
           .col-xs-12
             li
-              = link_to 'Tokai Area', prefectures_path(area_id: 5)
+              = link_to t('.tokai_area'), prefectures_path(area_id: 5)
           .col-xs-12
             li
-              = link_to 'Kinki Area', prefectures_path(area_id: 6)
+              = link_to t('.kinki_area'), prefectures_path(area_id: 6)
           .col-xs-12
             li
-              = link_to 'Chugoku Area', prefectures_path(area_id: 7)
+              = link_to t('.chugoku_area'), prefectures_path(area_id: 7)
           .col-xs-12
             li
-              = link_to 'Shikoku Area', prefectures_path(area_id: 8)
+              = link_to t('.shikoku_area'), prefectures_path(area_id: 8)
           .col-xs-12
             li
-              = link_to 'Kyushu Area', prefectures_path(area_id: 9)
+              = link_to t('.kyushu_area'), prefectures_path(area_id: 9)
           .col-xs-12.text-center
             li
-              = link_to 'Okinawa Area', prefectures_path(area_id: 10)
+              = link_to t('.okinawa_area'), prefectures_path(area_id: 10)
 .wrapper
   .container
     .row
       .album-index
         .album-index__title
-          h2
-            | Posts List
+          h1
+            = t('.post_index')
           .col-xs-12
             - @posts.each do |post|
               = render 'posts/post', post: post

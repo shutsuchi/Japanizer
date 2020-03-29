@@ -1,0 +1,18 @@
+ja:
+  activerecord:
+    models:
+      user: "ユーザー"
+    attributes:
+      user:
+        id: "ID"
+        name: "名前"
+        email: "メールアドレス"
+        encrypted_password: "パスワード"
+        image_id: "画像"
+        age: "年齢"
+        country_code: "国籍"
+        state_code: "地域名"
+        withdrawal_flag: "退会フラグ"
+        admin: "管理者"
+        created_at: "登録日時"
+        updated_at: "更新日時"

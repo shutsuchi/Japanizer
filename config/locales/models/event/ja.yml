@@ -1,0 +1,19 @@
+ja:
+  activerecord:
+    models:
+      event: "イベント"
+    attributes:
+      event:
+        id: "ID"
+        user_id: "ユーザID"
+        genre_id: "ジャンルID"
+        title: "タイトル"
+        description: "内容"
+        start_date: "初日"
+        end_date: "最終日"
+        budget: "予算"
+        mean: "交通手段"
+        people: "人数"
+        memo: "メモ"
+        created_at: "登録日時"
+        updated_at: "更新日時"

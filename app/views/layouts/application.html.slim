@@ -23,6 +23,11 @@ html
                 = link_to "Login", new_user_session_path, class:"glyphicon glyphicon-flag"
               li
                 = link_to "Signin", new_user_registration_path, class:""
+              li
+                - if I18n.locale.to_s == "en"
+                  = link_to('日本語', :locale => 'ja')
+                - elsif I18n.locale.to_s == "ja"
+                  = link_to('English', :locale => 'en')
 
 
     = yield

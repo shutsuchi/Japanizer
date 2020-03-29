@@ -1,0 +1,16 @@
+en:
+  prefectures:
+    index:
+      title: 'Area Search'
+      page_description: 'Choose destination of your journey'
+      post_index: 'Post List'
+      hokkaido_area: 'Hokkaido Area'
+      tohoku_area: 'Tohoku Area'
+      hokuriku_area: 'Hokuriku Area'
+      kanto_area: 'Kanto Area'
+      tokai_area: 'Tokai Area'
+      kinki_area: 'Kinki Area'
+      chugoku_area: 'Chugoku Area'
+      shikoku_area: 'Shikoku Area'
+      kyushu_area: 'Kyushu Area'
+      okinawa_area: 'Okinawa Area'

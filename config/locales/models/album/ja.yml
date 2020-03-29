@@ -1,0 +1,16 @@
+ja:
+  activerecord:
+    models:
+      album: "アルバム"
+    attributes:
+      user:
+        id: "ID"
+        user_id: "ユーザID"
+        genre_id: "ジャンルID"
+        title: "タイトル"
+        image_id: "画像"
+        post_quantity: "記事数"
+        comment: "コメント"
+        rate: "評価"
+        created_at: "作成日時"
+        updated_at: "更新日時"

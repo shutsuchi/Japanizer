@@ -14,14 +14,26 @@ class ApplicationController < ActionController::Base
     root_path
   end
 
-  # 全リンクにlocale情報をセット
-  def default_url_options(options={})
-    { :locale => I18n.locale }
-  end
-  # リンクの多言語化に対応
   def set_locale
-    I18n.locale = params[:locale] || I18n.default_locale
+    I18n.locale = locale
   end
+
+  def locale
+    @locale ||= params[:locale] || I18n.default_locale
+  end
+
+  def default_url_options(options={})
+    #options.merge(locale: locale)
+    { :locale => I18n.locale }.merge options
+  end
+  ## 全リンクにlocale情報をセット
+  #def default_url_options(options={})
+  #  { :locale => I18n.locale }
+  #end
+  ## リンクの多言語化に対応
+  #def set_locale
+  #  I18n.locale = params[:locale] || I18n.default_locale
+  #end
 
   protected
     def configure_permitted_parameters

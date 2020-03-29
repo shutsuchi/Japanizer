@@ -1,0 +1,18 @@
+ja:
+  activerecord:
+    models:
+      post: "記事"
+    attributes:
+      user:
+        id: "ID"
+        user_id: "ユーザID"
+        album_id: "アルバムID"
+        prefecture_id: "都道府県ID"
+        city_id: "市町村郡ID"
+        genre_id: "ジャンルID"
+        image_id: "画像"
+        title: "タイトル"
+        rate: "評価"
+        comment: "コメント"
+        created_at: "作成日時"
+        updated_at: "更新日時"
