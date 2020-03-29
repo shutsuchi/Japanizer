@@ -14,7 +14,6 @@
 //= require activestorage
 //= require turbolinks
 //= require jquery
-//= require jcanvas
 //= require moment
 //= require fullcalendar
 //= require bootstrap-datetimepicker

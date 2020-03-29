@@ -1,2 +1,85 @@
-h1 Prefectures#index
-p Find me in app/views/prefectures/index.html.slim
+.top-wrapper
+  .row
+    .col-xs-12.text-center
+      h1 Japan Area Map
+      p choose destination of your journey
+    .col-xs-7
+      .area-pick
+        ul#imagemap
+          li#hokkaido
+            = link_to 'Hokkaido', prefectures_path(area_id: 1)
+              /a href="hokkaido/hokkaido.html" 北海道
+          li#touhoku
+            = link_to 'Tohoku', prefectures_path(area_id: 1)
+              /a href="tohoku/miyagi" 東北
+          li#hokuriku
+            = link_to 'Hokuriku', prefectures_path(area_id: 2)
+              /a href="hokuriku/nagano.html" 北陸
+          li#kanto
+            = link_to 'Kanto', prefectures_path(area_id: 3)
+              /a href="kanto/tokyo.html" 関東
+          li#tokai
+            = link_to 'Tokai', prefectures_path(area_id: 4)
+              /a href="toukai/shizuoka.html" 東海
+          li#kansai
+            = link_to 'Kansai', prefectures_path(area_id: 5)
+              /a href="kansai/osaka.html" 関西
+          li#chugoku
+            = link_to 'Chugoku', prefectures_path(area_id: 6)
+              /a href="chugoku/hiroshima.html" 中国
+          li#shikoku
+            = link_to 'Shikokuk', prefectures_path(area_id: 7)
+              /a href="shikoku/kochi.html" 四国
+          li#kyushu
+            = link_to 'Kyushu', prefectures_path(area_id: 8)
+              /a href="kyushu/fukuoka.html" 九州
+          li#okinawa
+            = link_to 'Okinawa', prefectures_path(area_id: 9)
+              /a href="okinawa/okinawa.html" 沖縄
+
+    .col-xs-5
+      //日本地図下の地域リスト
+      ol
+        ul#area
+          .col-xs-12
+            li
+              = link_to 'Hokkaido Area', prefectures_path(area_id: 1)
+          .col-xs-12
+            li
+              = link_to 'Tohoku Area', prefectures_path(area_id: 2)
+          .col-xs-12
+            li
+              = link_to 'Hokuriku Area', prefectures_path(area_id: 3)
+          .col-xs-12
+            li
+              = link_to 'Kanto Area', prefectures_path(area_id: 4)
+          .col-xs-12
+            li
+              = link_to 'Tokai Area', prefectures_path(area_id: 5)
+          .col-xs-12
+            li
+              = link_to 'Kinki Area', prefectures_path(area_id: 6)
+          .col-xs-12
+            li
+              = link_to 'Chugoku Area', prefectures_path(area_id: 7)
+          .col-xs-12
+            li
+              = link_to 'Shikoku Area', prefectures_path(area_id: 8)
+          .col-xs-12
+            li
+              = link_to 'Kyushu Area', prefectures_path(area_id: 9)
+          .col-xs-12.text-center
+            li
+              = link_to 'Okinawa Area', prefectures_path(area_id: 10)
+.wrapper
+  .container
+    .row
+      .album-index
+        .album-index__title
+          h2
+            | Posts List
+          .col-xs-12
+            - @posts.each do |post|
+              = render 'posts/post', post: post
+            .text-center
+              = paginate @posts

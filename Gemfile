@@ -82,7 +82,7 @@ gem 'refile-mini_magick'
 
 # Bootstrap v3
 gem 'bootstrap-sass', '~> 3.4.1'
-gem 'jquery-rails'
+gem 'jquery-rails', '~> 4.3', '>= 4.3.3'
 
 # ENV-mng
 gem 'dotenv-rails', '~> 2.7.5'
