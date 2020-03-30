@@ -66,8 +66,10 @@ html
                       = f.select :option, [["Post", "post_search"], ["Album", "album_search"]]
                       = f.collection_select :genre, Genre.all, :id, :name, prompt: "any genre"
                       = f.select :time, [["Any time", "anytime_search"],
-                                                 ["Past year", "year_search"], ["Past month", "month_search"],
-                                                 ["Past week", "week_search"], ["Past 24hours", "day_search"]]
+                                         ["Past year", "year_search"], ["Past month", "month_search"],
+                                         ["Past week", "week_search"], ["Past 24hours", "day_search"]]
+                      / userのcountrycodeがjpかそれ以外かの絞り込み 未実装
+                      = f.select :locale, [["Japanese", "japanese"], ["Other country", "others"]]
                       = button_tag type: 'submit', method: :get, class:"btn-primary search-nav__form-btn" do
                         i.fas.fa-search
                          / = f.submit "Search", class:"btn-primary search-nav__form-btn", size:"20x20"

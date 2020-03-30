@@ -30,8 +30,8 @@ class Post < ApplicationRecord
     likes.where(user_id: user.id).exists?
   end
 
-  def self.params_post_search(genre, time)
-    posts = Post.genre_search(genre)
+  def self.params_post_search(genre, time, locale)
+    posts = Post.genre_search(genre, locale)
     if time == "anytime_search"
       posts
     elsif time == "year_search"
@@ -59,30 +59,57 @@ class Post < ApplicationRecord
     end
   end
 
-  def self.genre_search(genre)
-    case genre
-      when "1"
-        Post.includes(:genre).where(genre_id: 1)
-      when "2"
-        Post.includes(:genre).where(genre_id: 2)
-      when "3"
-        Post.includes(:genre).where(genre_id: 3)
-      when "4"
-        Post.includes(:genre).where(genre_id: 4)
-      when "5"
-        Post.includes(:genre).where(genre_id: 5)
-      when "6"
-        Post.includes(:genre).where(genre_id: 6)
-      when "7"
-        Post.includes(:genre).where(genre_id: 7)
-      when "8"
-        Post.includes(:genre).where(genre_id: 8)
-      when "9"
-        Post.includes(:genre).where(genre_id: 9)
-      when "10"
-        Post.includes(:genre).where(genre_id: 10)
-      when nil
-        Post.all
+  def self.genre_search(genre, locale)
+    if locale == "JP"
+      case genre
+        when "1"
+          Post.includes(:genre, :user).where(genre_id: 1).where('users.country_code' => 'JP')
+        when "2"
+          Post.includes(:genre, :user).where(genre_id: 2).where('users.country_code' => 'JP')
+        when "3"
+          Post.includes(:genre, :user).where(genre_id: 3).where('users.country_code' => 'JP')
+        when "4"
+          Post.includes(:genre, :user).where(genre_id: 4).where('users.country_code' => 'JP')
+        when "5"
+          Post.includes(:genre, :user).where(genre_id: 5).where('users.country_code' => 'JP')
+        when "6"
+          Post.includes(:genre, :user).where(genre_id: 6).where('users.country_code' => 'JP')
+        when "7"
+          Post.includes(:genre, :user).where(genre_id: 7).where('users.country_code' => 'JP')
+        when "8"
+          Post.includes(:genre, :user).where(genre_id: 8).where('users.country_code' => 'JP')
+        when "9"
+          Post.includes(:genre, :user).where(genre_id: 9).where('users.country_code' => 'JP')
+        when "10"
+          Post.includes(:genre, :user).where(genre_id: 10).where('users.country_code' => 'JP')
+        when ""
+          Post.includes(:user).where('users.country_code' => 'JP')
+      end
+    else
+      case genre
+        when "1"
+          Post.includes(:genre, :user).where(genre_id: 1).where.not('users.country_code' => 'JP')
+        when "2"
+          Post.includes(:genre, :user).where(genre_id: 2).where.not('users.country_code' => 'JP')
+        when "3"
+          Post.includes(:genre, :user).where(genre_id: 3).where.not('users.country_code' => 'JP')
+        when "4"
+          Post.includes(:genre, :user).where(genre_id: 4).where.not('users.country_code' => 'JP')
+        when "5"
+          Post.includes(:genre, :user).where(genre_id: 5).where.not('users.country_code' => 'JP')
+        when "6"
+          Post.includes(:genre, :user).where(genre_id: 6).where.not('users.country_code' => 'JP')
+        when "7"
+          Post.includes(:genre, :user).where(genre_id: 7).where.not('users.country_code' => 'JP')
+        when "8"
+          Post.includes(:genre, :user).where(genre_id: 8).where.not('users.country_code' => 'JP')
+        when "9"
+          Post.includes(:genre, :user).where(genre_id: 9).where.not('users.country_code' => 'JP')
+        when "10"
+          Post.includes(:genre, :user).where(genre_id: 10).where.not('users.country_code' => 'JP')
+        when ""
+          Post.includes(:user).where.not('users.country_code' => 'JP')
+      end
     end
   end
 end

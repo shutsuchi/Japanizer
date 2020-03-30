@@ -16,10 +16,11 @@ class SearchesController < ApplicationController
       option = params[:option]
       genre = params[:genre]
       time = params[:time]
+      locale = params[:locale]
       if option == "post_search"
-        @posts = Post.params_post_search(genre, time)
+        @posts = Post.params_post_search(genre, time, locale)
       elsif option == "album_search"
-        @albums = Album.prams_album_search(genre, time)
+        @albums = Album.prams_album_search(genre, time, locale)
       end
     end
 
