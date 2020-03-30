@@ -39,6 +39,9 @@
 .wrapper {
   margin-top: 50px;
 }
+.margin-wrapper {
+  margin-top: 200px;
+}
 .top-wrapper {
   margin-left: 10px;
 }
@@ -50,6 +53,112 @@
 }
 .margin-bottom-40 {
   margin-bottom: 40px;
+}
+
+// Title text
+h1 {
+  position: relative;
+  line-height: 1.4;
+  padding: 0.25em 1em;
+  display: inline-block;
+  top: 0;
+}
+
+h1:before, h1:after {
+  position: absolute;
+  top: 0;
+  content: '';
+  width: 8px;
+  height: 100%;
+  display: inline-block;
+}
+h1:before {
+  border-left: solid 1px #000;
+  border-top: solid 1px #000;
+  border-bottom: solid 1px #000;
+  left: 0;
+}
+h1:after {
+  content: '';
+  border-top: solid 1px black;
+  border-right: solid 1px black;
+  border-bottom: solid 1px black;
+  right: 0;
+}
+
+/*----------- NavBar -----------*/
+.common-bar {
+  background-color: #eee;
+  display: block;
+  &__time-line {
+    padding: 5px 0 5px 10px
+  }
+  &__time-text {
+    color: #888;
+  }
+  &__title-line {
+  }
+  &__title-box {
+    padding-top: 10px;
+    padding-bottom: 20px;
+    border-top: 2px solid #999;
+    border-bottom: 2px solid #999;
+  }
+  &__title-text {
+    margin: 0 auto;
+    &--title {
+      font-size: 4em;
+      //font-family: Impact, Chalkduster, "Bradley Hand", Courier, "Segoe Print", sans-serif;
+      font-family: 'Playfair Display', Impact, Chalkduster, selfif;
+      display: inline-block;
+    }
+    &--icon {
+      width: 20px;
+      height: 20px;
+      margin-top: 10px;
+      border-radius: 50%;
+      background-color: red;
+      display: inline-block;
+    }
+  }
+  &__link-box {
+    margin: 0 auto;
+  }
+  &__link-text {
+    display: inline-block;
+    margin: 10px 20px 10px 0;
+  }
+}
+
+/*----------- Searchbar -----------*/
+#search-icon {
+  cursor: pointer;
+}
+.search-nav {
+  margin: 0 auto;
+  width: 100%;
+  position: fixed;
+  background-color: #777;
+  &__bar {
+    padding: 30px;
+    margin: 0 auto;
+  }
+  &__title {
+    color: #fff;
+    margin-top: 10px;
+  }
+  &__form {
+    margin-top: 5px;
+  }
+  &__form-element {
+    margin-left: 5px;
+  }
+  &__form-btn {
+    margin-left: 10px;
+  }
+  &__or {
+    color: white;
+  }
 }
 
 /*----------- Pagination -----------*/

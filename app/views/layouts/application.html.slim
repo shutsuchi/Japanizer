@@ -7,11 +7,71 @@ html
     = csp_meta_tag
     script src="https://kit.fontawesome.com/fde04d6aaf.js" crossorigin="anonymous"
     link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css"
+    link href="https://fonts.googleapis.com/css?family=Playfair+Display&display=swap" rel="stylesheet"
     = stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track': 'reload'
     = javascript_include_tag 'application', 'data-turbolinks-track': 'reload'
     script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"
   body
-    div.container
+    header.common-bar.navbar-fixed-top.navbar-inverse
+      .common-bar__time-line
+        .common-bar__time-box
+          .common-bar__time-text
+            = l(Time.now)
+      .common-bar__title_line
+        .common-bar__title-box
+          .common-bar__title-text.text-center
+            .common-bar__title-text--icon
+            .common-bar__title-text--title.text-center
+              | Japanizer
+          .common-bar__subtitle-box
+            .common-bar__subtitle-text.text-center
+                | Having nice journey with Japanizer
+      .common-bar___link-line
+        .common-bar__link-box.text-center
+          ul.text-center.common-bar__link-box
+              li.common-bar__link-text
+                = link_to "Login", new_user_session_path, class:"glyphicon glyphicon-flag"
+              li.common-bar__link-text
+                = link_to "Signin", new_user_registration_path, class:""
+              li.common-bar__link-text
+                - if I18n.locale.to_s == "en"
+                  = link_to('日本語', :locale => 'ja')
+                - elsif I18n.locale.to_s == "ja"
+                  = link_to('English', :locale => 'en')
+              li.common-bar__link-text.pull-right#search-icon
+                i.fas.fa-search style="font-size:20px; color:#2c7cff;"
+      .search-nav#search-bar
+        .search-nav__bar
+          .container
+            .row
+              .col-xs-5.text-center
+                .search-nav__title
+                  h4
+                    | Freeword-search
+                .search-nav__form
+                  = form_with(url: search_path, local: true, method: :get, class: "form4") do |f|
+                    = f.text_field :keyword
+                    = button_tag type: 'submit', method: :get,  class:"btn-primary search-nav__form-btn" do
+                      i.fas.fa-search
+                      /= f.submit "Search", class:"btn-primary search-nav__form-btn", size:"20x20"
+              .col-xs-2
+                h3.search-nav__or.text-center
+                  | OR
+              .col-xs-5.text-center
+                .search-nav__title
+                  h4
+                    | Condition-Search
+                .search-nav__form
+                  = form_with(url: search_path, local: true, method: :get, class: "form4") do |f|
+                      = f.select :option, [["Post", "post_search"], ["Album", "album_search"]]
+                      = f.collection_select :genre, Genre.all, :id, :name, prompt: "any genre"
+                      = f.select :time, [["Any time", "anytime_search"],
+                                                 ["Past year", "year_search"], ["Past month", "month_search"],
+                                                 ["Past week", "week_search"], ["Past 24hours", "day_search"]]
+                      = button_tag type: 'submit', method: :get, class:"btn-primary search-nav__form-btn" do
+                        i.fas.fa-search
+                         / = f.submit "Search", class:"btn-primary search-nav__form-btn", size:"20x20"
+    /div.container
       div.row
         header.navbar.navbar-fixed-top.navbar-inverse
           div.col-xs-2

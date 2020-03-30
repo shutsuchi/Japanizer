@@ -1,87 +1,88 @@
-.top-wrapper
-  .row
-    .col-xs-12.text-center
-      h1
-        = t('.title')
-      p
-        = t('.page_description')
-    .col-xs-7
-      .area-pick
-        ul#imagemap
-          li#hokkaido
-            = link_to 'Hokkaido', prefectures_path(area_id: 1)
-              /a href="hokkaido/hokkaido.html" 北海道
-          li#touhoku
-            = link_to 'Tohoku', prefectures_path(area_id: 1)
-              /a href="tohoku/miyagi" 東北
-          li#hokuriku
-            = link_to 'Hokuriku', prefectures_path(area_id: 2)
-              /a href="hokuriku/nagano.html" 北陸
-          li#kanto
-            = link_to 'Kanto', prefectures_path(area_id: 3)
-              /a href="kanto/tokyo.html" 関東
-          li#tokai
-            = link_to 'Tokai', prefectures_path(area_id: 4)
-              /a href="toukai/shizuoka.html" 東海
-          li#kansai
-            = link_to 'Kansai', prefectures_path(area_id: 5)
-              /a href="kansai/osaka.html" 関西
-          li#chugoku
-            = link_to 'Chugoku', prefectures_path(area_id: 6)
-              /a href="chugoku/hiroshima.html" 中国
-          li#shikoku
-            = link_to 'Shikokuk', prefectures_path(area_id: 7)
-              /a href="shikoku/kochi.html" 四国
-          li#kyushu
-            = link_to 'Kyushu', prefectures_path(area_id: 8)
-              /a href="kyushu/fukuoka.html" 九州
-          li#okinawa
-            = link_to 'Okinawa', prefectures_path(area_id: 9)
-              /a href="okinawa/okinawa.html" 沖縄
-
-    .col-xs-5
-      //日本地図下の地域リスト
-      ol
-        ul#area
-          .col-xs-12
-            li
-              = link_to t('.hokkaido_area'), prefectures_path(area_id: 1)
-          .col-xs-12
-            li
-              = link_to t('.tohoku_area'), prefectures_path(area_id: 2)
-          .col-xs-12
-            li
-              = link_to t('.hokuriku_area'), prefectures_path(area_id: 3)
-          .col-xs-12
-            li
-              = link_to t('.kanto_area'), prefectures_path(area_id: 4)
-          .col-xs-12
-            li
-              = link_to t('.tokai_area'), prefectures_path(area_id: 5)
-          .col-xs-12
-            li
-              = link_to t('.kinki_area'), prefectures_path(area_id: 6)
-          .col-xs-12
-            li
-              = link_to t('.chugoku_area'), prefectures_path(area_id: 7)
-          .col-xs-12
-            li
-              = link_to t('.shikoku_area'), prefectures_path(area_id: 8)
-          .col-xs-12
-            li
-              = link_to t('.kyushu_area'), prefectures_path(area_id: 9)
-          .col-xs-12.text-center
-            li
-              = link_to t('.okinawa_area'), prefectures_path(area_id: 10)
-.wrapper
-  .container
+.margin-wrapper
+  .top-wrapper
     .row
-      .album-index
-        .album-index__title
-          h1
-            = t('.post_index')
-          .col-xs-12
-            - @posts.each do |post|
-              = render 'posts/post', post: post
-            .text-center
-              = paginate @posts
+      .col-xs-12.text-center
+        h1
+          = t('.title')
+        p
+          = t('.page_description')
+      .col-xs-7
+        .area-pick
+          ul#imagemap
+            li#hokkaido
+              = link_to 'Hokkaido', prefectures_path(area_id: 1)
+                /a href="hokkaido/hokkaido.html" 北海道
+            li#touhoku
+              = link_to 'Tohoku', prefectures_path(area_id: 1)
+                /a href="tohoku/miyagi" 東北
+            li#hokuriku
+              = link_to 'Hokuriku', prefectures_path(area_id: 2)
+                /a href="hokuriku/nagano.html" 北陸
+            li#kanto
+              = link_to 'Kanto', prefectures_path(area_id: 3)
+                /a href="kanto/tokyo.html" 関東
+            li#tokai
+              = link_to 'Tokai', prefectures_path(area_id: 4)
+                /a href="toukai/shizuoka.html" 東海
+            li#kansai
+              = link_to 'Kansai', prefectures_path(area_id: 5)
+                /a href="kansai/osaka.html" 関西
+            li#chugoku
+              = link_to 'Chugoku', prefectures_path(area_id: 6)
+                /a href="chugoku/hiroshima.html" 中国
+            li#shikoku
+              = link_to 'Shikokuk', prefectures_path(area_id: 7)
+                /a href="shikoku/kochi.html" 四国
+            li#kyushu
+              = link_to 'Kyushu', prefectures_path(area_id: 8)
+                /a href="kyushu/fukuoka.html" 九州
+            li#okinawa
+              = link_to 'Okinawa', prefectures_path(area_id: 9)
+                /a href="okinawa/okinawa.html" 沖縄
+
+      .col-xs-5
+        //日本地図下の地域リスト
+        ol
+          ul#area
+            .col-xs-12
+              li
+                = link_to t('.hokkaido_area'), prefectures_path(area_id: 1)
+            .col-xs-12
+              li
+                = link_to t('.tohoku_area'), prefectures_path(area_id: 2)
+            .col-xs-12
+              li
+                = link_to t('.hokuriku_area'), prefectures_path(area_id: 3)
+            .col-xs-12
+              li
+                = link_to t('.kanto_area'), prefectures_path(area_id: 4)
+            .col-xs-12
+              li
+                = link_to t('.tokai_area'), prefectures_path(area_id: 5)
+            .col-xs-12
+              li
+                = link_to t('.kinki_area'), prefectures_path(area_id: 6)
+            .col-xs-12
+              li
+                = link_to t('.chugoku_area'), prefectures_path(area_id: 7)
+            .col-xs-12
+              li
+                = link_to t('.shikoku_area'), prefectures_path(area_id: 8)
+            .col-xs-12
+              li
+                = link_to t('.kyushu_area'), prefectures_path(area_id: 9)
+            .col-xs-12.text-center
+              li
+                = link_to t('.okinawa_area'), prefectures_path(area_id: 10)
+  .wrapper
+    .container
+      .row
+        .album-index
+          .album-index__title
+            h1
+              = t('.post_index')
+            .col-xs-12
+              - @posts.each do |post|
+                = render 'posts/post', post: post
+              .text-center
+                = paginate @posts

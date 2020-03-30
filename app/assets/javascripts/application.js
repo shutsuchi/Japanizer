@@ -79,8 +79,16 @@
 //      })
 //  });
 //});
-//
-//
+
+////--------------------------  検索バー表示機能実装
+$(function () {
+  $('#search-bar').hide();
+
+  $('#search-icon').click(function() {
+    $('#search-bar').slideToggle();
+  });
+});
+
 ////--------------------------  FullCalendar機能実装
 $(function () {
   // 画面遷移を検知
