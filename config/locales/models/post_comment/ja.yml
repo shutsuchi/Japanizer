@@ -1,0 +1,14 @@
+ja:
+  activerecord:
+    models:
+      post_comment: "投稿コメント"
+    attributes:
+      post_comment:
+        id: "ID"
+        user_id: "ユーザID"
+        post_id: "投稿ID"
+        title: "タイトル"
+        comment: "コメント"
+        rate: "評価"
+        created_at: "作成日時"
+        updated_at: "更新日時"

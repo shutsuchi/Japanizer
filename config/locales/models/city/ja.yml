@@ -1,0 +1,11 @@
+ja:
+  activerecord:
+    models:
+      city: "市町村郡"
+    attributes:
+      city:
+        id: "ID"
+        prefecture_id: "都道府県ID"
+        name: "市町村郡名"
+        created_at: "登録日時"
+        updated_at: "更新日時"

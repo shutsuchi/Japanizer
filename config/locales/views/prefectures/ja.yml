@@ -1,0 +1,17 @@
+ja:
+  prefectures:
+    index:
+      title: '地方別検索'
+      page_description: '地方別で投稿を絞りこんでみようか'
+      post_index: '投稿一覧'
+      hokkaido_area: '北海道地方'
+      tohoku_area: '東北地方'
+      hokuriku_area: '北陸地方'
+      kanto_area: '関東地方'
+      tokai_area: '東海地方'
+      kinki_area: '近畿地方'
+      chugoku_area: '中国地方'
+      shikoku_area: '四国地方'
+      kyushu_area: '九州地方'
+      okinawa_area: '沖縄地方'
+

@@ -1,0 +1,11 @@
+ja:
+  activerecord:
+    models:
+      like: "いいね"
+    attributes:
+      like:
+        id: "ID"
+        user_id: "ユーザID"
+        post_id: "投稿ID"
+        created_at: "作成日時"
+        updated_at: "更新日時"

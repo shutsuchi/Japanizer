@@ -1,2 +1,15 @@
-h1 Searches#search
-p Find me in app/views/searches/search.html.slim
+.margin-wrapper
+  .top-wrapper
+    h1 Searches#search
+    p Find me in app/views/searches/search.html.slim
+    - if @posts
+      h3 Search result(POST LIST)
+      - @posts.each do |post|
+        = post.title
+    - elsif @albums
+      h3 Search result(ALBUM LIST)
+      - @albums.each do |album|
+        = album.title
+    - else
+      h3 Search result(ALL LIST)
+      - results.each do |result|
