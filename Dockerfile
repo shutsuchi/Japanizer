@@ -15,3 +15,5 @@ COPY Gemfile.lock $APP_ROOT/Gemfile.lock
 
 RUN bundle install
 COPY . $APP_ROOT
+
+RUN mkdir -p tmp/sockets
