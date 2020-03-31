@@ -1,25 +1,41 @@
 version: '3'
 services:
   web:
-    build: .
-    command: bundle exec rails s -p 3000 -b 0.0.0.0
+    build:
+      context: containers/nginx
     volumes:
-      - .:/Japanizer
+      - public-data:/Japanizer/public
+      - tmp-data:/Japanizer/tmp
     ports:
-      - "3000:3000"
+      - "80:80"
     depends_on:
-      - db
+      - app
     tty: true
     stdin_open: true
+  app:
+    build:
+      context: .
+    env_file:
+      - ./environments/db.env
+    command: bundle exec puma -C config/puma.rb
+    volumes:
+      - .:/Japanizer
+      - public-data:/Japanizer/public
+      - tmp-data:/Japanizer/tmp
+      - log-data:/Japanizer/log
+    depends_on:
+      - db
   db:
     image: mysql:5.7
-    environment:
-      MYSQL_DATABASE: root
-      MYSQL_PASSWORD: password
+    env_file:
+      - ./environments/db.env
     volumes:
       - db-volume:/var/lib/mysql
     ports:
       - "3306:3306"
 
 volumes:
+  public-data:
+  tmp-data:
+  log-data:
   db-volume:
