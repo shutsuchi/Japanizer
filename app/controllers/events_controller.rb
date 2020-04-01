@@ -34,29 +34,42 @@ class EventsController < ApplicationController
     end
   end
 
-  # PATCH/PUT /events/1
-  # PATCH/PUT /events/1.json
   def update
-    respond_to do |format|
-      if @event.update(event_params)
-        format.html { redirect_to @event, notice: 'Event was successfully updated.' }
-        format.json { render :show, status: :ok, location: @event }
-      else
-        format.html { render :edit }
-        format.json { render json: @event.errors, status: :unprocessable_entity }
-      end
-    end
+      event = Event.find(params[:id])
+      @events = Event.where(user_id: current_user.id)
+      event.update(event_params)
   end
 
-  # DELETE /events/1
-  # DELETE /events/1.json
   def destroy
-    @event.destroy
-    respond_to do |format|
-      format.html { redirect_to events_url, notice: 'Event was successfully destroyed.' }
-      format.json { head :no_content }
-    end
+      @user = User.find(params[:id])
+      event = Event.find(params[:id])
+      event.destroy
+      redirect_to user_path(@user)
   end
+
+  # PATCH/PUT /events/1
+  # PATCH/PUT /events/1.json
+  #def update
+  #  respond_to do |format|
+  #    if @event.update!(event_params)
+  #      format.html { redirect_to @event, notice: 'Event was successfully updated.' }
+  #      format.json { render :show, status: :ok, location: @event }
+  #    else
+  #      format.html { render :edit }
+  #      format.json { render json: @event.errors, status: :unprocessable_entity }
+  #    end
+  #  end
+  #end
+
+  ## DELETE /events/1
+  ## DELETE /events/1.json
+  #def destroy
+  #  @event.destroy!
+  #  respond_to do |format|
+  #    format.html { redirect_to events_url, notice: 'Event was successfully destroyed.' }
+  #    format.json { head :no_content }
+  #  end
+  #end
 
   private
     # Use callbacks to share common setup or constraints between actions.
@@ -66,6 +79,6 @@ class EventsController < ApplicationController
 
     # Only allow a list of trusted parameters through.
     def event_params
-      params.require(:event).permit(:user_id, :genre_id, :title, :description, :start_date, :end_date, :budget, :mean, :people, :memo)
+      params.require(:event).permit(:user_id, :genre_id, :title, :body, :start, :end)
     end
 end

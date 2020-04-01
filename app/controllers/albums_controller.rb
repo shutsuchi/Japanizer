@@ -99,7 +99,7 @@ class AlbumsController < ApplicationController
 
   private
   def album_params
-    params.require(:album).permit(:user_id, :genre_id, :title, :image, :post_quantity, :comment, :rate)
+    params.require(:album).permit(:user_id, :genre_id, :title, :image, :post_quantity, :comment, :rate, :budget, :mean, :people)
   end
   def post_params
     params.require(:post).permit(:album_id)

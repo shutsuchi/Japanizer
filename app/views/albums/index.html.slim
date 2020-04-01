@@ -44,6 +44,18 @@
           = f.label :genre_id, "Type of Journey"
           br
           = f.collection_select :genre_id, Genre.all, :id, :name, prompt: "Please select"
+        .form-window.row
+          = f.label :budget
+          br
+          = f.select :budget, options_for_select(1..50), class:"form-control", prompt: "Please select"
+        /.form-window.row
+          = f.label :mean
+          br
+          = f.
+        .form-window.row
+          = f.label :people
+          br
+          = f.select :people, options_for_select(1..10), class:"form-control", prompt: "Please select"
         /.form-window.row
           = f.label :posts
           br

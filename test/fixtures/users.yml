@@ -3,7 +3,7 @@
 # Table name: users
 #
 #  id                     :bigint           not null, primary key
-#  admin                  :boolean          default("0"), not null
+#  admin                  :boolean          default(FALSE), not null
 #  age                    :integer          not null
 #  country_code           :string(255)      not null
 #  email                  :string(255)      default(""), not null
@@ -13,7 +13,7 @@
 #  reset_password_sent_at :datetime
 #  reset_password_token   :string(255)
 #  state_code             :string(255)
-#  withdrawal_flag        :boolean          default("0"), not null
+#  withdrawal_flag        :boolean          default(FALSE), not null
 #  created_at             :datetime         not null
 #  updated_at             :datetime         not null
 #  image_id               :string(255)

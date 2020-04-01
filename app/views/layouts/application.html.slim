@@ -73,23 +73,6 @@ html
                       = button_tag type: 'submit', method: :get, class:"btn-primary search-nav__form-btn" do
                         i.fas.fa-search
                          / = f.submit "Search", class:"btn-primary search-nav__form-btn", size:"20x20"
-    /div.container
-      div.row
-        header.navbar.navbar-fixed-top.navbar-inverse
-          div.col-xs-2
-            span.logo
-             = link_to "Japanizer", top_path
-          div.col-xs-10
-            ul.nav.navbar-nav.navbar-right
-              li
-                = link_to "Login", new_user_session_path, class:"glyphicon glyphicon-flag"
-              li
-                = link_to "Signin", new_user_registration_path, class:""
-              li
-                - if I18n.locale.to_s == "en"
-                  = link_to('日本語', :locale => 'ja')
-                - elsif I18n.locale.to_s == "ja"
-                  = link_to('English', :locale => 'en')
 
 
     = yield
