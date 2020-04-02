@@ -20,6 +20,9 @@ ActiveRecord::Schema.define(version: 2020_03_22_083836) do
     t.integer "post_quantity", default: 0, null: false
     t.text "comment"
     t.float "rate", null: false
+    t.string "budget"
+    t.string "mean"
+    t.integer "people"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
   end
@@ -40,13 +43,10 @@ ActiveRecord::Schema.define(version: 2020_03_22_083836) do
     t.integer "user_id", null: false
     t.integer "genre_id", null: false
     t.string "title"
-    t.text "description"
-    t.datetime "start_date"
-    t.datetime "end_date"
-    t.string "budget"
-    t.string "mean"
-    t.integer "people"
-    t.string "memo"
+    t.text "body"
+    t.datetime "start"
+    t.datetime "end"
+    t.string "allday"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
   end

@@ -1,6 +1,5 @@
 Rails.application.routes.draw do
   # For details on the DSL available within this file, see http://guides.rubyonrails.org/routing.html
-  resources :events
   mount RailsAdmin::Engine => '/admin', as: 'rails_admin'
   devise_for :users, :controllers => {
     :registrations => 'users/registrations'
@@ -24,6 +23,7 @@ Rails.application.routes.draw do
 
     resources :prefectures, only: %i[ index ]
     resources :genres, only: %i[ index create update destroy ]
-    resources :events, only:  %i[ edit create update destroy ]
+    #resources :events, only:  %i[ edit create update destroy ]
+    resources :events
   end
 end

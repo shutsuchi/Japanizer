@@ -118,12 +118,22 @@ $(function () {
           center : 'title',
           right : 'month, agendaWeek, agendaDay, listMonth',
         },
+        // Drag & Drop & Resize
+        editable: true,
+        //イベントの時間表示を２４時間に
+        timeFormat: "HH:mm",
+        //イベントの色を変える
+        eventColor: '#87cefa',
+        //イベントの文字色を変える
+        eventTextColor: '#000000',
+        eventRender: function(event, element) {
+            element.css("font-size", "0.8em");
+            element.css("padding", "5px");
+        },
+        events: '/events.json'
+
       });
 
-      // イベント表示
-      $('#calendar').fullCalendar({
-          events: '/events.json'
-      });
     }
   });
 });

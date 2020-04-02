@@ -8,6 +8,9 @@ class CreateAlbums < ActiveRecord::Migration[5.2]
       t.integer :post_quantity, null: false, default: 0
       t.text :comment
       t.float :rate, null: false
+      t.string :budget
+      t.string :mean
+      t.integer :people
 
       t.timestamps
     end
