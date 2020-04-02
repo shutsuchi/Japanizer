@@ -1,86 +1,107 @@
-.top-wrapper
-    .row
-      .col-xs-10
-        .row
-          h1 Area Comparison Japanese or Visiter
-          p Find me in app/views/homes/top.html.slim
-        .row
-          .col-xs-6
-            .map-box
-              <!-- ●日本地図 -->
-                ul#imagemap
-                  li#hokkaido
-                    a href="hokkaido/hokkaido.html" 北海道
-                  li#touhoku
-                    a href="tohoku/miyagi" 東北
-                  li#hokuriku
-                    a href="hokuriku/nagano.html" 北陸
-                  li#kanto
-                    a href="kanto/tokyo.html" 関東
-                  li#tokai
-                    a href="toukai/shizuoka.html" 東海
-                  li#kansai
-                    a href="kansai/osaka.html" 関西
-                  li#chugoku
-                    a href="chugoku/hiroshima.html" 中国
-                  li#shikoku
-                    a href="shikoku/kochi.html" 四国
-                  li#kyushu
-                    a href="kyushu/fukuoka.html" 九州
-                  li#okinawa
-                    a href="okinawa/okinawa.html" 沖縄
-          .col-xs-6
-            .map-box
-              <!-- ●日本地図 -->
-                ul#imagemap
-                  li#hokkaido
-                    a href="hokkaido/hokkaido.html" 北海道
-                  li#touhoku
-                    a href="tohoku/miyagi" 東北
-                  li#hokuriku
-                    a href="hokuriku/nagano.html" 北陸
-                  li#kanto
-                    a href="kanto/tokyo.html" 関東
-                  li#tokai
-                    a href="toukai/shizuoka.html" 東海
-                  li#kansai
-                    a href="kansai/osaka.html" 関西
-                  li#chugoku
-                    a href="chugoku/hiroshima.html" 中国
-                  li#shikoku
-                    a href="shikoku/kochi.html" 四国
-                  li#kyushu
-                    a href="kyushu/fukuoka.html" 九州
-                  li#okinawa
-                    a href="okinawa/okinawa.html" 沖縄
-        .row
-          h1 Genre Select
-          p Select Genre Icon down delow
-      .col-xs-2
-        .sidebar-outline
+.background
+  .margin-wrapper
+    .top-wrapper
+      .row
+        .col-xs-9
           .row
-            .sidebar-outline__title
-              h3
-                | Search
+            .col-xs-12.top-page__title.text-center
+              h1 What do you want to do?
+              p Enjoy Japanizer with ways down below
           .row
-            .sidebar-outline__search-title-box
-              p
-                | Search Posts
-            .sidebar-outline__search-body-box
+            .col-xs-12.text-center
+              .top-page__subtitle
+                .top-page__subtitle--text
+                  h3 trend in journey
+            .search-select-boxes
+              .col-xs-12
+                .search-select-boxes__data-box
+                  .search-select-boxes__title.text-center
+                    h2
+                      | Data
+                  .search-select-boxes__main-text
+                    h4
+                      | Natination, age, price, genre...
+                      br
+                      | compare with few condition
+                      br
+                      | what is popular plan or place in Japan
           .row
-            .sidebar-outline__search-title-box
-              p
-                | Search Albums
-            .sidebar-outline__search-body-box
+            .col-xs-12.text-center
+              .top-page__subtitle
+                .top-page__subtitle--text
+                  h3 Search albums
+
+                .col-xs-12
+                  .search-select-boxes__price-box
+                    .search-select-boxes__title
+                      h3
+                        | Price
+                    .search-select-boxes__text
+                      h4
+                        | Natination, age, price, genre...
+                        br
+                        | compare with few condition
+                        br
+                        | what is popular plan or place in Japan
+
           .row
-            .sidebar-outline__title
-              h3
-                | Ranking
-          .row
-            .sidebar-outline__ranking-box
-                .sidebar-outline__search-title-box
-                  p
-                    | Monthly Post Ranking
-                .sidebar-outline__rank-body-box
-                  p
-                    | ranking
+            .col-xs-12.text-center
+              .top-page__subtitle
+                .top-page__subtitle--text
+                  h3 Search posts & albums
+
+                .col-xs-6
+                  = link_to genres_path do
+                    .search-select-boxes__genre-box
+                      .search-select-boxes__title
+                        h3
+                          | Genre
+                      .search-select-boxes__text
+                        h4
+                          | Natination, age, price, genre...
+                          br
+                          | compare with few condition
+                          br
+                          | what is popular plan or place in Japan
+
+                .col-xs-6
+                  = link_to prefectures_path do
+                    .search-select-boxes__area-box
+                      .search-select-boxes__title
+                        h3
+                          | Area
+                      .search-select-boxes__text
+                        h4
+                          | Natination, age, price, genre...
+                          br
+                          | compare with few condition
+                          br
+                          | what is popular plan or place in Japan
+
+
+                .col-xs-12
+                  .search-select-boxes__age-box
+                    .search-select-boxes__title
+                      h3
+                        | Age
+                    .search-select-boxes__text
+                      h4
+                        | Natination, age, price, genre...
+                        br
+                        | compare with few condition
+                        br
+                        | what is popular plan or place in Japan
+        .col-xs-3
+          .sidebar-outline
+            .row
+              .sidebar-outline__title
+                h3
+                  | Ranking
+            .row
+              .sidebar-outline__ranking-box
+                  .sidebar-outline__search-title-box
+                    p
+                      | Monthly Post Ranking
+                  .sidebar-outline__rank-body-box
+                    p
+                      | ranking

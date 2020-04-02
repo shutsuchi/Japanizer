@@ -72,22 +72,94 @@
   }
 }
 
-// Top Page
-.top-wrapper {
-  margin-top: 50px;
-  margin-left: 50px
+//-------- Top Page --------
+
+.background {
+  //background-image: url(img/top_sky.jpeg);
+  //background-repeat: no-repeat;
+  //background-size: cover;
+}
+.top-page {
+  &__title {
+    color: #000;
+  }
+  &__subtitle {
+    height: 40px;
+    &--text {
+      margin: 0 auto;
+      line-height: 30px;
+    }
+  }
+}
+.search-select-boxes {
+  &__data-box {
+    margin: 20px auto;
+    height: 300px;
+    width: 95%;
+    color: white;
+    border: 1px solid #000000;
+    border-radius: 15px;
+    background-image: url(img/top_data.jpeg);
+    background-repeat: no-repeat;
+    background-size: cover;
+  }
+  &__main-text {
+    margin-left: 5em;
+    margin-top: 10em;
+  }
+  &__price-box {
+    margin: 20px auto;
+    height: 200px;
+    color: white;
+    width: 65%;
+    border: 1px solid #000000;
+    border-radius: 15px;
+    background-image: url(img/top_price.jpeg);
+    background-repeat: no-repeat;
+    background-size: cover;
+    background-position: center;
+  }
+  &__genre-box {
+    margin: 20px auto;
+    height: 200px;
+    width: 95%;
+    color: white;
+    border: 1px solid #000000;
+    border-radius: 15px;
+    background-image: url(img/top_genre.jpeg);
+    background-repeat: no-repeat;
+    background-size: cover;
+    background-position: center;
+  }
+  &__area-box {
+    margin: 20px auto;
+    height: 200px;
+    width: 95%;
+    border: 1px solid #000000;
+    border-radius: 15px;
+    background-image: url(img/top_area.jpeg);
+    background-repeat: no-repeat;
+    background-size: cover;
+  }
+  &__age-box {
+    margin: 20px auto;
+    height: 200px;
+    width: 65%;
+    border: 1px solid #000000;
+    border-radius: 15px;
+    background-image: url(img/top_age.jpeg);
+    background-repeat: no-repeat;
+    background-size: cover;
+  }
+  &__text {
+    margin-left: 1em;
+    margin-top: 2em;
+  }
 }
 
-.map-box {
-  margin: 20px auto;
-  height: 500px;
-  width: 95%;
-  border: 1px solid #000000;
-  background-color: #66CCFF;
-}
 .sidebar-outline {
   margin: 0 auto;
-  height: 1500px;
+  height: 1400px;
   width: 100%;
   background-color: #333333;
   &__title-box {
