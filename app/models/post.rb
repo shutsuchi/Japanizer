@@ -109,7 +109,7 @@ class Post < ApplicationRecord
           Post.includes(:genre, :user).where(genre_id: 10).where.not('users.country_code' => 'JP')
         when ""
           Post.includes(:user).where.not('users.country_code' => 'JP')
-      end
+        end
     end
   end
 end

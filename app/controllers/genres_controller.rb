@@ -50,6 +50,16 @@ class GenresController < ApplicationController
     end
   end
 
+  def price
+    #仮
+    #if params[:age] == 1
+    #@album = Album.where(budget: <2)
+  end
+
+  def age
+    #@posts = Post.includes(:users).where(user.age: 1..10)
+  end
+
   # POST genres/
   # genres_path
   def create
