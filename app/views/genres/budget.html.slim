@@ -1,0 +1,87 @@
+.margin-wrapper
+  .top-wrapper
+    .row
+      .col-xs-12.text-center
+        h1
+          = t('.title')
+        p
+          = t('.page_description')
+      .col-xs-7
+        .budget-icon
+          // 予算アイコン
+          - if @range == "1"
+            .budget-icon__1
+          - elsif @range == "2"
+            .budget-icon__2
+          - elsif @range == "3"
+            .budget-icon__3
+          - elsif @range == "4"
+            .budget-icon__4
+          - elsif @range == "5"
+            .budget-icon__5
+          - elsif @range == "6"
+            .budget-icon__6
+          - elsif @range == "7"
+            .budget-icon__7
+          - elsif @range == "8"
+            .budget-icon__8
+          - elsif @range == "9"
+            .budget-icon__9
+          - elsif @range == "10"
+            .budget-icon__10
+          - else
+            .col-xs-6
+              .budget-icon__default
+            .col-xs-6
+              .budget-icon__question
+
+      .col-xs-5
+        //予算リスト
+        ol
+          ul#area
+            .col-xs-12
+              li
+                = link_to 'under 10k', budget_path(budget_range: 1)
+            .col-xs-12
+              li
+                = link_to '10k - 30k', budget_path(budget_range: 2)
+            .col-xs-12
+              li
+                = link_to '30k - 50k', budget_path(budget_range: 3)
+            .col-xs-12
+              li
+                = link_to '50k - 70k', budget_path(budget_range: 4)
+            .col-xs-12
+              li
+                = link_to '70k - 90k', budget_path(budget_range: 5)
+            .col-xs-12
+              li
+                = link_to '100k - 200k', budget_path(budget_range: 6)
+            .col-xs-12
+              li
+                = link_to '200k - 300k', budget_path(budget_range: 7)
+            .col-xs-12
+              li
+                = link_to '300k - 400k', budget_path(budget_range: 8)
+            .col-xs-12
+              li
+                = link_to '400k - 500k', budget_path(budget_range: 9)
+            .col-xs-12
+              li
+                = link_to 'over 500k', budget_path(budget_range: 10)
+  .wrapper
+    .container
+      .row
+        .album-index
+          .album-index__title
+            h1
+              = t('.album_index')
+            .col-xs-12
+              - if @albums.present?
+                - @albums.each do |album|
+                  = render 'albums/album', album: album
+                .text-center
+                  = paginate @albums
+              - else
+                h2.bg-danger.text-center
+                  | NO ALBUMS

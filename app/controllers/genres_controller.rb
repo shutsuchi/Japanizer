@@ -50,14 +50,61 @@ class GenresController < ApplicationController
     end
   end
 
-  def price
-    #仮
-    #if params[:age] == 1
-    #@album = Album.where(budget: <2)
+  def budget
+    # 仮
+    @range = params[:budget_range]
+    if @range == "1"
+      @albums = page(Album.where(bedget: "~ 1"))
+    elsif @range == "2"
+      @albums = page(Album.where(budget: "1 ~ 3"))
+    elsif @range == "3"
+      @albums = page(Album.where(budget: "3 ~ 5"))
+    elsif @range == "4"
+      @albums = page(Album.where(budget: "5 ~ 7"))
+    elsif @range == "5"
+      @albums = page(Album.where(budget: "7 ~ 9"))
+    elsif @range == "6"
+      @albums = page(Album.where(budget: "10 ~ 20"))
+    elsif @range == "7"
+      @albums = page(Album.where(budget: "20 ~ 30"))
+    elsif @range == "8"
+      @albums = page(Album.where(budget: "30 ~ 40"))
+    elsif @range == "9"
+      @albums = page(Album.where(budget: "40 ~ 50"))
+    elsif @range == "10"
+      @albums = page(Album.where(budget: "50 ~"))
+    else
+      @albums = page(Album.all)
+    end
   end
 
   def age
-    #@posts = Post.includes(:users).where(user.age: 1..10)
+    @range = params[:age_range]
+    if @range == "1"
+      @posts = page(Post.joins(:user).where("users.age = '1..20'"))
+      @albums = page(Album.joins(:user).where("users.age = '1..20'"))
+    elsif @range == "2"
+      @posts = page(Post.joins(:user).where("users.age = '20..30'"))
+      @albums = page(Album.joins(:user).where("users.age = '20..30'"))
+    elsif @range == "3"
+      @posts = page(Post.joins(:user).where("users.age = '30..40'"))
+      @albums = page(Album.joins(:user).where("users.age = '30..40'"))
+    elsif @range == "4"
+      @posts = page(Post.joins(:user).where("users.age = '40..50'"))
+      @albums = page(Album.joins(:user).where("users.age = '40..50'"))
+    elsif @range == "5"
+      @posts = page(Post.joins(:user).where("users.age = '50..60'"))
+      @albums = page(Album.joins(:user).where("users.age = '50..60'"))
+    elsif @range == "6"
+      @posts = page(Post.joins(:user).where("users.age = '60..70'"))
+      @albums = page(Album.joins(:user).where("users.age = '60..70'"))
+    elsif @range == "7"
+      @posts = page(Post.joins(:user).where("users.age = '70..80'"))
+      @albums = page(Album.joins(:user).where("users.age = '70..80'"))
+    else
+      @posts = page(Post.all)
+      @albums = page(Album.all)
+    end
   end
 
   # POST genres/

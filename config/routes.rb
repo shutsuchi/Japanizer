@@ -23,6 +23,8 @@ Rails.application.routes.draw do
 
     resources :prefectures, only: %i[ index ]
     resources :genres, only: %i[ index create update destroy ]
+    get 'budget', to: 'genres#budget', as: 'budget'
+    get 'age', to: 'genres#age', as: 'age'
     #resources :events, only:  %i[ edit create update destroy ]
     resources :events
   end
