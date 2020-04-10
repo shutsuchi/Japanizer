@@ -47,11 +47,17 @@
         .form-window.row
           = f.label :budget
           br
-          = f.select :budget, options_for_select(1..50), class:"form-control", prompt: "Please select"
-        /.form-window.row
-          = f.label :mean
-          br
-          = f.
+          /= f.select :budget, options_for_select(1..50), class:"form-control", prompt: "Please select"
+          = f.select :budget, [["under 1", "~ 1"],
+                              ["1 ~ 3", "1 ~ 3"],
+                              ["3 ~ 5", "3 ~ 5"],
+                              ["5 ~ 7", "5 ~ 7"],
+                              ["7 ~ 9", "7 ~ 9"],
+                              ["10 ~ 20", "10 ~ 20"],
+                              ["20 ~ 30", "20 ~ 30"],
+                              ["30 ~ 40", "30 ~ 40"],
+                              ["40 ~ 50", "40 ~ 50"],
+                              ["50 ~", "50 ~"]], class:"form-control", prompt: "Please select"
         .form-window.row
           = f.label :people
           br

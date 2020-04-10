@@ -1,6 +1,8 @@
 // Place all the styles related to the genres controller here.
 // They will automatically be included in application.css.
 // You can use Sass (SCSS) here: http://sass-lang.com/
+
+//--------- Genre Index ---------//
 .padding-3 {
   padding: 3px;
 }
@@ -95,3 +97,190 @@
     padding: 10px;
   }
 }
+
+//--------- Age ---------//
+.age-icon {
+  height: 300px;
+  width: 100%;
+  &__1 {
+    margin: 20px;
+    height: 300px;
+    width: 100%;
+    background-image: url('img/age_1.png');
+    background-repeat: no-repeat;
+    background-size: contain;
+    background-position: top;
+  }
+  &__2 {
+    margin: 20px;
+    height: 300px;
+    width: 100%;
+    background-image: url('img/age_2.jpeg');
+    background-repeat: no-repeat;
+    background-size: contain;
+    background-position: top;
+  }
+  &__3 {
+    margin: 20px;
+    height: 300px;
+    width: 100%;
+    background-image: url('img/age_3.jpeg');
+    background-repeat: no-repeat;
+    background-size: contain;
+    background-position: top;
+  }
+  &__4 {
+    margin: 20px;
+    height: 300px;
+    width: 100%;
+    background-image: url('img/age_4.jpeg');
+    background-repeat: no-repeat;
+    background-size: contain;
+    background-position: top;
+  }
+  &__5 {
+    margin: 20px;
+    height: 300px;
+    width: 100%;
+    background-image: url('img/age_5.jpeg');
+    background-repeat: no-repeat;
+    background-size: contain;
+    background-position: top;
+  }
+  &__6 {
+    margin: 20px;
+    height: 300px;
+    width: 100%;
+    background-image: url('img/age_6.jpeg');
+    background-repeat: no-repeat;
+    background-size: contain;
+    background-position: top;
+  }
+  &__7 {
+    margin: 20px;
+    height: 300px;
+    width: 100%;
+    background-image: url('img/age_7.jpeg');
+    background-repeat: no-repeat;
+    background-size: contain;
+    background-position: top;
+  }
+  &__default {
+    margin: 20px;
+    height: 450px;
+    width: 100%;
+    background-image: url('img/age_default.jpeg');
+    background-repeat: no-repeat;
+    background-size: contain;
+    background-position: top;
+  }
+}
+
+//--------- Budget ---------//
+.budget-icon {
+  height: 300px;
+  width: 100%;
+  &__1 {
+    margin: 20px;
+    height: 450px;
+    width: 100%;
+    background-image: url('img/under.jpeg');
+    background-repeat: no-repeat;
+    background-size: contain;
+    background-position: top;
+  }
+  &__2 {
+    margin: 20px;
+    height: 450px;
+    width: 100%;
+    background-image: url('img/yen.jpeg');
+    background-repeat: no-repeat;
+    background-size: contain;
+    background-position: top;
+  }
+  &__3 {
+    height: 450px;
+    width: 100%;
+    background-image: url('img/3yen.jpeg');
+    background-repeat: no-repeat;
+    background-size: contain;
+    background-position: top;
+  }
+  &__4 {
+    height: 450px;
+    width: 100%;
+    background-image: url('img/5yen.jpeg');
+    background-repeat: no-repeat;
+    background-size: contain;
+    background-position: top;
+  }
+  &__5 {
+    height: 450px;
+    width: 100%;
+    background-image: url('img/7yen.jpeg');
+    background-repeat: no-repeat;
+    background-size: contain;
+    background-position: center;
+  }
+  &__6 {
+    margin: 20px;
+    height: 450px;
+    width: 100%;
+    background-image: url('img/10yen.jpeg');
+    background-repeat: no-repeat;
+    background-size: contain;
+    background-position: center;
+  }
+  &__7 {
+    margin: 20px;
+    height: 450px;
+    width: 100%;
+    background-image: url('img/20yen.jpeg');
+    background-repeat: no-repeat;
+    background-size: contain;
+    background-position: center;
+  }
+  &__8 {
+    margin: 20px;
+    height: 450px;
+    width: 100%;
+    background-image: url('img/30yen.jpeg');
+    background-repeat: no-repeat;
+    background-size: contain;
+    background-position: center;
+  }
+  &__9 {
+    margin: 20px;
+    height: 450px;
+    width: 100%;
+    background-image: url('img/40yen.jpeg');
+    background-repeat: no-repeat;
+    background-size: contain;
+    background-position: center;
+  }
+  &__10 {
+    height: 450px;
+    width: 100%;
+    background-image: url('img/over.jpeg');
+    background-repeat: no-repeat;
+    background-size: contain;
+    background-position: center;
+  }
+  &__default {
+    height: 450px;
+    width: 100%;
+    background-image: url('img/default_yen.png');
+    background-repeat: no-repeat;
+    background-size: contain;
+    background-position: center;
+  }
+  &__question {
+    height: 450px;
+    width: 100%;
+    background-image: url('img/q_yen.png');
+    background-repeat: no-repeat;
+    background-size: contain;
+    background-position: center;
+  }
+}
+
