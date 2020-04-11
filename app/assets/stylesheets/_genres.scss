@@ -284,3 +284,30 @@
   }
 }
 
+//--------- Nation ---------//
+.nation-icon {
+  &__1 {
+    height: 450px;
+    width: 100%;
+    background-image: url('img/jp_flag.jpg');
+    background-repeat: no-repeat;
+    background-size: contain;
+    background-position: center;
+  }
+  &__2 {
+    height: 450px;
+    width: 100%;
+    background-image: url('img/nation_2.jpg');
+    background-repeat: no-repeat;
+    background-size: contain;
+    background-position: center;
+  }
+  &__default {
+    height: 450px;
+    width: 100%;
+    background-image: url('img/top_nation.jpg');
+    background-repeat: no-repeat;
+    background-size: contain;
+    background-position: center;
+  }
+}
