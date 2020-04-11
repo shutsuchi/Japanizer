@@ -1,2 +1,45 @@
-h1 Users#edit
-p Find me in app/views/users/edit.html.slim
+.top-wrapper
+  .col-xs-8
+    .col-xs-5
+      h1 Setting
+    .col-xs-3
+      .post-main__top-btn
+        = link_to(user_path(@theuser), method: :get) do
+          span.btn.btn-success.btn-md.col-xs-8.glyphicon.glyphicon-arrow-left.btn-icon-color
+    .user-edit-form
+      = form_with(model: @theuser , url: user_path, method: :patch, local: true) do |f|
+        table.table.table-bordered
+          thead
+            tr
+              th.active
+                = f.label :image, class:"post-main__color"
+              td
+                br
+                  #img_field onClick="$('#file').click()"
+                    - if @theuser.image.present?
+                      = attachment_image_tag @theuser, :image, fallback:"img/no_photo.png", class:"field", size:"60x60"
+                    - else
+                      i.fas.fa-image
+                      i.fas.fa-file-upload.add
+                = f.attachment_field :image, style:"display:none;", id:"file"
+            tr
+              th.active
+                = f.label :name
+              td
+                = f.text_field :name
+            tr
+              th.active
+                = f.label :age
+              td
+                = f.select :age, options_for_select(1..100), autofocus: true, autocomplete: "age"
+            tr
+              th.active
+                = f.label :country
+              td
+                = f.country_select :country_code, autofocus: true, autocomplete: "country", prompt: "Please select a country"
+            tr
+              th.active
+                = f.label :email
+              td
+                = f.email_field :email, autofocus: true, autocomplete: "email"
+        = f.submit "Update", class: "btn btn-primary btn-md pull-left"

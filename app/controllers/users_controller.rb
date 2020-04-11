@@ -1,17 +1,63 @@
 class UsersController < ApplicationController
   def show
-    @posts = current_user.posts.all
+    @theuser = current_user
+    @posts = @theuser.posts.all
     @event = Event.new
-    @events = Event.where(user_id: current_user.id)
+    @events = Event.where(user_id: @theuser.id)
+    # User が獲得した対象カウント
+    @posts = @theuser.posts.all
+    @albums = @theuser.albums.all
+    @get_likes = @posts.each do |post|
+                  like_count = 0
+                  like_count = Like.where(post_id: post.id).count
+                  like_count += like_count
+                end
+    @get_comments = @posts.each do |post|
+                      comment_count = 0
+                      comment_count = PostComment.where(post_id: post.id).count
+                      comment_count += comment_count
+                    end
+    @get_bookmarks = @albums.each do |album|
+                        bookmark_count = 0
+                        bookmark_count = Bookmark.where(album_id: album.id).count
+                        bookmark_count += bookmark_count
+                      end
+
+    # User が実行した対象カウント
+    @give_likes = Like.where(user_id: @theuser.id).all
+    @give_comments = PostComment.where(user_id: @theuser.id).all
+    @give_bookmarks = Bookmark.where(user_id: @theuser.id).all
   end
 
   def edit
+    @theuser = current_user
   end
 
   def withdraw
+    @theuser = current_user
   end
 
   def switch
+    @theuser = current_user
+    if @theuser.update!(withdrawal_flag: false)
+      redirect_to top_path
+    else
+      render :withdraw
+    end
+  end
 
+  def update
+    @theuser = current_user
+    if @theuser.update!(user_params)
+      redirect_to user_path(@theuser.id), notice: "Successfully Updated"
+    else
+      render :edit, notice: "Failed to Update"
+    end
+  end
+
+  private
+
+  def user_params
+    params.require(:user).permit(:email, :name, :image, :age, :country_code)
   end
 end

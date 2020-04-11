@@ -1,0 +1,10 @@
+en:
+  users:
+    withdraw:
+      text1: 'Are You Sure to Withdraw From Japanizer ?'
+      text2: 'Once Complete this procesure,'
+      text_bold: 'NEVER'
+      text3: 'Brawse Your Info Ever Created.'
+      text4: 'Click WITHDRAW button down below, if you withdraw.'
+      btn1: 'Back to Mypage'
+      btn2: 'WITHDRAW'
