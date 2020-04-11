@@ -1,158 +1,157 @@
-.wrapper
-  .row
-    .col-xs-12.post-main.post-main__detail-form
-      .post-detail_box.top-wrapper
-        .row
-          h1
-            | Album Detail
-          p
-            | Find me in app/views/albums/show.html.slim
-        .row
-          .col-xs-3
-            .row
-              .col-xs-10
-                .post-sidebar__image
-                  = attachment_image_tag @thealbum, :image, fallback:"img/image_icon.png", class:"field", size:"200x200"
-            .row
-              .col-xs-10.post-main__top-btn
-                = link_to(edit_album_path(@thealbum), method: :get) do
-                  span.btn.btn-default.btn-md.col-xs-8.form-window.glyphicon.glyphicon-cog
-            .row
-              .col-xs-10.post-main__top-btn
-                = link_to(album_path(@thealbum), method: :delete) do
-                  span.btn.btn-danger.btn-md.col-xs-8.glyphicon.glyphicon-trash.btn-icon-color
-          .col-xs-8
-            table.table.table-bordered
-              thead
-                tr
-                  th.bg-primary User
-                  td.post-sedebar__title
-                    = @thealbum.user.name
-                tr
-                  th.active Title
-                  td.post-sedebar__title
-                    = @thealbum.title
-                tr
-                  th.active Number of Posts
-                  td.post-sedebar__title
-                    = @thealbum.posts.count
-                tr
-                  th.active Recommendation-rate
-                  td.post-sedebar__title
-                    h5.md-e
-                      = @thealbum.rate
-                    div id="star-rate-#{@thealbum.id}"
-                      javascript:
-                        $('#star-rate-#{@thealbum.id}').raty({
-                          size      : 36,
-                          starOff   : '#{asset_path('star-off.png')}',
-                          starOn    : '#{asset_path('star-on.png')}',
-                          starHalf  : '#{asset_path('star-half.png')}',
-                          half      : true,
-                          readOnly  : true,
-                          score     : #{@thealbum.rate},
-                        });
-                tr
-                  th.active Genre
-                  td.post-sedebar__title
-                    = @thealbum.genre.name
-                tr
-                  th.active Comment
-                  td.post-sedebar__title
-                    = @thealbum.comment
-                tr
-                  th.active Created at
-                  td.post-sedebar__title
-                    = @thealbum.created_at
-                tr
-                  th.active Last Update at
-                  td.post-sedebar__title
-                    = @thealbum.updated_at
-        .row
-          h2
-            | Posts in This Album
-          .col-xs-12
-            .album-posts-list
-              - @thealbum.posts.each do |post|
-                .col-xs-3
-                  .post-index-box
-                    .post-index-box__image
-                      .post-index-box__icon
-                        = attachment_image_tag post, :image, fallback:"img/no_photo.png", class:"field", size:"100x100"
-                    .post-index-box__image
-                      .row
+.row
+  .col-xs-12.post-main.post-main__detail-form
+    .post-detail_box.top-wrapper
+      .row
+        h1
+          | Album Detail
+        p
+          | Find me in app/views/albums/show.html.slim
+      .row
+        .col-xs-3
+          .row
+            .col-xs-10
+              .post-sidebar__image
+                = attachment_image_tag @thealbum, :image, fallback:"img/image_icon.png", class:"field", size:"200x200"
+          .row
+            .col-xs-10.post-main__top-btn
+              = link_to(edit_album_path(@thealbum), method: :get) do
+                span.btn.btn-default.btn-md.col-xs-8.form-window.glyphicon.glyphicon-cog
+          .row
+            .col-xs-10.post-main__top-btn
+              = link_to(album_path(@thealbum), method: :delete) do
+                span.btn.btn-danger.btn-md.col-xs-8.glyphicon.glyphicon-trash.btn-icon-color
+        .col-xs-8
+          table.table.table-bordered
+            thead
+              tr
+                th.bg-primary User
+                td.post-sedebar__title
+                  = @thealbum.user.name
+              tr
+                th.active Title
+                td.post-sedebar__title
+                  = @thealbum.title
+              tr
+                th.active Number of Posts
+                td.post-sedebar__title
+                  = @thealbum.posts.count
+              tr
+                th.active Recommendation-rate
+                td.post-sedebar__title
+                  h5.md-e
+                    = @thealbum.rate
+                  div id="star-rate-#{@thealbum.id}"
+                    javascript:
+                      $('#star-rate-#{@thealbum.id}').raty({
+                        size      : 36,
+                        starOff   : '#{asset_path('star-off.png')}',
+                        starOn    : '#{asset_path('star-on.png')}',
+                        starHalf  : '#{asset_path('star-half.png')}',
+                        half      : true,
+                        readOnly  : true,
+                        score     : #{@thealbum.rate},
+                      });
+              tr
+                th.active Genre
+                td.post-sedebar__title
+                  = @thealbum.genre.name
+              tr
+                th.active Comment
+                td.post-sedebar__title
+                  = @thealbum.comment
+              tr
+                th.active Created at
+                td.post-sedebar__title
+                  = @thealbum.created_at
+              tr
+                th.active Last Update at
+                td.post-sedebar__title
+                  = @thealbum.updated_at
+      .row
+        h2
+          | Posts in This Album
+        .col-xs-12
+          .album-posts-list
+            - @thealbum.posts.each do |post|
+              .col-xs-3
+                .post-index-box
+                  .post-index-box__image
+                    .post-index-box__icon
+                      = attachment_image_tag post, :image, fallback:"img/no_photo.png", class:"field", size:"100x100"
+                  .post-index-box__image
+                    .row
+                      .col-xs-6
                         .col-xs-6
-                          .col-xs-6
-                            .post-index-box__like-icon
-                              span.glyphicon.glyphicon-thumbs-up style="font-size:40px;"
-                          .col-xs-6
-                            .post-index-box__like
-                              | like
+                          .post-index-box__like-icon
+                            span.glyphicon.glyphicon-thumbs-up style="font-size:40px;"
                         .col-xs-6
-                          .col-xs-6
-                            .post-index-box__comment-icon
-                              span.glyphicon.glyphicon-comment style="font-size:40px;"
-                          .col-xs-6
-                            .post-index-box__comment
-                              | 3
-                      .row
-                        .col-xs-12
+                          .post-index-box__like
+                            | like
+                      .col-xs-6
+                        .col-xs-6
+                          .post-index-box__comment-icon
+                            span.glyphicon.glyphicon-comment style="font-size:40px;"
+                        .col-xs-6
                           .post-index-box__comment
-                            = post.comment
-        .row
-         / h2
-         /   | New Comment
-         / .col-xs-12
-         /   .post-main__new-form
-         /     = form_with(model: [@thealbum, @comment], local: true) do |f|
-         /       .form-window.row
-         /         = f.label :title
-         /         br
-         /         = f.text_field :title, placeholder:"Title"
-         /       .form-window.row
-         /         = f.label :comment
-         /         br
-         /         = f.text_area :comment, rows:'5', class:"field col-xs-8", placeholder:"comment here"
-         /       .form-submit.row
-         /         = f.submit "Post", class:"btn btn-md btn-base-1 btn-default pull-left"
-        .row
-          /h2
-          /  | Comments (
-          /  = @allcomments.count
-          /  | )
-          /.col-xs-12
-          /  - @pagecomments.each do |comm|
-          /    .post-comment-box
-          /      .row
-          /        .col-xs-10
-          /          .row
-          /            table.table.table-bordered
-          /              thead
-          /                tr
-          /                  th.post-comment-box__user-name
-          /                    .col-xs-3
-          /                      = comm.user.name
-          /                    .col-xs-2
-          /                      = comm.created_at
-          /                    .col-xs-2
-          /                      .post-comment-box__rate
-          /                        = comm.rate
-          /                    .col-xs-2
-          /                      .post-comment-btn
-          /                        = link_to 'delete', post_post_comments_path(id: comm, post_id: @thealbum.id), method: :delete, class:"btn btn-danger btn-sm"
-          /                    .col-xs-1
-          /                        .post-comment-box__like
-          /                          | like
-          /                    .col-xs-1
-          /                        .post-comment-box__reply
-          /                          | repy
-          /                tr
-          /                  td.post-comment-box__title
-          /                    .col-xs-5
-          /                      = comm.title
-          /                tr
-          /                  td.post-comment-box__comment
-          /                    .col-xs-10
-          /                      = comm.comment
-           / = paginate @pagecomments
+                            | 3
+                    .row
+                      .col-xs-12
+                        .post-index-box__comment
+                          = post.comment
+      .row
+       / h2
+       /   | New Comment
+       / .col-xs-12
+       /   .post-main__new-form
+       /     = form_with(model: [@thealbum, @comment], local: true) do |f|
+       /       .form-window.row
+       /         = f.label :title
+       /         br
+       /         = f.text_field :title, placeholder:"Title"
+       /       .form-window.row
+       /         = f.label :comment
+       /         br
+       /         = f.text_area :comment, rows:'5', class:"field col-xs-8", placeholder:"comment here"
+       /       .form-submit.row
+       /         = f.submit "Post", class:"btn btn-md btn-base-1 btn-default pull-left"
+      .row
+        /h2
+        /  | Comments (
+        /  = @allcomments.count
+        /  | )
+        /.col-xs-12
+        /  - @pagecomments.each do |comm|
+        /    .post-comment-box
+        /      .row
+        /        .col-xs-10
+        /          .row
+        /            table.table.table-bordered
+        /              thead
+        /                tr
+        /                  th.post-comment-box__user-name
+        /                    .col-xs-3
+        /                      = comm.user.name
+        /                    .col-xs-2
+        /                      = comm.created_at
+        /                    .col-xs-2
+        /                      .post-comment-box__rate
+        /                        = comm.rate
+        /                    .col-xs-2
+        /                      .post-comment-btn
+        /                        = link_to 'delete', post_post_comments_path(id: comm, post_id: @thealbum.id), method: :delete, class:"btn btn-danger btn-sm"
+        /                    .col-xs-1
+        /                        .post-comment-box__like
+        /                          | like
+        /                    .col-xs-1
+        /                        .post-comment-box__reply
+        /                          | repy
+        /                tr
+        /                  td.post-comment-box__title
+        /                    .col-xs-5
+        /                      = comm.title
+        /                tr
+        /                  td.post-comment-box__comment
+        /                    .col-xs-10
+        /                      = comm.comment
+         / = paginate @pagecomments
 

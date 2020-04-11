@@ -1,133 +1,131 @@
-.margin-wrapper
-  .top-wrapper
-      .row
-        .col-xs-12
-          - if current_user.admin?
-            h4 管理者ページ
+.row
+  .col-xs-12
+    - if current_user.admin?
+      h4 管理者ページ
 
-          - else
-            h1 My Page
-            p Find me in app/views/users/show.html.slim
-      .row
-        .calendar-box
-          .col-xs-7
-            .calendar-box__cal
-              #calendar
-              //javascript:
-                $(function() {
-                  $('#calendar').fullCalendar( {
-                    events: '/events.json'
-                  });
-                }).call(this);
-          .col-xs-5
-            .calendar-box__title
-              h2 New Event
-            .calendar-box__form
-              = form_with(model: @event, url: events_path, method: :post, local: true) do |f|
-                .form-window.row
-                  = f.label :title
-                  br
-                  = f.text_field :title
-                .form-window.row
-                  =f.label :description
-                  br
-                  = f.text_area :description
-                .form-window.row
-                  = f.label :genre_id, "Type of Journey"
-                  br
-                  = f.collection_select :genre_id, Genre.all, :id, :name, prompt: "Please select"
-                .form-window.row
-                  = f.label :start
-                  br
-                  = f.text_field :start, data: {date_format: 'YYYY/MM/DD hh:mm' }, class:"col-xs-8 datetimepicker", placeholder: 'YYYY/MM/DD hh:mm'
-                .form-window.row
-                  = f.label :end
-                  br
-                  = f.text_field :end, data: {date_format: 'YYYY/MM/DD hh:mm' }, class:"col-xs-8 datetimepicker", placeholder: 'YYYY/MM/DD hh:mm'
-                .action.row
-                  = f.submit "Create Event", class:"btn btn-primary"
-      .row
-        .col-xs-9
-          .col-xs-3
-            .mypage-setting
-              .mypage-setting__icon
-                /link_to edit_user_path, method: :get do
-                span.glyphicon.glyphicon-user style="font-size:80px;"
-              .mypage-setting__text
-                h4 Edit User Info
-          .col-xs-3
-            .mypage-setting
-              .mypage-setting__icon
-                span.glyphicon.glyphicon-calendar style="font-size:80px;"
-              .mypage-setting__text
-                h4 Create Plan
-          .col-xs-3
-            .mypage-setting
-              .mypage-setting__icon
-                = link_to albums_path, method: :get do
-                  span.glyphicon.glyphicon-book style="font-size:80px;"
-              .mypage-setting__text
-                h4 Create Album
-          .col-xs-3
-            .mypage-setting
-              .mypage-setting__icon
-                = link_to posts_path, method: :get do
-                  span.glyphicon.glyphicon-file style="font-size:80px;"
-              .mypage-setting__text
-                h4 Create Post
+    - else
+      h1 My Page
+      p Find me in app/views/users/show.html.slim
+.row
+  .calendar-box
+    .col-xs-7
+      .calendar-box__cal
+        #calendar
+        //javascript:
+          $(function() {
+            $('#calendar').fullCalendar( {
+              events: '/events.json'
+            });
+          }).call(this);
+    .col-xs-5
+      .calendar-box__title
+        h2 New Event
+      .calendar-box__form
+        = form_with(model: @event, url: events_path, method: :post, local: true) do |f|
+          .form-window.row
+            = f.label :title
+            br
+            = f.text_field :title
+          .form-window.row
+            =f.label :description
+            br
+            = f.text_area :description
+          .form-window.row
+            = f.label :genre_id, "Type of Journey"
+            br
+            = f.collection_select :genre_id, Genre.all, :id, :name, prompt: "Please select"
+          .form-window.row
+            = f.label :start
+            br
+            = f.text_field :start, data: {date_format: 'YYYY/MM/DD hh:mm' }, class:"col-xs-8 datetimepicker", placeholder: 'YYYY/MM/DD hh:mm'
+          .form-window.row
+            = f.label :end
+            br
+            = f.text_field :end, data: {date_format: 'YYYY/MM/DD hh:mm' }, class:"col-xs-8 datetimepicker", placeholder: 'YYYY/MM/DD hh:mm'
+          .action.row
+            = f.submit "Create Event", class:"btn btn-primary"
+.row
+  .col-xs-9
+    .col-xs-3
+      .mypage-setting
+        .mypage-setting__icon
+          /link_to edit_user_path, method: :get do
+          span.glyphicon.glyphicon-user style="font-size:80px;"
+        .mypage-setting__text
+          h4 Edit User Info
+    .col-xs-3
+      .mypage-setting
+        .mypage-setting__icon
+          span.glyphicon.glyphicon-calendar style="font-size:80px;"
+        .mypage-setting__text
+          h4 Create Plan
+    .col-xs-3
+      .mypage-setting
+        .mypage-setting__icon
+          = link_to albums_path, method: :get do
+            span.glyphicon.glyphicon-book style="font-size:80px;"
+        .mypage-setting__text
+          h4 Create Album
+    .col-xs-3
+      .mypage-setting
+        .mypage-setting__icon
+          = link_to posts_path, method: :get do
+            span.glyphicon.glyphicon-file style="font-size:80px;"
+        .mypage-setting__text
+          h4 Create Post
+  .col-xs-3
+    .row
+      .mypage-like
         .col-xs-3
-          .row
-            .mypage-like
-              .col-xs-3
-                .mypage-like__icon
-                  span.glyphicon.glyphicon-thumbs-up style="font-size:40px;"
-              .col-xs-2
-                .mypage-like__icon
-                  | count
-          .row
-            .mypage-comment
-              .col-xs-3
-                .mypage-comment__icon
-                  span.glyphicon.glyphicon-comment style="font-size:40px;"
-              .col-xs-2
-                .mypage-comment__icon
-                  | count
-          .row
-            .mypage-like
-              .col-xs-3
-                .mypage-like__icon
-                  span.glyphicon.glyphicon-bookmark style="font-size:40px;"
-              .col-xs-2
-                .mypage-like__icon
-                  | count
+          .mypage-like__icon
+            span.glyphicon.glyphicon-thumbs-up style="font-size:40px;"
+        .col-xs-2
+          .mypage-like__icon
+            | count
+    .row
+      .mypage-comment
+        .col-xs-3
+          .mypage-comment__icon
+            span.glyphicon.glyphicon-comment style="font-size:40px;"
+        .col-xs-2
+          .mypage-comment__icon
+            | count
+    .row
+      .mypage-like
+        .col-xs-3
+          .mypage-like__icon
+            span.glyphicon.glyphicon-bookmark style="font-size:40px;"
+        .col-xs-2
+          .mypage-like__icon
+            | count
 
-      .row
-        .col-xs-12
-          h1 Your Posts
-        .col-xs-12
-          - @posts.each do |post|
-            .col-xs-3
-              .post-index-box
-                .post-index-box__image
-                  .post-index-box__icon
-                    = attachment_image_tag post, :image, fallback:"img/no_photo.png", class:"field", size:"100x100"
-                .post-index-box__image
-                  .row
-                    .col-xs-6
-                      .col-xs-6
-                        .post-index-box__like-icon
-                          span.glyphicon.glyphicon-thumbs-up style="font-size:40px;"
-                      .col-xs-6
-                        .post-index-box__like
-                          | like
-                    .col-xs-6
-                      .col-xs-6
-                        .post-index-box__comment-icon
-                          span.glyphicon.glyphicon-comment style="font-size:40px;"
-                      .col-xs-6
-                        .post-index-box__comment
-                          | 3
-                  .row
-                    .col-xs-12
-                      .post-index-box__comment
-                        = post.comment
+.row
+  .col-xs-12
+    h1 Your Posts
+  .col-xs-12
+    - @posts.each do |post|
+      .col-xs-3
+        .post-index-box
+          .post-index-box__image
+            .post-index-box__icon
+              = attachment_image_tag post, :image, fallback:"img/no_photo.png", class:"field", size:"100x100"
+          .post-index-box__image
+            .row
+              .col-xs-6
+                .col-xs-6
+                  .post-index-box__like-icon
+                    span.glyphicon.glyphicon-thumbs-up style="font-size:40px;"
+                .col-xs-6
+                  .post-index-box__like
+                    | like
+              .col-xs-6
+                .col-xs-6
+                  .post-index-box__comment-icon
+                    span.glyphicon.glyphicon-comment style="font-size:40px;"
+                .col-xs-6
+                  .post-index-box__comment
+                    | 3
+            .row
+              .col-xs-12
+                .post-index-box__comment
+                  = post.comment

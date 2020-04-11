@@ -1,114 +1,113 @@
-.wrapper
-  .row
-    .col-xs-2.post-sidebar.post-sidebar.post-sidebar__edit
-      .top-wrapper
-        h1
-          | Album Edit
-        h5
-          | Find me in app/views/albums/edit.html.slim
-        .row
-          .post-sidebar__image
-            = attachment_image_tag @thealbum, :image, fallback:"img/no_photo.png", class:"field", size:"100x100"
-        .row
-          table.table.table-bordered
-            thead
-              tr
-                th.bg-primary User
-                td.post-sedebar__title
-                  = @thealbum.user.name
-              tr
-                th.active Title
-                td.post-sedebar__title
-                  = @thealbum.title
-              tr
-                th.active Recommendation-rate
-                td.post-sedebar__title
-                  = @thealbum.rate
-              tr
-                th.active Genre
-                td.post-sedebar__title
-                  = @thealbum.genre.name
-              tr
-                th.active Comment
-                td.post-sedebar__title
-                  = @thealbum.comment
-              tr
-                th.active Created at
-                td.post-sedebar__title
-                  = @thealbum.created_at
-              tr
-                th.active Last Update at
-                td.post-sedebar__title
-                  = @thealbum.updated_at
-        .row
-          .post-sidebar__btn
-            = link_to(edit_album_path(@thealbum), method: :get) do
-              span.btn.btn-default.btn-md.col-xs-10.form-window.glyphicon.glyphicon-cog
-            br
+.row
+  .col-xs-2.post-sidebar.post-sidebar.post-sidebar__edit
+    .top-wrapper
+      h1
+        | Album Edit
+      h5
+        | Find me in app/views/albums/edit.html.slim
+      .row
+        .post-sidebar__image
+          = attachment_image_tag @thealbum, :image, fallback:"img/no_photo.png", class:"field", size:"100x100"
+      .row
+        table.table.table-bordered
+          thead
+            tr
+              th.bg-primary User
+              td.post-sedebar__title
+                = @thealbum.user.name
+            tr
+              th.active Title
+              td.post-sedebar__title
+                = @thealbum.title
+            tr
+              th.active Recommendation-rate
+              td.post-sedebar__title
+                = @thealbum.rate
+            tr
+              th.active Genre
+              td.post-sedebar__title
+                = @thealbum.genre.name
+            tr
+              th.active Comment
+              td.post-sedebar__title
+                = @thealbum.comment
+            tr
+              th.active Created at
+              td.post-sedebar__title
+                = @thealbum.created_at
+            tr
+              th.active Last Update at
+              td.post-sedebar__title
+                = @thealbum.updated_at
+      .row
+        .post-sidebar__btn
+          = link_to(edit_album_path(@thealbum), method: :get) do
+            span.btn.btn-default.btn-md.col-xs-10.form-window.glyphicon.glyphicon-cog
+          br
+          = link_to(album_path(@thealbum), method: :delete) do
+            span.btn.btn-danger.btn-md.col-xs-8.glyphicon.glyphicon-trash.btn-icon-color
+
+  .col-xs-10.post-main.post-main__detail
+    .post-main__box
+      .row
+        .col-xs-3.post-main__color
+          h2
+            | Edit Album
+        .col-xs-2
+          .post-main__top-btn
+            = link_to(album_path(@thealbum), method: :get) do
+              span.btn.btn-primary.btn-md.col-xs-8.glyphicon.glyphicon-arrow-left.btn-icon-color
+        .col-xs-2
+          .post-main__top-btn
             = link_to(album_path(@thealbum), method: :delete) do
               span.btn.btn-danger.btn-md.col-xs-8.glyphicon.glyphicon-trash.btn-icon-color
-
-    .col-xs-10.post-main.post-main__detail
-      .post-main__box
-        .row
-          .col-xs-3.post-main__color
-            h2
-              | Edit Album
-          .col-xs-2
-            .post-main__top-btn
-              = link_to(album_path(@thealbum), method: :get) do
-                span.btn.btn-primary.btn-md.col-xs-8.glyphicon.glyphicon-arrow-left.btn-icon-color
-          .col-xs-2
-            .post-main__top-btn
-              = link_to(album_path(@thealbum), method: :delete) do
-                span.btn.btn-danger.btn-md.col-xs-8.glyphicon.glyphicon-trash.btn-icon-color
-        .row
-          .col-xs-12
-            .post-main__new-form
-              = form_with(model: @thealbum, url: album_path, local: true) do |f|
-                .post-main__image
-                  .form-window.row
-                    = f.label :image, class:"post-main__color"
-                    br
-                      #img_field onClick="$('#file').click()"
-                        - if @thealbum.image.present?
-                          = attachment_image_tag @thealbum, :image, fallback:"img/no_photo.png", class:"field", size:"60x60"
-                        - else
-                          i.fas.fa-image
-                          i.fas.fa-file-upload.add
-                    = f.attachment_field :image, style:"display:none;", id:"file"
-                  .form-window.row
-                    = f.label :title, class:"post-main__color"
-                    br
-                    = f.text_field :title, placeholder:"Title"
-                  .form-window.row#star
-                    = f.label :rate, class:"post-main__color"
-                    br
-                    = f.hidden_field :rate, id: :review_star
-                    //rate 評価javascript
-                    javascript:
-                        $('#star').raty({
-                          size      : 36,
-                          starOff   : '#{asset_path('star-off.png')}',
-                          starOn    : '#{asset_path('star-on.png')}',
-                          starHalf  : '#{asset_path('star-half.png')}',
-                          scoreName : 'album[rate]',
-                          half      : true,
-                        });
-                  .form-window.row
-                    = f.label :genre_id, "Type of Journey", class:"post-main__color"
-                    br
-                    = f.collection_select :genre_id, Genre.all, :id, :name, prompt: "Please select"
-                  .form-window.row
-                    = f.label :comment, class:"post-main__color"
-                    br
-                    = f.text_area :comment, rows:'5', class:"field col-xs-8", placeholder:"comment here"
-                  .form-window.row
-                    = f.label :posts, class:"post-main__color"
-                    br
-                    = f.collection_check_boxes :post_quantity, @user_posts, :id, :title, prompt: "Please select",
-                      include_hidden: false, class:"post-main__color" do |a|
-                        = a.check_box
-                        = a.label { a.text }
-                  .form-submit.row
-                    = f.submit "Update", class:"btn btn-md btn-base-1 btn-default pull-left"
+      .row
+        .col-xs-12
+          .post-main__new-form
+            = form_with(model: @thealbum, url: album_path, local: true) do |f|
+              .post-main__image
+                .form-window.row
+                  = f.label :image, class:"post-main__color"
+                  br
+                    #img_field onClick="$('#file').click()"
+                      - if @thealbum.image.present?
+                        = attachment_image_tag @thealbum, :image, fallback:"img/no_photo.png", class:"field", size:"60x60"
+                      - else
+                        i.fas.fa-image
+                        i.fas.fa-file-upload.add
+                  = f.attachment_field :image, style:"display:none;", id:"file"
+                .form-window.row
+                  = f.label :title, class:"post-main__color"
+                  br
+                  = f.text_field :title, placeholder:"Title"
+                .form-window.row#star
+                  = f.label :rate, class:"post-main__color"
+                  br
+                  = f.hidden_field :rate, id: :review_star
+                  //rate 評価javascript
+                  javascript:
+                      $('#star').raty({
+                        size      : 36,
+                        starOff   : '#{asset_path('star-off.png')}',
+                        starOn    : '#{asset_path('star-on.png')}',
+                        starHalf  : '#{asset_path('star-half.png')}',
+                        scoreName : 'album[rate]',
+                        half      : true,
+                      });
+                .form-window.row
+                  = f.label :genre_id, "Type of Journey", class:"post-main__color"
+                  br
+                  = f.collection_select :genre_id, Genre.all, :id, :name, prompt: "Please select"
+                .form-window.row
+                  = f.label :comment, class:"post-main__color"
+                  br
+                  = f.text_area :comment, rows:'5', class:"field col-xs-8", placeholder:"comment here"
+                .form-window.row
+                  = f.label :posts, class:"post-main__color"
+                  br
+                  = f.collection_check_boxes :post_quantity, @user_posts, :id, :title, prompt: "Please select",
+                    include_hidden: false, class:"post-main__color" do |a|
+                      = a.check_box
+                      = a.label { a.text }
+                .form-submit.row
+                  = f.submit "Update", class:"btn btn-md btn-base-1 btn-default pull-left"
