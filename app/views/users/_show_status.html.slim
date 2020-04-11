@@ -1,0 +1,72 @@
+.mypage-status
+  .mypage-status__got
+    .col-xs-12
+      | Got
+      .mypage-status__icon
+        .col-xs-12
+          .col-xs-4
+            .mypage-like__icon--like
+              span.glyphicon.glyphicon-thumbs-up style="font-size:20px;"
+          .col-xs-4
+            .mypage-status__icon--comment
+              span.glyphicon.glyphicon-comment style="font-size:20px;"
+          .col-xs-4
+            .mypage-status__icon--bookmark
+              span.glyphicon.glyphicon-bookmark style="font-size:20px;"
+      .mypage-status__count
+        .col-xs-12
+          .col-xs-4
+            .mypage-status__like
+              .mypage-like__count--like
+                - if get_likes.nil?
+                  | 0
+                - else
+                  = get_likes.count
+          .col-xs-4
+              .mypage-status__count--comment
+                - if get_comments.nil?
+                  | 0
+                - else
+                  = get_comments.count
+          .col-xs-4
+              .mypage-status__count--bookmark
+                - if get_bookmarks.nil?
+                  | 0
+                - else
+                  = get_bookmarks.count
+.mypage-status
+  .mypage-status__gave
+    .col-xs-12
+      | Gave
+      .mypage-status__icon
+        .col-xs-12
+          .col-xs-4
+            .mypage-like__icon--like
+              span.glyphicon.glyphicon-thumbs-up style="font-size:20px;"
+          .col-xs-4
+            .mypage-status__icon--comment
+              span.glyphicon.glyphicon-comment style="font-size:20px;"
+          .col-xs-4
+            .mypage-status__icon--bookmark
+              span.glyphicon.glyphicon-bookmark style="font-size:20px;"
+      .mypage-status__count
+        .col-xs-12
+          .col-xs-4
+            .mypage-status__like
+              .mypage-like__count--like
+                - if give_likes.nil?
+                  | 0
+                - else
+                  = give_likes.count
+          .col-xs-4
+              .mypage-status__count--comment
+                - if give_comments.nil?
+                  | 0
+                - else
+                  = give_comments.count
+          .col-xs-4
+              .mypage-status__count--bookmark
+                - if give_bookmarks.nil?
+                  | 0
+                - else
+                  = give_bookmarks.count

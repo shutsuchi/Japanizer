@@ -18,13 +18,12 @@
   &__like-icon {
   }
 }
-/*calendar*/
+//----- calendar
 #calendar {
   margin: 20px 0 50px 10px;
   width: 90%;
   text-align: center;
 }
-// 土曜と日曜の色を指定する
 .fc-sat {
   color: blue;
   background-color: #f0f0ff;
@@ -33,25 +32,91 @@
   color: red;
   background-color: #fff0f0;
 }
-// 当日の色を変える
 .fc-today {
   background-color: #f3f3f3 !important;
 }
-// 前月・翌月ボタンのカスタム
 .fc-right .fc-prev-button, .fc-right .fc-next-button {
   background-color: #262626;
   color: white;
   background-image: none;
   border: none;
 }
-// 時刻を非表示に
 .fc-time{
   display : none;
 }
-/*calendar-box*/
+//----- calendar-box
 .calender-box {
+  &__cal {
+  }
+}
+.event-form {
+  margin-top: 80px;
+  height: 450px;
+  width: 80%;
+  //margin-left: 30px;
+  background-color: #b0c4de;
   &__title {
+    padding-left: 50px;
   }
   &__form {
+    padding-left: 50px;
   }
+}
+.mypage-setting {
+  margin-left: 50px;
+  padding-top: 20px;
+  padding-left: 200px;
+  margin-right: 50px;
+  width: 90%;
+  height: 150px;
+  background-color: #f3ffd8 ;
+  &__part {
+  }
+}
+
+.mypage-status {
+  padding-top: 5px;
+  padding-left: 10px;
+  width: 80%;
+  height: 75px;
+  //background-color: #f3ffd8 ;
+  &__got {
+  }
+  &__gave {
+    margin-top: 5px;
+    padding-top: 5px;
+    border-top: 3px solid  #888;
+  }
+  &__icon {
+    margin-left: 10px;
+  }
+  &__count {
+    padding-left: 30px;
+    &--like {
+    }
+    &--comment {
+    }
+    &--bookmark {
+      margin-left: 10px;
+    }
+  }
+}
+
+.mypage-post-list {
+  margin-top: 30px;
+  &__title {
+    margin-bottom: 10px;
+  }
+}
+
+//-------- Withdraw Page --------//
+.withdraw-text p {
+  font-size: 20px;
+}
+.withdraw-text span {
+  color: red;
+  font-weight: bold;
+}
+.withdraw-btn {
+  margin-top: 50px;
 }

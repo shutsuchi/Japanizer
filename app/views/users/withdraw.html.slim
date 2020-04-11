@@ -1,2 +1,24 @@
-h1 Users#withdraw
-p Find me in app/views/users/withdraw.html.slim
+.wrapper
+  .top-wrapper
+    .row.withdraw-text.text-center
+      p
+        = t('.text1')
+      br
+      p
+        = t('.text2')
+      br
+      p
+        span = t('.text_bold')
+        = t('.text3')
+      br
+      p
+        = t('.text4')
+
+    .row.withdraw-btn.text-center
+      .col-xs-4
+      .col-xs-2
+        = link_to t('.btn1'), user_path(@theuser), class:"btn-success btn btn-lg"
+
+      .col-xs-2
+        = button_to t('.btn2'), switch_path(@theuser), class:"btn-danger btn btn-lg"
+      .col-xs-4

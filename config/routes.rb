@@ -9,7 +9,9 @@ Rails.application.routes.draw do
     get 'about', to: 'homes#about', as: 'about'
     get 'searches', to: 'searches#search', as: 'search'
 
-    resources :users, only: %i[ show edit update]
+    resources :users, only: %i[ show edit update ]
+    get 'withdraw', to: 'users#withdraw', as: 'withdraw'
+    patch 'switch', to: 'users#switch', as: 'switch'
     resources :posts, only: %i[ index show edit create update destroy ] do
       resource :likes, only: %i[ index create destroy ]
       resource :post_comments, only: %i[ create update destroy ]
