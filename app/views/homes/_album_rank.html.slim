@@ -1,0 +1,52 @@
+.rank-box
+  .col-xs-12.bg-info.rank-box__margin-bottom
+    .col-xs-1
+      .fas.fa-crown style="color:#ffd700; font-size: 30px;"
+    .col-xs-2
+      h4.rank-box__number
+        = i
+    .col-xs-9
+  .col-xs-12
+    .rank-box__box
+      .rank-box__image-box
+        .rank-box__icon
+          = link_to album_path(album) do
+            = attachment_image_tag album, :image, fallback:"img/no_photo.png", class:"field", size:"85x65"
+      .rank-box__icon-box
+        .col-xs-12
+          .col-xs-4
+            .rank-box__comment-icon
+              i.glyphicon.glyphicon-comment style="font-size:20px;"
+          .col-xs-4
+            .rank-box__comment-count
+              - if album.bookmarks.nil?
+                span
+                  | 0
+              - else
+                span
+                = album.bookmarks.count
+  .col-xs-12
+    .rank_box
+      .rank_box__table
+        table.table.table-bordered
+          thead
+            tr
+              th
+                | User Name
+              td
+                = album.user.name
+            tr
+              th
+                | Title
+              td
+                = album.title
+            tr
+              th
+                | Genre
+              td
+                = album.genre.name
+            tr
+              th
+                | budget
+              td
+                = album.budget

@@ -21,29 +21,76 @@
   }
 }
 
+
+
 .black-row {
   //width: 100%;
   background-color: black;
   color: white;
-  height: 300px;
+  height: 400px;
 
   &__row-title {
     text-align: center;
-    font-size: 50px;
+    font-size: 35px;
+    &--more {
+      margin: 50px 0 100px 0;
+    }
   }
   &__row-text {
+    margin-top: 10px;
     text-align: center;
-    font-size: 30px;
+    font-size: 20px;
+    position: relative;
+    line-height: 1.4;
+    display: inline-block;
+  }
+  &__row-text p {
+    margin-left: 50px;
+  }
+  &__row-text:before, &__row-text:after {
+    position: relative;
+    font-family: "FontAwesome";
+    display: inline-block;
+    font-size: 1.0em;
+    color: white;
+  }
+  &__row-text:before {
+    content:"\f100";
+    padding-right: 0.5em
+  }
+  &__row-text:after {
+    content:"\f101";
+    padding-left: 0.5em
   }
   &__row-box {
     //width: 50%;
   }
-  &__pic {
-    width: 25%;
+  &__pic1 {
+    margin-top: 10px;
+    width: 100%;
     height: 150px;
     background-image: url(img/jp_flag.jpg);
     background-size: cover;
     background-position: center;
+  }
+  &__pic2 {
+    width: 100%;
+    height: 150px;
+  }
+  &__pic3 {
+    width: 100%;
+    height: 150px;
+  }
+  &__pic4 {
+    margin-top: 30px;
+    width: 100%;
+    height: 150px;
+    background-image: url(img/world_flag.jpg);
+    background-size: cover;
+    background-position: center;
+  }
+  &__contact {
+    color: white;
   }
 }
 
@@ -52,39 +99,51 @@
   text-align: center;
   background-color: white;
   color: black;
-  height: 300px;
+  height: 400px;
 
   &__row-title {
+    margin: 50px 0 100px 0;
     text-align: center;
-    font-size: 50px;
+    font-size: 35px;
   }
   &__row-text {
+    margin-top: 20px;
     text-align: center;
-    font-size: 30px;
+    font-size: 20px;
   }
   &__row-btn {
     margin: 100px auto;
+    height: 150px;
+    width: 50%;
     top: 0;
     bottom: 0;
     left: 0;
     right: 0;
     position: absolute;
+    //background-color: #006600;
+    //border-radius: 15px;
+  }
+  &__row-btn-text {
+    color: white;
+    font-size: 50px;
   }
 }
 
-//-------- Top Page --------
-
-.background {
-  //background-image: url(img/top_sky.jpeg);
-  //background-repeat: no-repeat;
-  //background-size: cover;
+.fa-plane-departure {
+  font-size: 150px;
+  margin-top: 50px;
+  color: #ff8c00;
 }
+
+//-------- Top Page --------
+//------ MAIN
 .top-page {
   &__title {
     color: #000;
   }
   &__subtitle {
     height: 40px;
+    margin-bottom: 30px;
     &--text {
       margin: 0 auto;
       line-height: 30px;
@@ -109,7 +168,7 @@
   }
   &__price-box {
     margin: 20px auto;
-    height: 200px;
+    height: 250px;
     color: white;
     width: 65%;
     border: 1px solid #000000;
@@ -121,7 +180,7 @@
   }
   &__genre-box {
     margin: 20px auto;
-    height: 200px;
+    height: 250px;
     width: 95%;
     color: white;
     border: 1px solid #000000;
@@ -133,7 +192,7 @@
   }
   &__area-box {
     margin: 20px auto;
-    height: 200px;
+    height: 250px;
     width: 95%;
     border: 1px solid #000000;
     border-radius: 15px;
@@ -143,7 +202,7 @@
   }
   &__age-box {
     margin: 20px auto;
-    height: 200px;
+    height: 250px;
     width: 65%;
     border: 1px solid #000000;
     border-radius: 15px;
@@ -157,9 +216,10 @@
   }
 }
 
+//------ SIDEBAR
 .sidebar-outline {
   margin: 0 auto;
-  height: 1400px;
+  height: 1500px;
   width: 100%;
   background-color: #333333;
   &__title-box {
@@ -174,7 +234,10 @@
     padding-left: 5px;
     height: 30px;
     width: 80%;
-    background-color: #ffffff;
+    background-color: #006600;
+    color: white;
+    font-size: 15px;
+    font-weight: bold;
     border: 1px solid #333333;
   }
   &__search-body-box {
@@ -188,16 +251,60 @@
   }
 
   &__ranking-box {
-    margin-top: 5px;
+    margin-top: 20px;
     color: #333333;
   }
-  &__rank-body-box {
+  &__rank-body-boxes {
     margin: 0 auto;
     padding-left: 5px;
     margin-bottom: 10px;
-    height: 600px;
+    height: 1300px;
     width: 80%;
     background-color: #ffffff;
     border: 1px solid #333333;
   }
 }
+//------ RANK
+.rank-box {
+  margin: 0 auto;
+  height: 400px;
+  &__margin-bottom {
+    margin-bottom: 20px;
+  }
+  &__number {
+    padding-left: 10px;
+  }
+  &__box {
+    margin: 0 auto;
+  }
+  &__image-box {
+    width: 100%;
+    height: 70px;
+    border: 3px solid #333333;
+    text-align: center;
+  }
+  &__icon-box {
+    width: 100%;
+    height: 50px;
+    border: 3px solid #333333;
+    text-align: center;
+  }
+  &__icon {
+    padding: 1px;
+  }
+  &__like-icon {
+  }
+  &__like-count {
+  }
+  &__comment-icon {
+  }
+  &__comment-count {
+  }
+  &__bookmark-icon {
+    padding: 10px;
+  }
+  &__bookmark-count {
+    padding: 10px;
+  }
+}
+
