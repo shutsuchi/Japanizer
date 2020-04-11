@@ -86,6 +86,52 @@ h1:after {
   right: 0;
 }
 
+// Subtitle text
+h2 {
+  position: relative;
+  line-height: 1.4;
+  display: inline-block;
+}
+
+h2:before, h2:after {
+  position: relative;
+  font-family: "FontAwesome";
+  display: inline-block;
+  font-size: 1.0em;
+  color: #ff6a6a;
+}
+h2:before {
+  content:"\f100";
+  padding-right: 0.5em
+}
+h2:after {
+  content:"\f101";
+  padding-left: 0.5em
+}
+
+// Parttitle text
+h3 {
+  position: relative;
+  line-height: 1.4;
+  display: inline-block;
+}
+
+h3:before, h3:after {
+  position: relative;
+  font-family: "FontAwesome";
+  display: inline-block;
+  font-size: 1.0em;
+  color: #5d99ff;
+}
+h3:before {
+  content:"\f10d";
+  padding-right: 0.5em
+}
+h3:after {
+  content:"\f10e";
+  padding-left: 0.5em
+}
+
 /*----------- NavBar -----------*/
 .common-bar {
   background-color: #eee;

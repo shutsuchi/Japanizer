@@ -1,33 +1,83 @@
-div.wrapper
-  div.row.title-row
-    div.col-xs-12
-      div.title-row__row-title Japanizer
+  .top-wrapper
+    .row.title-row
+      .col-xs-12
+        .title-row__row-title
+          | Japanizer
 
-  div.row.black-row
-    div.col-xs-12
-      div.col-xs-6
-        div.black-row__pic
+    .row.black-row
+      .col-xs-12
+        .col-xs-6
+          .col-xs-6
+            .black-row__pic1
+          .col-xs-6.text-center
+            .black-row__pic2.fas.fa-level-down-alt style="font-size:100px; margin-top:50px;"
+          .col-xs-6.text-center
+            .black-row__pic3.fas.fa-level-up-alt style="font-size:100px; margin-top:50px; transform:rotateY(180deg);"
+          .col-xs-6
+            .black-row__pic4
 
-      div.col-xs-6
-        div.black-row__row-title About Japanizer
-        p.black-row__row-text
-          | Find me in app/views/homes/about.html.slim
+        .col-xs-6
+          .black-row__row-title
+            | About Japanizer
+          .col-xs-12.text-center
+            p.black-row__row-text
+              | Know
+              p
+                | What types of journey in Japan
+              p
+                | Focus on age, area, budget, etc...
+          .col-xs-12.text-center
+            p.black-row__row-text
+              | Compare
+              p
+                | Trend in Japanese or the others
+              p
+                | Recommend each journey
+          .col-xs-12.text-center
+            p.black-row__row-text
+              | Post
+              p
+                | Your amazing journey in Japan
+              p
+                | Then bind in one album
 
-  div.row.white-row
-    div.col-xs-12
-      div.col-xs-6
-        div.white-row__row-title Search
-        p.white-row__row-text
-         | Let's Search the Journey Post You like
-         //= form_with
-      div.col-xs-6
-        div.white-row__row-btn
-          = link_to "Give It Go", top_path, class:"btn btn-primary"
+    .row.white-row
+      .col-xs-12
+        .col-xs-6
+          .white-row__row-title
+            | Have a fun !!
+          p.white-row__row-text
+            | Click plane right to
+          br
+          p.white-row__row-text
+            | Enjoy Japan on Japanizer
+        .col-xs-6
+          .col-xs-12
+            i.fas.fa-book style="font-size:40px; padding-right: 450px;"
+          .col-xs-12
+            i.fas.fa-camera-retro style="font-size:60px; padding-left: 200px;"
+          .col-xs-12
+            i.far.fa-images style="font-size:50px; padding-right: 250px;"
+          br
+          = link_to top_path do
+            i.fas.fa-plane-departure style="font-size:170px; margin-top: 30px; margin-left: 200px; color:#ff8c00"
 
-  div.row.black-row
-    div.col-xs-12
-      div.col-xs-6
-      div.col-xs-6
-        div.black-row__row-title and More
-        p.black-row__row-text
-            | contack with us
+    .row.black-row
+      .col-xs-12
+        .col-xs-6.text-center
+          .col-xs-4
+            i.far.fa-envelope style="font-size:150px; padding-top:100px"
+          .col-xs-4
+            i.fas.fa-arrows-alt-h style="font-size:80px; padding-top:130px"
+          .col-xs-4
+            i.far.fa-envelope style="font-size:150px; padding-top:100px"
+        .col-xs-6
+          .black-row__row-title
+            .black-row__row-title--more
+              | And More
+          .col-xs-12.text-center
+            p.black-row__row-text
+              | contact with me
+          .col-xs-12.text-center
+            h4
+              | example@example.com
