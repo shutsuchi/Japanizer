@@ -75,13 +75,26 @@
                   br
                   | what is popular plan or place in Japan
 
-
-        .col-xs-12
+        .col-xs-6
           = link_to age_path do
             .search-select-boxes__age-box
               .search-select-boxes__title
                 h3
                   | Age
+              .search-select-boxes__text
+                h4
+                  | Natination, age, price, genre...
+                  br
+                  | compare with few condition
+                  br
+                  | what is popular plan or place in Japan
+
+        .col-xs-6
+          = link_to nation_path do
+            .search-select-boxes__nation-box
+              .search-select-boxes__title
+                h3
+                  | Nationality
               .search-select-boxes__text
                 h4
                   | Natination, age, price, genre...

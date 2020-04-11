@@ -1,72 +1,71 @@
-.margin-wrapper
-  .top-wrapper
-    .row
-      .col-xs-12.text-center
-        h1
-          = t('.title')
-        p
-          = t('.page_description')
-      .col-xs-7
-        .age-icon
-          // 年代アイコン
-          - if @range == "1"
-            .age-icon__1
-          - elsif @range == "2"
-            .age-icon__2
-          - elsif @range == "3"
-            .age-icon__3
-          - elsif @range == "4"
-            .age-icon__4
-          - elsif @range == "5"
-            .age-icon__5
-          - elsif @range == "6"
-            .age-icon__6
-          - elsif @range == "7"
-            .age-icon__7
-          - else
-            .age-icon__default
+.top-wrapper
+  .row
+    .col-xs-12.text-center
+      h1
+        = t('.title')
+      p
+        = t('.page_description')
+    .col-xs-7
+      .age-icon
+        // 年代アイコン
+        - if @range == "1"
+          .age-icon__1
+        - elsif @range == "2"
+          .age-icon__2
+        - elsif @range == "3"
+          .age-icon__3
+        - elsif @range == "4"
+          .age-icon__4
+        - elsif @range == "5"
+          .age-icon__5
+        - elsif @range == "6"
+          .age-icon__6
+        - elsif @range == "7"
+          .age-icon__7
+        - else
+          .age-icon__default
 
-      .col-xs-5
-        //年代リスト
-        ol
-          ul#area
-            .col-xs-12
-              li
-                = link_to '10 - 20', age_path(age_range: 1)
-            .col-xs-12
-              li
-                = link_to '20 - 30', age_path(age_range: 2)
-            .col-xs-12
-              li
-                = link_to '30 - 40', age_path(age_range: 3)
-            .col-xs-12
-              li
-                = link_to '40 - 50', age_path(age_range: 4)
-            .col-xs-12
-              li
-                = link_to '50 - 60', age_path(age_range: 5)
-            .col-xs-12
-              li
-                = link_to '60 - 70', age_path(age_range: 6)
-            .col-xs-12
-              li
-                = link_to '70 - 80', age_path(age_range: 7)
-            .col-xs-12
-              li
-                = link_to 'All', age_path
-  .wrapper
-    .container
-      .row
-        .album-index
-          .album-index__title
-            h1
-              = t('.post_index')
-            .col-xs-12
-              - if @posts.present?
-                - @posts.each do |post|
-                  = render 'posts/post', post: post
-                .text-center
-                  = paginate @posts
-              - else
-                h3.bg-danger.text-center
-                  | NO POST
+    .col-xs-5
+      //年代リスト
+      ol
+        ul#area
+          .col-xs-12
+            li
+              = link_to '10 - 20', age_path(age_range: 1)
+          .col-xs-12
+            li
+              = link_to '20 - 30', age_path(age_range: 2)
+          .col-xs-12
+            li
+              = link_to '30 - 40', age_path(age_range: 3)
+          .col-xs-12
+            li
+              = link_to '40 - 50', age_path(age_range: 4)
+          .col-xs-12
+            li
+              = link_to '50 - 60', age_path(age_range: 5)
+          .col-xs-12
+            li
+              = link_to '60 - 70', age_path(age_range: 6)
+          .col-xs-12
+            li
+              = link_to '70 - 80', age_path(age_range: 7)
+          .col-xs-12
+            li
+              = link_to 'All', age_path
+.wrapper
+  .container
+    .row
+      .album-index
+        .album-index__title
+          h1
+            = t('.post_index')
+          .col-xs-12
+            - if @posts.present?
+              - @posts.each do |post|
+                = render 'posts/post', post: post
+              .text-center
+                = paginate @posts
+            - else
+              h3.bg-danger.text-center
+                | NO POST

@@ -27,6 +27,7 @@ Rails.application.routes.draw do
     resources :genres, only: %i[ index create update destroy ]
     get 'budget', to: 'genres#budget', as: 'budget'
     get 'age', to: 'genres#age', as: 'age'
+    get 'nation', to: 'genres#nation', as: 'nation'
     #resources :events, only:  %i[ edit create update destroy ]
     resources :events
   end

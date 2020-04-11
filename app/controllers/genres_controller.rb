@@ -107,6 +107,22 @@ class GenresController < ApplicationController
     end
   end
 
+  # GET nation/
+  # nation_path
+  def nation
+    @nation = params[:nation]
+    if @nation == "1"
+      @posts = page(Post.joins(:user).where("users.country_code = 'JP'"))
+      @albums = page(Album.joins(:user).where("users.country_code = 'JP'"))
+    elsif @nation == "2"
+      @posts = page(Post.joins(:user).where.not("users.country_code = 'JP'"))
+      @albums = page(Album.joins(:user).where.not("users.country_code = 'JP'"))
+    else
+      @posts = page(Post.all)
+      @albums = page(Album.all)
+    end
+  end
+
   # POST genres/
   # genres_path
   def create

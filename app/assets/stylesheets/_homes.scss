@@ -194,6 +194,7 @@
     margin: 20px auto;
     height: 250px;
     width: 95%;
+    color: black;
     border: 1px solid #000000;
     border-radius: 15px;
     background-image: url(img/top_area.jpeg);
@@ -203,10 +204,22 @@
   &__age-box {
     margin: 20px auto;
     height: 250px;
-    width: 65%;
+    width: 95%;
+    color: black;
     border: 1px solid #000000;
     border-radius: 15px;
     background-image: url(img/top_age.jpeg);
+    background-repeat: no-repeat;
+    background-size: cover;
+  }
+  &__nation-box {
+    margin: 20px auto;
+    height: 250px;
+    width: 95%;
+    color: white;
+    border: 1px solid #000000;
+    border-radius: 15px;
+    background-image: url(img/top_nation.jpeg);
     background-repeat: no-repeat;
     background-size: cover;
   }

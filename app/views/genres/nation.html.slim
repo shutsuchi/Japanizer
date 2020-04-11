@@ -1,0 +1,56 @@
+.top-wrapper
+  .row
+    .col-xs-12.text-center
+      h1
+        = t('.title')
+      p
+        = t('.page_description')
+    .col-xs-7
+      .nation-icon
+        // 年代アイコン
+        - if @nation == "1"
+          .nation-icon__1
+        - elsif @nation == "2"
+          .nation-icon__2
+        - else
+          .nation-icon__default
+    .col-xs-5
+      //年代リスト
+      ol
+        ul#area
+          .col-xs-12
+            li
+              = link_to 'Japanese', nation_path(nation: 1)
+          .col-xs-12
+            li
+              = link_to 'The other nationalities', nation_path(nation: 2)
+.wrapper
+  .container
+    .row
+      .album-index
+        .album-index__title
+          h1.text-center
+            = t('.post_list')
+          .col-xs-12
+            - if @posts.present?
+              - @posts.each do |post|
+                = render 'posts/post', post: post
+              .text-center
+                = paginate @posts
+            - else
+              h3.bg-danger.text-center
+                | NO POST
+    .row
+      .album-index
+        .album-index__title
+          h1.text-center
+            = t('.album_list')
+          .col-xs-12
+            - if @albums.present?
+              - @albums.each do |album|
+                = render 'albums/album', album: album
+              .text-center
+                = paginate @albums
+            - else
+              h3.bg-danger.text-center
+                | NO ALBUM
