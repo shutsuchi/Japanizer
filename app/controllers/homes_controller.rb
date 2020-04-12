@@ -26,4 +26,5 @@ class HomesController < ApplicationController
                                       .pluck(:album_id))
   end
 
+
 end

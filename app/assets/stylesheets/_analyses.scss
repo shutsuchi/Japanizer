@@ -1,0 +1,527 @@
+// Place all the styles related to the analyses controller here.
+// They will automatically be included in application.css.
+// You can use Sass (SCSS) here: http://sass-lang.com/
+
+.jp-data {
+  &__title {
+    margin: 20px 0 20px 0;
+  }
+  &__box {
+    margin: 0 auto;
+    padding-top: 20px;
+    padding-left: 40px;
+    height: 800px;
+    width: 90%;
+    background-color: #b0c4de;
+  }
+  &__rank-unit {
+    margin-bottom: 50px;
+    height: 200px;
+  }
+  &__area-rank {
+  }
+  &__area-rank-icon {
+  }
+  &__area-rank-img {
+  }
+  &__area-rank-name {
+    font-weight: bold;
+  }
+
+  &__genre-rank {
+  }
+  &__genre-rank-icon {
+  }
+  &__genre-rank-img {
+  }
+  &__genre-rank-name {
+    font-weight: bold;
+  }
+
+  &__budget-rank {
+  }
+  &__budget-rank-icon {
+  }
+  &__budget-rank-img {
+  }
+  &__budget-rank-name {
+    padding-top: 30px;
+    font-weight: bold;
+    font-size: 40px;
+  }
+}
+
+.others-data {
+  &__title {
+    margin: 20px 0 20px 0;
+  }
+  &__box {
+    margin: 0 auto;
+    padding-top: 20px;
+    padding-left: 40px;
+    height: 800px;
+    width: 90%;
+    background-color: #b0c4de;
+  }
+  &__rank-unit {
+    margin-bottom: 50px;
+    height: 200px;
+  }
+  &__area-rank-name {
+    font-weight: bold;
+  }
+  &__genre-rank-name {
+    font-weight: bold;
+  }
+  &__budget-rank-name {
+    padding-top: 30px;
+    font-weight: bold;
+    font-size: 40px;
+  }
+}
+
+//----- genre-image
+.genre-img {
+  margin: 10px 30px 10px 0;
+  &__1:before {
+    font-family: "FontAwesome";
+    content:"\f410";
+    font-size: 70px;
+    color: #5d99ff;
+  }
+  &__2:before {
+    font-family: "FontAwesome";
+    content:"\f004";
+    font-size: 70px;
+    color: red;
+  }
+  &__3:before {
+    font-family: "FontAwesome";
+    content:"\f007";
+    font-size: 70px;
+    color: #000099;
+  }
+  &__4:before {
+    font-family: "FontAwesome";
+    content:"\f07a";
+    font-size: 70px;
+    color: #b6ff01;
+  }
+  &__5:before {
+    font-family: "FontAwesome";
+    content:"\f64f";
+    font-size: 70px;
+    color: #ff8856;
+  }
+  &__6:before {
+    font-family: "FontAwesome";
+    content:"\f21c";
+    font-size: 70px;
+    color: #2f4f4f;
+  }
+  &__7:before {
+    font-family: "FontAwesome";
+    content:"\f2e7";
+    font-size: 70px;
+    color: #778899;
+  }
+  &__8:before {
+    font-family: "FontAwesome";
+    content:"\fce";
+    font-size: 70px;
+    color: #00ecff;
+  }
+  &__9:before {
+    font-family: "FontAwesome";
+    content:"\f1b9";
+    font-size: 70px;
+    color: #880000;
+  }
+  &__10:before {
+    font-family: "FontAwesome";
+    content:"\f6fc";
+    font-size: 70px;
+    color: #008800;
+  }
+}
+
+//----- map-image
+.map-img {
+  margin: 10px 30px 10px 0;
+  &__1 {
+    height: 100px;
+    width: 80%;
+    background-image: url(img/map_hokkaido);
+    background-repeat: no-repeat;
+    background-size: cover;
+    background-position: center;
+  }
+  &__2 {
+    height: 100px;
+    width: 80%;
+    background-image: url(img/map_aomori);
+    background-repeat: no-repeat;
+    background-size: cover;
+    background-position: center;
+  }
+  &__3 {
+    height: 100px;
+    width: 80%;
+    background-image: url(img/map_iwate);
+    background-repeat: no-repeat;
+    background-size: cover;
+    background-position: center;
+  }
+  &__4 {
+    height: 100px;
+    width: 80%;
+    background-image: url(img/map_miyagi);
+    background-repeat: no-repeat;
+    background-size: cover;
+    background-position: center;
+  }
+  &__5 {
+    height: 100px;
+    width: 80%;
+    background-image: url(img/map_akita);
+    background-repeat: no-repeat;
+    background-size: cover;
+    background-position: center;
+  }
+  &__6 {
+    height: 100px;
+    width: 80%;
+    background-image: url(img/map_yamagata);
+    background-repeat: no-repeat;
+    background-size: cover;
+    background-position: center;
+  }
+  &__7 {
+    height: 100px;
+    width: 80%;
+    background-image: url(img/map_fukushima);
+    background-repeat: no-repeat;
+    background-size: cover;
+    background-position: center;
+  }
+  &__8 {
+    height: 100px;
+    width: 80%;
+    background-image: url(img/map_ibaraki);
+    background-repeat: no-repeat;
+    background-size: cover;
+    background-position: center;
+  }
+  &__9 {
+    height: 100px;
+    width: 80%;
+    background-image: url(img/map_tochigi);
+    background-repeat: no-repeat;
+    background-size: cover;
+    background-position: center;
+  }
+  &__10 {
+    height: 100px;
+    width: 80%;
+    background-image: url(img/map_gunma);
+    background-repeat: no-repeat;
+    background-size: cover;
+    background-position: center;
+  }
+  &__11 {
+    height: 100px;
+    width: 80%;
+    background-image: url(img/map_saitama);
+    background-repeat: no-repeat;
+    background-size: cover;
+    background-position: center;
+  }
+  &__12 {
+    height: 100px;
+    width: 80%;
+    background-image: url(img/map_chiba);
+    background-repeat: no-repeat;
+    background-size: cover;
+    background-position: center;
+  }
+  &__13 {
+    height: 100px;
+    width: 80%;
+    background-image: url(img/map_tokyo);
+    background-repeat: no-repeat;
+    background-size: cover;
+    background-position: center;
+  }
+  &__14 {
+    height: 100px;
+    width: 80%;
+    background-image: url(img/map_kanagawa);
+    background-repeat: no-repeat;
+    background-size: cover;
+    background-position: center;
+  }
+  &__15 {
+    height: 100px;
+    width: 80%;
+    background-image: url(img/map_niigata);
+    background-repeat: no-repeat;
+    background-size: cover;
+    background-position: center;
+  }
+  &__16 {
+    height: 100px;
+    width: 80%;
+    background-image: url(img/map_toyama);
+    background-repeat: no-repeat;
+    background-size: cover;
+    background-position: center;
+  }
+  &__17 {
+    height: 100px;
+    width: 80%;
+    background-image: url(img/map_ishikawa);
+    background-repeat: no-repeat;
+    background-size: cover;
+    background-position: center;
+  }
+  &__18 {
+    height: 100px;
+    width: 80%;
+    background-image: url(img/map_fukui);
+    background-repeat: no-repeat;
+    background-size: cover;
+    background-position: center;
+  }
+  &__19 {
+    height: 100px;
+    width: 80%;
+    background-image: url(img/map_yamanashi);
+    background-repeat: no-repeat;
+    background-size: cover;
+    background-position: center;
+  }
+  &__20 {
+    height: 100px;
+    width: 80%;
+    background-image: url(img/map_nagano);
+    background-repeat: no-repeat;
+    background-size: cover;
+    background-position: center;
+  }
+  &__21 {
+    height: 100px;
+    width: 80%;
+    background-image: url(img/map_gifu);
+    background-repeat: no-repeat;
+    background-size: cover;
+    background-position: center;
+  }
+  &__22 {
+    height: 100px;
+    width: 80%;
+    background-image: url(img/map_sizuoka);
+    background-repeat: no-repeat;
+    background-size: cover;
+    background-position: center;
+  }
+  &__23 {
+    height: 100px;
+    width: 80%;
+    background-image: url(img/map_aichi);
+    background-repeat: no-repeat;
+    background-size: cover;
+    background-position: center;
+  }
+  &__24 {
+    height: 100px;
+    width: 80%;
+    background-image: url(img/map_mie);
+    background-repeat: no-repeat;
+    background-size: cover;
+    background-position: center;
+  }
+  &__25 {
+    height: 100px;
+    width: 80%;
+    background-image: url(img/map_shiga);
+    background-repeat: no-repeat;
+    background-size: cover;
+    background-position: center;
+  }
+  &__26 {
+    height: 100px;
+    width: 80%;
+    background-image: url(img/map_kyoto);
+    background-repeat: no-repeat;
+    background-size: cover;
+    background-position: center;
+  }
+  &__27 {
+    height: 100px;
+    width: 80%;
+    background-image: url(img/map_osaka);
+    background-repeat: no-repeat;
+    background-size: cover;
+    background-position: center;
+  }
+  &__28 {
+    height: 100px;
+    width: 80%;
+    background-image: url(img/map_hyogo);
+    background-repeat: no-repeat;
+    background-size: cover;
+    background-position: center;
+  }
+  &__29 {
+    height: 100px;
+    width: 80%;
+    background-image: url(img/map_nara);
+    background-repeat: no-repeat;
+    background-size: cover;
+    background-position: center;
+  }
+  &__30 {
+    height: 100px;
+    width: 80%;
+    background-image: url(img/map_wakayama);
+    background-repeat: no-repeat;
+    background-size: cover;
+    background-position: center;
+  }
+  &__31 {
+    height: 100px;
+    width: 80%;
+    background-image: url(img/map_tottori);
+    background-repeat: no-repeat;
+    background-size: cover;
+    background-position: center;
+  }
+  &__32 {
+    height: 100px;
+    width: 80%;
+    background-image: url(img/map_shimane);
+    background-repeat: no-repeat;
+    background-size: cover;
+    background-position: center;
+  }
+  &__33 {
+    height: 100px;
+    width: 80%;
+    background-image: url(img/map_okayama);
+    background-repeat: no-repeat;
+    background-size: cover;
+    background-position: center;
+  }
+  &__34 {
+    height: 100px;
+    width: 80%;
+    background-image: url(img/map_hiroshima);
+    background-repeat: no-repeat;
+    background-size: cover;
+    background-position: center;
+  }
+  &__35 {
+    height: 100px;
+    width: 80%;
+    background-image: url(img/map_yamaguchi);
+    background-repeat: no-repeat;
+    background-size: cover;
+    background-position: center;
+  }
+  &__36 {
+    height: 100px;
+    width: 80%;
+    background-image: url(img/map_tokushima);
+    background-repeat: no-repeat;
+    background-size: cover;
+    background-position: center;
+  }
+  &__37 {
+    height: 100px;
+    width: 80%;
+    background-image: url(img/map_kagawa);
+    background-repeat: no-repeat;
+    background-size: cover;
+    background-position: center;
+  }
+  &__38 {
+    height: 100px;
+    width: 80%;
+    background-image: url(img/map_ehime);
+    background-repeat: no-repeat;
+    background-size: cover;
+    background-position: center;
+  }
+  &__39 {
+    height: 100px;
+    width: 80%;
+    background-image: url(img/map_kochi);
+    background-repeat: no-repeat;
+    background-size: cover;
+    background-position: center;
+  }
+  &__40 {
+    height: 100px;
+    width: 80%;
+    background-image: url(img/map_fukuoka);
+    background-repeat: no-repeat;
+    background-size: cover;
+    background-position: center;
+  }
+  &__41 {
+    height: 100px;
+    width: 80%;
+    background-image: url(img/map_saga);
+    background-repeat: no-repeat;
+    background-size: cover;
+    background-position: center;
+  }
+  &__42 {
+    height: 100px;
+    width: 80%;
+    background-image: url(img/map_nagasaki);
+    background-repeat: no-repeat;
+    background-size: cover;
+    background-position: center;
+  }
+  &__43 {
+    height: 100px;
+    width: 80%;
+    background-image: url(img/map_kumamoto);
+    background-repeat: no-repeat;
+    background-size: cover;
+    background-position: center;
+  }
+  &__44 {
+    height: 100px;
+    width: 80%;
+    background-image: url(img/map_oita);
+    background-repeat: no-repeat;
+    background-size: cover;
+    background-position: center;
+  }
+  &__45 {
+    height: 100px;
+    width: 80%;
+    background-image: url(img/map_miyazaki);
+    background-repeat: no-repeat;
+    background-size: cover;
+    background-position: center;
+  }
+  &__46 {
+    height: 100px;
+    width: 80%;
+    background-image: url(img/map_kagoshima);
+    background-repeat: no-repeat;
+    background-size: cover;
+    background-position: center;
+  }
+  &__47 {
+    height: 100px;
+    width: 80%;
+    background-image: url(img/map_okinawa);
+    background-repeat: no-repeat;
+    background-size: cover;
+    background-position: center;
+  }
+}

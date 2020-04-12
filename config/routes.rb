@@ -7,6 +7,7 @@ Rails.application.routes.draw do
   scope '(:locale)', locale: /#{I18n.available_locales.map(&:to_s).join('|')}/ do
     root to: 'homes#top', as: 'top'
     get 'about', to: 'homes#about', as: 'about'
+    get 'data', to: 'analyses#data', as: 'data'
     get 'searches', to: 'searches#search', as: 'search'
 
     resources :users, only: %i[ show edit update ]
