@@ -215,7 +215,7 @@ $(document).on('click', '.image_upload', function(){
     $li.addClass('image-preview'); // inputのクラスからプレビュー用のクラスに変更した
     $lis = $ul.find('.image-preview'); // クラス変更が完了したところで、プレビューの数を数える。
     $('#previews li').css({
-      'width': `114px`
+      'width': '114px'
     })
   });
 });
