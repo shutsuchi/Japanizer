@@ -1,17 +1,52 @@
-.row
-  h1 Searches#search
-  p Find me in app/views/searches/search.html.slim
-  - if @posts
-    h3 Search result(POST LIST)
-    - @posts.each do |post|
-      = post.title
-  - elsif @albums
-    h3 Search result(ALBUM LIST)
-    - @albums.each do |album|
-      = album.title
-  - elsif @results
-    h3 Search result(ALL LIST)
-    - results.each do |result|
-  - else
-    h3
-      | NODATA
+.top-wrapper
+  .row
+    .col-xs-12
+      h1.text-center
+        | Search Result
+    .col-xs-12
+      - if @posts
+        .col-xs-5.bg-success.text-center
+          | search-results of Post / 
+          = @result_genre.name
+          | / 
+          - if @time == "year_search"
+            | Past-Year
+          - elsif @time == "month_search"
+            | Past-Month
+          - elsif @time == "week_search"
+            | Past-Week
+          - else
+            | Past-24-Hours
+        .col-xs-12
+            h3
+              | POST LIST
+        .col-xs-12
+            = render @posts
+            /- @posts.each do |post|
+              = post.title
+      - elsif @albums
+        .col-xs-5.bg-success.text-center
+          | results of Album / 
+          = @result_genre.name
+          | / 
+          - if @time == "year_search"
+            | Past-Year
+          - elsif @time == "month_search"
+            | Past-Month
+          - elsif @time == "week_search"
+            | Past-Week
+          - else
+            | Past-24-Hours
+        .col-xs-12
+          h3
+            | ALBUM LIST
+        .col-xs-12
+          = render @albums
+          /- @albums.each do |album|
+            = album.title
+      - elsif @results
+        h3 Search result(ALL LIST)
+        - results.each do |result|
+      - else
+        h3
+          | NO DATA
