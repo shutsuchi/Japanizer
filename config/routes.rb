@@ -11,8 +11,8 @@ Rails.application.routes.draw do
     get 'searches', to: 'searches#search', as: 'search'
 
     resources :users, only: %i[ show edit update ]
-    get 'withdraw', to: 'users#withdraw', as: 'withdraw'
-    patch 'switch', to: 'users#switch', as: 'switch'
+    get 'users/:user_id/withdraw', to: 'users#withdraw', as: 'withdraw'
+    patch 'users/:user_id/switch', to: 'users#switch', as: 'switch'
     resources :posts, only: %i[ index show edit create update destroy ] do
       resource :likes, only: %i[ index create destroy ]
       resource :post_comments, only: %i[ create update destroy ]
@@ -29,7 +29,6 @@ Rails.application.routes.draw do
     get 'budget', to: 'genres#budget', as: 'budget'
     get 'age', to: 'genres#age', as: 'age'
     get 'nation', to: 'genres#nation', as: 'nation'
-    #resources :events, only:  %i[ edit create update destroy ]
     resources :events
   end
 end

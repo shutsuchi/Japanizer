@@ -1,9 +1,14 @@
 class UsersController < ApplicationController
+  before_action :authenticate_user!, only: %i[ show edit update withdraw ]
+  before_action :correct_user, only: %i[ show edit withdraw ]
+
   def show
     @theuser = current_user
     @posts = @theuser.posts.all
+    @albums = @theuser.albums.all
     @event = Event.new
     @events = Event.where(user_id: @theuser.id)
+
     # User が獲得した対象カウント
     @posts = @theuser.posts.all
     @albums = @theuser.albums.all
@@ -59,5 +64,17 @@ class UsersController < ApplicationController
 
   def user_params
     params.require(:user).permit(:email, :name, :image, :age, :country_code)
+  end
+
+  def correct_user
+    if params[:id]
+      user = User.find(params[:id])
+    else
+      user = User.find(params[:user_id])
+    end
+
+    if user.id != current_user.id
+      redirect_to top_path
+    end
   end
 end

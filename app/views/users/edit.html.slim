@@ -2,10 +2,16 @@
   .col-xs-8
     .col-xs-5
       h1 Setting
-    .col-xs-3
+    .col-xs-2
+    .col-xs-2
       .post-main__top-btn
-        = link_to(user_path(@theuser), method: :get) do
+        = link_to user_path(@theuser), method: :get  do
           span.btn.btn-success.btn-md.col-xs-8.glyphicon.glyphicon-arrow-left.btn-icon-color
+    .col-xs-2
+      .post-main__top-btn
+        = link_to withdraw_path(current_user), method: :get  do
+          span.btn.btn-danger.btn-md.col-xs-8.btn-icon-color
+           | WITHDRAW
     .user-edit-form
       = form_with(model: @theuser , url: user_path, method: :patch, local: true) do |f|
         table.table.table-bordered

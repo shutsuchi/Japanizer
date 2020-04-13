@@ -31,7 +31,23 @@
     .mypage-post-list
       .col-xs-12.text-center
         .mypage-post-list__title
-          h2 Your Posts
+          - if @posts.nil?
+            h2
+              | Let's create your FIRST post
+          - else
+            h2
+              | Your Posts
       .col-xs-12
-        - @posts.each do |post|
-          = render 'posts/post', post: post
+        = render @posts
+  .row
+    .mypage-post-list
+      .col-xs-12.text-center
+        .mypage-post-list__title
+          - if @posts.nil?
+            h2
+              | Let's create your FIRST album
+          - else
+            h2
+              | Your Albums
+      .col-xs-12
+        = render @albums
