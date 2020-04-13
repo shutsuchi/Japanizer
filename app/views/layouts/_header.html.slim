@@ -5,9 +5,10 @@
 .common-bar__title_line
   .common-bar__title-box
     .common-bar__title-text.text-center
-      .common-bar__title-text--icon
-      .common-bar__title-text--title.text-center
-        | Japanizer
+      = link_to top_path do
+        .common-bar__title-text--icon
+        .common-bar__title-text--title.text-center
+          | Japanizer
     .common-bar__subtitle-box
       .common-bar__subtitle-text.text-center
           | Having nice journey with Japanizer
@@ -15,6 +16,8 @@
   .common-bar__link-box.text-center
     - if user_signed_in?
       ul.text-center.common-bar__link-box
+          li.common-bar__link-text
+            = link_to "Home", top_path, class:"fas fa-home"
           li.common-bar__link-text
             = link_to "About", about_path, class:"far fa-question-circle"
           li.common-bar__link-text
@@ -29,6 +32,8 @@
           li.common-bar__link-text.pull-right#search-icon
             i.fas.fa-search style="font-size:20px; color:#2c7cff;"
     - else
+          li.common-bar__link-text
+            = link_to "Home", top_path, class:"fas fa-home"
           li.common-bar__link-text
             = link_to "About", about_path, class:"far fa-question-circle"
           li.common-bar__link-text
