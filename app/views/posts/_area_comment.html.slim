@@ -1,7 +1,4 @@
 .post-comment-box
-  .row
-    .col-xs-10
-      .row
-        table.table.table-bordered#table-comment-js
+  table.table.table-bordered#table-comment-js
 
-          = render 'posts/comment', comments: comments, post: post
+    = render 'posts/comment', comments: comments, post: post

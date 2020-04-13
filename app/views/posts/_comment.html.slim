@@ -2,18 +2,13 @@
   thead id="comment-#{ comment.id }"
     tr
       th.post-comment-box__user-name
-        .col-xs-3
+        .col-xs-2
           = comment.user.name
+        .col-xs-4
+          = comment.created_at.strftime('%Y/%m/%d %H:%M')
         .col-xs-2
-          = comment.created_at
-        .col-xs-2
-          .post-comment-box__rate
-            = comment.rate
         .col-xs-1
-            .post-comment-box__like
-              | like
-        .col-xs-1
-            .post-comment-box__reply
+            /.post-comment-box__reply
               | repy
         .col-xs-3
           .pot-comment-box__btn--delete
@@ -22,11 +17,26 @@
       td.post-comment-box__title
         .col-xs-5
           = comment.title
+        .col-xs-2
+          .post-comment-box__rate
+            = comment.rate
+        .col-xs-5
+          div id="star-rate-#{comment.id}"
+            javascript:
+              $('#star-rate-#{comment.id}').raty({
+                size      : 36,
+                starOff   : '#{asset_path('star-off.png')}',
+                starOn    : '#{asset_path('star-on.png')}',
+                starHalf  : '#{asset_path('star-half.png')}',
+                half      : true,
+                readOnly  : true,
+                score     : #{comment.rate},
+              });
     tr
       td.post-comment-box__comment
-        .col-xs-10
+        .col-xs-5
           = comment.comment
+        .col-xs-5
         .col-xs-2
           .post-comment-box__btn--edit
             = link_to '', post_post_comments_path(id: comment, post_id: post.id), method: :patch, remote: true, class:"fas fa-edit pull-right text-primary", style:"font-size:20px;"
-.col-xs-12

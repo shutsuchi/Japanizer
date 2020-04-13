@@ -1,85 +1,82 @@
+.top-wrapper
+  .row
+    .col-xs-12.post-main.post-main__detail-form
+      .post-detail_box
+        .row
+          h1
+            | Post Detail
+          p
+            | Find me in app/views/posts/show.html.slim
+        .row
+          .col-xs-3
+            .row
+              .col-xs-10
+                .post-sidebar__image
+                  = attachment_image_tag @thepost, :image, fallback:"img/no_photo.png", class:"field", size:"200x200"
+            .row
+              .col-xs-10.post-main__top-btn
+                = link_to(edit_post_path(@thepost), method: :get) do
+                  span.btn.btn-default.btn-md.col-xs-8.form-window.glyphicon.glyphicon-cog
+            .row
+              .col-xs-10.post-main__top-btn
+                = link_to(post_path(@thepost), method: :delete) do
+                  span.btn.btn-danger.btn-md.col-xs-8.glyphicon.glyphicon-trash.btn-icon-color
+          .col-xs-7
+            table.table.table-bordered
+              thead
+                tr
+                  th.bg-primary User
+                  td.post-sidebar__title
+                    = @thepost.user.name
+                tr
+                  th.active Title
+                  td.post-sidebar__title
+                    = @thepost.title
+                tr
+                  th.active Created
+                  td.post-sidebar__title
+                    = @thepost.created_at.strftime('%Y/%m/%d %H:%M')
+                tr
+                  th.active Recommendation-rate
+                  td.post-sidebar__title
+                    h5.md-3
+                      = @thepost.rate
+                    div id="star-rate-#{@thepost.id}"
+                      javascript:
+                        $('#star-rate-#{@thepost.id}').raty({
+                          size      : 36,
+                          starOff   : '#{asset_path('star-off.png')}',
+                          starOn    : '#{asset_path('star-on.png')}',
+                          starHalf  : '#{asset_path('star-half.png')}',
+                          half      : true,
+                          readOnly  : true,
+                          score     : #{@thepost.rate},
+                        });
+                tr
+                  th.active Prefecture
+                  td.post-sidebar__title
+                    = @thepost.prefecture.name
+                tr
+                  th.active City
+                  td.post-sidebar__title
+                    = @thepost.city.name
+                tr
+                  th.active Genre
+                  td.post-sidebar__title
+                    = @thepost.genre.name
+                tr
+                  th.active Comment
+                  td.post-sidebar__title
+                    = @thepost.comment
 .row
-  .col-xs-12.post-main.post-main__detail-form
-    .post-detail_box.top-wrapper
-      .row
-        h1
-          | Post Detail
-        p
-          | Find me in app/views/posts/show.html.slim
-      .row
-        .col-xs-3
-          .row
-            .col-xs-10
-              .post-sidebar__image
-                = attachment_image_tag @thepost, :image, fallback:"img/no_photo.png", class:"field", size:"200x200"
-          .row
-            .col-xs-10.post-main__top-btn
-              = link_to(edit_post_path(@thepost), method: :get) do
-                span.btn.btn-default.btn-md.col-xs-8.form-window.glyphicon.glyphicon-cog
-          .row
-            .col-xs-10.post-main__top-btn
-              = link_to(post_path(@thepost), method: :delete) do
-                span.btn.btn-danger.btn-md.col-xs-8.glyphicon.glyphicon-trash.btn-icon-color
-        .col-xs-8
-          table.table.table-bordered
-            thead
-              tr
-                th.bg-primary User
-                td.post-sedebar__title
-                  = @thepost.user.name
-              tr
-                th.active Recommendation-rate
-                td.post-sedebar__title
-                  h5.md-3
-                    = @thepost.rate
-                  div id="star-rate-#{@thepost.id}"
-                    javascript:
-                      $('#star-rate-#{@thepost.id}').raty({
-                        size      : 36,
-                        starOff   : '#{asset_path('star-off.png')}',
-                        starOn    : '#{asset_path('star-on.png')}',
-                        starHalf  : '#{asset_path('star-half.png')}',
-                        half      : true,
-                        readOnly  : true,
-                        score     : #{@thepost.rate},
-                      });
-              tr
-                th.active Title
-                td.post-sedebar__title
-                  = @thepost.title
-              tr
-                th.active Prefecture
-                td.post-sedebar__title
-                  = @thepost.prefecture.name
-              tr
-                th.active City
-                td.post-sedebar__title
-                  = @thepost.city.name
-              tr
-                th.active Genre
-                td.post-sedebar__title
-                  = @thepost.genre.name
-              tr
-                th.active Comment
-                td.post-sedebar__title
-                  = @thepost.comment
-              tr
-                th.active Created at
-                td.post-sedebar__title
-                  = @thepost.created_at
-              tr
-                th.active Last Update at
-                td.post-sedebar__title
-                  = @thepost.updated_at
-.wrapper
-  .row
-    .text-center
-      h2
-        | New Comment
-  .row
-    .col-xs-3
-    .col-xs-9
-      .post-main__new-form
+  .col-xs-6
+    .post-show-new-form
+      .col-xs-12
+        .post-show-new-form__title.text-center
+          h2
+            | New Comment
+    .col-xs-12
+      .post-show-new-form__form
         = form_with(model: [@thepost, @comment], remote: true) do |f|
           .form-window.row
             = f.label :title
@@ -105,15 +102,15 @@
             = f.text_area :comment, rows:'5', id:"comment-body", class:"field col-xs-8", placeholder:"comment here"
           .form-submit.row
             = f.submit "Post", class:"btn btn-md btn-base-1 btn-primary pull-left"
-.wrapper
-  .row
-    h2.text-center
-      | Comments (
-      = @comments.count
-      | )
-    .col-xs-2
-    .col-xs-10
-      = render 'posts/area_comment', comments: @comments_pg, post: @thepost
-    .col-xs-12
-      .text-center
-        = paginate @comments_pg
+  .col-xs-6
+    .post-show-comment
+      .col-xs-12.text-center
+        h2
+          | Comments (
+          = @comments.count
+          | )
+        .col-xs-12
+          = render 'posts/area_comment', comments: @comments_pg, post: @thepost
+        .col-xs-12
+          .text-center
+            = paginate @comments_pg

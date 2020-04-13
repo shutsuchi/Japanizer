@@ -8,22 +8,45 @@
   .col-xs-3
     .post-index-box
     .post-index-box__image
-      .post-index-box__icon
+      .post-index-box__image--pic
         = link_to post_path(post), method: :get do
-          = attachment_image_tag post, :image, fallback:"img/no_photo.png", class:"field", size:"100x100"
-    .post-index-box__image
-      .row
-        .col-xs-6 id="likes_buttons_#{ post.id }"
-          = render 'posts/like', post: post
-        .col-xs-6
-          = render 'posts/comment_count', post: post
+          = attachment_image_tag post, :image, fallback:"img/no_photo.png", class:"field", size:"190x150"
+    .post-index-box__detail
       .row
         .col-xs-12
-          .post-index-box__comment
-            .post-index-box__user-name.bg-info
+          .post-index-box__detail-element
+            .post-index-box__detail-element-name.bg-info.text-center
               = link_to user_path(post.user), method: :get do
                 = post.user.name
-            .post-index-box__title
-              = post.title
-            .post-index-box__post-comment
-              = post.comment
+            .post-index-box__detail-element-others
+              .col-xs-12
+                .post-index-box__detail-element-others--title.text-center
+                  = post.title
+              .col-xs-4
+                  .post-index-box__detail-element-others--genre
+                    col-xs-12
+                      | GENRE: 
+                  .post-index-box__detail-element-others--pref
+                    col-xs-12
+                      | PLACE: 
+                  .post-index-box__detail-element-others--post-comment
+                    col-xs-12
+                      | CREATE: 
+              .col-xs-8
+                  .post-index-box__detail-element-others--genre
+                    col-xs-12
+                      = post.genre.name
+                  .post-index-box__detail-element-others--pref
+                    col-xs-12
+                      = post.prefecture.name
+                  .post-index-box__detail-element-others--time
+                    col-xs-12
+                      = post.created_at.strftime('%Y/%m/%d %H:%M')
+      .row
+        .post-index-box__detail-icon
+          .col-xs-6 id="likes_buttons_#{ post.id }"
+            .post-index-box__detail-icon-like
+              = render 'posts/like', post: post
+          .col-xs-6
+            .post-index-box__detail-icon-comment
+              = render 'posts/comment_count', post: post

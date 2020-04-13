@@ -17,6 +17,7 @@ class AlbumsController < ApplicationController
   # album_path
   def show
     @thealbum = find_album(params[:id])
+    @posts = page(@thealbum.posts)
   end
 
   # GET /album/:id/edit
@@ -103,6 +104,10 @@ class AlbumsController < ApplicationController
   end
   def post_params
     params.require(:post).permit(:album_id)
+  end
+
+  def page(obj)
+    obj.page(params[:page]).reverse_order.per(8)
   end
 
   def find_album(album_id)
