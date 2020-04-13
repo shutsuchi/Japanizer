@@ -1,0 +1,79 @@
+.album-new-form
+  .album-new-form__title
+    h2
+      | New Album
+  = form_with(model: album, url: albums_path, method: :post, local: true) do |f|
+    .album-new-form__book
+      .col-xs-6
+        .album-new-form__image
+          .album-new-form__image--content
+            .form-window.row
+            ul#previews
+              li.input
+                br
+                label.upload-label
+                  .input-area
+                    = f.label :image
+                    br
+                    = f.attachment_field :image, class: "image_upload"
+      .col-xs-6
+        .album-new-form__others
+          .album-new-form__others--content
+            .form-window.row
+              = f.label :title
+              br
+              = f.text_field :title
+              // 下記javascript対応箇所
+            .form-window.row#star
+              = f.label :rate
+              br
+              = f.hidden_field :rate, id: :review_star
+              //rate 評価javascript
+              javascript:
+                  $('#star').raty({
+                    size      : 36,
+                    starOff   : '#{asset_path('star-off.png')}',
+                    starOn    : '#{asset_path('star-on.png')}',
+                    starHalf  : '#{asset_path('star-half.png')}',
+                    scoreName : 'album[rate]',
+                    half      : true,
+                  });
+            .form-window.row
+              = f.label :comment
+              br
+              = f.text_area :comment
+            .form-window.row
+              = f.label :genre_id, "Type of Journey"
+              br
+              = f.collection_select :genre_id, Genre.all, :id, :name, prompt: "Please select"
+            .form-window.row
+              = f.label :budget
+              br
+              /= f.select :budget, options_for_select(1..50), class:"form-control", prompt: "Please select"
+              = f.select :budget, [["under 1", "~ 1"],
+                                  ["1 ~ 3", "1 ~ 3"],
+                                  ["3 ~ 5", "3 ~ 5"],
+                                  ["5 ~ 7", "5 ~ 7"],
+                                  ["7 ~ 9", "7 ~ 9"],
+                                  ["10 ~ 20", "10 ~ 20"],
+                                  ["20 ~ 30", "20 ~ 30"],
+                                  ["30 ~ 40", "30 ~ 40"],
+                                  ["40 ~ 50", "40 ~ 50"],
+                                  ["50 ~", "50 ~"]], class:"form-control", prompt: "Please select"
+            .form-window.row
+              = f.label :people
+              br
+              = f.select :people, options_for_select(1..10), class:"form-control", prompt: "Please select"
+            /.form-window.row
+              = f.label :posts
+              br
+              - if @user_no_posts.nil?
+                p
+                  | 該当なし
+              - else
+                = f.collection_check_boxes :post_quantity, @user_no_posts, :id, :title, prompt: "Please select",
+                  include_hidden: false, class:"post-main__color" do |a|
+                    = a.check_box
+                    = a.label { a.text }
+            .form-submit.row
+              = f.submit "Create post", class:"btn btn-primary col-xs-5"

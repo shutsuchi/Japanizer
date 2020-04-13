@@ -32,7 +32,7 @@
 @import "prefectures";
 @import "analyses";
 
-/*----------- Common -----------*/
+//*----------- Common -----------*/
 * {
   box-sizing: border-box
 }
@@ -53,7 +53,7 @@
   margin-bottom: 40px;
 }
 
-// Title text
+//----- Title text
 h1 {
   position: relative;
   line-height: 1.4;
@@ -84,7 +84,7 @@ h1:after {
   right: 0;
 }
 
-// Subtitle text
+//----- Subtitle text
 h2 {
   position: relative;
   line-height: 1.4;
@@ -107,7 +107,7 @@ h2:after {
   padding-left: 0.5em
 }
 
-// Parttitle text
+//----- Parttitle text
 h3 {
   position: relative;
   line-height: 1.4;
@@ -130,7 +130,7 @@ h3:after {
   padding-left: 0.5em
 }
 
-/*----------- NavBar -----------*/
+//*----------- NavBar -----------*/
 .common-bar {
   background-color: #eee;
   display: block;
@@ -174,14 +174,13 @@ h3:after {
   }
 }
 
-/*----------- Searchbar -----------*/
+//*----------- Searchbar -----------*/
 #search-icon {
   cursor: pointer;
 }
 .search-nav {
   margin: 0 auto;
   width: 100%;
-  position: fixed;
   background-color: #777;
   &__bar {
     padding: 30px;
@@ -205,7 +204,7 @@ h3:after {
   }
 }
 
-/*----------- Pagination -----------*/
+//*----------- Pagination -----------*/
 .pagination>li>a {
   border: none;     /*枠線をなくす*/
   color: #696969;   /*文字の色を変える*/

@@ -2,24 +2,165 @@
 // They will automatically be included in application.css.
 // You can use Sass (SCSS) here: http://sass-lang.com/
 
-/*----- Sidebar -----*/
-.post-sidebar {
-  padding-bottom: 20px;
-  margin-right: 20px;
-  &__edit {
-    background-color: #ffffccc;
+//*----- Index -----*//
+
+//*---- Preview @NewPage
+.preview {
+  width: 200px;
+  height: 100px
+}
+li {
+  list-style: none;
+}
+.post-new-form {
+  height: 800px;
+  background-image: url(img/desk);
+  background-repeat: no-repeat;
+  background-size: cover;
+  background-position: center;
+  &__title {
+  text-align: center;
+  color: white;
+  }
+  &__image {
+  margin: 0 auto;
+  width: 50%;
+  padding: 5px;
+  border: 3px solid #000000;
+  border-top-left-radius: 20px 20px;
+  border-top-right-radius: 20px 20px;
+  background-color: #004400;
+  color: #fffacd;
+  }
+  &__others {
+  margin: 0 auto;
+  width: 50%;
+  padding: 50px;
+  border: 3px solid #000000;
+  border-bottom-left-radius: 20px 20px;
+  border-bottom-right-radius: 20px 20px;
+  background-color: #dddddd;
   }
 }
-/*----- Detail -----*/
+
+
+//----- Post Partial
+.post-index-box {
+    margin: 10px auto;
+
+  &__image {
+    width: 90%;
+    height: 145px;
+    border: 3px solid #333;
+    border-radius: 50px 50px 0 0 / 50px 50px;
+
+    &--pic {
+      padding: 0 0 50px 15px;
+    }
+  }
+
+  &__detail {
+    width: 90%;
+    height: 200px;
+    border: 1px solid #333333;
+  }
+  &__detail-element {
+    height: 150px;
+  }
+  &__detail-element-name {
+      height: 40px;
+      font-weight: bold;
+      font-size: 25px;
+  }
+  &__detail-element-others {
+    padding: 10px 0 0 5px;
+    &--title {
+      padding-bottom: 5px;
+      margin-bottom: 5px;
+      margin-right: 10px;
+      border-bottom: 1px solid #777;
+    }
+    &--genre {
+      margin-bottom: 3px;
+    }
+    &--pref {
+      margin-bottom: 3px;
+    }
+    &--time {
+      margin-bottom: 3px;
+    }
+  }
+  &__detail-icon {
+    margin-top: 10px;
+  }
+  &__detail-icon-like {
+    &--icon {
+      margin-left: 10px;
+    }
+    &--count {
+      margin-left: 10px;
+    }
+  }
+  &__detail-icon-comment {
+    &--icon {
+    }
+    &--count {
+    }
+  }
+
+}
+
+//*----- Show -----*//
+.post-show-comment {
+  width: 100%;
+  margin-top: 30px;
+  margin-left: 10px;
+}
+.post-show-new-form {
+  margin-top: 30px;
+  &__title {
+  }
+  &__form {
+    margin-left: 50px;
+    padding: 50px;
+    height: 400px;
+    width: 90%;
+    background-color: #b0c4de;
+  }
+}
+
+
+//*----- Edit -----*//
+
+//*----- Sidebar
+.post-sidebar {
+  padding-bottom: 20px;
+  padding-right: 20px;
+  height: 500px;
+  &__image {
+    margin: 15px 0 15px 30px;
+  }
+  &__detail {
+    margin-left: 10px;
+    margin-bottom: 50px;
+  }
+  &__btn {
+    margin-left: 30px;
+    margin-top: 25px;
+  }
+}
+//*----- Edit Form
 .post-main {
   margin: 0 auto;
-  width: 80%;
+  width: 100%;
   &__detail {
-    background-color: #2F4F4F;
-    height: 1000px;
+    padding: 25px 0 0 30px;
+    background-color: #fffacd;
+    height: 950px;
+    border-left: 10px double #2f4f4f;
   }
   &__color {
-    color: #fff8dc;
+    color: #000;
   }
   &__box {
     margin-left: 30px;
@@ -43,7 +184,7 @@
   color: white;
 }
 
-/*----- Detail-Image -----*/
+//*----- Detail-Image
 #img_field {
   font-size: 15px;
   margin-top: 10px;
@@ -93,9 +234,10 @@
   color: #fff;
 }
 
-/*----- Comment -----*/
+//*----- Comment
 .post-comment-box {
-  magin: 0 auto;
+  margin-right: 30px;
+  width: 100%;
   &__user-name {
     background-color: #008080;
     color: #ffffff;
@@ -103,6 +245,8 @@
   &__rate {
   }
   &__title {
+    font-weight: bold;
+    font-size: 15px;
   }
   &__comment {
   }
