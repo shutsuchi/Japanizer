@@ -3,11 +3,15 @@ class PostsController < ApplicationController
   # posts_path
   def index
     @post = Post.new
-    @posts_pg = Post.page(params[:page]).reverse_order.per(4)
+    @posts_pg = page(Post)
       # current_user の投稿
-    @user_posts_pg = current_user.posts.page(params[:page]).reverse_order.per(4)
+    @user_posts_pg = page(current_user.posts)
       # current_user 以外の投稿
-    @others_posts_pg = Post.includes(:user).where.not(user_id: current_user.id).page(params[:page]).reverse_order.per(4)
+    @others_posts_pg = page(Post.includes(:user).where.not(user_id: current_user.id))
+  end
+
+  def page(obj)
+    obj.page(params[:page]).reverse_order.per(4)
   end
 
   # GET /post/:id
@@ -32,36 +36,42 @@ class PostsController < ApplicationController
   # POST /posts
   # posts_path
   def create
-    post = Post.new(post_params)
-    post.user_id = current_user.id
+    @post = Post.new(post_params)
+    @post.user_id = current_user.id
     # User新規作成時に生成されるからアルバムに暫定的に所属させる
-    post.album_id = current_user.albums.first.id
-    if post.rate.nil?
-      post.rate = 0
+    @post.album_id = current_user.albums.first.id
+    if @post.rate.nil?
+      @post.rate = 0
     end
-    if post.save!
-      redirect_to post
+    if @post.save
+      redirect_to @post
     else
-      render posts_path
+      @post = Post.new
+      @posts_pg = page(Post)
+        # current_user の投稿
+      @user_posts_pg = page(current_user.posts)
+        # current_user 以外の投稿
+      @others_posts_pg = page(Post.includes(:user).where.not(user_id: current_user.id))
+      render :index
     end
   end
 
   # PATCH /posts/:id
   # post_path
   def update
-    thepost = find_post(params[:id])
-    if thepost.update!(
+    @thepost = find_post(params[:id])
+    if @thepost.update(
         genre_id: post_params[:genre_id].to_i,
         prefecture_id: post_params[:prefecture_id].to_i,
-        city_id: city_update(thepost),
+        city_id: city_update(@thepost),
         image: post_params[:image],
         title: post_params[:title],
         comment: post_params[:comment],
-        rate: rate_update(thepost)
+        rate: rate_update(@thepost)
       )
-      redirect_to thepost
+      redirect_to @thepost
     else
-      thepost.user = current_user
+      @thepost.user = current_user
       render edit_album_path
     end
   end
@@ -86,8 +96,8 @@ class PostsController < ApplicationController
   # DELETE /posts/:id
   # post_path
   def destroy
-    post = find_post(params[:id])
-    post.destroy!
+    @thepost = find_post(params[:id])
+    @thepost.destroy
     redirect_to user_path(current_user)
   end
 

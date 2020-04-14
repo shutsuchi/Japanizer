@@ -12,6 +12,8 @@
         = link_to withdraw_path(current_user), method: :get  do
           span.btn.btn-danger.btn-md.col-xs-8.btn-icon-color
            | WITHDRAW
+    .col-xs-12
+      = render 'layouts/error_message', model: @theuser
     .user-edit-form
       = form_with(model: @theuser , url: user_path, method: :patch, local: true) do |f|
         table.table.table-bordered

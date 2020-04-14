@@ -38,4 +38,13 @@ class User < ApplicationRecord
 
   attachment :image
 
+  validates :name, presence: true,
+                    length: { in: 1..50 }
+  validates :age, presence: true
+  validates :country_code, presence: true
+  VALID_EMAIL_REGEX = /\A[\w+\-.]+@[a-z\d\-.]+\.[a-z]+\z/i
+  validates :email, presence: true, uniqueness: true, format: { with: VALID_EMAIL_REGEX }
+  validates :withdrawal_flag, inclusion: { in: [true, false] }
+  validates :admin, inclusion: { in: [true, false] }
+
 end

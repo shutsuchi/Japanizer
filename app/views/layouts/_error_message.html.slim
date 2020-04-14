@@ -1,0 +1,14 @@
+- if model.errors.any?
+  .error-box
+    .col-xs-12
+      .error-box__title
+        = model.errors.count
+        |  errors prohibited this 
+        = model.class.name
+        |  from being saved:
+      .error-box__text
+        ul
+          - model.errors.full_messages.each do |message|
+            li.error__text
+              = message
+
