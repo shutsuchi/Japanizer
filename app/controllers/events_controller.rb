@@ -1,5 +1,4 @@
 class EventsController < ApplicationController
-  before_action :set_event, only: [:show, :edit, :update, :destroy]
 
   # GET /events
   # GET /events.json
@@ -27,57 +26,67 @@ class EventsController < ApplicationController
     @event = Event.new(event_params)
     @event.user_id = current_user.id
 
-    if @event.save!
+    if @event.save
         redirect_to user_path(current_user), notice: 'Event was successfully created.'
     else
+        @theuser = current_user
+        @posts = @theuser.posts.all
+        @albums = @theuser.albums.all
+        @event = Event.new
+        @events = Event.where(user_id: @theuser.id)
+
+        # User が獲得した対象カウント
+        @posts = @theuser.posts.all
+        @albums = @theuser.albums.all
+        @get_likes = @posts.each do |post|
+                      like_count = 0
+                      like_count = Like.where(post_id: post.id).count
+                      like_count += like_count
+                    end
+        @get_comments = @posts.each do |post|
+                          comment_count = 0
+                          comment_count = PostComment.where(post_id: post.id).count
+                          comment_count += comment_count
+                        end
+        @get_bookmarks = @albums.each do |album|
+                            bookmark_count = 0
+                            bookmark_count = Bookmark.where(album_id: album.id).count
+                            bookmark_count += bookmark_count
+                          end
+
+        # User が実行した対象カウント
+        @give_likes = Like.where(user_id: @theuser.id).all
+        @give_comments = PostComment.where(user_id: @theuser.id).all
+        @give_bookmarks = Bookmark.where(user_id: @theuser.id).all
         redirect_to user_path(current_user), notice: 'Event was failed to create.'
     end
   end
 
   def update
-      event = Event.find(params[:id])
+      event = find_event(params[:id])
       @events = Event.where(user_id: current_user.id)
       event.update(event_params)
   end
 
   def destroy
-      @user = User.find(params[:id])
+      @user = find_User(params[:id])
       event = Event.find(params[:id])
-      event.destroy
-      redirect_to user_path(@user)
+      if event.destroy
+        redirect_to user_path(@user)
+      end
   end
 
-  # PATCH/PUT /events/1
-  # PATCH/PUT /events/1.json
-  #def update
-  #  respond_to do |format|
-  #    if @event.update!(event_params)
-  #      format.html { redirect_to @event, notice: 'Event was successfully updated.' }
-  #      format.json { render :show, status: :ok, location: @event }
-  #    else
-  #      format.html { render :edit }
-  #      format.json { render json: @event.errors, status: :unprocessable_entity }
-  #    end
-  #  end
-  #end
-
-  ## DELETE /events/1
-  ## DELETE /events/1.json
-  #def destroy
-  #  @event.destroy!
-  #  respond_to do |format|
-  #    format.html { redirect_to events_url, notice: 'Event was successfully destroyed.' }
-  #    format.json { head :no_content }
-  #  end
-  #end
 
   private
     # Use callbacks to share common setup or constraints between actions.
-    def set_event
-      @event = Event.find(params[:id])
+    def find_event(event_id)
+      Event.find(event_id)
     end
 
-    # Only allow a list of trusted parameters through.
+    def find_user(user_id)
+      User.find(user_id)
+    end
+
     def event_params
       params.require(:event).permit(:user_id, :genre_id, :title, :body, :start, :end)
     end

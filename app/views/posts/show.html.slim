@@ -5,8 +5,6 @@
         .row
           h1
             | Post Detail
-          p
-            | Find me in app/views/posts/show.html.slim
         .row
           .col-xs-3
             .row
@@ -71,6 +69,8 @@
 .row
   .col-xs-6
     .post-show-new-form
+      .col-xs-12
+        = render 'layouts/error_message', model: @comment
       .col-xs-12
         .post-show-new-form__title.text-center
           h2

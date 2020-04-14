@@ -44,7 +44,7 @@ class UsersController < ApplicationController
 
   def switch
     @theuser = current_user
-    if @theuser.update!(withdrawal_flag: false)
+    if @theuser.update(withdrawal_flag: false)
       redirect_to top_path
     else
       render :withdraw
@@ -53,9 +53,10 @@ class UsersController < ApplicationController
 
   def update
     @theuser = current_user
-    if @theuser.update!(user_params)
+    if @theuser.update(user_params)
       redirect_to user_path(@theuser.id), notice: "Successfully Updated"
     else
+      @theuser = current_user
       render :edit, notice: "Failed to Update"
     end
   end

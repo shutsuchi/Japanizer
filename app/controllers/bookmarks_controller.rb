@@ -6,7 +6,7 @@ class BookmarksController < ApplicationController
     @album = find_album(params[:album_id])
     bookmark = current_user.bookmarks.new(album_id: @album.id)
     respond_to do |format|
-      if bookmark.save!
+      if bookmark.save
         format.js
       end
     end
@@ -16,7 +16,7 @@ class BookmarksController < ApplicationController
     @album = find_album(params[:album_id])
     bookmark = current_user.bookmarks.find_by(album_id: @album.id)
     respond_to do |format|
-      if bookmark.destroy!
+      if bookmark.destroy
         format.js
       end
     end

@@ -2,6 +2,8 @@
   .album-new-form__title
     h2
       | New Album
+  .row
+    = render 'layouts/error_message', model: @album
   = form_with(model: album, url: albums_path, method: :post, local: true) do |f|
     .album-new-form__book
       .col-xs-6

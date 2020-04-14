@@ -2,6 +2,8 @@
   .post-new-form__title
     h2
       | New Post
+  .row
+    = render 'layouts/error_message', model: post
   = form_with(model: post, url: posts_path, method: :post, local: true) do |f|
     .post-new-form__image
       .form-window.row

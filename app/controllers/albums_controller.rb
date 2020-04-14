@@ -4,13 +4,17 @@ class AlbumsController < ApplicationController
   # albums_path
   def index
     @album = Album.new
-    @albums_pg = Album.page(params[:page]).reverse_order.per(4)
+    @albums_pg = page(Album)
       # 空アルバム
     @user_no_posts = Post.where(album_id: current_user.albums.first.id)
       # current_user のアルバム
-    @user_albums_pg = current_user.albums.page(params[:page]).reverse_order.per(4)
+    @user_albums_pg = page(current_user.albums)
       # current_user以外のアルバム
-    @others_albums_pg = Album.includes(:user).where.not(user_id: current_user.id).page(params[:page]).reverse_order.per(4)
+    @others_albums_pg = page(Album.includes(:user).where.not(user_id: current_user.id))
+  end
+
+  def page(obj)
+    obj.page(params[:page]).reverse_order.per(4)
   end
 
   # GET /album/:id
@@ -35,10 +39,15 @@ class AlbumsController < ApplicationController
     if album.rate.nil?
       album.rate = 0
     end
-    if album.save!
+    if album.save
       redirect_to album
     else
-      render albums_path
+      @album = Album.new
+      @albums_pg = page(Album)
+      @user_no_posts = Post.where(album_id: current_user.albums.first.id)
+      @user_albums_pg = page(current_user.albums)
+      @others_albums_pg = page(Album.includes(:user).where.not(user_id: current_user.id))
+      render :index
     end
   end
 
@@ -47,7 +56,7 @@ class AlbumsController < ApplicationController
   def update
     thealbum = find_album(params[:id])
 
-    if thealbum.update!(
+    if thealbum.update(
         genre_id: params[:album][:genre_id],
         image: params[:album][:image],
         title: params[:album][:title],
@@ -89,7 +98,7 @@ class AlbumsController < ApplicationController
   def destroy
     thealbum = find_album(params[:id])
     posts = Post.where(album_id: thealbum.id)
-    if thealbum.destroy!
+    if thealbum.destroy
       # 削除対象のアルバムに紐づいていた投稿のアルバムIDを未決アルバムのIDに変更
       posts.each do |post|
         post.update!(album_id: current_user.albums.first.id)

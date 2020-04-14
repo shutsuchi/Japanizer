@@ -7,7 +7,7 @@ class PostCommentsController < ApplicationController
     comment = current_user.post_comments.new(post_comment_params)
     comment.post_id = @thepost.id
     respond_to do |format|
-      if comment.save!
+      if comment.save
         format.js
       end
     end
@@ -15,14 +15,14 @@ class PostCommentsController < ApplicationController
 
   def update
     @comment = find_comment(params[:id])
-    @comment.update!(post_comment_params)
+    @comment.update(post_comment_params)
     render json: @comment
   end
 
   def destroy
     @comment = find_comment(params[:id])
     respond_to do |format|
-      if @comment.destroy!
+      if @comment.destroy
         format.js
       end
     end
