@@ -35,19 +35,19 @@
                       .col-xs-12
                           .album-index-box__detail-element-others--item
                             col-xs-12
-                              | GENRE: 
+                              = t('albums.index.genre')
                           .album-index-box__detail-element-others--genre
                             col-xs-12
                               = album.genre.name
                           .album-index-box__detail-element-others--item
                             col-xs-12
-                              | BUDGET: 
+                              = t('albums.index.budget')
                           .album-index-box__detail-element-others--budget
                             col-xs-12
                               = album.budget
                           .album-index-box__detail-element-others--item
                             col-xs-12
-                              | CREATE: 
+                              = t('albums.index.create')
                           .album-index-box__detail-element-others--time
                             col-xs-12
                               = album.created_at.strftime('%Y/%m/%d %H:%M')

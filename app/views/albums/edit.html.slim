@@ -3,7 +3,7 @@
     .post-sidebar
       .top-wrapper
         h1
-          | Album Edit
+          = t('albums.edit.pagetitle')
         .row
           .post-sidebar__image
             = attachment_image_tag @thealbum, :image, fallback:"img/no_photo.png", class:"field", size:"200x200"
@@ -12,31 +12,31 @@
             table.table.table-bordered
               thead
                 tr
-                  th.bg-primary User
+                  th.bg-primary = t('albums.show.user')
                   td.post-sidebar__title
                     = @thealbum.user.name
                 tr
-                  th.active Title
+                  th.active = t('albums.show.title')
                   td.post-sidebar__title
                     = @thealbum.title
                 tr
-                  th.active rate
+                  th.active = t('albums.show.rate')
                   td.post-sidebar__title
                     = @thealbum.rate
                 tr
-                  th.active Genre
+                  th.active = t('albums.show.genre')
                   td.post-sidebar__title
                     = @thealbum.genre.name
                 tr
-                  th.active Comment
+                  th.active = t('albums.show.comment')
                   td.post-sidebar__title
                     = @thealbum.comment
                 tr
-                  th.active Created at
+                  th.active = t('albums.show.create')
                   td.post-sidebar__title
                     = @thealbum.created_at.strftime('%Y/%m/%d %H:%M')
                 tr
-                  th.active Last Update at
+                  th.active = t('albums.show.update')
                   td.post-sidebar__title
                     = @thealbum.updated_at.strftime('%Y/%m/%d %H:%M')
 

@@ -1,0 +1,48 @@
+ja:
+  albums:
+    index:
+      new_form: 'アルバム作成'
+      f_image: '画像'
+      f_album_title: 'タイトル'
+      f_rate: 'オススメ度'
+      f_comment: 'コメント'
+      f_genre: '旅の種別'
+      f_budget: '予算(万円)'
+      f_people: '人数'
+      f_submit: 'アルバムを作成する'
+
+      subtitle_y: 'あなたのアルバム'
+      no_album: '最初のアルバムを作成します?'
+
+      subtitle_o: '他ユーザのアルバム'
+
+      genre: '- ジャンル -'
+      budget: '- 予算(万円) -'
+      create: '- 作成日 -'
+
+    show:
+      title: 'アルバム詳細'
+      posts: 'このアルバムに入っている投稿'
+      user: 'ユーザ名'
+      title: 'タイトル'
+      no_posts: '格納している投稿数'
+      rate: 'オススメ度'
+      genre: 'ジャンル'
+      comment: 'コメント'
+      create: '作成日'
+      update: '最終更新日'
+
+    edit:
+      pagetitle: 'アルバム編集'
+
+      subtitle: '編集'
+
+      f_image: '画像'
+      f_title: 'タイトル'
+      f_rate: 'オススメ度'
+      f_comment: 'コメント'
+      f_genre: '旅の種別'
+      f_budget: '予算(万円)'
+      f_people: '人数'
+      f_post: 'アルバムに入れたい投稿'
+      f_submit: 'アルバムを更新する'

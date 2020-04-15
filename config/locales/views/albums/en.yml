@@ -1,0 +1,48 @@
+en:
+  albums:
+    index:
+      new_form: 'New Album'
+      f_image: 'Image'
+      f_album_title: 'Title'
+      f_rate: 'Rate'
+      f_comment: 'Comment'
+      f_genre: 'Type of Journey'
+      f_budget: 'Budget(/000yen)'
+      f_people: 'Number of People'
+      f_submit: 'Create Album'
+
+      subtitle_y: 'Your Album'
+      no_album: "Let's create first album"
+
+      subtitle_o: 'Others Album'
+
+      genre: '- GENRE -'
+      budget: 'BUDGET(/000yen) -'
+      create: '- CREATE -'
+
+    show:
+      pagetitle: 'Album Detail'
+      posts: 'Posts in This Album'
+      user: 'User'
+      title: 'Title'
+      no_posts: 'Number of Posts'
+      rate: 'Recommendation-rate'
+      genre: 'Genre'
+      comment: 'Comment'
+      create: 'Created'
+      update: 'Last Updated'
+
+    edit:
+      pagetitle: 'Album Edit'
+
+      subtitle: 'Edit'
+
+      f_image: 'Image'
+      f_title: 'Title'
+      f_rate: 'Rate'
+      f_comment: 'Comment'
+      f_genre: 'Type of Journey'
+      f_budget: 'Budget(/000yen)'
+      f_people: 'Number of People'
+      f_post: 'Post you want to add'
+      f_submit: 'Create Album'

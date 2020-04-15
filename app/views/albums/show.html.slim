@@ -3,7 +3,7 @@
     .post-detail_box.top-wrapper
       .row
         h2
-          | Album Detail
+          = t('albums.show.pagetitle')
       .row
         .col-xs-3
           .row
@@ -22,19 +22,19 @@
           table.table.table-bordered
             thead
               tr
-                th.bg-primary User
+                th.bg-primary = t('albums.show.user')
                 td.post-sedebar__title
                   = @thealbum.user.name
               tr
-                th.active Title
+                th.active  t('albums.show.title')
                 td.post-sedebar__title
                   = @thealbum.title
               tr
-                th.active Number of Posts
+                th.active = t('albums.show.title')
                 td.post-sedebar__title
                   = @thealbum.posts.count
               tr
-                th.active Recommendation-rate
+                th.active = t('albums.show.rate')
                 td.post-sedebar__title
                   h5.md-e
                     = @thealbum.rate
@@ -50,24 +50,24 @@
                         score     : #{@thealbum.rate},
                       });
               tr
-                th.active Genre
+                th.active = t('albums.show.genre')
                 td.post-sedebar__title
                   = @thealbum.genre.name
               tr
-                th.active Comment
+                th.active = t('albums.show.comment')
                 td.post-sedebar__title
                   = @thealbum.comment
               tr
-                th.active Created at
+                th.active = t('albums.show.create')
                 td.post-sedebar__title
                   = @thealbum.created_at
               tr
-                th.active Last Update at
+                th.active = t('albums.show.update')
                 td.post-sedebar__title
                   = @thealbum.updated_at
       .row
         h2
-          | Posts in This Album
+          = t('albums.show.posts')
         .col-xs-12
           .album-posts-list
             = render @posts
