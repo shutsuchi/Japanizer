@@ -1,0 +1,12 @@
+en:
+  searches:
+    title: 'Search Result'
+    condition: 'search-results of '
+
+    subtitle_post: 'Post'
+    subtitle_album: 'Album'
+
+    past_year: 'Past year'
+    past_month: 'Past month'
+    past_week: 'Past week'
+    past_24: 'Past 24 hours'

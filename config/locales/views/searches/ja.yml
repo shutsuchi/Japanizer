@@ -1,0 +1,12 @@
+ja:
+  searches:
+    title: '検索結果'
+    condition: '検索条件: '
+
+    subtitle_post: '投稿'
+    subtitle_album: 'アルバム'
+
+    past_year: '過去1年'
+    past_month: '過去1ヶ月'
+    past_week: '過去1週間'
+    past_24: '過去 24時間'
