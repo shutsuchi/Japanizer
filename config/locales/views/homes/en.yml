@@ -1,0 +1,49 @@
+en:
+  homes:
+    top:
+      title_text: 'What do you want to do'
+      title_description: 'Enjoy Japanizer with ways down below'
+
+      subtitle_1: 'Trend in journey'
+      subtitle_2: 'Search albums'
+      subtitle_3: 'Search posts & albums'
+
+      data_title: 'Data'
+      budget_title: 'Budget'
+      genre_title: 'Genre'
+      area_title: 'Area'
+      age_title: 'Age'
+      nation_title: 'Nationality'
+
+      ranking: 'Ranking'
+      post_like: 'Post Like'
+      post_comment: 'Post Comment'
+      album_bookmark: 'Album Bookmark'
+
+      data_text_1: ''
+      data_text_2: ''
+      data_text_3: ''
+
+      budget_text: ''
+      genre_text: ''
+      area_text: ''
+      age_text: ''
+      nation_text: ''
+
+    about:
+      subtitle_1: 'About Japanizer'
+      subtitle_2: 'Have a fun with Japanizer !!'
+      subtitle_3: 'Contact with me'
+
+      know: 'Know'
+      know_text_1: 'What type of journey in Japan'
+      know_text_2: 'Focus on age, area, budget, etc...'
+      compare: 'Compare'
+      compare_text_1: 'Trend in Japanese or the others'
+      compare_text_2: 'Recommend each special journey'
+      post: 'Post'
+      post_text_1: 'Record your amazing journey in Japan'
+      post_text_2: 'Then bind in one album'
+
+      click_text_1: 'Click plane icon'
+      click_text_2: 'To enjoy Japan on Japanizer'

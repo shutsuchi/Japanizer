@@ -2,7 +2,7 @@
   .row
     .col-xs-12.text-center
       h1
-        | Journey Trend in Japan
+        = t('.title')
     .col-xs-12
       .col-xs-6
         = render 'jp_rank', jp_area_ranks: @jp_area_ranks, jp_genre_ranks: @jp_genre_ranks, jp_budget_ranks: @jp_budget_ranks

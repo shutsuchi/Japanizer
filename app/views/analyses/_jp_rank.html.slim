@@ -1,17 +1,17 @@
 .jp-data
   .jp-data__title.text-center
     h2
-      | Japanese Ranking
+      = t('analyses.data.subtitle_jp')
   .jp-data__box
     .jp-data__rank-unit
       .jp-data__rank-unit--area
         .col-xs-12
           h3
-            | Area Ranking
+            = t('analyses.data.area_rank')
         .col-xs-12
           - if jp_area_ranks.nil?
             h4
-              | NO DATA
+              = t('common.no_data')
           - else
             - jp_area_ranks.each.with_index(1) do |pref, i|
               .col-xs-4
@@ -34,11 +34,12 @@
       .jp-data__rank-unit--genre
         .col-xs-12
           h3
-            | Genre Ranking
+            = t('analyses.data.genre_rank')
+        .col-xs-12
         .col-xs-12
           - if jp_genre_ranks.nil?
             h4
-              | NO DATA
+              = t('common.no_data')
           - else
             - jp_genre_ranks.each.with_index(1) do |genre, i|
               .col-xs-4
@@ -60,11 +61,11 @@
       .jp-data__rank-unit--budget
         .col-xs-12
           h3
-            | Budget Ranking
+            = t('analyses.data.budget_rank')
         .col-xs-12
           - if jp_budget_ranks.nil?
             h4
-              | NO DATA
+              = t('common.no_data')
           - else
             - jp_budget_ranks.each.with_index(1) do |budget, i|
               .col-xs-4
@@ -82,4 +83,3 @@
                       /div class="budget-img__#{ .id }"
                   .jp-data__budget-rank-name
                     = budget
-                    | 万

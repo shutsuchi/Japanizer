@@ -1,0 +1,50 @@
+ja:
+  homes:
+    top:
+      title_text: '今日は何がしたい?'
+      title_description: 'さあ、日本をどう楽しもうか'
+
+
+      subtitle_1: '旅行の傾向を見る'
+      subtitle_2: '投稿を検索する'
+      subtitle_3: '投稿とアルバムを検索する'
+
+      data_title: 'データ'
+      budget_title: '予算'
+      genre_title: 'ジャンル'
+      area_title: '地域'
+      age_title: '年齢'
+      nation_title: '国籍'
+
+      ranking: 'ランキング'
+      post_like: '投稿 いいね数'
+      post_comment: '投稿 コメント数'
+      album_bookmark: 'アルバム ブックマーク数'
+
+      data_text_1: ''
+      data_text_2: ''
+      data_text_3: ''
+
+      budget_text: ''
+      genre_text: ''
+      area_text: ''
+      age_text: ''
+      nation_text: ''
+
+    about:
+      subtitle_1: 'Japanizer とは'
+      subtitle_2: '良い旅行を！'
+      subtitle_3: 'コンタクト'
+
+      know: '知る'
+      know_text_1: 'どんな日本旅行が人気なのか'
+      know_text_2: '年齢、予算、エリア別に探してみよう'
+      compare: '比較する'
+      compare_text_1: '日本人と海外からの旅行者の傾向の違い'
+      compare_text_2: 'それぞれの最高の旅行をおすすめしよう'
+      post: '投稿する'
+      post_text_1: '旅行の記録を残そう'
+      post_text_2: '旅行記録をアルバムにもまとめられる'
+
+    click_text_1: '飛行機のアイコンをクリックして'
+    click_text_2: 'Japanizer で日本を楽しもう'
