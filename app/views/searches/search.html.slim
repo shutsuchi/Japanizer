@@ -7,7 +7,10 @@
       - if @posts
         .col-xs-5.bg-success.text-center
           | search-results of Post / 
-          = @result_genre.name
+          - if @result_genre.instance_of?(String)
+            = @result_genre
+          - else
+            = @result_genre.name
           | / 
           - if @time == "year_search"
             | Past-Year

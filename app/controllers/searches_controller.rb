@@ -13,7 +13,11 @@ class SearchesController < ApplicationController
       end
       @results.uniq!
     else
-      @result_genre = Genre.find(params[:genre])
+      if params[:genre] =~ /\A[0-9]+\z/
+        @result_genre = Genre.find(params[:genre])
+      else
+        @result_genre = 'All'
+      end
       @option = params[:option]
       @genre = params[:genre]
       @time = params[:time]
