@@ -21,6 +21,20 @@
           li.common-bar__link-text
             = link_to t('app.header.about'), about_path, class:"far fa-question-circle"
           li.common-bar__link-text
+            = link_to t('app.header.sign_out'), destroy_user_session_path, class:"fas fa-door-closed"
+          li.common-bar__link-text
+            - if I18n.locale.to_s == "en"
+              = link_to('日本語', :locale => 'ja')
+            - elsif I18n.locale.to_s == "ja"
+              = link_to('English', :locale => 'en')
+          li.common-bar__link-text.pull-right#search-icon
+            i.fas.fa-search style="font-size:20px; color:#2c7cff;"
+    - else
+          li.common-bar__link-text
+            = link_to t('app.header.home'), top_path, class:"fas fa-home"
+          li.common-bar__link-text
+            = link_to t('app.header.about'), about_path, class:"far fa-question-circle"
+          li.common-bar__link-text
             = link_to t('app.header.sign_in'), new_user_session_path, class:"fas fa-door-open"
           li.common-bar__link-text
             = link_to t('app.header.sign_up'), new_user_registration_path, class:"far fa-flag"
@@ -29,19 +43,5 @@
               = link_to('日本語', :locale => 'ja', class:"far fa-dot-circle")
             - elsif I18n.locale.to_s == "ja"
               = link_to('English', :locale => 'en', class:"fas fa-flag-usa")
-          li.common-bar__link-text.pull-right#search-icon
-            i.fas.fa-search style="font-size:20px; color:#2c7cff;"
-    - else
-          li.common-bar__link-text
-            = link_to "Home", top_path, class:"fas fa-home"
-          li.common-bar__link-text
-            = link_to "About", about_path, class:"far fa-question-circle"
-          li.common-bar__link-text
-            = link_to "LogOut", destroy_user_session_path, class:"fas fa-door-closed"
-          li.common-bar__link-text
-            - if I18n.locale.to_s == "en"
-              = link_to('日本語', :locale => 'ja')
-            - elsif I18n.locale.to_s == "ja"
-              = link_to('English', :locale => 'en')
           li.common-bar__link-text.pull-right#search-icon
             i.fas.fa-search style="font-size:20px; color:#2c7cff;"
