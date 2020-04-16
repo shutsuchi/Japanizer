@@ -129,9 +129,12 @@
   }
 }
 
+.fa-book {
+  margin-top: 20px;
+}
 .fa-plane-departure {
   font-size: 150px;
-  margin-top: 50px;
+  margin-top: 30px;
   color: #ff8c00;
 }
 
@@ -156,6 +159,7 @@
     height: 300px;
     width: 95%;
     color: white;
+    font-weight: bold;
     border: 1px solid #000000;
     border-radius: 15px;
     background-image: url(img/top_data.jpeg);
@@ -166,11 +170,12 @@
     margin-left: 5em;
     margin-top: 10em;
   }
-  &__price-box {
+  &__budget-box {
     margin: 20px auto;
     height: 250px;
-    color: white;
     width: 65%;
+    font-weight: bold;
+    color: black;
     border: 1px solid #000000;
     border-radius: 15px;
     background-image: url(img/top_price.jpeg);
@@ -183,6 +188,7 @@
     height: 250px;
     width: 95%;
     color: white;
+    font-weight: bold;
     border: 1px solid #000000;
     border-radius: 15px;
     background-image: url(img/top_genre.jpeg);
@@ -195,6 +201,7 @@
     height: 250px;
     width: 95%;
     color: black;
+    font-weight: bold;
     border: 1px solid #000000;
     border-radius: 15px;
     background-image: url(img/top_area.jpeg);
@@ -206,6 +213,7 @@
     height: 250px;
     width: 95%;
     color: black;
+    font-weight: bold;
     border: 1px solid #000000;
     border-radius: 15px;
     background-image: url(img/top_age.jpeg);
@@ -216,16 +224,35 @@
     margin: 20px auto;
     height: 250px;
     width: 95%;
-    color: white;
+    color: black;
+    font-weight: bold;
     border: 1px solid #000000;
     border-radius: 15px;
     background-image: url(img/top_nation.jpeg);
     background-repeat: no-repeat;
     background-size: cover;
   }
+  &__big-text {
+    margin-top: 130px;
+    margin-right: 300px;
+    color: white;
+    font-size: 55px;
+    font-weight: bold;
+    background-color: black;
+    border-radius: 50px;
+    opacity: 0.8;
+  }
   &__text {
-    margin-left: 1em;
-    margin-top: 2em;
+    margin-top: 130px;
+    margin-right: 150px;
+    color: white;
+    font-weight: bold;
+    background-color: black;
+    border-radius: 50px;
+    opacity: 0.8;
+  }
+  &__text p {
+    font-size: 10px;
   }
 }
 
@@ -277,6 +304,7 @@
     border: 1px solid #333333;
   }
 }
+
 //------ RANK
 .rank-box {
   margin: 0 auto;
