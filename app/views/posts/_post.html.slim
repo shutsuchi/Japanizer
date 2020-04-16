@@ -3,6 +3,7 @@
     .bg-danger.text-center
       h1
         | NO POSTS
+        = t('app.common.no_post')
 
 - else
   .col-xs-3
@@ -25,13 +26,13 @@
               .col-xs-4
                   .post-index-box__detail-element-others--genre
                     col-xs-12
-                      | GENRE: 
+                      = t('posts.partial.genre')
                   .post-index-box__detail-element-others--pref
                     col-xs-12
-                      | PLACE: 
+                      = t('posts.partial.place')
                   .post-index-box__detail-element-others--post-comment
                     col-xs-12
-                      | CREATE: 
+                      = t('posts.partial.create')
               .col-xs-8
                   .post-index-box__detail-element-others--genre
                     col-xs-12

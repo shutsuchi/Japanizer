@@ -1,4 +1,4 @@
 
-= label :city_id, "City You've Been"
+= label :city_id, t('posts.index.f_city')
 br
 = collection_select :post, :city_id, City.where(prefecture_id: prefecture_id), :id, :name, prompt: "Please select"

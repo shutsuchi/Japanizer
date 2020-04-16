@@ -20,15 +20,30 @@ en:
       post_comment: 'Post Comment'
       album_bookmark: 'Album Bookmark'
 
-      data_text_1: ''
-      data_text_2: ''
-      data_text_3: ''
 
-      budget_text: ''
-      genre_text: ''
-      area_text: ''
-      age_text: ''
-      nation_text: ''
+      data_text_1: 'Natination, age, price, genre...'
+      data_text_2: 'compare with few condition'
+      data_text_3: 'what is popular plan or place in Japan'
+
+      budget_text_1: 'Need certain mount of maney for travel...'
+      budget_text_2: 'What we can do our plan'
+      budget_text_3: 'How mach money we need doing this..'
+
+      genre_text_1: 'Date, Solo travel, Shopping...'
+      genre_text_2: 'A lot of types of journey.'
+      genre_text_3: 'What ara you going to do next journey ?'
+
+      area_text_1: 'Tokyo ? Hokkaido ? Osaka ?'
+      area_text_2: 'DO you really know about Japan ?'
+      area_text_3: 'You may get to know REAL Japan...'
+
+      age_text_1: 'People can enjoy to travel'
+      age_text_2: 'No matter how old we are, but it may different'
+      age_text_3: 'what you want depends on age, right ?'
+
+      nation_text_1: 'There are likely Plans or Places'
+      nation_text_2: 'which only the local knows'
+      nation_text_3: 'or Your buddy might have some recommendations'
 
     about:
       subtitle_1: 'About Japanizer'

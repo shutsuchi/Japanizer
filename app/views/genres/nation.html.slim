@@ -2,12 +2,12 @@
   .row
     .col-xs-12.text-center
       h1
-        = t('.title')
+        = t('genres.nation.pagetitle')
       p
-        = t('.page_description')
+        = t('genres.nation.description')
     .col-xs-7
       .nation-icon
-        // 年代アイコン
+        // 国籍アイコン
         - if @nation == "1"
           .nation-icon__1
         - elsif @nation == "2"
@@ -15,7 +15,7 @@
         - else
           .nation-icon__default
     .col-xs-5
-      //年代リスト
+      // 国籍リスト
       ol
         ul#area
           .col-xs-12
@@ -30,7 +30,7 @@
       .album-index
         .album-index__title
           h1.text-center
-            = t('.post_list')
+            = t('genres.subtitle_p')
           .col-xs-12
             - if @posts.present?
               - @posts.each do |post|
@@ -39,12 +39,12 @@
                 = paginate @posts
             - else
               h3.bg-danger.text-center
-                | NO POST
+                = t('app.common.no_post')
     .row
       .album-index
         .album-index__title
           h1.text-center
-            = t('.album_list')
+            = t('genres.subtitle_a')
           .col-xs-12
             - if @albums.present?
               - @albums.each do |album|
@@ -53,4 +53,4 @@
                 = paginate @albums
             - else
               h3.bg-danger.text-center
-                | NO ALBUM
+                = t('app.common.no_album')

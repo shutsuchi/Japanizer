@@ -1,24 +1,26 @@
 .row
-  = render 'new_form', post: @post
+  - if user_signed_in?
+    = render 'new_form', post: @post
 
-.container
-  .row
-    .album-index
-      .album-index__title
-        - unless current_user.posts.nil?
-            h2
-              | Your Posts
-            .col-xs-12
-              / current_userの投稿一覧
-              = render @user_posts_pg
+- if user_signed_in?
+  .container
+    .row
+      .album-index
+        .album-index__title
+          - unless current_user.posts.nil?
+              h2
+                = t('posts.index.post_y')
+              .col-xs-12
+                / current_userの投稿一覧
+                = render @user_posts_pg
 
-            .col-xs-12
-              .text-center
-                = paginate @user_posts_pg
-        - else
-            h2
-              / (予定)Link to THIS page-top
-              | Let's create YOUR post
+              .col-xs-12
+                .text-center
+                  = paginate @user_posts_pg
+          - else
+              h2
+                / (予定)Link to THIS page-top
+                = t('posts.index.no_post')
 
 .container
   .row
@@ -26,7 +28,7 @@
       .album-index__title
         - unless @others_posts_pg.nil?
             h2
-              | Other Posts
+              = t('posts.index.post_o')
             .col-xs-12
               / current_user以外userの投稿一覧
               = render @others_posts_pg
@@ -37,4 +39,4 @@
         - else
           .col-xs-12
             h2
-              | NO DATA
+              = t('app.common.no_post')

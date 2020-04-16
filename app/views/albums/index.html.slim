@@ -1,22 +1,24 @@
 .row
-  = render 'new_form', album: @album
+  - if user_signed_in?
+    = render 'new_form', album: @album
 
-.container
-  .row
-    .album-index
-      .album-index__title
-        - unless current_user.albums.nil?
-            h2
-              = t('albums.index.subtitle_y')
-            .col-xs-12
-                = render @user_albums_pg
-
-            .col-xs-12.text-center
-                = paginate @user_albums_pg
-        - else
-            .col-xs-12
+- if user_signed_in?
+  .container
+    .row
+      .album-index
+        .album-index__title
+          - unless current_user.albums.nil?
               h2
-                = t('albums.index.no_album')
+                = t('albums.index.subtitle_y')
+              .col-xs-12
+                  = render @user_albums_pg
+
+              .col-xs-12.text-center
+                  = paginate @user_albums_pg
+          - else
+              .col-xs-12
+                h2
+                  = t('albums.index.no_album')
 
 .container
   .row

@@ -19,6 +19,7 @@
         .search-nav__title
           h4
             | Condition-Search
+            = t('app.searchbar.condition')
         .search-nav__form
           = form_with(url: search_path, local: true, method: :get, class: "form4") do |f|
               = f.select :option, [["Post", "post_search"], ["Album", "album_search"]]

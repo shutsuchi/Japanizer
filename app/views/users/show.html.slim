@@ -7,7 +7,7 @@
 
       - else
         h1
-          | My Page
+          = t('users.show.pagetitle')
   .row
     .calendar-box
       .col-xs-7
@@ -33,10 +33,10 @@
         .mypage-post-list__title
           - if @posts.nil?
             h2
-              | Let's create your FIRST post
+              = t('users.show.no_post')
           - else
             h2
-              | Your Posts
+              = t('users.show.subtitle_p')
       .col-xs-12
         = render @posts
   .row
@@ -45,9 +45,9 @@
         .mypage-post-list__title
           - if @posts.nil?
             h2
-              | Let's create your FIRST album
+              = t('users.show.no_album')
           - else
             h2
-              | Your Albums
+              = t('users.show.subtitle_a')
       .col-xs-12
         = render @albums

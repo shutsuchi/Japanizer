@@ -3,7 +3,7 @@
     .post-sidebar
       .top-wrapper
         h1
-          | Post Edit
+          = t('posts.edit.pagetitle')
         .row
           .post-sidebar__image
             = attachment_image_tag @thepost, :image, fallback:"img/no_photo.png", class:"field", size:"200x200"
@@ -12,16 +12,16 @@
             table.table.table-bordered
               thead
                 tr
-                  th.bg-primary User
+                  th.bg-primary = t('posts.edit.user')
                   td.post-sidebar__title
                     = @thepost.user.name
                 tr
-                  th.active Title
+                  th.active = t('posts.edit.title')
                   td.post-sidebar__title
                     = @thepost.title
                 tr
                   //rate javascript RO
-                  th.active rate
+                  th.active = t('posts.edit.rate')
                   td.post-sidebar__title
                     h5.md-3
                       = @thepost.rate
@@ -37,17 +37,29 @@
                           score     : #{@thepost.rate},
                         });
                 tr
-                  th.active Genre
+                  th.active = t('posts.edit.genre')
                   td.post-sidebar__title
                     = @thepost.genre.name
                 tr
-                  th.active Comment
+                  th.active = t('posts.edit.place')
+                  td.post-sidebar__title
+                    = @thepost.prefecture.name
+                tr
+                  th.active = t('posts.edit.city')
+                  td.post-sidebar__title
+                    = @thepost.city.name
+                tr
+                  th.active = t('posts.edit.comment')
                   td.post-sidebar__title
                     = @thepost.comment
                 tr
-                  th.active Created at
+                  th.active = t('posts.edit.create')
                   td.post-sidebar__title
                     = @thepost.created_at.strftime('%Y/%m/%d %H:%M')
+                tr
+                  th.active = t('posts.edit.update')
+                  td.post-sidebar__title
+                    = @thepost.updated_at.strftime('%Y/%m/%d %H:%M')
 
   .col-xs-9
     .col-xs-12

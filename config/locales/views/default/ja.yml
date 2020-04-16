@@ -1,8 +1,15 @@
 ja:
   app:
+    common:
+      no_data: 'データなし'
+      no_post: '該当のアルバムなし'
+      no_album: '該当のアルバムなし'
     header:
       title_desc: 'さあ、良い日本旅を'
       home: 'ホーム'
       about: 'サイト概要'
       sign_up: '新規登録'
       sign_in: 'ログイン'
+      sign_out: 'ログアウト'
+    searchbar:
+      condition: '条件検索'

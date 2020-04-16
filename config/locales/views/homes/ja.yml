@@ -21,19 +21,33 @@ ja:
       post_comment: '投稿 コメント数'
       album_bookmark: 'アルバム ブックマーク数'
 
-      data_text_1: ''
-      data_text_2: ''
-      data_text_3: ''
+      data_text_1: '国籍、年齢、予算、ジャンル...'
+      data_text_2: '日本旅行の人気のプランや、人気の場所を'
+      data_text_3: '複数の条件から比較してみる'
 
-      budget_text: ''
-      genre_text: ''
-      area_text: ''
-      age_text: ''
-      nation_text: ''
+      budget_text_1: '旅行するためには、'
+      budget_text_2: '勿論予算が必要になる。'
+      budget_text_3: 'どれくらいの予算で何ができるかね。'
+
+      genre_text_1: 'デート、一人旅、ショッピング...'
+      genre_text_2: '旅には色々な旅があるのだよ。'
+      genre_text_3: 'さあ、次はどんな旅をしよう'
+
+      area_text_1: '東京？北海道？大阪？'
+      area_text_2: '日本のいいところを全部知ってますか？'
+      area_text_3: 'いいや、全部なんてあり得ない。'
+
+      age_text_1: '人間は何歳になっても旅を楽しめるでしょ？'
+      age_text_2: '年齢なんて関係ないね。でもね、年齢によって、'
+      age_text_3: '趣味趣向が違うことも往々にしてあると思うの'
+
+      nation_text_1: '地元の人や、すでに訪れたことのある人'
+      nation_text_2: 'そういう人しか知らない隠れた名所があるかもしれない'
+      nation_text_3: '共有できる日本よ、より深く、より楽しく'
 
     about:
       subtitle_1: 'Japanizer とは'
-      subtitle_2: '良い旅行を！'
+      subtitle_2: '良い旅を！'
       subtitle_3: 'コンタクト'
 
       know: '知る'
@@ -46,5 +60,5 @@ ja:
       post_text_1: '旅行の記録を残そう'
       post_text_2: '旅行記録をアルバムにもまとめられる'
 
-    click_text_1: '飛行機のアイコンをクリックして'
-    click_text_2: 'Japanizer で日本を楽しもう'
+      click_text_1: '飛行機のアイコンをクリックして'
+      click_text_2: 'Japanizer で日本を楽しもう'

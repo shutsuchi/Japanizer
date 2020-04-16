@@ -4,7 +4,7 @@
       .post-detail_box
         .row
           h1
-            | Post Detail
+            = t('posts.show.pagetitle')
         .row
           .col-xs-3
             .row
@@ -20,52 +20,7 @@
                 = link_to(post_path(@thepost), method: :delete) do
                   span.btn.btn-danger.btn-md.col-xs-8.glyphicon.glyphicon-trash.btn-icon-color
           .col-xs-7
-            table.table.table-bordered
-              thead
-                tr
-                  th.bg-primary User
-                  td.post-sidebar__title
-                    = @thepost.user.name
-                tr
-                  th.active Title
-                  td.post-sidebar__title
-                    = @thepost.title
-                tr
-                  th.active Created
-                  td.post-sidebar__title
-                    = @thepost.created_at.strftime('%Y/%m/%d %H:%M')
-                tr
-                  th.active Recommendation-rate
-                  td.post-sidebar__title
-                    h5.md-3
-                      = @thepost.rate
-                    div id="star-rate-#{@thepost.id}"
-                      javascript:
-                        $('#star-rate-#{@thepost.id}').raty({
-                          size      : 36,
-                          starOff   : '#{asset_path('star-off.png')}',
-                          starOn    : '#{asset_path('star-on.png')}',
-                          starHalf  : '#{asset_path('star-half.png')}',
-                          half      : true,
-                          readOnly  : true,
-                          score     : #{@thepost.rate},
-                        });
-                tr
-                  th.active Prefecture
-                  td.post-sidebar__title
-                    = @thepost.prefecture.name
-                tr
-                  th.active City
-                  td.post-sidebar__title
-                    = @thepost.city.name
-                tr
-                  th.active Genre
-                  td.post-sidebar__title
-                    = @thepost.genre.name
-                tr
-                  th.active Comment
-                  td.post-sidebar__title
-                    = @thepost.comment
+            = render 'detail', thepost: @thepost
 .row
   .col-xs-6
     .post-show-new-form
@@ -74,39 +29,16 @@
       .col-xs-12
         .post-show-new-form__title.text-center
           h2
-            | New Comment
+            = t('posts.show.new_comment')
     .col-xs-12
-      .post-show-new-form__form
-        = form_with(model: [@thepost, @comment], remote: true) do |f|
-          .form-window.row
-            = f.label :title
-            br
-            = f.text_field :title, id:"comment-title",  placeholder:"Title"
-          .form-window.row#star.comment-rate
-            = f.label :rate
-            br
-            = f.hidden_field :rate, id: :review_star
-            //rate 評価javascript
-            javascript:
-                $('#star').raty({
-                  size      : 36,
-                  starOff   : '#{asset_path('star-off.png')}',
-                  starOn    : '#{asset_path('star-on.png')}',
-                  starHalf  : '#{asset_path('star-half.png')}',
-                  scoreName : 'post[rate]',
-                  half      : true,
-                });
-          .form-window.row
-            = f.label :comment
-            br
-            = f.text_area :comment, rows:'5', id:"comment-body", class:"field col-xs-8", placeholder:"comment here"
-          .form-submit.row
-            = f.submit "Post", class:"btn btn-md btn-base-1 btn-primary pull-left"
+      = render 'comment_form', thepost: @thepost, comment: @comment
+
   .col-xs-6
     .post-show-comment
       .col-xs-12.text-center
         h2
-          | Comments (
+          = t('posts.show.c_comment')
+          | (
           = @comments.count
           | )
         .col-xs-12

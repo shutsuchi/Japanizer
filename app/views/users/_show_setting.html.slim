@@ -1,22 +1,25 @@
 .mypage-setting
-  .col-xs-3
+  .col-xs-4
     .mypage-setting__part
       .mypage-setting__icon
         = link_to edit_user_path(user), method: :get do
           i.fas.fa-cogs style="font-size:80px;"
       .mypage-setting__text
-        h4 Edit User Info
-  .col-xs-3
+        h4
+          = t('users.show.edit_info')
+  .col-xs-4
     .mypage-setting__part
       .mypage-setting__icon
         = link_to albums_path, method: :get do
-          i.fas.fa-book style="font-size:80px;"
+          i.fas.fa-book style="font-size:80px; color:green;"
       .mypage-setting__text
-        h4 Create Album
-  .col-xs-3
+        h4
+          = t('users.show.create_album')
+  .col-xs-4
     .mypage-setting__part
       .mypage-setting__icon
         = link_to posts_path, method: :get do
-          i.fas.fa-file-signature style="font-size:80px;"
+          i.fas.fa-file-signature style="font-size:80px; color:blue;"
       .mypage-setting__text
-        h4 Create Post
+        h4
+          = t('users.show.create_post')

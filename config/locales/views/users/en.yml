@@ -1,5 +1,35 @@
 en:
   users:
+    show:
+      pagetitle: 'My Page'
+      subtitle_p: 'Your Posts'
+      subtitle_a: 'Your albums'
+
+      new_form: 'New Plan'
+      f_title: 'Title'
+      f_description: 'Plan'
+      f_genre: 'Genre'
+      f_start: 'First Date'
+      f_end: 'End Date'
+      f_submit: 'Create Plan'
+
+      edit_info: 'Edit User Info'
+      create_post: 'Create Post'
+      create_album: 'Create Album'
+
+      got: 'Got'
+      gave: 'Gave'
+
+    edit:
+      pagetitle: 'User Setting'
+      withdraw_btn: 'WITHDRAW'
+      f_image: 'Image'
+      f_name: 'Name'
+      f_age: 'Age'
+      f_nation: 'Naitonality'
+      f_mail: 'Email'
+      f_submit: 'Update'
+
     withdraw:
       text1: 'Are You Sure to Withdraw From Japanizer ?'
       text2: 'Once Complete this procesure,'

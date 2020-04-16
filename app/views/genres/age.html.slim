@@ -2,9 +2,9 @@
   .row
     .col-xs-12.text-center
       h1
-        = t('.title')
+        = t('genres.age.pagetitle')
       p
-        = t('.page_description')
+        = t('genres.age.description')
     .col-xs-7
       .age-icon
         // 年代アイコン
@@ -59,7 +59,7 @@
       .album-index
         .album-index__title
           h1
-            = t('.post_index')
+            = t('genres.subtitle_p')
           .col-xs-12
             - if @posts.present?
               - @posts.each do |post|
@@ -68,4 +68,20 @@
                 = paginate @posts
             - else
               h3.bg-danger.text-center
-                | NO POST
+                = t('app.common.no_post')
+  .wrapper
+    .container
+      .row
+        .album-index
+          .album-index__title
+            h1
+              = t('genres.subtitle_a')
+            .col-xs-12
+              - if @albums.present?
+                - @albums.each do |album|
+                  = render 'albums/album', album: album
+                .text-center
+                  = paginate @albums
+              - else
+                h2.bg-danger.text-center
+                  = t('app.common.no_album')
