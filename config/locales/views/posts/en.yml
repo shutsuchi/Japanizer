@@ -1,5 +1,10 @@
 en:
   posts:
+    partial:
+      genre: 'GENRE:'
+      place: 'PLACE:'
+      create: 'CREATED:'
+
     index:
       new_form: 'New Post'
       f_image: 'Image'

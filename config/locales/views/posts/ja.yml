@@ -1,5 +1,10 @@
 ja:
   posts:
+    partial:
+      genre: 'ジャンル:'
+      place: '都道府県:'
+      create: '作成日:'
+
     index:
       new_form: '投稿してみる?'
       f_image: '画像'
