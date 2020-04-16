@@ -1,19 +1,22 @@
 .col-xs-9
   .row
     .col-xs-12.top-page__title.text-center
-      h1 What do you want to do?
-      p Enjoy Japanizer with ways down below
+      h1
+        = t('homes.title_text')
+      p
+        = t('homes.title_description')
   .row
     .col-xs-12.text-center
       .top-page__subtitle
         .top-page__subtitle--text
-          h2 Trend in journey
+          h2
+            = t('homes.subtitle_1')
     .search-select-boxes
       .col-xs-12
         .search-select-boxes__data-box
           .search-select-boxes__title.text-center
             h3
-              | Data
+              = t('homes.data_title')
           .search-select-boxes__main-text
             h4
               | Natination, age, price, genre...
@@ -25,14 +28,15 @@
     .col-xs-12.text-center
       .top-page__subtitle
         .top-page__subtitle--text
-          h2 Search albums
+          h2
+            = t('homes.subtitle_2')
 
         .col-xs-12
           = link_to budget_path do
             .search-select-boxes__price-box
               .search-select-boxes__title
                 h3
-                  | bedget
+                  = t('homes.budget_title')
               .search-select-boxes__text
                 h4
                   | Natination, age, price, genre...
@@ -45,14 +49,15 @@
     .col-xs-12.text-center
       .top-page__subtitle
         .top-page__subtitle--text
-          h2 Search posts & albums
+          h2
+            = t('homes.subtitle_3')
 
         .col-xs-6
           = link_to genres_path do
             .search-select-boxes__genre-box
               .search-select-boxes__title
                 h3
-                  | Genre
+                  = t('homes.genre_title')
               .search-select-boxes__text
                 h4
                   | Natination, age, price, genre...
@@ -66,7 +71,7 @@
             .search-select-boxes__area-box
               .search-select-boxes__title
                 h3
-                  | Area
+                  = t('homes.area_title')
               .search-select-boxes__text
                 h4
                   | Natination, age, price, genre...
@@ -80,7 +85,7 @@
             .search-select-boxes__age-box
               .search-select-boxes__title
                 h3
-                  | Age
+                  = t('homes.age_title')
               .search-select-boxes__text
                 h4
                   | Natination, age, price, genre...
@@ -94,7 +99,7 @@
             .search-select-boxes__nation-box
               .search-select-boxes__title
                 h3
-                  | Nationality
+                  = t('homes.nation_title')
               .search-select-boxes__text
                 h4
                   | Natination, age, price, genre...

@@ -1,7 +1,7 @@
 .album-new-form
   .album-new-form__title
     h2
-      | New Album
+      = t('albums.index.new_form')
   .row
     = render 'layouts/error_message', model: @album
   = form_with(model: album, url: albums_path, method: :post, local: true) do |f|
@@ -15,19 +15,19 @@
                 br
                 label.upload-label
                   .input-area
-                    = f.label :image
+                    = f.label t('albums.index.f_image')
                     br
                     = f.attachment_field :image, class: "image_upload"
       .col-xs-6
         .album-new-form__others
           .album-new-form__others--content
             .form-window.row
-              = f.label :title
+              = f.label t('albums.index.f_album_title')
               br
               = f.text_field :title
               // 下記javascript対応箇所
             .form-window.row#star
-              = f.label :rate
+              = f.label t('albums.index.f_rate')
               br
               = f.hidden_field :rate, id: :review_star
               //rate 評価javascript
@@ -41,15 +41,15 @@
                     half      : true,
                   });
             .form-window.row
-              = f.label :comment
+              = f.label t('albums.index.f_comment')
               br
               = f.text_area :comment
             .form-window.row
-              = f.label :genre_id, "Type of Journey"
+              = f.label t('albums.index.f_genre')
               br
               = f.collection_select :genre_id, Genre.all, :id, :name, prompt: "Please select"
             .form-window.row
-              = f.label :budget
+              = f.label t('albums.index.f_budget')
               br
               /= f.select :budget, options_for_select(1..50), class:"form-control", prompt: "Please select"
               = f.select :budget, [["under 1", "~ 1"],
@@ -63,7 +63,7 @@
                                   ["40 ~ 50", "40 ~ 50"],
                                   ["50 ~", "50 ~"]], class:"form-control", prompt: "Please select"
             .form-window.row
-              = f.label :people
+              = f.label t('albums.index.f_people')
               br
               = f.select :people, options_for_select(1..10), class:"form-control", prompt: "Please select"
             /.form-window.row
@@ -78,4 +78,4 @@
                     = a.check_box
                     = a.label { a.text }
             .form-submit.row
-              = f.submit "Create post", class:"btn btn-primary col-xs-5"
+              = f.submit t('albums.index.f_people'), class:"btn btn-primary col-xs-5"

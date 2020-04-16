@@ -11,19 +11,19 @@
           | Japanizer
     .common-bar__subtitle-box
       .common-bar__subtitle-text.text-center
-          | Having nice journey with Japanizer
+          = t('app.header.title_desc')
 .common-bar___link-line
   .common-bar__link-box.text-center
     - if user_signed_in?
       ul.text-center.common-bar__link-box
           li.common-bar__link-text
-            = link_to "Home", top_path, class:"fas fa-home"
+            = link_to t('app.header.home'), top_path, class:"fas fa-home"
           li.common-bar__link-text
-            = link_to "About", about_path, class:"far fa-question-circle"
+            = link_to t('app.header.about'), about_path, class:"far fa-question-circle"
           li.common-bar__link-text
-            = link_to "LogIn", new_user_session_path, class:"fas fa-door-open"
+            = link_to t('app.header.sign_in'), new_user_session_path, class:"fas fa-door-open"
           li.common-bar__link-text
-            = link_to "SignIn", new_user_registration_path, class:"far fa-flag"
+            = link_to t('app.header.sign_up'), new_user_registration_path, class:"far fa-flag"
           li.common-bar__link-text
             - if I18n.locale.to_s == "en"
               = link_to('日本語', :locale => 'ja', class:"far fa-dot-circle")

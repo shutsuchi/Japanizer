@@ -1,0 +1,10 @@
+en:
+  analyses:
+    data:
+      title: 'Journey Trend in Japan'
+      subtitle_jp: 'Japanese Ranking'
+      subtitle_ot: 'The Other Nationalities Ranking'
+
+      area_rank: 'Area Ranking'
+      genre_rank: 'Genre Ranking'
+      budget_rank: 'Budget Ranking (/0000 yen)'

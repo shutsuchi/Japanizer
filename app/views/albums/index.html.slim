@@ -7,7 +7,7 @@
       .album-index__title
         - unless current_user.albums.nil?
             h2
-              | Your Album
+              = t('albums.index.subtitle_y')
             .col-xs-12
                 = render @user_albums_pg
 
@@ -16,7 +16,7 @@
         - else
             .col-xs-12
               h2
-                | Let's create first Album
+                = t('albums.index.no_album')
 
 .container
   .row
@@ -24,7 +24,7 @@
       .album-index__title
         - unless @others_albums_pg.nil?
           h2
-            | Others Album
+            = t('albums.index.subtitle_o')
           .col-xs-12
             = render @others_albums_pg
           .col-xs-12.text-center
@@ -35,4 +35,4 @@
         - else
           .col-xs-12
             h2.text-center
-              | NO DATA
+              = t('common.no_data')

@@ -1,0 +1,10 @@
+ja:
+  analyses:
+    data:
+      title: '日本旅行における人気ランキングを見てみる?'
+      subtitle_jp: '日本ユーザランキング'
+      subtitle_ot: '海外ユーザランキング'
+
+      area_rank: 'エリア'
+      genre_rank: 'ジャンル'
+      budget_rank: '予算 (万円)'
