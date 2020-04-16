@@ -2,7 +2,7 @@
   .row
     .col-xs-3.post-main__color
       h2
-        | Edit
+        = t('posts.edit.edit_form')
     .col-xs-2
       .post-main__top-btn
         = link_to(post_path(@thepost), method: :get) do
@@ -17,7 +17,7 @@
         = form_with(model: @thepost, local: true) do |f|
           .post-main__image
             .form-window.row
-              = f.label :image, class:"post-main__color"
+              = f.label t('posts.edit.f_image'), class:"post-main__color"
               br
                 #img_field onClick="$('#file').click()"
                   - if @thepost.image.present?
@@ -27,12 +27,12 @@
                     i.fas.fa-file-upload.add
               = f.attachment_field :image, style:"display:none;", id:"file"
             .form-window.row
-              = f.label :title, class:"post-main__color"
+              = f.label t('posts.edit.f_title'), class:"post-main__color"
               br
               = f.text_field :title, placeholder:"Title"
               //rate 評価javascript
             .form-window.row#star
-              = f.label :rate, class:"post-main__color"
+              = f.label t('posts.edit.f_rate'), class:"post-main__color"
               br
               = f.hidden_field :rate, id: :review_star
               //rate 評価javascript
@@ -46,22 +46,22 @@
                     half      : true,
                   });
             .form-window.row
-              = f.label :genre_id, "Type of Journey", class:"post-main__color"
+              = f.label t('posts.edit.f_genre'), class:"post-main__color"
               br
               = f.collection_select :genre_id, Genre.all, :id, :name, prompt: "Please select"
             .form-window.row
-              = f.label :prefecture_id, "Place You've Been", class:"post-main__color"
+              = f.label t('posts.edit.f_place'), class:"post-main__color"
               br
               = f.collection_select :prefecture_id, Prefecture.all, :id, :name, prompt: "Please select"
             .form-window.row.city-pulldown
               = render partial: 'city', locals: { prefecture_id: Prefecture.first.id }
             .form-window.row
-              = f.label :comment, class:"post-main__color"
+              = f.label t('posts.edit.f_city'), class:"post-main__color"
               br
-              = f.text_area :comment, rows:'5', class:"field col-xs-8", placeholder:"comment here"
+              = f.text_area t('posts.edit.f_comment'), rows:'5', class:"field col-xs-8", placeholder:"comment here"
             .form-window.row
-              = f.label :album, class:"post-main__color"
+              = f.label t('posts.edit.f_album'), class:"post-main__color"
               br
               = f.collection_select :album_id, @user_albums, :id, :title, prompt: "Please select"
             .form-submit.row
-              = f.submit "Update", class:"btn btn-md btn-base-1 btn-primary pull-left"
+              = f.submit t('posts.edit.f_submit'), class:"btn btn-md btn-base-1 btn-primary pull-left"

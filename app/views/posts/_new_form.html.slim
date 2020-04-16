@@ -1,7 +1,7 @@
 .post-new-form
   .post-new-form__title
     h2
-      | New Post
+      = t('posts.index.new_form')
   .row
     = render 'layouts/error_message', model: post
   = form_with(model: post, url: posts_path, method: :post, local: true) do |f|
@@ -12,17 +12,17 @@
           br
           label.upload-label
             .input-area
-              = f.label :image
+              = f.label t('posts.index.f_image')
               br
               = f.attachment_field :image, class: "image_upload"
     .post-new-form__others
       .form-window.row
-        = f.label :title
+        = f.label t('posts.index.f_title')
         br
         = f.text_field :title
         // 下記javascript対応箇所
       .form-window.row#star
-        = f.label :rate
+        = f.label t('posts.index.f_rate')
         br
         = f.hidden_field :rate, id: :review_star
         //rate 評価javascript
@@ -36,18 +36,18 @@
               half      : true,
             });
       .form-window.row
-        = f.label :comment
+        = f.label t('posts.index.f_comment')
         br
         = f.text_area :comment
       .form-window.row
-        = f.label :genre_id, "Type of Journey"
+        = f.label t('posts.index.f_genre')
         br
         = f.collection_select :genre_id, Genre.all, :id, :name, prompt: "Please select"
       .form-window.row
-        = f.label :prefecture_id, "Place You've Been"
+        = f.label t('posts.index.f_place')
         br
         = f.collection_select :prefecture_id, Prefecture.all, :id, :name, prompt: "Please select"
       .form-window.row.city-pulldown
         = render partial: 'city', locals: { prefecture_id: Prefecture.first.id }
       .form-submit.row
-        = f.submit "Create post", class:"btn btn-primary col-xs-5"
+        = f.submit t('posts.index.f_submit'), class:"btn btn-primary col-xs-5"

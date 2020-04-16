@@ -1,0 +1,46 @@
+table.table.table-bordered
+  thead
+    tr
+      th.bg-primary = t('posts.show.user')
+      td.post-sidebar__title
+        = thepost.user.name
+    tr
+      th.active = t('posts.show.title')
+      td.post-sidebar__title
+        = thepost.title
+    tr
+      th.active = t('posts.show.create')
+      td.post-sidebar__title
+        = thepost.created_at.strftime('%Y/%m/%d %H:%M')
+    tr
+      th.active = t('posts.show.rate')
+      td.post-sidebar__title
+        h5.md-3
+          = thepost.rate
+        div id="star-rate-#{thepost.id}"
+          javascript:
+            $('#star-rate-#{thepost.id}').raty({
+              size      : 36,
+              starOff   : '#{asset_path('star-off.png')}',
+              starOn    : '#{asset_path('star-on.png')}',
+              starHalf  : '#{asset_path('star-half.png')}',
+              half      : true,
+              readOnly  : true,
+              score     : #{thepost.rate},
+            });
+    tr
+      th.active = t('posts.show.place')
+      td.post-sidebar__title
+        = thepost.prefecture.name
+    tr
+      th.active = t('posts.show.city')
+      td.post-sidebar__title
+        = thepost.city.name
+    tr
+      th.active = t('posts.show.genre')
+      td.post-sidebar__title
+        = thepost.genre.name
+    tr
+      th.active = t('posts.show.comment')
+      td.post-sidebar__title
+        = thepost.comment

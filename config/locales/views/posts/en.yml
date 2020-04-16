@@ -1,0 +1,63 @@
+en:
+  posts:
+    index:
+      new_form: 'New Post'
+      f_image: 'Image'
+      f_title: 'Title'
+      f_rate: 'Rate'
+      f_comment: 'Comment'
+      f_genre: 'Type of Journey'
+      f_place: 'Prefecture'
+      f_city: 'City'
+      f_submit: 'Create Post'
+
+      post_y: 'Your Posts'
+      post_o: 'Others Posts'
+      no_post: "Let's create first post"
+
+    edit:
+      pagetitle: 'Post Edit'
+
+      subtitle: 'Edit'
+
+      user: 'User'
+      title: 'Title'
+      rate: 'Rate'
+      comment: 'Comment'
+      album: 'Album'
+      genre: 'Type of Journey'
+      place: 'Prefecture'
+      city: 'City'
+      create: 'Created'
+      update: 'Updated'
+
+      edit_form: 'Edit'
+      f_image: 'Image'
+      f_title: 'Title'
+      f_rate: 'Rate'
+      f_comment: 'Comment'
+      f_genre: 'Type of Journey'
+      place: 'Prefecture'
+      city: 'City'
+      create: 'Created'
+      f_album: 'Album'
+      f_submit: 'Update'
+
+    show:
+      title: 'Post Detail'
+      album: 'Album'
+      user: 'User'
+      title: 'Title'
+      rate: 'Rate'
+      place: 'Prefectures'
+      city: 'City'
+      genre: 'Genre'
+      comment: 'Comment'
+      create: 'Created'
+      update: 'Last Updated'
+
+      new_comment: 'New Comment'
+      c_title: 'Title'
+      c_rate: 'Rate'
+      c_comment: 'Comment'
+      c_submit: 'Post'

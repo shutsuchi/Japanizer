@@ -1,0 +1,62 @@
+ja:
+  posts:
+    index:
+      new_form: '投稿してみる?'
+      f_image: '画像'
+      f_title: 'タイトル'
+      f_rate: 'オススメ度'
+      f_comment: 'コメント'
+      f_genre: '旅の種別'
+      f_place: '都道府県'
+      f_city: '市町村郡'
+      f_submit: '投稿する'
+
+      post_y: 'あなたの投稿'
+      post_o: '他ユーザーの投稿'
+      no_post: '最初の投稿してみます？'
+
+    edit:
+      pagetitle: '投稿編集'
+
+      subtitle: '編集'
+
+      user: 'ユーザー名'
+      title: 'タイトル'
+      rate: 'オススメ度'
+      comment: 'コメント'
+      album: '所属しているアルバム'
+      genre: '旅の種別'
+      place: '都道府県'
+      city: '市町村郡'
+      create: '作成日'
+      update: '最終更新日'
+
+      edit_form: '編集する？'
+      f_image: '画像'
+      f_title: 'タイトル'
+      f_rate: 'オススメ度'
+      f_comment: 'コメント'
+      f_genre: '旅の種別'
+      f_place: '都道府県'
+      f_city: '市町村郡'
+      f_album: '追加したいアルバム'
+      f_submit: '更新する'
+
+    show:
+      pagetitle: '投稿詳細'
+      albums: '所属アルバム'
+      user: 'ユーザ名'
+      title: 'タイトル'
+      rate: 'オススメ度'
+      place: '都道府県'
+      city: '市町村郡'
+      genre: 'ジャンル'
+      comment: 'コメント'
+      create: '作成日'
+      update: '最終更新日'
+
+      new_comment: 'コメント投稿する？'
+      c_title: 'タイトル'
+      c_rate: '評価'
+      c_comment: 'コメント'
+      c_submit: '投稿'
