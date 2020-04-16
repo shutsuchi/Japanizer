@@ -1,0 +1,36 @@
+ja:
+  genres:
+    subtitle_p: '投稿'
+    subtitle_a: 'アルバム'
+
+    age:
+      pagetitle: '年齢から探す'
+      description: "ユーザーの年齢から投稿・アルバムを探してみよう"
+      subtitle_p: '投稿'
+      subtitle_a: 'アルバム'
+
+    budget:
+      pagetitle: '予算から探す'
+      description: '旅行予算から投稿・アルバムを探してみよう'
+      subtitle: 'アルバム'
+
+    nation:
+      pagetitle: '国籍から探す'
+      description: 'ユーザーの国籍から投稿・アルバムを探してみよう'
+      subtitle_p: '投稿'
+      subtitle_a: 'アルバム'
+
+    index:
+      pagetitle: 'ジャンルから探す'
+      description: '投稿やアルバムのジャンルから探してみよう'
+      subtitle: 'ジャンルランキング'
+
+      date: 'デート'
+      alone: '一人旅'
+      shopping: 'ショッピング'
+      sightseeing: '都市観光'
+      tooling: 'ツーリング'
+      food: 'グルメ'
+      activity: 'アクティビティ'
+      drive: 'ドライブ'
+      nature: '自然'

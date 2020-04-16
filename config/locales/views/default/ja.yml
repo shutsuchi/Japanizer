@@ -1,5 +1,9 @@
 ja:
   app:
+    common:
+      no_data: 'データなし'
+      no_post: '該当のアルバムなし'
+      no_album: '該当のアルバムなし'
     header:
       title_desc: 'さあ、良い日本旅を'
       home: 'ホーム'

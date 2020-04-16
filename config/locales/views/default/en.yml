@@ -1,5 +1,9 @@
 en:
   app:
+    common:
+      no_data: 'NO DATA'
+      no_post: 'NO POST'
+      no_album: 'NO ALBUM'
     header:
       title_desc: 'Having nice journey with Japanizer'
       home: 'Home'

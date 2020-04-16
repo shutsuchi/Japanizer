@@ -8,7 +8,7 @@
                 i.far.fa-heart style="color:white; font-size:100px; margin:40px 180px 30px 180px;"
             .genre-change-list__text
               .col-xs-12
-                = genre.name
+                = t('genres.index.date')
     - elsif i == 2
       .col-xs-3.padding-3
         = link_to genres_path(id: genre.id)
@@ -19,7 +19,7 @@
                 i.fas.fa-suitcase style="color:black; font-size:40px; margin:0px 8px 40px 85px;"
             .genre-change-list__text
               .col-xs-12
-                = genre.name
+                = t('genres.index.alone')
     - elsif i == 3
       .col-xs-3.padding-3
         = link_to genres_path(id: genre.id)
@@ -29,7 +29,7 @@
                   i.fas.fa-shopping-cart style="color:white; font-size:100px; margin:50px 10px 20px 60px;"
             .genre-change-list__text
               .col-xs-12
-                = genre.name
+                = t('genres.index.shopping')
     - elsif i == 4
       .col-xs-3.padding-3
         = link_to genres_path(id: genre.id)
@@ -39,7 +39,7 @@
                   i.fas.fa-city style="color:#ff82b2; font-size:100px; margin:50px 10px 20px 30px;"
             .genre-change-list__text
               .col-xs-12
-                = genre.name
+                = t('genres.index.sightseeing')
     - elsif i == 5
       .col-xs-6.padding-3
         = link_to genres_path(id: genre.id)
@@ -51,7 +51,7 @@
                   i.fas.fa-motorcycle style="color:white; font-size:120px; margin:20px 180px 0px 5px;"
             .genre-change-list__text
               .col-xs-12
-                = genre.name
+                = t('genres.index.tooling')
     - elsif i == 6
       .col-xs-3.padding-3
         = link_to genres_path(id: genre.id)
@@ -61,7 +61,7 @@
                   i.fas.fa-utensils style="color:white; font-size:100px; margin:50px 10px 20px 50px;"
             .genre-change-list__text
               .col-xs-12
-                = genre.name
+                = t('genres.index.food')
     - elsif i == 7
       .col-xs-3.padding-3
         = link_to genres_path(id: genre.id)
@@ -71,7 +71,7 @@
                   i.fas.fa-snowboarding style="color:white; font-size:100px; margin:50px 10px 20px 50px; transform:scale(-1, 1);"
             .genre-change-list__text
               .col-xs-12
-                = genre.name
+                = t('genres.index.activity')
     - elsif i == 8
       .col-xs-3.padding-3
         = link_to genres_path(id: genre.id)
@@ -81,7 +81,7 @@
                   i.fas.fa-car style="color:white; font-size:100px; margin:50px 10px 20px 50px;"
             .genre-change-list__text
               .col-xs-12
-                = genre.name
+                = t('genres.index.drive')
     - elsif i == 9
       .col-xs-6.padding-3
         = link_to genres_path(id: genre.id)
@@ -93,4 +93,4 @@
                   i.fas.fa-sun style="color:#dc143c; font-size:60px; margin:20px 180px 0px 100px;"
             .genre-change-list__text
               .col-xs-12
-                = genre.name
+                = t('genres.index.nature')

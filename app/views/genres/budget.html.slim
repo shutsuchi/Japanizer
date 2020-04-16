@@ -3,9 +3,9 @@
     .row
       .col-xs-12.text-center
         h1
-          = t('.title')
+          = t('genres.budget.pagetitle')
         p
-          = t('.page_description')
+          = t('genres.budget.description')
       .col-xs-7
         .budget-icon
           // 予算アイコン
@@ -75,7 +75,7 @@
         .album-index
           .album-index__title
             h1
-              = t('.album_index')
+              = t('genres.subtitle_a')
             .col-xs-12
               - if @albums.present?
                 - @albums.each do |album|
@@ -85,3 +85,4 @@
               - else
                 h2.bg-danger.text-center
                   | NO ALBUMS
+                  = t('app.common.no_album')

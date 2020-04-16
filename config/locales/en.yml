@@ -1,7 +1,5 @@
 ---
 en:
-  common:
-    no_data: 'NO DATA'
   activerecord:
     errors:
       messages:

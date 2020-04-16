@@ -1,0 +1,33 @@
+en:
+  genres:
+    age:
+      pagetitle: 'Find with Age'
+      description: "Search posts or albums from user's age"
+      subtitle_p: 'Posts'
+      subtitle_a: 'Albums'
+
+    budget:
+      pagetitle: 'Find with budget'
+      description: 'Search albums from budget'
+      subtitle: 'Albums'
+
+    nation:
+      pagetitle: 'Find with Nationality'
+      description: "Search posts or albums from user's nationality"
+      subtitle_p: 'Posts'
+      subtitle_a: 'Albums'
+
+    index:
+      pagetitle: 'Find with Genre'
+      description: 'Search posts of albums from genres of journey'
+      subtitle: 'Genre Ranking'
+
+      date: 'Date'
+      alone: 'Solo Travel'
+      shopping: 'Shopping'
+      sightseeing: 'Sightseeing'
+      tooling: 'Tooling'
+      food: 'Gourmet'
+      activity: 'Activity'
+      drive: 'Drive'
+      nature: 'Nature'
