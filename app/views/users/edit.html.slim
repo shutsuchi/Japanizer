@@ -1,7 +1,8 @@
 .top-wrapper
   .col-xs-8
     .col-xs-5
-      h1 Setting
+      h1
+        = t('users.edit.pagetitle')
     .col-xs-2
     .col-xs-2
       .post-main__top-btn
@@ -11,7 +12,7 @@
       .post-main__top-btn
         = link_to withdraw_path(current_user), method: :get  do
           span.btn.btn-danger.btn-md.col-xs-8.btn-icon-color
-           | WITHDRAW
+           = t('users.edit.withdraw_btn')
     .col-xs-12
       = render 'layouts/error_message', model: @theuser
     .user-edit-form
@@ -20,7 +21,7 @@
           thead
             tr
               th.active
-                = f.label :image, class:"post-main__color"
+                = f.label t('users.edit.f_image'), class:"post-main__color"
               td
                 br
                   #img_field onClick="$('#file').click()"
@@ -32,22 +33,22 @@
                 = f.attachment_field :image, style:"display:none;", id:"file"
             tr
               th.active
-                = f.label :name
+                = f.label t('users.edit.f_name')
               td
                 = f.text_field :name
             tr
               th.active
-                = f.label :age
+                = f.label t('users.edit.f_age')
               td
                 = f.select :age, options_for_select(1..100), autofocus: true, autocomplete: "age"
             tr
               th.active
-                = f.label :country
+                = f.label t('users.edit.f_nation')
               td
                 = f.country_select :country_code, autofocus: true, autocomplete: "country", prompt: "Please select a country"
             tr
               th.active
-                = f.label :email
+                = f.label t('users.edit.mail')
               td
                 = f.email_field :email, autofocus: true, autocomplete: "email"
-        = f.submit "Update", class: "btn btn-primary btn-md pull-left"
+        = f.submit t('users.edit.f_submit'), class: "btn btn-primary btn-md pull-left update-btn"

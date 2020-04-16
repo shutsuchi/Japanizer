@@ -1,5 +1,37 @@
 ja:
   users:
+    show:
+      pagetitle: 'マイページ'
+      subtitle_p: 'あなたの投稿'
+      subtitle_a: 'あなたのアルバム'
+      no_post: "Let's create your FIRST post"
+      no_album: "Let's create your FIRST album"
+
+      new_form: '予定を作成します？'
+      f_title: 'タイトル'
+      f_description: '予定内容'
+      f_genre: 'ジャンル'
+      f_start: '開始日'
+      f_end: '終了日'
+      f_submit: '予定を作成する'
+
+      edit_info: '登録情報を編集'
+      create_post: '投稿を作成'
+      create_album: 'アルバムを作成'
+
+      got: '獲得数'
+      gave: '実行数'
+
+    edit:
+      pagetitle: 'ユーザー設定'
+      withdraw_btn: '退会する'
+      f_image: '画像'
+      f_name: 'ユーザー名'
+      f_age: '年齢'
+      f_nation: '国籍'
+      f_mail: 'メールアドレス'
+      f_submit: '更新する'
+
     withdraw:
       text1: '本当に退会しますか?'
       text2: '一度退会すると、'
