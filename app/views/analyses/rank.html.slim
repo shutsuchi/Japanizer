@@ -1,0 +1,266 @@
+.margin-wrapper
+  .top-wrapper
+    .row
+      .col-xs-12.margin-bottom-40.text-center
+        h1 Ranking
+        p choose genre you want browse posts
+    // Post Like数ランキング
+    .row
+      .col-xs-12
+    .row
+      .col-xs-4
+        .col-xs-12
+          h2 LIKE @Post
+          - if @post_like_genre_ranks.present?
+            h4 = @post_like_genre_ranks.first.genre.name
+            - @pickgenre_post_like_ranks.each.with_index(1) do |post, i|
+          - else
+            - @post_like_ranks.each.with_index(1) do |post, i|
+              .genre-post-rank
+                .col-xs-12.bg-info.genre-post-rank__margin-bottom
+                  - if i == 1 || i == 2 || i == 3
+                    .col-xs-1
+                      - if i == 1 then
+                        .fas.fa-crown style="color:#ffd700; font-size: 30px;"
+                      - elsif i == 2 then
+                        i.fas.fa-crown style="color:#aaaaaa; font-size: 30px;"
+                      - elsif i == 3 then
+                        i.fas.fa-crown style="color:#d2691e; font-size: 30px;"
+                    .col-xs-2
+                      h3.genre-post-rank__number
+                        = i
+                    .col-xs-9
+                  -else
+                    .col-xs-1
+                      h3.genre-post-rank__number
+                        = i
+                .col-xs-12
+                  .col-xs-4
+                    .genre-post-rank__left-box
+                      .genre-post-rank__image-box
+                        .genre-post-rank__icon
+                          = link_to post_path(post) do
+                            = attachment_image_tag post, :image, fallback:"img/no_photo.png", class:"field", size:"85x65"
+                      .genre-post-rank__icon-box
+                        .col-xs-12
+                          .col-xs-4
+                            .genre-post-rank__like-icon.pull-left
+                              i.fa.fa-heart aria-hidden="true" style="color: red; font-size:20px;"
+                          .col-xs-4
+                            .genre-post-rank__like-count
+                              - if post.likes.nil?
+                                span
+                                  | 0
+                              - else
+                                span
+                                  = post.likes.count
+                        .col-xs-12
+                          .col-xs-4
+                            .genre-post-rank__comment-icon
+                              i.glyphicon.glyphicon-comment style="font-size:20px;"
+                          .col-xs-4
+                            .genre-post-rank__comment-count
+                              - if post.post_comments.nil?
+                                span
+                                  | 0
+                              - else
+                                span
+                                = post.post_comments.count
+                  .col-xs-8
+                    table.table.table-bordered
+                      thead
+                        tr
+                          th
+                            | User Name
+                          td
+                            = post.user.name
+                        tr
+                          th
+                            | Rate
+                          td
+                            = post.rate
+                        tr
+                          th
+                            | Title
+                          td
+                            = post.title
+                        tr
+                          th
+                            | Genre
+                          td
+                            = post.genre.name
+                        tr
+                          th
+                            | Prefecture
+                          td
+                            = post.prefecture.name
+                        tr
+                          th
+                            | Created at
+                          td
+                            = post.created_at
+      // Post Comment数ランキング
+      .col-xs-4
+        h2 COMMENT @Post
+        - if @post_comment_genre_ranks.present?
+          h4 = @post_comment_genre_ranks.first.genre.name
+          - @pickgenre_post_comment_ranks.each.with_index do |post, i|
+        - else
+          - @post_comment_ranks.each.with_index(1) do |post, i|
+            .genre-post-rank
+              .col-xs-12.bg-success.genre-post-rank__margin-bottom
+                - if i == 1 || i == 2 || i == 3
+                  .col-xs-1
+                    - if i == 1 then
+                      .fas.fa-crown style="color:#ffd700; font-size: 30px;"
+                    - elsif i == 2 then
+                      i.fas.fa-crown style="color:#aaaaaa; font-size: 30px;"
+                    - elsif i == 3 then
+                      i.fas.fa-crown style="color:#d2691e; font-size: 30px;"
+                  .col-xs-2
+                    h3.genre-post-rank__number
+                      = i
+                  .col-xs-9
+                -else
+                  .col-xs-1
+                    h3.genre-post-rank__number
+                      = i
+              .col-xs-12
+                .col-xs-4
+                  .genre-post-rank__left-box
+                    .genre-post-rank__image-box
+                      .genre-post-rank__icon
+                        = link_to post_path(post) do
+                          = attachment_image_tag post, :image, fallback:"img/no_photo.png", class:"field", size:"85x65"
+                    .genre-post-rank__icon-box
+                      .col-xs-12
+                        .col-xs-4
+                          .genre-post-rank__like-icon.pull-left
+                            i.fa.fa-heart aria-hidden="true" style="color: red; font-size:20px;"
+                        .col-xs-4
+                          .genre-post-rank__like-count
+                            - if post.likes.nil?
+                              span
+                                | 0
+                            - else
+                              span
+                                = post.likes.count
+                      .col-xs-12
+                        .col-xs-4
+                          .genre-post-rank__comment-icon
+                            i.glyphicon.glyphicon-comment style="font-size:20px;"
+                        .col-xs-4
+                          .genre-post-rank__comment-count
+                            - if post.post_comments.nil?
+                              span
+                                | 0
+                            - else
+                              span
+                              = post.post_comments.count
+                .col-xs-8
+                  table.table.table-bordered
+                    thead
+                      tr
+                        th
+                          | User Name
+                        td
+                          = post.user.name
+                      tr
+                        th
+                          | Rate
+                        td
+                          = post.rate
+                      tr
+                        th
+                          | Title
+                        td
+                          = post.title
+                      tr
+                        th
+                          | Genre
+                        td
+                          = post.genre.name
+                      tr
+                        th
+                          | Prefecture
+                        td
+                          = post.prefecture.name
+                      tr
+                        th
+                          | Created at
+                        td
+                          = post.created_at
+      // Album Bookmark数ランキング
+      .col-xs-4
+        h2 BOOKMARK @Album
+        - if @album_bookmark_genre_ranks.present?
+          - @album_bookmark_genre_ranks.each.with_index(1) do |album, i|
+        - else
+          - @album_bookmark_ranks.each.with_index(1) do |album, i|
+            .genre-post-rank
+              .col-xs-12.bg-warning.genre-post-rank__margin-bottom
+                - if i == 1 || i == 2 || i == 3
+                  .col-xs-1
+                    - if i == 1 then
+                      .fas.fa-crown style="color:#ffd700; font-size: 30px;"
+                    - elsif i == 2 then
+                      i.fas.fa-crown style="color:#aaaaaa; font-size: 30px;"
+                    - elsif i == 3 then
+                      i.fas.fa-crown style="color:#d2691e; font-size: 30px;"
+                  .col-xs-2
+                    h3.genre-post-rank__number
+                      = i
+                  .col-xs-9
+                -else
+                  .col-xs-1
+                    h3.genre-post-rank__number
+                      = i
+
+              .col-xs-12
+                .col-xs-4
+                  .genre-post-rank__left-box
+                    .genre-post-rank__image-box
+                      .genre-post-rank__icon
+                        = link_to album_path(album) do
+                          = attachment_image_tag album, :image, fallback:"img/book.png", class:"field", size:"85x65"
+                    .genre-post-rank__icon-box
+                      .col-xs-12
+                        .col-xs-4
+                          .genre-post-rank__bookmark-icon
+                            i.fas.fa-bookmark style="font-size:20px; color:#0099cc;"
+                        .col-xs-4
+                          .genre-post-rank__bookmark-count
+                            - if album.bookmarks.nil?
+                              span
+                                | 0
+                            - else
+                              span
+                              = album.bookmarks.count
+                .col-xs-8
+                  table.table.table-bordered
+                    thead
+                      tr
+                        th
+                          | User Name
+                        td
+                          = album.user.name
+                      tr
+                        th
+                          | Rate
+                        td
+                          = album.rate
+                      tr
+                        th
+                          | Title
+                        td
+                          = album.title
+                      tr
+                        th
+                          | Genre
+                        td
+                          = album.genre.name
+                      tr
+                        th
+                          | Created at
+                        td
+                          = album.created_at
