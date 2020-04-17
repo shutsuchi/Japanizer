@@ -1,0 +1,10 @@
+en:
+  activerecord:
+    models:
+      prefecture: "Prefecture"
+    attributes:
+      prefecture:
+        id: "ID"
+        name: "Prefecture Name"
+        created_at: "Created at"
+        updated_at: "Updated at"

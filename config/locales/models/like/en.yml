@@ -1,0 +1,11 @@
+en:
+  activerecord:
+    models:
+      like: "Like"
+    attributes:
+      like:
+        id: "ID"
+        user_id: "User ID"
+        post_id: "Post ID"
+        created_at: "Created at"
+        updated_at: "Updated at"

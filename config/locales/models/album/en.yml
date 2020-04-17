@@ -1,0 +1,19 @@
+en:
+  activerecord:
+    models:
+      album: "Album"
+    attributes:
+      user:
+        id: "ID"
+        user_id: "User ID"
+        genre_id: "Genre ID"
+        title: "Title"
+        image_id: "Image"
+        post_quantity: "Post Quantity"
+        comment: "Comment"
+        rate: "Rate"
+        budget: "Budget"
+        mean: "Transportation"
+        people: "Number of People "
+        created_at: "Created at"
+        updated_at: "Updated at"
