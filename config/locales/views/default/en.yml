@@ -4,6 +4,10 @@ en:
       no_data: 'NO DATA'
       no_post: 'NO POST'
       no_album: 'NO ALBUM'
+    error:
+      er_text_1: ' errors prohibited'
+      er_text_2: 'This '
+      er_text_3: ' from being saved:'
     header:
       title_desc: 'Having nice journey with Japanizer'
       home: 'Home'
