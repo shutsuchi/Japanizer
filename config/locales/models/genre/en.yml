@@ -1,0 +1,10 @@
+en:
+  activerecord:
+    models:
+      genre: "Genre"
+    attributes:
+      genre:
+        id: "ID"
+        name: "Genre Name"
+        created_at: "Created at"
+        updated_at: "Updated at"

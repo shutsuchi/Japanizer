@@ -1,0 +1,11 @@
+en:
+  activerecord:
+    models:
+      bookmark: "Bookmark"
+    attributes:
+      bookmark:
+        id: "ID"
+        user_id: "User ID"
+        genre_id: "Genre ID"
+        created_at: "Created at"
+        updated_at: "Updated at"

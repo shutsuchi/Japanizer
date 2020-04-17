@@ -1,0 +1,18 @@
+en:
+  activerecord:
+    models:
+      post: "Post"
+    attributes:
+      user:
+        id: "ID"
+        user_id: "User ID"
+        album_id: "Album ID"
+        prefecture_id: "Prefecture ID"
+        city_id: "City ID"
+        genre_id: "Genre ID"
+        image_id: "Image"
+        title: "Title"
+        rate: "Rate"
+        comment: "Comment"
+        created_at: "Created at"
+        updated_at: "Updated at"

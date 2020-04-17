@@ -12,5 +12,8 @@ ja:
         post_quantity: "記事数"
         comment: "コメント"
         rate: "評価"
+        budget: "予算"
+        mean: "交通手段"
+        people: "人数"
         created_at: "作成日時"
         updated_at: "更新日時"

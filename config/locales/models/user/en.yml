@@ -1,0 +1,18 @@
+en:
+  activerecord:
+    models:
+      user: 'User'
+    attributes:
+      user:
+        id: 'ID'
+        name: 'Name'
+        email: 'Email'
+        encrypted_password: 'Password'
+        image_id: 'Image'
+        age: 'Age'
+        country_code: 'Nationality'
+        state_code: 'Area Code'
+        withdrawal_flag: 'Withdrawal Flag'
+        admin: 'admin'
+        created_at: 'Created at'
+        updated_at: 'Updated at'

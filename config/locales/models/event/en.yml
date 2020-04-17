@@ -1,0 +1,16 @@
+en:
+  activerecord:
+    models:
+      event: "Event"
+    attributes:
+      event:
+        id: "ID"
+        user_id: "User ID"
+        genre_id: "Genre ID"
+        title: "Title"
+        body: "Content"
+        start: "First Day"
+        end: "Last Day"
+        allday: "Allday"
+        created_at: "Created at"
+        updated_at: "Updated at"

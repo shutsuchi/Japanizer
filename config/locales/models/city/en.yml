@@ -1,0 +1,11 @@
+en:
+  activerecord:
+    models:
+      city: "City"
+    attributes:
+      city:
+        id: "ID"
+        prefecture_id: "Prefecture ID"
+        name: "City name"
+        created_at: "Created at"
+        updated_at: "Updated at"
