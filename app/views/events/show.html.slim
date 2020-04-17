@@ -4,35 +4,17 @@ p
   strong User:
   = @event.user_id
 p
-  strong Genre:
-  = @event.genre_id
-p
   strong Title:
   = @event.title
 p
   strong Description:
-  = @event.description
+  = @event.body
 p
   strong Start date:
-  = @event.start_date
+  = @event.start
 p
   strong End date:
-  = @event.end_date
-p
-  strong Budget:
-  = @event.budget
-p
-  strong Mean:
-  = @event.mean
-p
-  strong Purpose:
-  = @event.purpose
-p
-  strong People:
-  = @event.people
-p
-  strong Memo:
-  = @event.memo
+  = @event.end
 
 => link_to 'Edit', edit_event_path(@event)
 '|

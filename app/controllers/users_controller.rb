@@ -32,6 +32,11 @@ class UsersController < ApplicationController
     @give_likes = Like.where(user_id: @theuser.id).all
     @give_comments = PostComment.where(user_id: @theuser.id).all
     @give_bookmarks = Bookmark.where(user_id: @theuser.id).all
+
+    respond_to do |format|
+      format.html
+      format.json { render :json => @events }
+    end
   end
 
   def edit
