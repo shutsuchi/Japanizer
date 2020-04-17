@@ -62,7 +62,5 @@
                     = @thepost.updated_at.strftime('%Y/%m/%d %H:%M')
 
   .col-xs-9
-    .col-xs-12
-      = render 'layouts/error_message', model: @thepost
     .post-main.post-main__detail
       = render 'edit_form',  thepost: @thepost, user_albums: @user_albums

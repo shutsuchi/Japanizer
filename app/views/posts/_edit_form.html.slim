@@ -1,27 +1,31 @@
 .post-main__box
   .row
-    .col-xs-3.post-main__color
+    .col-xs-4.post-main__color
       h2
         = t('posts.edit.edit_form')
     .col-xs-2
       .post-main__top-btn
-        = link_to(post_path(@thepost), method: :get) do
+        = link_to(post_path(thepost), method: :get) do
           span.btn.btn-primary.btn-md.col-xs-8.glyphicon.glyphicon-arrow-left.btn-icon-color
     .col-xs-2
       .post-main__top-btn
-        = link_to(post_path(@thepost), method: :delete) do
+        = link_to(post_path(thepost), method: :delete) do
           span.btn.btn-danger.btn-md.col-xs-8.glyphicon.glyphicon-trash.btn-icon-color
-  .row
     .col-xs-12
+      .col-xs-6
+        = render 'layouts/error_message', model: thepost
+      .col-xs-6
+  .row
+    .col-xs-6
       .post-main__new-form
-        = form_with(model: @thepost, local: true) do |f|
+        = form_with(model: thepost, local: true) do |f|
           .post-main__image
             .form-window.row
               = f.label t('posts.edit.f_image'), class:"post-main__color"
               br
                 #img_field onClick="$('#file').click()"
-                  - if @thepost.image.present?
-                    = attachment_image_tag @thepost, :image, fallback:"img/no_photo.png", class:"field", size:"60x60"
+                  - if thepost.image.present?
+                    = attachment_image_tag thepost, :image, fallback:"img/no_photo.png", class:"field", size:"60x60"
                   - else
                     i.fas.fa-image
                     i.fas.fa-file-upload.add
@@ -56,12 +60,12 @@
             .form-window.row.city-pulldown
               = render partial: 'city', locals: { prefecture_id: Prefecture.first.id }
             .form-window.row
-              = f.label t('posts.edit.f_city'), class:"post-main__color"
+              = f.label t('posts.edit.f_comment'), class:"post-main__color"
               br
               = f.text_area t('posts.edit.f_comment'), rows:'5', class:"field col-xs-8", placeholder:"comment here"
             .form-window.row
               = f.label t('posts.edit.f_album'), class:"post-main__color"
               br
-              = f.collection_select :album_id, @user_albums, :id, :title, prompt: "Please select"
+              = f.collection_select :album_id, user_albums, :id, :title, prompt: "Please select"
             .form-submit.row
               = f.submit t('posts.edit.f_submit'), class:"btn btn-md btn-base-1 btn-primary pull-left"
