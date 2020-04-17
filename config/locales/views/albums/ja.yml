@@ -21,7 +21,7 @@ ja:
       create: '- 作成日 -'
 
     show:
-      title: 'アルバム詳細'
+      pagetitle: 'アルバム詳細'
       posts: 'このアルバムに入っている投稿'
       user: 'ユーザ名'
       title: 'タイトル'
