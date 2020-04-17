@@ -43,6 +43,9 @@ class PostsController < ApplicationController
     if @post.rate.nil?
       @post.rate = 0
     end
+    if @post.title.nil?
+      @post.title = 'No Title'
+    end
     if @post.save
       redirect_to @post
     else
