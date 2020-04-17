@@ -41,7 +41,5 @@
                     = @thealbum.updated_at.strftime('%Y/%m/%d %H:%M')
 
   .col-xs-9
-    .col-xs-12
-      = render 'layouts/error_message', model: @thealbum
     .post-main.post-main__detail
       = render 'edit_form', thealbum: @thealbum, user_posts: @user_posts

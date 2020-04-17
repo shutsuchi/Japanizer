@@ -2,14 +2,12 @@
   .album-new-form__title
     h2
       = t('albums.index.new_form')
-  .row
-    = render 'layouts/error_message', model: @album
   = form_with(model: album, url: albums_path, method: :post, local: true) do |f|
     .album-new-form__book
       .col-xs-6
         .album-new-form__image
           .album-new-form__image--content
-            .form-window.row
+            .form-window.col-xs-12
             ul#previews
               li.input
                 br
@@ -18,6 +16,8 @@
                     = f.label t('albums.index.f_image')
                     br
                     = f.attachment_field :image, class: "image_upload"
+            .col-xs-10
+              = render 'layouts/error_message', model: album
       .col-xs-6
         .album-new-form__others
           .album-new-form__others--content
@@ -69,13 +69,13 @@
             /.form-window.row
               = f.label :posts
               br
-              - if @user_no_posts.nil?
+              - if user_no_posts.nil?
                 p
-                  | 該当なし
+                  = t('app.common.no_album')
               - else
                 = f.collection_check_boxes :post_quantity, @user_no_posts, :id, :title, prompt: "Please select",
                   include_hidden: false, class:"post-main__color" do |a|
                     = a.check_box
                     = a.label { a.text }
             .form-submit.row
-              = f.submit t('albums.index.f_people'), class:"btn btn-primary col-xs-5"
+              = f.submit t('albums.index.f_submit'), class:"btn btn-primary col-xs-5"
