@@ -1,0 +1,33 @@
+//日本地図横の地域リスト
+ol
+  ul#area
+    .col-xs-12
+      li
+        = link_to t('prefectures.index.hokkaido_area'), prefectures_path(area_id: 1)
+    .col-xs-12
+      li
+        = link_to t('prefectures.index.tohoku_area'), prefectures_path(area_id: 2)
+    .col-xs-12
+      li
+        = link_to t('prefectures.index.hokuriku_area'), prefectures_path(area_id: 3)
+    .col-xs-12
+      li
+        = link_to t('prefectures.index.kanto_area'), prefectures_path(area_id: 4)
+    .col-xs-12
+      li
+        = link_to t('prefectures.index.tokai_area'), prefectures_path(area_id: 5)
+    .col-xs-12
+      li
+        = link_to t('prefectures.index.kinki_area'), prefectures_path(area_id: 6)
+    .col-xs-12
+      li
+        = link_to t('prefectures.index.chugoku_area'), prefectures_path(area_id: 7)
+    .col-xs-12
+      li
+        = link_to t('prefectures.index.shikoku_area'), prefectures_path(area_id: 8)
+    .col-xs-12
+      li
+        = link_to t('prefectures.index.kyushu_area'), prefectures_path(area_id: 9)
+    .col-xs-12.text-center
+      li
+        = link_to t('prefectures.index.okinawa_area'), prefectures_path(area_id: 10)

@@ -1,66 +1,76 @@
 .margin-wrapper
   .top-wrapper
     .row
-      .col-xs-12.margin-bottom-40.text-center
+      .col-xs-12.margin-bottom-20.text-center
         h1
           = t('genres.index.pagetitle')
 
-        .col-xs-12
-          = t('genres.index.description')
-        .col-xs-8
-          .genre-image-search
-            .col-xs-12
-              // ジャンルイメージ
-              = render 'genre_list', genres: @genres
+      .col-xs-12.text-center.margin-bottom-40
+        = t('genres.index.description')
+      .col-xs-8
+        .genre-image-search
+          .col-xs-12
+            // ジャンルイメージ
+            = render 'genre_list', genres: @genres
 
-        .col-xs-4.text-center
-          h2
-            = t('genres.index.subtitle')
-          .genre-rank-list
-            ol
-              ul#area
-                .col-xs-12
-                  - @genre_post_ranks.each.with_index(1) do |genre, i|
-                    .genre-rank-list__boxes
-                      .genre-rank-list__box
-                        .genre-rank-list__each
-                          li
-                            = link_to genres_path(id: genre.id)
-                              .col-xs-12
-                                .col-xs-1
-                                  = i
-                                .col-xs-6
-                                  = genre.name
+      .col-xs-4.text-center
+        h2
+          = t('genres.index.subtitle')
+        .genre-rank-list
+          ol
+            ul#area
+              .col-xs-12
+                - @genre_post_ranks.each.with_index(1) do |genre, i|
+                  .genre-rank-list__boxes
+                    .genre-rank-list__box
+                      .genre-rank-list__each
+                        li
+                          = link_to genres_path(id: genre.id)
+                            .col-xs-12
+                              .col-xs-1
+                                = i
+                              .col-xs-6
+                                = genre.name
 
-.wrapper
-  .container
-    .row
-      .album-index
-        .album-index__title
-          h2
+.top-wrapper
+  .row
+    .tab-menu
+      ul.nav.nav-tabs.text-center role="tablist"
+        li.active role="presentation"
+          a.text-cetner aria-control="tab_a" data-toggle="tab" href="#tab_a" role="tab"
             = t('genres.subtitle_p')
-          .col-xs-12
-            - if @posts.present?
-              - @posts.each do |post|
-                = render 'posts/post', post: post
-              .text-center
-                = paginate @posts
-            - else
-              h3.bg-danger.text-center
-                = t('app.common.no_post')
-.wrapper
-  .container
-    .row
-      .album-index
-        .album-index__title
-          h2
+        li role="presentation"
+          a.text-cetner aria-control="tab_b" data-toggle="tab" href="#tab_b" role="tab"
             = t('genres.subtitle_a')
-          .col-xs-12
-            - if @albums.present?
-              - @albums.each do |album|
-                = render 'albums/album', album: album
-              .text-center
-                = paginate @albums
-            - else
-              h2.bg-danger.text-center
-                = t('app.common.no_album')
+
+  .top-wrapper
+    .album-index
+      .tab-content
+        .tab-pane.active id="tab_a" role="tabpanel"
+          .album-index__title
+            h2
+              = t('genres.subtitle_p')
+            .col-xs-12
+              - if @posts.nil?
+                h3.bg-danger.text-center
+                  = t('app.common.no_post')
+              - else
+                - @posts.each do |post|
+                  = render 'posts/post', post: post
+                .text-center
+                  = paginate @posts
+
+        .tab-pane id="tab_b" role="tabpanel"
+          .album-index
+            .album-index__title
+              h2
+                = t('genres.subtitle_a')
+              .col-xs-12
+                - if @albums.nil?
+                  h2.bg-danger.text-center
+                    = t('app.common.no_album')
+                - else
+                  - @albums.each do |album|
+                    = render 'albums/album', album: album
+                  .text-center
+                    = paginate @albums

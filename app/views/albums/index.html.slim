@@ -2,39 +2,85 @@
   - if user_signed_in?
     = render 'new_form', album: @album, user_no_posts: @user_no_posts
 
+
 - if user_signed_in?
-  .container
-    .row
-      .album-index
-        .album-index__title
-          - unless current_user.albums.nil?
-              h2
-                = t('albums.index.subtitle_y')
-              .col-xs-12
-                  = render @user_albums_pg
-
-              .col-xs-12.text-center
-                  = paginate @user_albums_pg
-          - else
-              .col-xs-12
-                h2
-                  = t('albums.index.no_album')
-
-.container
   .row
-    .album-index
-      .album-index__title
-        - unless @others_albums_pg.nil?
-          h2
-            = t('albums.index.subtitle_o')
-          .col-xs-12
-            = render @others_albums_pg
-          .col-xs-12.text-center
-            = paginate @others_albums_pg
+    .top-wrapper
+      .tab-menu
+        ul.nav.nav-tabs.text-center role="tablist"
+          li.active role="presentation"
+            a.text-cetner aria-control="tab_a" data-toggle="tab" href="#tab_a" role="tab"
+              = t('albums.index.subtitle_y')
+          li role="presentation"
+            a.text-cetner aria-control="tab_b" data-toggle="tab" href="#tab_b" role="tab"
+              = t('albums.index.subtitle_o')
 
-          .col-xs-12
-            .text-center
-        - else
-          .col-xs-12
-            h2.text-center
-              = t('common.no_data')
+    .top-wrapper
+      .row
+        .tab-content
+          .tab-pane.active id="tab_a" role="tabpanel"
+            .album-index
+              .album-index__title
+                - unless current_user.albums.nil?
+                    h2
+                      = t('albums.index.subtitle_y')
+                    .col-xs-12
+                        = render @user_albums_pg
+
+                    .col-xs-12.text-center
+                        = paginate @user_albums_pg
+                - else
+                    .col-xs-12
+                      h2
+                        = t('albums.index.no_album')
+
+          .tab-pane id="tab_b" role="tabpanel"
+            .album-index
+              .album-index__title
+                - unless @others_albums_pg.nil?
+                  h2
+                    = t('albums.index.subtitle_o')
+                  .col-xs-12
+                    = render @others_albums_pg
+                  .col-xs-12.text-center
+                    = paginate @others_albums_pg
+
+                  .col-xs-12
+                    .text-center
+                - else
+                  .col-xs-12
+                    h2.text-center
+                      = t('common.no_data')
+
+- else
+  .row
+    .top-wrapper
+      .tab-menu
+        ul.nav.nav-tabs.text-center role="tablist"
+          li.active role="presentation"
+            a.text-cetner aria-control="tab_a" data-toggle="tab" href="#tab_a" role="tab"
+              = t('posts.index.post_y')
+          li role="presentation"
+            a.text-cetner aria-control="tab_b" data-toggle="tab" href="#tab_b" role="tab"
+              = t('posts.index.post_o')
+
+    .top-wrapper
+      .row
+        .tab-pane.active id="tab_b" role="tabpanel"
+          .tab-content
+            .album-index
+              .album-index__title
+                - unless @others_albums_pg.nil?
+                  h2
+                    = t('albums.index.subtitle_o')
+                  .col-xs-12
+                    = render @others_albums_pg
+                  .col-xs-12.text-center
+                    = paginate @others_albums_pg
+
+                  .col-xs-12
+                    .text-center
+                - else
+                  .col-xs-12
+                    h2.text-center
+                      = t('common.no_data')

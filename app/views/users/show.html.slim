@@ -13,12 +13,7 @@
       .col-xs-7
         .calendar-box__cal
           #calendar
-          //javascript:
-            $(function() {
-              $('#calendar').fullCalendar( {
-                events: '/events.json'
-              });
-            }).call(this);
+
       .col-xs-5
         = render 'show_form', event: @event
   .row
