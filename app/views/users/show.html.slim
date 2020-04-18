@@ -28,26 +28,38 @@
       = render 'show_status', get_likes: @get_likes, get_comments: @get_comments, get_bookmarks: @get_bookmarks, give_likes: @give_likes, give_comments: @give_comments, give_bookmarks: @give_bookmarks
 
   .row
-    .mypage-post-list
-      .col-xs-12.text-center
-        .mypage-post-list__title
-          - if @posts.nil?
-            h2
-              = t('users.show.no_post')
-          - else
-            h2
-              = t('users.show.subtitle_p')
-      .col-xs-12
-        = render @posts
+    .tab-menu
+      ul.nav.nav-tabs.text-center role="tablist"
+        li.active role="presentation"
+          a.text-cetner aria-control="tab_a" data-toggle="tab" href="#tab_a" role="tab"
+            = t('activerecord.models.post')
+        li role="presentation"
+          a.text-cetner aria-control="tab_b" data-toggle="tab" href="#tab_b" role="tab"
+            = t('activerecord.models.album')
   .row
-    .mypage-post-list
-      .col-xs-12.text-center
-        .mypage-post-list__title
-          - if @posts.nil?
-            h2
-              = t('users.show.no_album')
-          - else
-            h2
-              = t('users.show.subtitle_a')
-      .col-xs-12
-        = render @albums
+    .tab-content
+      .tab-pane.active id="tab_a" role="tabpanel"
+        .mypage-post-list
+          .col-xs-12.text-center
+            .mypage-post-list__title
+              - if @posts.nil?
+                h2
+                  = t('users.show.no_post')
+              - else
+                h2
+                  = t('users.show.subtitle_p')
+          .col-xs-12
+            = render @posts
+
+      .tab-pane id="tab_b" role="tabpanel"
+        .mypage-post-list
+          .col-xs-12.text-center
+            .mypage-post-list__title
+              - if @posts.nil?
+                h2
+                  = t('users.show.no_album')
+              - else
+                h2
+                  = t('users.show.subtitle_a')
+          .col-xs-12
+            = render @albums
