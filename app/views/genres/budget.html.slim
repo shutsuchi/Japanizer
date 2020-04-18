@@ -69,20 +69,18 @@
             .col-xs-12
               li
                 = link_to 'over 500k', budget_path(budget_range: 10)
-  .wrapper
-    .container
-      .row
-        .album-index
-          .album-index__title
-            h1
-              = t('genres.subtitle_a')
-            .col-xs-12
-              - if @albums.present?
-                - @albums.each do |album|
-                  = render 'albums/album', album: album
-                .text-center
-                  = paginate @albums
-              - else
-                h2.bg-danger.text-center
-                  | NO ALBUMS
-                  = t('app.common.no_album')
+  .top-wrapper
+    .row
+      .album-index
+        .album-index__title
+          h2
+            = t('genres.subtitle_a')
+          .col-xs-12
+            - if @albums.present?
+              - @albums.each do |album|
+                = render 'albums/album', album: album
+              .text-center
+                = paginate @albums
+            - else
+              h2.bg-danger.text-center
+                = t('app.common.no_album')

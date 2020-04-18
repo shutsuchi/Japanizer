@@ -1,0 +1,32 @@
+.area-pick
+  ul#imagemap
+    li#hokkaido
+      = link_to t('prefectures.index.hokkaido_area'), prefectures_path(area_id: 1)
+        /a href="hokkaido/hokkaido.html" 北海道
+    li#touhoku
+      = link_to t('prefectures.index.tohoku_area'), prefectures_path(area_id: 2)
+        /a href="tohoku/miyagi" 東北
+    li#hokuriku
+      = link_to t('prefectures.index.hokuriku_area'), prefectures_path(area_id: 3)
+        /a href="hokuriku/nagano.html" 北陸
+    li#kanto
+      = link_to t('prefectures.index.kanto_area'), prefectures_path(area_id: 4)
+        /a href="kanto/tokyo.html" 関東
+    li#tokai
+      = link_to t('prefectures.index.tokai_area'), prefectures_path(area_id: 5)
+        /a href="toukai/shizuoka.html" 東海
+    li#kansai
+      = link_to t('prefectures.index.kinki_area'), prefectures_path(area_id: 6)
+        /a href="kansai/osaka.html" 関西
+    li#chugoku
+      = link_to t('prefectures.index.chugoku_area'), prefectures_path(area_id: 7)
+        /a href="chugoku/hiroshima.html" 中国
+    li#shikoku
+      = link_to t('prefectures.index.shikoku_area'), prefectures_path(area_id: 8)
+        /a href="shikoku/kochi.html" 四国
+    li#kyushu
+      = link_to t('prefectures.index.kyushu_area'), prefectures_path(area_id: 9)
+        /a href="kyushu/fukuoka.html" 九州
+    li#okinawa
+      = link_to t('prefectures.index.okinawa_area'), prefectures_path(area_id: 10)
+        /a href="okinawa/okinawa.html" 沖縄

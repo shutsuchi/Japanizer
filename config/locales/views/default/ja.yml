@@ -18,3 +18,11 @@ ja:
       sign_out: 'ログアウト'
     searchbar:
       condition: '条件検索'
+
+  views:
+    pagination:
+      first: '最初'
+      last: '最後'
+      previous: '前ページ'
+      next: '次ページ'
+      truncate: '...'

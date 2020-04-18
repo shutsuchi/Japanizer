@@ -18,3 +18,11 @@ en:
       sign_out: 'LogOut'
     searchbar:
       condition: 'Conditional Search'
+
+  views:
+    pagination:
+      first: 'First'
+      last: 'Last'
+      previous: 'Prev'
+      next: 'Next'
+      truncate: '...'

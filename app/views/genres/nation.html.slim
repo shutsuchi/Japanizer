@@ -24,33 +24,46 @@
           .col-xs-12
             li
               = link_to 'The other nationalities', nation_path(nation: 2)
-.wrapper
-  .container
-    .row
-      .album-index
-        .album-index__title
-          h1.text-center
+
+.top-wrapper
+  .row
+    .tab-menu
+      ul.nav.nav-tabs.text-center role="tablist"
+        li.active role="presentation"
+          a.text-cetner aria-control="tab_a" data-toggle="tab" href="#tab_a" role="tab"
             = t('genres.subtitle_p')
-          .col-xs-12
-            - if @posts.present?
-              - @posts.each do |post|
-                = render 'posts/post', post: post
-              .text-center
-                = paginate @posts
-            - else
-              h3.bg-danger.text-center
-                = t('app.common.no_post')
-    .row
-      .album-index
-        .album-index__title
-          h1.text-center
+        li role="presentation"
+          a.text-cetner aria-control="tab_b" data-toggle="tab" href="#tab_b" role="tab"
             = t('genres.subtitle_a')
-          .col-xs-12
-            - if @albums.present?
-              - @albums.each do |album|
-                = render 'albums/album', album: album
-              .text-center
-                = paginate @albums
-            - else
-              h3.bg-danger.text-center
-                = t('app.common.no_album')
+
+  .top-wrapper
+    .album-index
+      .tab-content
+        .tab-pane.active id="tab_a" role="tabpanel"
+          .album-index__title
+            h2.text-center
+              = t('genres.subtitle_p')
+            .col-xs-12
+              - if @posts.present?
+                - @posts.each do |post|
+                  = render 'posts/post', post: post
+                .text-center
+                  = paginate @posts
+              - else
+                h3.bg-danger.text-center
+                  = t('app.common.no_post')
+
+        .tab-pane id="tab_b" role="tabpanel"
+          .album-index
+            .album-index__title
+              h2.text-center
+                = t('genres.subtitle_a')
+              .col-xs-12
+                - if @albums.nil?
+                  h3.bg-danger.text-center
+                    = t('app.common.no_album')
+                - else
+                  - @albums.each do |album|
+                    = render 'albums/album', album: album
+                  .text-center
+                    = paginate @albums

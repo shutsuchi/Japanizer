@@ -7,81 +7,51 @@
         = t('genres.age.description')
     .col-xs-7
       .age-icon
-        // 年代アイコン
-        - if @range == "1"
-          .age-icon__1
-        - elsif @range == "2"
-          .age-icon__2
-        - elsif @range == "3"
-          .age-icon__3
-        - elsif @range == "4"
-          .age-icon__4
-        - elsif @range == "5"
-          .age-icon__5
-        - elsif @range == "6"
-          .age-icon__6
-        - elsif @range == "7"
-          .age-icon__7
-        - else
-          .age-icon__default
+        = render 'age_image', range: @range
 
     .col-xs-5
       //年代リスト
-      ol
-        ul#area
-          .col-xs-12
-            li
-              = link_to '10 - 20', age_path(age_range: 1)
-          .col-xs-12
-            li
-              = link_to '20 - 30', age_path(age_range: 2)
-          .col-xs-12
-            li
-              = link_to '30 - 40', age_path(age_range: 3)
-          .col-xs-12
-            li
-              = link_to '40 - 50', age_path(age_range: 4)
-          .col-xs-12
-            li
-              = link_to '50 - 60', age_path(age_range: 5)
-          .col-xs-12
-            li
-              = link_to '60 - 70', age_path(age_range: 6)
-          .col-xs-12
-            li
-              = link_to '70 - 80', age_path(age_range: 7)
-          .col-xs-12
-            li
-              = link_to 'All', age_path
-.wrapper
-  .container
-    .row
-      .album-index
-        .album-index__title
-          h1
+      = render 'age_list'
+
+.top-wrapper
+  .row
+    .tab-menu
+      ul.nav.nav-tabs.text-center role="tablist"
+        li.active role="presentation"
+          a.text-cetner aria-control="tab_a" data-toggle="tab" href="#tab_a" role="tab"
             = t('genres.subtitle_p')
-          .col-xs-12
-            - if @posts.present?
-              - @posts.each do |post|
-                = render 'posts/post', post: post
-              .text-center
-                = paginate @posts
-            - else
-              h3.bg-danger.text-center
-                = t('app.common.no_post')
-  .wrapper
-    .container
-      .row
-        .album-index
+        li role="presentation"
+          a.text-cetner aria-control="tab_b" data-toggle="tab" href="#tab_b" role="tab"
+            = t('genres.subtitle_a')
+
+  .top-wrapper
+    .album-index
+      .tab-content
+        .tab-pane.active id="tab_a" role="tabpanel"
           .album-index__title
-            h1
-              = t('genres.subtitle_a')
+            h2
+              = t('genres.subtitle_p')
             .col-xs-12
-              - if @albums.present?
-                - @albums.each do |album|
-                  = render 'albums/album', album: album
-                .text-center
-                  = paginate @albums
+              - if @posts.nil?
+                h3.bg-danger.text-center
+                  = t('app.common.no_post')
               - else
-                h2.bg-danger.text-center
-                  = t('app.common.no_album')
+                - @posts.each do |post|
+                  = render 'posts/post', post: post
+                .text-center
+                  = paginate @posts
+
+        .tab-pane id="tab_b" role="tabpanel"
+          .album-index
+            .album-index__title
+              h2
+                = t('genres.subtitle_a')
+              .col-xs-12
+                - if @albums.nil?
+                  h2.bg-danger.text-center
+                    = t('app.common.no_album')
+                - else
+                  - @albums.each do |album|
+                    = render 'albums/album', album: album
+                  .text-center
+                    = paginate @albums
