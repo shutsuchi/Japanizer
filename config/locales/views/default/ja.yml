@@ -1,6 +1,7 @@
 ja:
   app:
     common:
+      back: '戻る'
       no_data: 'データなし'
       no_post: '該当のアルバムなし'
       no_album: '該当のアルバムなし'

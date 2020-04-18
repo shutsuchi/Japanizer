@@ -1,6 +1,7 @@
 en:
   app:
     common:
+      back: 'Back'
       no_data: 'NO DATA'
       no_post: 'NO POST'
       no_album: 'NO ALBUM'

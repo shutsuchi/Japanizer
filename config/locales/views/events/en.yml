@@ -1,0 +1,11 @@
+en:
+  events:
+    show:
+      user: 'User Name : '
+      user_id: 'User ID : '
+      title: 'Event Title : '
+      body: 'Event Description : '
+      start: 'First Day : '
+      end: 'Last Day : '
+
+      none: 'no content'

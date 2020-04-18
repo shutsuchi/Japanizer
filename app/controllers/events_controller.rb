@@ -10,11 +10,12 @@ class EventsController < ApplicationController
   # GET /events/1
   # GET /events/1.json
   def show
+    @theuser = current_user
+    @theevent = find_event(params[:id])
   end
 
   # GET /events/new
   def new
-    @event = Event.new
   end
 
   # GET /events/1/edit

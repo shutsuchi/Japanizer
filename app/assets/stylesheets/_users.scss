@@ -24,13 +24,14 @@
 .fc-right .fc-prev-button, .fc-right .fc-next-button {
   background-color: #262626;
   color: white;
+  background-color: black;
   background-image: none;
   border: none;
 }
 .fc-time{
   display : none;
 }
-//----- calendar-box
+//----- form-box
 .calender-box {
   &__cal {
   }
