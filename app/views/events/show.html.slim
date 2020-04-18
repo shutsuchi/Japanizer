@@ -1,39 +1,47 @@
 p#notice = notice
 
-p
-  strong User:
-  = @event.user_id
-p
-  strong Genre:
-  = @event.genre_id
-p
-  strong Title:
-  = @event.title
-p
-  strong Description:
-  = @event.description
-p
-  strong Start date:
-  = @event.start_date
-p
-  strong End date:
-  = @event.end_date
-p
-  strong Budget:
-  = @event.budget
-p
-  strong Mean:
-  = @event.mean
-p
-  strong Purpose:
-  = @event.purpose
-p
-  strong People:
-  = @event.people
-p
-  strong Memo:
-  = @event.memo
+.container
+  .top-wrapper
+    .row
+      .col-xs-12
+        .evnet-detail
+          .evnet-detail-box
+            .event-detail-box__title
+              = t('events.show.user_id')
+            .event-detail-box__content
+              = @theevent.user_id
 
-=> link_to 'Edit', edit_event_path(@event)
-'|
-=< link_to 'Back', events_path
+            .event-detail-box__title
+              = t('events.show.user')
+            .event-detail-box__content
+              = @theevent.user.name
+
+            .event-detail-box__title
+              = t('events.show.title')
+            .event-detail-box__content
+              = @theevent.title
+
+            .event-detail-box__title
+              = t('events.show.body')
+            .event-detail-box__content
+              - if @theevent.body.nil?
+                = t('events.show.none')
+              - else
+                = @theevent.body
+
+            .event-detail-box__title
+              = t('events.show.start')
+            .event-detail-box__content
+              = @theevent.start.strftime('%Y/%m/%d %H:%M')
+
+            .event-detail-box__title
+              = t('events.show.end')
+            .event-detail-box__content
+              = @theevent.end.strftime('%Y/%m/%d %H:%M')
+
+          .event-detail__btn
+            .event-detail__btn-text
+              = link_to(user_path(@theuser)) do
+                span.btn.btn-success = t('app.common.back')
+              /'|
+              /= link_to 'Edit', events_path

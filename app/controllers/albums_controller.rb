@@ -34,15 +34,14 @@ class AlbumsController < ApplicationController
   # POST /albums
   # albums_path
   def create
-    album = Album.new(album_params)
-    album.user_id = current_user.id
-    if album.rate.nil?
-      album.rate = 0
+    @album = Album.new(album_params)
+    @album.user_id = current_user.id
+    if @album.rate.nil?
+      @album.rate = 0
     end
-    if album.save
-      redirect_to album
+    if @album.save
+      redirect_to @album
     else
-      @album = Album.new
       @albums_pg = page(Album)
       @user_no_posts = Post.where(album_id: current_user.albums.first.id)
       @user_albums_pg = page(current_user.albums)
@@ -54,28 +53,31 @@ class AlbumsController < ApplicationController
   # PATCH /albums/:id
   # album_path
   def update
-    thealbum = find_album(params[:id])
+    @thealbum = find_album(params[:id])
 
-    if thealbum.update(
+    if @thealbum.update(
         genre_id: params[:album][:genre_id],
         image: params[:album][:image],
         title: params[:album][:title],
         comment: params[:album][:comment],
-        post_quantity: post_quantity_update(thealbum),
-        rate: rate_update(thealbum)
+        post_quantity: post_quantity_update(@thealbum),
+        rate: rate_update(@thealbum)
       )
         # album更新時に選択した投稿のalbum_id情報を更新
-        if thealbum.post_quantity.present?
+        if @thealbum.post_quantity.present?
           c = 0
-          while c < thealbum.post_quantity do
+          while c < @thealbum.post_quantity do
             post_id = params[:album][:post_quantity][c].to_i
             post = find_post(post_id)
             # album_id が nil になって、エラーが発生している。
-            post.update!(album_id: thealbum.id)
+            post.update!(album_id: @thealbum.id)
             (c += 1)
           end
         end
-      redirect_to thealbum
+      redirect_to @thealbum
+    else
+      @user_posts = current_user.posts
+      render :edit
     end
   end
 

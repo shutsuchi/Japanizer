@@ -12,6 +12,10 @@
       .post-main__top-btn
         = link_to(album_path(thealbum), method: :delete) do
           span.btn.btn-danger.btn-md.col-xs-8.glyphicon.glyphicon-trash.btn-icon-color
+    .col-xs-12
+      .col-xs-6
+        = render 'layouts/error_message', model: thealbum
+      .col-xs-6
   .row
     .col-xs-12
       .post-main__new-form

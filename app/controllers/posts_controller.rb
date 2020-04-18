@@ -43,14 +43,16 @@ class PostsController < ApplicationController
     if @post.rate.nil?
       @post.rate = 0
     end
+    if @post.title.nil?
+      @post.title = 'No Title'
+    end
     if @post.save
       redirect_to @post
     else
-      @post = Post.new
       @posts_pg = page(Post)
-        # current_user の投稿
+      # current_user の投稿
       @user_posts_pg = page(current_user.posts)
-        # current_user 以外の投稿
+      # current_user 以外の投稿
       @others_posts_pg = page(Post.includes(:user).where.not(user_id: current_user.id))
       render :index
     end
@@ -72,7 +74,8 @@ class PostsController < ApplicationController
       redirect_to @thepost
     else
       @thepost.user = current_user
-      render edit_album_path
+      @user_albums = current_user.albums.all
+      render :edit
     end
   end
 

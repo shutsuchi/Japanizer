@@ -32,6 +32,11 @@ class UsersController < ApplicationController
     @give_likes = Like.where(user_id: @theuser.id).all
     @give_comments = PostComment.where(user_id: @theuser.id).all
     @give_bookmarks = Bookmark.where(user_id: @theuser.id).all
+
+    respond_to do |format|
+      format.html
+      format.json { render :json => @events }
+    end
   end
 
   def edit
@@ -56,7 +61,6 @@ class UsersController < ApplicationController
     if @theuser.update(user_params)
       redirect_to user_path(@theuser.id), notice: "Successfully Updated"
     else
-      @theuser = current_user
       render :edit, notice: "Failed to Update"
     end
   end

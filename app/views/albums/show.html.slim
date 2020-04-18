@@ -26,11 +26,11 @@
                 td.post-sedebar__title
                   = @thealbum.user.name
               tr
-                th.active  t('albums.show.title')
+                th.active = t('albums.show.title')
                 td.post-sedebar__title
                   = @thealbum.title
               tr
-                th.active = t('albums.show.title')
+                th.active = t('albums.show.no_posts')
                 td.post-sedebar__title
                   = @thealbum.posts.count
               tr

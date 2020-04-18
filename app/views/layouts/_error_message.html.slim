@@ -2,13 +2,17 @@
   .error-box
     .col-xs-12
       .error-box__title
-        = model.errors.count
-        |  errors prohibited this 
-        = model.class.name
-        |  from being saved:
+        .error-box__title-text
+          = model.errors.count
+          = t('app.error.er_text_1')
+          br
+          = t('app.error.er_text_2')
+          = model.model_name.human
+          = t('app.error.er_text_3')
       .error-box__text
-        ul
-          - model.errors.full_messages.each do |message|
-            li.error__text
-              = message
+        .error-box__text-text
+          ul
+            - model.errors.full_messages.each do |msg|
+              li.error__text
+                = msg
 

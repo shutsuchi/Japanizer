@@ -1,0 +1,11 @@
+ja:
+  events:
+    show:
+      user: 'ユーザー名 : '
+      user_id: 'ユーザーID : '
+      title: 'イベントタイトル : '
+      body: 'イベント概要 : '
+      start: '初日 : '
+      end: '最終日 : '
+
+      none: 'なし'
