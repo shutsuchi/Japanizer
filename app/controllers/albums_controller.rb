@@ -4,24 +4,24 @@ class AlbumsController < ApplicationController
   # albums_path
   def index
     @album = Album.new
-    @albums_pg = page(Album)
       # 空アルバム
     @user_no_posts = Post.where(album_id: current_user.albums.first.id)
+
+
+    pg1 = params[:user]
+    pg2 = params[:other]
       # current_user のアルバム
-    @user_albums_pg = page(current_user.albums)
+    @user_albums_pg = page_6(current_user.albums, pg1)
       # current_user以外のアルバム
-    @others_albums_pg = page(Album.includes(:user).where.not(user_id: current_user.id))
+    @others_albums_pg = page_6(Album.includes(:user).where.not(user_id: current_user.id), pg2)
   end
 
-  def page(obj)
-    obj.page(params[:page]).reverse_order.per(4)
-  end
 
   # GET /album/:id
   # album_path
   def show
     @thealbum = find_album(params[:id])
-    @posts = page(@thealbum.posts)
+    @posts = page_8(@thealbum.posts)
   end
 
   # GET /album/:id/edit
@@ -42,10 +42,15 @@ class AlbumsController < ApplicationController
     if @album.save
       redirect_to @album
     else
-      @albums_pg = page(Album)
+      @album = Album.new
+        # 空アルバム
       @user_no_posts = Post.where(album_id: current_user.albums.first.id)
-      @user_albums_pg = page(current_user.albums)
-      @others_albums_pg = page(Album.includes(:user).where.not(user_id: current_user.id))
+
+
+      pg1 = params[:user]
+      pg2 = params[:other]
+      @user_albums_pg = page_6(current_user.albums, pg1)
+      @others_albums_pg = page_6(Album.includes(:user).where.not(user_id: current_user.id), pg2)
       render :index
     end
   end
@@ -117,7 +122,11 @@ class AlbumsController < ApplicationController
     params.require(:post).permit(:album_id)
   end
 
-  def page(obj)
+  def page_6(obj, pg)
+    obj.page(pg).reverse_order.per(6)
+  end
+
+  def page_8(obj)
     obj.page(params[:page]).reverse_order.per(8)
   end
 

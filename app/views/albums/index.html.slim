@@ -28,7 +28,7 @@
                         = render @user_albums_pg
 
                     .col-xs-12.text-center
-                        = paginate @user_albums_pg
+                        = paginate @user_albums_pg, :param_name => 'user'
                 - else
                     .col-xs-12
                       h2
@@ -43,7 +43,7 @@
                   .col-xs-12
                     = render @others_albums_pg
                   .col-xs-12.text-center
-                    = paginate @others_albums_pg
+                    = paginate @others_albums_pg, :param_name => 'other'
 
                   .col-xs-12
                     .text-center
@@ -76,7 +76,7 @@
                   .col-xs-12
                     = render @others_albums_pg
                   .col-xs-12.text-center
-                    = paginate @others_albums_pg
+                    = paginate @others_albums_pg, :param_name => 'other'
 
                   .col-xs-12
                     .text-center
