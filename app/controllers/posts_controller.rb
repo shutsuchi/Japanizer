@@ -3,15 +3,22 @@ class PostsController < ApplicationController
   # posts_path
   def index
     @post = Post.new
-    @posts_pg = page(Post)
+
+    pg1 = params[:user]
+    pg2 = params[:other]
+
       # current_user の投稿
-    @user_posts_pg = page(current_user.posts)
+    #@user_posts_pg = page(current_user.posts, pg)
+    #@user_posts_pg = current_user.posts.page(params[:user]).reverse_order.per(4)
+    @user_posts_pg = page(current_user.posts, pg1)
       # current_user 以外の投稿
-    @others_posts_pg = page(Post.includes(:user).where.not(user_id: current_user.id))
+    #@others_posts_pg = page(Post.includes(:user).where.not(user_id: current_user.id), pg)
+    #@others_posts_pg = Post.includes(:user).where.not(user_id: current_user.id).page(params[:other]).reverse_order.per(4)
+    @others_posts_pg = page(Post.includes(:user).where.not(user_id: current_user.id), pg2)
   end
 
-  def page(obj)
-    obj.page(params[:page]).reverse_order.per(4)
+  def page(obj, pg)
+    obj.page(pg).reverse_order.per(4)
   end
 
   # GET /post/:id
