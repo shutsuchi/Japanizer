@@ -39,7 +39,7 @@
                 - @posts.each do |post|
                   = render 'posts/post', post: post
                 .text-center
-                  = paginate @posts
+                  = paginate @posts, :param_name => 'post'
 
         .tab-pane id="tab_b" role="tabpanel"
           .album-index
@@ -54,4 +54,4 @@
                   - @albums.each do |album|
                     = render 'albums/album', album: album
                   .text-center
-                    = paginate @albums
+                    = paginate @albums, :param_name => 'album'

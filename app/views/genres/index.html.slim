@@ -51,14 +51,14 @@
             h2
               = t('genres.subtitle_p')
             .col-xs-12
-              - if @posts.nil?
+              - if @posts_pg.nil?
                 h3.bg-danger.text-center
                   = t('app.common.no_post')
               - else
-                - @posts.each do |post|
+                - @posts_pg.each do |post|
                   = render 'posts/post', post: post
                 .text-center
-                  = paginate @posts
+                  = paginate @posts_pg, :param_name => 'post'
 
         .tab-pane id="tab_b" role="tabpanel"
           .album-index
@@ -66,11 +66,11 @@
               h2
                 = t('genres.subtitle_a')
               .col-xs-12
-                - if @albums.nil?
+                - if @albums_pg.nil?
                   h2.bg-danger.text-center
                     = t('app.common.no_album')
                 - else
-                  - @albums.each do |album|
+                  - @albums_pg.each do |album|
                     = render 'albums/album', album: album
                   .text-center
-                    = paginate @albums
+                    = paginate @albums_pg, :param_name => 'album'

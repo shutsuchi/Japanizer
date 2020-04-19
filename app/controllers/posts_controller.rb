@@ -3,15 +3,14 @@ class PostsController < ApplicationController
   # posts_path
   def index
     @post = Post.new
-    @posts_pg = page(Post)
-      # current_user の投稿
-    @user_posts_pg = page(current_user.posts)
-      # current_user 以外の投稿
-    @others_posts_pg = page(Post.includes(:user).where.not(user_id: current_user.id))
-  end
 
-  def page(obj)
-    obj.page(params[:page]).reverse_order.per(4)
+    pg1 = params[:user]
+    pg2 = params[:other]
+
+      # current_user の投稿
+    @user_posts_pg = page_4(current_user.posts, pg1)
+      # current_user 以外の投稿
+    @others_posts_pg = page_4(Post.includes(:user).where.not(user_id: current_user.id), pg2)
   end
 
   # GET /post/:id
@@ -28,9 +27,6 @@ class PostsController < ApplicationController
   def edit
     @thepost = find_post(params[:id])
     @user_albums = current_user.albums.all
-    #if @thepost.user != current_user
-    #  redirect_back(fallback_location: top_path)
-    #end
   end
 
   # POST /posts
@@ -49,11 +45,13 @@ class PostsController < ApplicationController
     if @post.save
       redirect_to @post
     else
-      @posts_pg = page(Post)
-      # current_user の投稿
-      @user_posts_pg = page(current_user.posts)
-      # current_user 以外の投稿
-      @others_posts_pg = page(Post.includes(:user).where.not(user_id: current_user.id))
+      pg1 = params[:user]
+      pg2 = params[:other]
+
+        # current_user の投稿
+      @user_posts_pg = page_4(current_user.posts, pg1)
+        # current_user 以外の投稿
+      @others_posts_pg = page_4(Post.includes(:user).where.not(user_id: current_user.id), pg2)
       render :index
     end
   end
@@ -117,6 +115,10 @@ class PostsController < ApplicationController
 
     def find_post(post_id)
       Post.find(post_id)
+    end
+
+    def page_4(obj, pg)
+      obj.page(pg).reverse_order.per(4)
     end
 
 end

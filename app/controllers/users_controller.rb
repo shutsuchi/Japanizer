@@ -3,9 +3,11 @@ class UsersController < ApplicationController
   before_action :correct_user, only: %i[ show edit withdraw ]
 
   def show
+    pg_p = params[:post]
+    pg_a = params[:album]
     @theuser = current_user
-    @posts = @theuser.posts.all
-    @albums = @theuser.albums.all
+    @posts_pg = page_8(@theuser.posts, pg_p)
+    @albums_pg = page_6(@theuser.albums, pg_a)
     @event = Event.new
     @events = Event.where(user_id: @theuser.id)
 
@@ -82,4 +84,13 @@ class UsersController < ApplicationController
       redirect_to top_path
     end
   end
+
+  def page_6(obj, pg)
+    obj.page(pg).reverse_order.per(6)
+  end
+
+  def page_8(obj, pg)
+    obj.page(pg).reverse_order.per(8)
+  end
+
 end

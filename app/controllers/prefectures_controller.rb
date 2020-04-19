@@ -27,15 +27,15 @@ class PrefecturesController < ApplicationController
     elsif params[:area_id] == "10"
       @posts = array_page(Post.find_by(prefecture_id: 47))
     else
-      @posts = page(Post)
+      @posts = pg(Post)
     end
   end
 
   private
-    def page(obj)
+    def pg(obj)
       obj.page(params[:page]).reverse_order.per(8)
     end
-    def array_page(obj)
+    def array_page(obj, pg)
       Kaminari.paginate_array([obj]).page(params[:page]).per(8)
     end
 end

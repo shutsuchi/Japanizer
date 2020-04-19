@@ -44,7 +44,9 @@
                 h2
                   = t('users.show.subtitle_p')
           .col-xs-12
-            = render @posts
+            = render @posts_pg
+            .text-center
+              = paginate @posts_pg, :param_name => 'post'
 
       .tab-pane id="tab_b" role="tabpanel"
         .mypage-post-list
@@ -57,4 +59,6 @@
                 h2
                   = t('users.show.subtitle_a')
           .col-xs-12
-            = render @albums
+            = render @albums_pg
+            .text-center
+              = paginate @albums_pg, :param_name => 'album'
