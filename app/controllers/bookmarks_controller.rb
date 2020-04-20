@@ -1,16 +1,5 @@
 class BookmarksController < ApplicationController
   def index
-    user = current_user
-    c = user.bookmarks.count
-    i = 0
-    albums = []
-    while i < c
-      user.bookmarks.each do |bookmark|
-        albums[i] = bookmark.album
-        i += 1
-      end
-    end
-    @albums = albums
   end
 
   def create
@@ -35,8 +24,7 @@ class BookmarksController < ApplicationController
 
   private
 
-  def find_album(album_id)
-    Album.find(album_id)
-  end
-
+    def find_album(album_id)
+      Album.find(album_id)
+    end
 end
