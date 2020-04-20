@@ -1,15 +1,2 @@
-.top-wrapper
-  .row
-    .col-xs-12.text-center
-      h1
-        = t('bookmarks.pagetitle')
-    .col-xs-12
-      - if @albums
-        .col-xs-12
-          - @albums.each do |album|
-            /h2
-              = album.title
-            = render 'albums/album', album: album
-
-      - else
-        = t('app.common.no_album')
+h1 Bookmarks#index
+p Find me in app/views/bookmarks/index.html.slim
