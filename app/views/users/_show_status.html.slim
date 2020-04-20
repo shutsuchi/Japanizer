@@ -65,6 +65,7 @@
                 - else
                   = give_comments.count
           .col-xs-4
+            = link_to bookmark_path
               .mypage-status__count--bookmark
                 - if give_bookmarks.nil?
                   | 0
