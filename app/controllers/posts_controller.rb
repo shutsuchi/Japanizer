@@ -7,9 +7,9 @@ class PostsController < ApplicationController
     pg1 = params[:user]
     pg2 = params[:other]
 
-      # current_user の投稿
+    # Current_user's Post
     @user_posts_pg = page_4(current_user.posts, pg1)
-      # current_user 以外の投稿
+    # Other User's Post
     @others_posts_pg = page_4(Post.includes(:user).where.not(user_id: current_user.id), pg2)
   end
 
@@ -34,7 +34,7 @@ class PostsController < ApplicationController
   def create
     @post = Post.new(post_params)
     @post.user_id = current_user.id
-    # User新規作成時に生成されるからアルバムに暫定的に所属させる
+    # Post attach temporary to album created when user signup
     @post.album_id = current_user.albums.first.id
     if @post.rate.nil?
       @post.rate = 0
@@ -48,9 +48,9 @@ class PostsController < ApplicationController
       pg1 = params[:user]
       pg2 = params[:other]
 
-        # current_user の投稿
+      # Current_user's Post
       @user_posts_pg = page_4(current_user.posts, pg1)
-        # current_user 以外の投稿
+      # Other User's Post
       @others_posts_pg = page_4(Post.includes(:user).where.not(user_id: current_user.id), pg2)
       render :index
     end
@@ -61,36 +61,20 @@ class PostsController < ApplicationController
   def update
     @thepost = find_post(params[:id])
     if @thepost.update(
-        genre_id: post_params[:genre_id].to_i,
-        prefecture_id: post_params[:prefecture_id].to_i,
-        city_id: city_update(@thepost),
-        image: post_params[:image],
-        title: post_params[:title],
-        comment: post_params[:comment],
-        rate: rate_update(@thepost)
+      genre_id: post_params[:genre_id].to_i,
+      prefecture_id: post_params[:prefecture_id].to_i,
+      city_id: city_update(@thepost),
+      image: post_params[:image],
+      title: post_params[:title],
+      comment: post_params[:comment],
+      rate: rate_update(@thepost)
       )
+
       redirect_to @thepost
     else
       @thepost.user = current_user
       @user_albums = current_user.albums.all
       render :edit
-    end
-  end
-
-  def city_update(post)
-    if params[:post][:city_id].blank?
-      post.city_id
-    else
-      params[:post][:city_id]
-    end
-  end
-
-  def rate_update(post)
-    if post_params[:rate].blank?
-      # 評価をゼロに更新したい可能性は一時的に無視
-      post.rate.to_i
-    else
-      post_params[:rate].to_i
     end
   end
 
@@ -102,23 +86,40 @@ class PostsController < ApplicationController
     redirect_to user_path(current_user)
   end
 
-  # City自動選択機能メソッド
+  private
+
+  def city_update(post)
+    if params[:post][:city_id].blank?
+      post.city_id
+    else
+      params[:post][:city_id]
+    end
+  end
+
+  def rate_update(post)
+    if post_params[:rate].blank?
+      # if blank, default value
+      post.rate.to_i
+    else
+      post_params[:rate].to_i
+    end
+  end
+
+  # City Auto Select
   def cities_select
     render partial: 'city', locals: { prefecture_id: params[:prefecture_id] }
   end
 
-  private
+  def post_params
+    params.require(:post).permit(:user_id, :prefecture_id, :city_id, :genre_id, :image, :title, :rate, :comment, :album_id)
+  end
 
-    def post_params
-      params.require(:post).permit(:user_id, :prefecture_id, :city_id, :genre_id, :image, :title, :rate, :comment, :album_id )
-    end
+  def find_post(post_id)
+    Post.find(post_id)
+  end
 
-    def find_post(post_id)
-      Post.find(post_id)
-    end
-
-    def page_4(obj, pg)
-      obj.page(pg).reverse_order.per(4)
-    end
+  def page_4(obj, pg)
+    obj.page(pg).reverse_order.per(4)
+  end
 
 end

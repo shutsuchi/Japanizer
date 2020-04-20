@@ -3,6 +3,6 @@ module ApplicationHelper
     if options[:locale] == I18n.default_locale
       options[:locale] = nil
     end
-    #url_for(options)
+    # url_for(options)
   end
 end

@@ -4,10 +4,11 @@ class SearchesController < ApplicationController
     @keywords = params[:keyword]
 
     if @keyword.present?
-      # フリーワード検索は未実装
+      # Plan to add Free-Word search
       @results = []
       @keywords.split(/[[:blank:]]+/).each do |keyword|
-        next if keyword == ""
+        next if keyword == ''
+
         @results += Post.includes(:genres, :prefecture)
                         .where('genre.name LIKE(?) OR prefecture.name LIKE(?)', "%#{keyword}%", "%#{keyword}%")
       end
@@ -24,9 +25,9 @@ class SearchesController < ApplicationController
       @time = params[:time]
       @locale = params[:locale]
 
-      if @option == "post_search"
+      if @option == 'post_search'
         @posts = Post.params_post_search(@genre, @time, @locale)
-      elsif @option == "album_search"
+      elsif @option == 'album_search'
         @albums = Album.params_album_search(@genre, @time, @locale)
       end
     end

@@ -1,21 +1,19 @@
 class AlbumsController < ApplicationController
-
   # GET /albums
   # albums_path
   def index
     @album = Album.new
-      # 空アルバム
+    # 空アルバム
     @user_no_posts = Post.where(album_id: current_user.albums.first.id)
-
 
     pg1 = params[:user]
     pg2 = params[:other]
-      # current_user のアルバム
+    # Current_user's Album
     @user_albums_pg = page_6(current_user.albums, pg1)
-      # current_user以外のアルバム
-    @others_albums_pg = page_6(Album.includes(:user).where.not(user_id: current_user.id), pg2)
+    # Other User's Album
+    @others_albums_pg = page_6(Album.includes(:user)
+                                    .where.not(user_id: current_user.id), pg2)
   end
-
 
   # GET /album/:id
   # album_path
@@ -43,14 +41,14 @@ class AlbumsController < ApplicationController
       redirect_to @album
     else
       @album = Album.new
-        # 空アルバム
+      # User's Empty Album
       @user_no_posts = Post.where(album_id: current_user.albums.first.id)
-
 
       pg1 = params[:user]
       pg2 = params[:other]
       @user_albums_pg = page_6(current_user.albums, pg1)
-      @others_albums_pg = page_6(Album.includes(:user).where.not(user_id: current_user.id), pg2)
+      @others_albums_pg = page_6(Album.includes(:user)
+                                      .where.not(user_id: current_user.id), pg2)
       render :index
     end
   end
@@ -61,24 +59,23 @@ class AlbumsController < ApplicationController
     @thealbum = find_album(params[:id])
 
     if @thealbum.update(
-        genre_id: params[:album][:genre_id],
-        image: params[:album][:image],
-        title: params[:album][:title],
-        comment: params[:album][:comment],
-        post_quantity: post_quantity_update(@thealbum),
-        rate: rate_update(@thealbum)
+      genre_id: params[:album][:genre_id],
+      image: params[:album][:image],
+      title: params[:album][:title],
+      comment: params[:album][:comment],
+      post_quantity: post_quantity_update(@thealbum),
+      rate: rate_update(@thealbum)
       )
-        # album更新時に選択した投稿のalbum_id情報を更新
-        if @thealbum.post_quantity.present?
-          c = 0
-          while c < @thealbum.post_quantity do
-            post_id = params[:album][:post_quantity][c].to_i
-            post = find_post(post_id)
-            # album_id が nil になって、エラーが発生している。
-            post.update!(album_id: @thealbum.id)
-            (c += 1)
-          end
+      # Update album_id of post selected when album update
+      if @thealbum.post_quantity.present?
+        c = 0
+        while c < @thealbum.post_quantity
+          post_id = params[:album][:post_quantity][c].to_i
+          post = find_post(post_id)
+          post.update(album_id: @thealbum.id)
+          (c += 1)
         end
+      end
       redirect_to @thealbum
     else
       @user_posts = current_user.posts
@@ -93,6 +90,7 @@ class AlbumsController < ApplicationController
       album.post_quantity
     end
   end
+
   def rate_update(album)
     if params[:album][:rate].blank?
       # 評価をゼロに更新したい可能性は一時的に無視
@@ -105,25 +103,36 @@ class AlbumsController < ApplicationController
   def destroy
     thealbum = find_album(params[:id])
     posts = Post.where(album_id: thealbum.id)
-    if thealbum.destroy
-      # 削除対象のアルバムに紐づいていた投稿のアルバムIDを未決アルバムのIDに変更
-      posts.each do |post|
-        post.update!(album_id: current_user.albums.first.id)
-      end
-      redirect_to albums_path
+    
+    # 削除対象のアルバムに紐づいていた投稿のアルバムIDを未決アルバムのIDに変更
+    posts.each do |post|
+      post.update!(album_id: current_user.albums.first.id) if thealbum.destroy
     end
+
+    redirect_to albums_path
   end
 
   private
+
   def album_params
-    params.require(:album).permit(:user_id, :genre_id, :title, :image, :post_quantity, :comment, :rate, :budget, :mean, :people)
+    params.require(:album).permit(:user_id,
+                                  :genre_id,
+                                  :title,
+                                  :image,
+                                  :post_quantity,
+                                  :comment,
+                                  :rate,
+                                  :budget,
+                                  :mean,
+                                  :people)
   end
+
   def post_params
     params.require(:post).permit(:album_id)
   end
 
-  def page_6(obj, pg)
-    obj.page(pg).reverse_order.per(6)
+  def page_6(obj, pg_name)
+    obj.page(pg_name).reverse_order.per(6)
   end
 
   def page_8(obj)
@@ -133,6 +142,7 @@ class AlbumsController < ApplicationController
   def find_album(album_id)
     Album.find(album_id)
   end
+
   def find_post(post_id)
     Post.find(post_id)
   end

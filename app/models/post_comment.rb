@@ -15,10 +15,7 @@ class PostComment < ApplicationRecord
   belongs_to :user
   belongs_to :post
 
-  validates :title, presence: true,
-                    length: { minimum: 1 }
-  validates :comment, presence: true,
-                      length: { minimum: 1 }
-  validates :rate, presence: true,
-                      length: { minimum: 1 }
+  validates :title, presence: true, length: { minimum: 1 }
+  validates :comment, presence: true, length: { minimum: 1 }
+  validates :rate, presence: true, length: { minimum: 1 }
 end

@@ -1,7 +1,6 @@
 class LikesController < ApplicationController
-  def index
-  end
-
+  # POST /posts/:post_id/likes
+  # post_likes_path
   def create
     @post = find_post(params[:post_id])
     like = current_user.likes.new(post_id: @post.id)
@@ -12,6 +11,8 @@ class LikesController < ApplicationController
     end
   end
 
+  # DELETE /posts/:post_id/likes
+  # post_likes_path
   def destroy
     @post = find_post(params[:post_id])
     like = current_user.likes.find_by(post_id: @post.id)
@@ -24,7 +25,8 @@ class LikesController < ApplicationController
 
   private
 
-    def find_post(post_id)
-      Post.find(post_id)
-    end
+  def find_post(post_id)
+    Post.find(post_id)
+  end
+
 end

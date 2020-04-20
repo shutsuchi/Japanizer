@@ -1,6 +1,6 @@
 class UsersController < ApplicationController
-  before_action :authenticate_user!, only: %i[ show edit update withdraw ]
-  before_action :correct_user, only: %i[ show edit withdraw ]
+  before_action :authenticate_user!, only: %i[show edit update withdraw]
+  before_action :correct_user, only: %i[show edit withdraw]
 
   def show
     pg_p = params[:post]
@@ -11,33 +11,33 @@ class UsersController < ApplicationController
     @event = Event.new
     @events = Event.where(user_id: @theuser.id)
 
-    # User が獲得した対象カウント
+    # Count User Got
+    like_count = 0
+    comment_count = 0
+    bookmark_count = 0
     @posts = @theuser.posts.all
     @albums = @theuser.albums.all
     @get_likes = @posts.each do |post|
-                  like_count = 0
-                  like_count = Like.where(post_id: post.id).count
-                  like_count += like_count
-                end
+                  lk_c = Like.where(post_id: post.id).count
+                  like_count += lk_c
+    end
     @get_comments = @posts.each do |post|
-                      comment_count = 0
-                      comment_count = PostComment.where(post_id: post.id).count
-                      comment_count += comment_count
-                    end
+                      cm_c = PostComment.where(post_id: post.id).count
+                      comment_count += cm_c
+    end
     @get_bookmarks = @albums.each do |album|
-                        bookmark_count = 0
-                        bookmark_count = Bookmark.where(album_id: album.id).count
-                        bookmark_count += bookmark_count
-                      end
+                        bm_c = Bookmark.where(album_id: album.id).count
+                        bookmark_count += bm_c
+    end
 
-    # User が実行した対象カウント
+    # Count User Gave
     @give_likes = Like.where(user_id: @theuser.id).all
     @give_comments = PostComment.where(user_id: @theuser.id).all
     @give_bookmarks = Bookmark.where(user_id: @theuser.id).all
 
     respond_to do |format|
       format.html
-      format.json { render :json => @events }
+      format.json { render json: @events }
     end
   end
 
@@ -61,9 +61,9 @@ class UsersController < ApplicationController
   def update
     @theuser = current_user
     if @theuser.update(user_params)
-      redirect_to user_path(@theuser.id), notice: "Successfully Updated"
+      redirect_to user_path(@theuser.id), notice: 'Successfully Updated'
     else
-      render :edit, notice: "Failed to Update"
+      render :edit, notice: 'Failed to Update'
     end
   end
 
@@ -85,12 +85,12 @@ class UsersController < ApplicationController
     end
   end
 
-  def page_6(obj, pg)
-    obj.page(pg).reverse_order.per(6)
+  def page_6(obj, pg_name)
+    obj.page(pg_name).reverse_order.per(6)
   end
 
-  def page_8(obj, pg)
-    obj.page(pg).reverse_order.per(8)
+  def page_8(obj, pg_name)
+    obj.page(pg_name).reverse_order.per(8)
   end
 
 end
