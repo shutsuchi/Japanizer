@@ -38,5 +38,4 @@ class BookmarksController < ApplicationController
   def find_album(album_id)
     Album.find(album_id)
   end
-
 end
