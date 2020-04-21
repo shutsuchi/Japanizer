@@ -3,7 +3,7 @@ ja:
     common:
       back: '戻る'
       no_data: 'データなし'
-      no_post: '該当のアルバムなし'
+      no_post: '該当の投稿なし'
       no_album: '該当のアルバムなし'
     error:
       er_text_1: ' 個の以下エラーが発生し、'

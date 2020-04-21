@@ -8,17 +8,37 @@ ja:
       description: "ユーザーの年齢から投稿・アルバムを探してみよう"
       subtitle_p: '投稿'
       subtitle_a: 'アルバム'
+      age_20: '10 ~ 20才'
+      age_30: '20 ~ 30才'
+      age_40: '30 ~ 40才'
+      age_50: '40 ~ 50才'
+      age_60: '50 ~ 60才'
+      age_70: '60 ~ 70才'
+      age_80: '70 ~ 80才'
+      all: '全年齢'
 
     budget:
       pagetitle: '予算から探す'
       description: '旅行予算から投稿・アルバムを探してみよう'
       subtitle: 'アルバム'
+      under: '1万円以下'
+      yen_3: '1 ~ 3万円'
+      yen_5: '3 ~ 5万円'
+      yen_7: '5 ~ 7万円'
+      yen_9: '7 ~ 9万円'
+      yen_20: '10 ~ 20万円'
+      yen_30: '20 ~ 30万円'
+      yen_40: '30 ~ 40万円'
+      yen_50: '40 ~ 50万円'
+      over: '50万円以上'
 
     nation:
       pagetitle: '国籍から探す'
       description: 'ユーザーの国籍から投稿・アルバムを探してみよう'
       subtitle_p: '投稿'
       subtitle_a: 'アルバム'
+      jp: '日本'
+      other: '日本以外'
 
     index:
       pagetitle: 'ジャンルから探す'

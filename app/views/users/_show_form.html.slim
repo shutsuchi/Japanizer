@@ -5,13 +5,13 @@
   .event-form__form
     = form_with(model: event, url: events_path, method: :post, local: true) do |f|
       .form-window.row
-        = f.label :title
+        = f.label t('users.show.f_title')
         br
-        = f.text_field t('users.show.f_title')
+        = f.text_field :title
       .form-window.row
         =f.label t('users.show.f_description')
         br
-        = f.text_area :description
+        = f.text_area :body
       .form-window.row
         = f.label t('users.show.f_genre')
         br
