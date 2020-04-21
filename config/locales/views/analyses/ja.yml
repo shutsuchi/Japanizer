@@ -8,3 +8,18 @@ ja:
       area_rank: 'エリア'
       genre_rank: 'ジャンル'
       budget_rank: '予算 (万円)'
+
+    rank:
+      pagetitle: 'ランキング'
+      subtitle: '投稿・アルバムの人気ランキングをみてみよう'
+
+      like: '投稿-いいね数'
+      comment: '投稿-コメント数'
+      bookmark: 'アルバム-ブックマーク数'
+
+      user: 'ユーザー名'
+      rate: '評価'
+      title: 'タイトル'
+      genre: 'ジャンル'
+      pref: '都道府県'
+      create: '作成日'

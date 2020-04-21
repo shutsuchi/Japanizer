@@ -1,0 +1,67 @@
+            .genre-post-rank
+              .col-xs-12.bg-success.genre-post-rank__margin-bottom
+                - if i == 1 || i == 2 || i == 3
+                  .col-xs-1
+                    - if i == 1 then
+                      .fas.fa-crown style="color:#ffd700; font-size: 30px;"
+                    - elsif i == 2 then
+                      i.fas.fa-crown style="color:#aaaaaa; font-size: 30px;"
+                    - elsif i == 3 then
+                      i.fas.fa-crown style="color:#d2691e; font-size: 30px;"
+                  .col-xs-2
+                    h3.genre-post-rank__number
+                      = i
+                  .col-xs-9
+                -else
+                  .col-xs-1
+                    h3.genre-post-rank__number
+                      = i
+
+              .col-xs-12
+                .col-xs-4
+                  .genre-post-rank__left-box
+                    .genre-post-rank__image-box
+                      .genre-post-rank__icon
+                        = link_to album_path(album) do
+                          = attachment_image_tag album, :image, fallback:"img/book.png", class:"field", size:"85x65"
+                    .genre-post-rank__icon-box
+                      .col-xs-12
+                        .col-xs-4
+                          .genre-post-rank__bookmark-icon
+                            i.fas.fa-bookmark style="font-size:20px; color:#0099cc;"
+                        .col-xs-4
+                          .genre-post-rank__bookmark-count
+                            - if album.bookmarks.nil?
+                              span
+                                | 0
+                            - else
+                              span
+                              = album.bookmarks.count
+                .col-xs-8
+                  table.table.table-bordered
+                    thead
+                      tr
+                        th
+                          = t('analyses.rank.user')
+                        td
+                          = album.user.name
+                      tr
+                        th
+                          = t('analyses.rank.rate')
+                        td
+                          = album.rate
+                      tr
+                        th
+                          = t('analyses.rank.title')
+                        td
+                          = album.title
+                      tr
+                        th
+                          = t('analyses.rank.genre')
+                        td
+                          = album.genre.name
+                      tr
+                        th
+                          = t('analyses.rank.create')
+                        td
+                          = album.created_at

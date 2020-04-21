@@ -1,4 +1,5 @@
 class AnalysesController < ApplicationController
+  include Page
 
   def data
     # Japanese User Ranking
@@ -35,8 +36,8 @@ class AnalysesController < ApplicationController
 
   def rank
     @genres = Genre.where.not(id: 1).all
-    @posts = page(Post)
-    @albums = page(Album)
+    @posts = page_8(Post)
+    @albums = page_8(Album)
     # Ranking
     # --- Genre-Post
     @genre_post_ranks = Genre.find(Post.group(:genre_id)
@@ -64,10 +65,6 @@ class AnalysesController < ApplicationController
   end
 
   private
-
-  def page(obj)
-    obj.page(params[:page]).reverse_order.per(8)
-  end
 
   def find_genre(genre_id)
     return Genre.find(genre_id) if genre_id.present?
