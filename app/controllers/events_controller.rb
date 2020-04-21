@@ -1,5 +1,7 @@
 class EventsController < ApplicationController
 
+  include UserStatus
+
   # GET /events
   # GET /events.json
   def index
@@ -24,34 +26,23 @@ class EventsController < ApplicationController
       redirect_to user_path(current_user), notice: 'Event was successfully created.'
     else
       @theuser = current_user
-      @posts = @theuser.posts.all
-      @albums = @theuser.albums.all
+      @posts = @theuser.posts
+      @albums = @theuser.albums
       @event = Event.new
       @events = Event.where(user_id: @theuser.id)
 
-      like_count = 0
-      comment_count = 0
-      bookmark_count = 0
       # Count User-Got
-      @posts = @theuser.posts.all
-      @albums = @theuser.albums.all
-      @get_likes = @posts.each do |post|
-                    lk_c = Like.where(post_id: post.id).count
-                    like_count += lk_c
-      end
-      @get_comments = @posts.each do |post|
-                        cm_c = PostComment.where(post_id: post.id).count
-                        comment_count += cm_c
-      end
-      @get_bookmarks = @albums.each do |album|
-                          bk_c = Bookmark.where(album_id: album.id).count
-                          bookmark_count += bk_c
-      end
+      @posts = @theuser.posts
+      @albums = @theuser.albums
+
+      @get_likes = get_post(@posts, Like)
+      @get_comments = get_post(@posts, PostComment)
+      @get_bookmarks = get_album(@albums, Bookmark)
 
       # Count User-Gave
-      @give_likes = Like.where(user_id: @theuser.id).all
-      @give_comments = PostComment.where(user_id: @theuser.id).all
-      @give_bookmarks = Bookmark.where(user_id: @theuser.id).all
+      @give_likes = give_obj(Like, @theuser)
+      @give_comments = give_obj(PostComment, @theuser)
+      @give_bookmarks = give_obj(Bookmark, @theuser)
       render user_path(current_user), notice: 'Event was failed to create.'
     end
   end
@@ -83,4 +74,5 @@ class EventsController < ApplicationController
   def event_params
     params.require(:event).permit(:user_id, :genre_id, :title, :body, :start, :end)
   end
+
 end

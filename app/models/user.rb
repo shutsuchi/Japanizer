@@ -46,4 +46,12 @@ class User < ApplicationRecord
   validates :withdrawal_flag, inclusion: { in: [true, false] }
   validates :admin, inclusion: { in: [true, false] }
 
+  scope :age_20, -> { where("users.age > ?', '1..20'") }
+  scope :age_30, -> { where("users.age > ?', '20..30'") }
+  scope :age_40, -> { where("users.age > ?', '30..40'") }
+  scope :age_50, -> { where("users.age > ?', '40..50'") }
+  scope :age_60, -> { where("users.age > ?', '50..60'") }
+  scope :age_70, -> { where("users.age > ?', '60..70'") }
+  scope :age_80, -> { where("users.age > ?', '70..80'") }
+
 end

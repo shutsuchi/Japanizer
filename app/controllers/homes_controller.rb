@@ -1,4 +1,6 @@
 class HomesController < ApplicationController
+  include RankData
+
   def about
   end
 
@@ -12,20 +14,9 @@ class HomesController < ApplicationController
 
     # Ranking
     # --- post Like
-    @post_like_ranks = Post.find(Like.group(:post_id)
-                                    .order('count(post_id) desc')
-                                    .limit(1)
-                                    .pluck(:post_id))
-    # --- post Comment
-    @post_comment_ranks = Post.find(PostComment.group(:post_id)
-                                    .order('count(post_id) desc')
-                                    .limit(1)
-                                    .pluck(:post_id))
-    # --- album Bookmark
-    @album_ranks = Album.find(Bookmark.group(:album_id)
-                                      .order('count(album_id) desc')
-                                      .limit(1)
-                                      .pluck(:album_id))
+    @post_like_ranks = Post.find(post_first(Like))
+    @post_comment_ranks = Post.find(post_first(PostComment))
+    @album_ranks = Album.find(album_first(Bookmark))
   end
 
 end

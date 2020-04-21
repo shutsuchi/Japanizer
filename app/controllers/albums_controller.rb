@@ -1,17 +1,19 @@
 class AlbumsController < ApplicationController
+  include Page
+
   # GET /albums
   # albums_path
   def index
     @album = Album.new
-    # 空アルバム
+    # Empth Album
     @user_no_posts = Post.where(album_id: current_user.albums.first.id)
 
     pg1 = params[:user]
     pg2 = params[:other]
     # Current_user's Album
-    @user_albums_pg = page_6(current_user.albums, pg1)
+    @user_albums_pg = type_page_6(current_user.albums, pg1)
     # Other User's Album
-    @others_albums_pg = page_6(Album.includes(:user)
+    @others_albums_pg = type_page_6(Album.includes(:user)
                                     .where.not(user_id: current_user.id), pg2)
   end
 
@@ -34,9 +36,8 @@ class AlbumsController < ApplicationController
   def create
     @album = Album.new(album_params)
     @album.user_id = current_user.id
-    if @album.rate.nil?
-      @album.rate = 0
-    end
+    @album.album_create_rate
+
     if @album.save
       redirect_to @album
     else
@@ -46,8 +47,8 @@ class AlbumsController < ApplicationController
 
       pg1 = params[:user]
       pg2 = params[:other]
-      @user_albums_pg = page_6(current_user.albums, pg1)
-      @others_albums_pg = page_6(Album.includes(:user)
+      @user_albums_pg = type_page_6(current_user.albums, pg1)
+      @others_albums_pg = type_page_6(Album.includes(:user)
                                       .where.not(user_id: current_user.id), pg2)
       render :index
     end
@@ -63,19 +64,11 @@ class AlbumsController < ApplicationController
       image: params[:album][:image],
       title: params[:album][:title],
       comment: params[:album][:comment],
-      post_quantity: post_quantity_update(@thealbum),
-      rate: rate_update(@thealbum)
+      post_quantity: @thealbum.post_quantity_update,
+      rate: @thealbum.rate_update
       )
       # Update album_id of post selected when album update
-      if @thealbum.post_quantity.present?
-        c = 0
-        while c < @thealbum.post_quantity
-          post_id = params[:album][:post_quantity][c].to_i
-          post = find_post(post_id)
-          post.update(album_id: @thealbum.id)
-          (c += 1)
-        end
-      end
+      @thealbum.album_update_post
       redirect_to @thealbum
     else
       @user_posts = current_user.posts
@@ -83,30 +76,16 @@ class AlbumsController < ApplicationController
     end
   end
 
-  def post_quantity_update(album)
-    if params[:album][:post_quantity]
-      params[:album][:post_quantity].count
-    else
-      album.post_quantity
-    end
-  end
-
-  def rate_update(album)
-    if params[:album][:rate].blank?
-      # 評価をゼロに更新したい可能性は一時的に無視
-      album.rate.to_i
-    else
-      params[:album][:rate].to_i
-    end
-  end
-
   def destroy
     thealbum = find_album(params[:id])
     posts = Post.where(album_id: thealbum.id)
     
-    # 削除対象のアルバムに紐づいていた投稿のアルバムIDを未決アルバムのIDに変更
-    posts.each do |post|
-      post.update!(album_id: current_user.albums.first.id) if thealbum.destroy
+    # Change Album_id post attached Deleted Album
+    # Into id of undefined album
+    if thealbum.destroy
+      posts.each do |post|
+        post.update(album_id: current_user.albums.first.id)
+      end
     end
 
     redirect_to albums_path
@@ -131,14 +110,6 @@ class AlbumsController < ApplicationController
     params.require(:post).permit(:album_id)
   end
 
-  def page_6(obj, pg_name)
-    obj.page(pg_name).reverse_order.per(6)
-  end
-
-  def page_8(obj)
-    obj.page(params[:page]).reverse_order.per(8)
-  end
-
   def find_album(album_id)
     Album.find(album_id)
   end
@@ -146,4 +117,5 @@ class AlbumsController < ApplicationController
   def find_post(post_id)
     Post.find(post_id)
   end
+
 end

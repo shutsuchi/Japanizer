@@ -28,8 +28,64 @@ class Album < ApplicationRecord
   validates :post_quantity, presence: true
   validates :rate, presence: true
 
+  scope :budget_under, -> { where('budget > ?', '~ 1') }
+  scope :budget_3, -> { where('budget > ?', '1 ~ 3') }
+  scope :budget_5, -> { where('budget > ?', '3 ~ 5') }
+  scope :budget_7, -> { where('budget > ?', '5 ~ 7') }
+  scope :budget_9, -> { where('budget > ?', '7 ~ 9') }
+  scope :budget_20, -> { where('budget > ?', '10 ~ 20') }
+  scope :budget_30, -> { where('budget > ?', '20 ~ 30') }
+  scope :budget_40, -> { where('budget > ?', '30 ~ 40') }
+  scope :budget_50, -> { where('budget > ?', '40 ~ 50') }
+  scope :budget_over, -> { where('budget > ?', '50 ~') }
+
+  scope :age_20, -> { where('users.age > ?', '1..20') }
+  scope :age_30, -> { where('users.age > ?', '20..30') }
+  scope :age_40, -> { where('users.age > ?', '30..40') }
+  scope :age_50, -> { where('users.age > ?', '40..50') }
+  scope :age_60, -> { where('users.age > ?', '50..60') }
+  scope :age_70, -> { where('users.age > ?', '60..70') }
+  scope :age_80, -> { where('users.age > ?', '70..80') }
+
+  scope :jp, -> { where('users.country_code > ?', 'JP') }
+  scope :other, -> { where.not('users.country_code > ?', 'JP') }
+
   def bookmarked_by?(user)
     bookmarks.where(user_id: user.id).exists?
+  end
+
+  def album_create_rate
+    if self.rate.nil?
+      self.rate = 0
+    end
+  end
+
+  def post_album_update
+    if self.post_quantity.present?
+      c = 0
+      while c < self.post_quantity
+          post_id = params[:album][:post_quantity][c].to_i
+          post = find_post(post_id)
+          post.update(album_id: self.id)
+          (c += 1)
+      end
+    end
+  end
+
+  def rate_update
+    if params[:album][:rate].blank?
+      self.rate.to_i
+    else
+      params[:album][:rate].to_i
+    end
+  end
+
+  def post_quantity_update(album)
+    if params[:album][:post_quantity]
+      params[:album][:post_quantity].count
+    else
+      album.post_quantity
+    end
   end
 
   def self.params_album_search(genre, time, locale)
