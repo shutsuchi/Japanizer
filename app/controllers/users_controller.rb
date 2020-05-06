@@ -1,43 +1,35 @@
 class UsersController < ApplicationController
-  before_action :authenticate_user!, only: %i[ show edit update withdraw ]
-  before_action :correct_user, only: %i[ show edit withdraw ]
+  before_action :authenticate_user!, only: %i[show edit update withdraw]
+  before_action :correct_user, only: %i[show edit withdraw]
+
+  include UserStatus
+  include Page
 
   def show
     pg_p = params[:post]
     pg_a = params[:album]
     @theuser = current_user
-    @posts_pg = page_8(@theuser.posts, pg_p)
-    @albums_pg = page_6(@theuser.albums, pg_a)
+    @posts_pg = type_page_8(@theuser.posts, pg_p)
+    @albums_pg = type_page_6(@theuser.albums, pg_a)
     @event = Event.new
     @events = Event.where(user_id: @theuser.id)
 
-    # User が獲得した対象カウント
-    @posts = @theuser.posts.all
-    @albums = @theuser.albums.all
-    @get_likes = @posts.each do |post|
-                  like_count = 0
-                  like_count = Like.where(post_id: post.id).count
-                  like_count += like_count
-                end
-    @get_comments = @posts.each do |post|
-                      comment_count = 0
-                      comment_count = PostComment.where(post_id: post.id).count
-                      comment_count += comment_count
-                    end
-    @get_bookmarks = @albums.each do |album|
-                        bookmark_count = 0
-                        bookmark_count = Bookmark.where(album_id: album.id).count
-                        bookmark_count += bookmark_count
-                      end
+    # Count User Got
+    @posts = @theuser.posts
+    @albums = @theuser.albums
 
-    # User が実行した対象カウント
-    @give_likes = Like.where(user_id: @theuser.id).all
-    @give_comments = PostComment.where(user_id: @theuser.id).all
-    @give_bookmarks = Bookmark.where(user_id: @theuser.id).all
+    @get_likes = get_post(@posts, Like)
+    @get_comments = get_post(@posts, PostComment)
+    @get_bookmarks = get_album(@albums, Bookmark)
+
+    # Count User Gave
+    @give_likes = give_obj(Like, @theuser)
+    @give_comments = give_obj(PostComment, @theuser)
+    @give_bookmarks = give_obj(Bookmark, @theuser)
 
     respond_to do |format|
       format.html
-      format.json { render :json => @events }
+      format.json { render json: @events }
     end
   end
 
@@ -61,9 +53,9 @@ class UsersController < ApplicationController
   def update
     @theuser = current_user
     if @theuser.update(user_params)
-      redirect_to user_path(@theuser.id), notice: "Successfully Updated"
+      redirect_to user_path(@theuser.id), notice: 'Successfully Updated'
     else
-      render :edit, notice: "Failed to Update"
+      render :edit, notice: 'Failed to Update'
     end
   end
 
@@ -83,14 +75,6 @@ class UsersController < ApplicationController
     if user.id != current_user.id
       redirect_to top_path
     end
-  end
-
-  def page_6(obj, pg)
-    obj.page(pg).reverse_order.per(6)
-  end
-
-  def page_8(obj, pg)
-    obj.page(pg).reverse_order.per(8)
   end
 
 end

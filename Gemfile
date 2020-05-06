@@ -37,23 +37,26 @@ gem 'jbuilder', '~> 2.5'
 gem 'bootsnap', '>= 1.1.0', require: false
 
 group :development, :test do
-  gem 'pry-rails'
   gem 'pry-byebug'
-  # Call 'byebug' anywhere in the code to stop execution and get a debugger console
+  gem 'pry-rails'
+  # Call 'byebug' anywhere in the code to stop execution,
+  # and get a debugger console
   gem 'byebug', platforms: [:mri, :mingw, :x64_mingw]
   # For Display schema on model-file
   gem 'annotate'
 end
 
 group :development do
-  # Access an interactive console on exception pages or by calling 'console' anywhere in the code.
-  gem 'web-console', '>= 3.3.0'
+  # Access an interactive console on exception pages
+  # or by calling 'console' anywhere in the code.
   gem 'listen', '>= 3.0.5', '< 3.2'
-  # Spring speeds up development by keeping your application running in the background. Read more: https://github.com/rails/spring
-  gem 'spring'
-  gem 'spring-watcher-listen', '~> 2.0.0'
+  gem 'web-console', '>= 3.3.0'
+  # Spring speeds up development by keeping your application running,
+  # in the background. Read more: https://github.com/rails/spring
   gem 'letter_opener'
   gem 'letter_opener_web'
+  gem 'spring'
+  gem 'spring-watcher-listen', '~> 2.0.0'
 end
 
 group :test do
@@ -96,12 +99,13 @@ gem 'ransack', '~> 2.3.2'
 # For Logical-deletion
 gem 'paranoia', '~> 2.4.2'
 # For calenderFunc
+gem 'bootstrap3-datetimepicker-rails'
 gem 'fullcalendar-rails'
 gem 'momentjs-rails'
-gem 'bootstrap3-datetimepicker-rails'
 
 # For Readable-code
-gem 'rubocop', '~> 0.80.1'
+gem 'rubocop', '~> 0.80.1', require: false
+gem 'rubocop-rails', require: false
 
 # For Internationalization
 gem 'rails-i18n', '~> 5.1.3'
@@ -118,4 +122,4 @@ gem 'slim-rails', '~> 3.2.0'
 gem 'html2slim', '~> 0.2.0'
 
 # Country & Area-name
-gem 'carmen-rails', :git => 'https://github.com/Studiosity/carmen-rails.git', :branch => 'master'
+gem 'carmen-rails', git: 'https://github.com/Studiosity/carmen-rails.git', branch: 'master'

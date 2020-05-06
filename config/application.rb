@@ -21,11 +21,11 @@ module Japanizer
 
     # default locale
     config.i18n.default_locale = :ja
-    #config.i18n.default_locale = :en
+    # config.i18n.default_locale = :en
     # Read locale files
     config.i18n.load_path += Dir[Rails.root.join('config', 'locales', '**', '*.{rb,yml}').to_s]
     # WhiteList of language for Japanizer
-    config.i18n.available_locales = %i( ja en )
+    config.i18n.available_locales = %i[ja en]
     # Set error case other languages set
     config.i18n.enforce_available_locales = true
 

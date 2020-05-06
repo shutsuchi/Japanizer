@@ -8,3 +8,18 @@ en:
       area_rank: 'Area Ranking'
       genre_rank: 'Genre Ranking'
       budget_rank: 'Budget Ranking (/0000 yen)'
+
+    rank:
+      pagetitle: 'Ranking'
+      subtitle: 'What is popular post or album ?'
+
+      like: 'Post-Like'
+      comment: 'Post-Comment'
+      bookmark: 'Album-Bookmark'
+
+      user: 'User Name'
+      rate: 'Rate'
+      title: 'Title'
+      genre: 'Genre'
+      pref: 'Prefecture'
+      create: 'Created at'

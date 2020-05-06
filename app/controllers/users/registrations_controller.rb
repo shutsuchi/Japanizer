@@ -12,12 +12,12 @@ class Users::RegistrationsController < Devise::RegistrationsController
   # POST /resource
   def create
     super
-    # 未決レコード作成 (album, event)
+    # Empty Recorde Create (album, event)
     if @user.save
       event = @user.events.new(user_id: @user.id, genre_id: 1)
-      if event.save!
-        album = @user.albums.new(user_id: @user.id, genre_id: 1, title: "", post_quantity: 0)
-        album.save!
+      if event.save
+        album = @user.albums.new(user_id: @user.id, genre_id: 1, title: '', post_quantity: 0)
+        album.save
       end
     end
   end
