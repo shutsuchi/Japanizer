@@ -19,6 +19,8 @@
           li.common-bar__link-text
             = link_to t('app.header.home'), top_path, class:"fas fa-home"
           li.common-bar__link-text
+            = link_to t('app.header.mypage'), user_path(current_user), class:"fas fa-user"
+          li.common-bar__link-text
             = link_to t('app.header.about'), about_path, class:"far fa-question-circle"
           li.common-bar__link-text
             = link_to t('app.header.sign_out'), destroy_user_session_path, class:"fas fa-door-closed"

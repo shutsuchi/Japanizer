@@ -11,19 +11,21 @@
         .top-page__subtitle--text
           h2
             = t('homes.top.subtitle_1')
-    .search-select-boxes
-      .col-xs-12
-        .search-select-boxes__data-box
-          .search-select-boxes__title.text-center
-            h3
-              = t('homes.top.data_title')
-          .search-select-boxes__main-text
-            p
-              = t('homes.top.data_text_1')
-              br
-              = t('homes.top.data_text_2')
-              br
-              = t('homes.top.data_text_3')
+
+        .search-select-boxes
+          .col-xs-12
+            = link_to data_path do
+              .search-select-boxes__data-box
+                .search-select-boxes__title.text-center
+                  h3
+                    = t('homes.top.data_title')
+                .search-select-boxes__main-text
+                  p
+                    = t('homes.top.data_text_1')
+                    br
+                    = t('homes.top.data_text_2')
+                    br
+                    = t('homes.top.data_text_3')
   .row
     .col-xs-12.text-center
       .top-page__subtitle
