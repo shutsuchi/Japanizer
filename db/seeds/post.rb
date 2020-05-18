@@ -15,9 +15,10 @@
 #----- User2 田中
 #-- album1
 Post.create!(
-  post_id:        1,
+  id:             1,
   user_id:        2,
   prefecture_id:  13,
+  city_id:        678,
   genre_id:       2,
   album_id:       1,
   rate:           2,
@@ -26,9 +27,10 @@ Post.create!(
 )
 
 Post.create!(
-  post_id:        2,
+  id:             2,
   user_id:        2,
   prefecture_id:  13,
+  city_id:        678,
   genre_id:       2,
   album_id:       1,
   rate:           2,
@@ -38,9 +40,10 @@ Post.create!(
 
 #-- album2
 Post.create!(
-  post_id:        3,
+  id:             3,
   user_id:        2,
   prefecture_id:  19,
+  city_id:        864,
   genre_id:       10,
   album_id:       2,
   rate:           4,
@@ -49,9 +52,10 @@ Post.create!(
 )
 
 Post.create!(
-  post_id:        4,
+  id:             4,
   user_id:        2,
   prefecture_id:  19,
+  city_id:        864,
   genre_id:       10,
   album_id:       2,
   rate:           5,
@@ -60,9 +64,10 @@ Post.create!(
 )
 
 Post.create!(
-  post_id:        5,
+  id:             5,
   user_id:        2,
   prefecture_id:  19,
+  city_id:        864,
   genre_id:       10,
   album_id:       2,
   rate:           4.5,
@@ -73,9 +78,10 @@ Post.create!(
 #----- User3 山田
 #-- album3
 Post.create!(
-  post_id:        6,
+  id:             6,
   user_id:        3,
   prefecture_id:  36,
+  city_id:        1512,
   genre_id:       3,
   album_id:       3,
   rate:           4,
@@ -84,9 +90,10 @@ Post.create!(
 )
 
 Post.create!(
-  post_id:        7,
+  id:             7,
   user_id:        3,
   prefecture_id:  37,
+  city_id:        1536,
   genre_id:       3,
   album_id:       3,
   rate:           4.5,
@@ -95,9 +102,10 @@ Post.create!(
 )
 
 Post.create!(
-  post_id:        8,
+  id:             8,
   user_id:        3,
   prefecture_id:  38,
+  city_id:        1553,
   genre_id:       3,
   album_id:       3,
   rate:           5,
@@ -106,9 +114,10 @@ Post.create!(
 )
 
 Post.create!(
-  post_id:        9,
+  id:             9,
   user_id:        3,
   prefecture_id:  39,
+  city_id:        1573,
   genre_id:       3,
   album_id:       3,
   rate:           3.5,
@@ -119,9 +128,10 @@ Post.create!(
 #----- User4 John
 #-- album4
 Post.create!(
-  post_id:        10,
+  id:             10,
   user_id:        4,
   prefecture_id:  13,
+  city_id:        655,
   genre_id:       5,
   album_id:       4,
   rate:           5,
@@ -130,9 +140,10 @@ Post.create!(
 )
 
 Post.create!(
-  post_id:        11,
+  id:             11,
   user_id:        4,
   prefecture_id:  13,
+  city_id:        655,
   genre_id:       5,
   album_id:       4,
   rate:           5,
@@ -143,9 +154,10 @@ Post.create!(
 #----- User5 黄
 #-- album5
 Post.create!(
-  post_id:        12,
+  id:             12,
   user_id:        5,
   prefecture_id:  1,
+  city_id:        1,
   genre_id:       7,
   album_id:       5,
   rate:           5,
@@ -156,9 +168,10 @@ Post.create!(
 #----- User6 Andrea
 #-- album6
 Post.create!(
-  post_id:        13,
+  id:             13,
   user_id:        6,
   prefecture_id:  10,
+  city_id:        489,
   genre_id:       8,
   album_id:       6,
   rate:           5,

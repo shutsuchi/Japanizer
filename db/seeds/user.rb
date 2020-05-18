@@ -1,5 +1,6 @@
 ### User data
 User.create!(
+  id:              1,
   name:            "admin",
   email:           "admin@admin",
   age:             26,
@@ -21,6 +22,7 @@ User.create!(
 
 # 2
 User.create!(
+  id:              2,
   name:            "田中太郎",
   email:           "tanaka@email.com",
   age:             "24",
@@ -31,6 +33,7 @@ User.create!(
 
 # 3
 User.create!(
+  id:              3,
   name:            "山田次郎",
   email:           "jirojiro@email.com",
   age:             "41",
@@ -41,6 +44,7 @@ User.create!(
 
 # 4
 User.create!(
+  id:              4,
   name:            "John Smith",
   email:           "john1222@ezweb.com",
   age:             "31",
@@ -51,6 +55,7 @@ User.create!(
 
 # 5
 User.create!(
+  id:              5,
   name:            "黄秀英",
   email:           "fanfan@gmail.com",
   age:             "18",
@@ -61,6 +66,7 @@ User.create!(
 
 # 6
 User.create!(
+  id:              6,
   name:            "Andrea Muller",
   email:           "eeeeand@gmail.com",
   age:             "42",
@@ -71,6 +77,7 @@ User.create!(
 
 # 7
 User.create!(
+  id:              7,
   name:            "金 本貫",
   email:           "kimkim@gmail.com",
   age:             "42",
