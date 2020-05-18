@@ -72,7 +72,7 @@ User.create!(
 # 7
 User.create!(
   name:            "金 本貫",
-  email:           "eeeeand@gmail.com",
+  email:           "kimkim@gmail.com",
   age:             "42",
   country_code:    "KR",
   withdrawal_flag: "false",
