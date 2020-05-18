@@ -5,9 +5,9 @@
 #
 #   movies = Movie.create([{ name: 'Star Wars' }, { name: 'Lord of the Rings' }])
 #   Character.create(name: 'Luke', movie: movies.first)
-#require './db/seeds/genre.rb'
-#require './db/seeds/pre_city.rb'
-#require './db/seeds/user.rb'
+require './db/seeds/genre.rb'
+require './db/seeds/pre_city.rb'
+require './db/seeds/user.rb'
 require './db/seeds/event.rb'
 require './db/seeds/album.rb'
 require './db/seeds/post.rb'
