@@ -126,6 +126,11 @@ GEM
       railties (>= 3.2, < 6.1)
     erubi (1.9.0)
     execjs (2.7.0)
+    factory_bot (6.1.0)
+      activesupport (>= 5.0.0)
+    factory_bot_rails (6.1.0)
+      factory_bot (~> 6.1.0)
+      railties (>= 5.0.0)
     ffi (1.12.2)
     fullcalendar-rails (3.9.0.0)
       jquery-rails (>= 4.0.5, < 5.0.0)
@@ -417,6 +422,7 @@ DEPENDENCIES
   coffee-rails (~> 4.2)
   devise (~> 4.7.1)
   dotenv-rails (~> 2.7.5)
+  factory_bot_rails
   fullcalendar-rails
   geocoder (~> 1.6.2)
   html2slim (~> 0.2.0)
