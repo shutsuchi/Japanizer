@@ -1,3 +1,11 @@
+# == Schema Information
+#
+# Table name: bookmarks
+#
+#  id       :bigint           not null, primary key
+#  album_id :integer          not null
+#  user_id  :integer          not null
+#
 require 'rails_helper'
 
 RSpec.describe 'Bookmark', type: :model do
