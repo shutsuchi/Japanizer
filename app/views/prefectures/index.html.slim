@@ -17,7 +17,11 @@
         h2
           = t('.post_index')
         .col-xs-12
-          - @posts.each do |post|
-            = render 'posts/post', post: post
-          .text-center
-            = paginate @posts
+          - if @posts.nil?
+            h2.bg-danger.text-center
+              = t('app.common.no_post')
+          - else
+            - @posts.each do |post|
+              = render 'posts/post', post: post
+            .col-xs-12.text-center
+              = paginate @posts

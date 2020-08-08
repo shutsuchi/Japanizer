@@ -14,7 +14,11 @@ module Page
   end
 
   def page_8(obj)
-    obj.page(params[:page]).order(created_at: :desc).per(8)
+    if obj == nil
+      return nil
+    else
+      obj.page(params[:page]).order(created_at: :desc).per(8)
+    end
   end
 
   def array_page(obj)

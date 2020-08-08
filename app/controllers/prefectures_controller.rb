@@ -6,9 +6,16 @@ class PrefecturesController < ApplicationController
   # GET prefectures/
   # prefectures_path
   def index
-    area = params[:area_id]
+    if params[:area_id]
+      area = params[:area_id]
+      @posts = area_choice(area)
+    elsif params[:pref_id]
+      pref = params[:pref_id]
+      @posts = pref_choice(pref)
+    else
+      @posts = page_8(Post)
+    end
 
-    @posts = pref_post(area)
   end
 
 end

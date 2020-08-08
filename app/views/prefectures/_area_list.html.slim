@@ -5,29 +5,151 @@ ol
       li
         = link_to t('prefectures.index.hokkaido_area'), prefectures_path(area_id: 1)
     .col-xs-12
+      .prefs
+        .prefs__name
+          = link_to t('prefectures.index.hokkaido'), prefectures_path(pref_id: 1)
+    .col-xs-12
       li
         = link_to t('prefectures.index.tohoku_area'), prefectures_path(area_id: 2)
+    .col-xs-12
+      .prefs
+        .prefs__name
+          = link_to t('prefectures.index.aomori'), prefectures_path(pref_id: 2)
+          | , 
+          = link_to t('prefectures.index.iwate'), prefectures_path(pref_id: 3)
+          | , 
+          = link_to t('prefectures.index.miyagi'), prefectures_path(pref_id: 4)
+          | , 
+          = link_to t('prefectures.index.akita'), prefectures_path(pref_id: 5)
+          | , 
+          = link_to t('prefectures.index.yamagata'), prefectures_path(pref_id: 6)
+          | , 
+          = link_to t('prefectures.index.fukushima'), prefectures_path(pref_id: 7)
     .col-xs-12
       li
         = link_to t('prefectures.index.hokuriku_area'), prefectures_path(area_id: 3)
     .col-xs-12
+      .prefs
+        .prefs__name
+          |
+          = link_to t('prefectures.index.niigata'), prefectures_path(pref_id: 15)
+          | , 
+          = link_to t('prefectures.index.toyama'), prefectures_path(pref_id: 16)
+          | , 
+          = link_to t('prefectures.index.ishikawa'), prefectures_path(pref_id: 17)
+          | , 
+          = link_to t('prefectures.index.fukui'), prefectures_path(pref_id: 18)
+          | , 
+          = link_to t('prefectures.index.yamanashi'), prefectures_path(pref_id: 19)
+          | , 
+          = link_to t('prefectures.index.nagano'), prefectures_path(pref_id: 20)
+    .col-xs-12
       li
         = link_to t('prefectures.index.kanto_area'), prefectures_path(area_id: 4)
+    .col-xs-12
+      .prefs
+        .prefs__name
+          |
+          = link_to t('prefectures.index.tokyo'), prefectures_path(pref_id: 13)
+          | , 
+          = link_to t('prefectures.index.ibaraki'), prefectures_path(pref_id: 8)
+          | , 
+          = link_to t('prefectures.index.tochigi'), prefectures_path(pref_id: 9)
+          | , 
+          = link_to t('prefectures.index.gunma'), prefectures_path(pref_id: 10)
+          | , 
+          = link_to t('prefectures.index.saitama'), prefectures_path(pref_id: 11)
+          | , 
+          = link_to t('prefectures.index.chiba'), prefectures_path(pref_id: 12)
+          | , 
+          = link_to t('prefectures.index.kanagawa'), prefectures_path(pref_id: 14)
     .col-xs-12
       li
         = link_to t('prefectures.index.tokai_area'), prefectures_path(area_id: 5)
     .col-xs-12
+      .prefs
+        .prefs__name
+          |
+          = link_to t('prefectures.index.gifu'), prefectures_path(pref_id: 21)
+          | , 
+          = link_to t('prefectures.index.sizuoka'), prefectures_path(pref_id: 22)
+          | , 
+          = link_to t('prefectures.index.aichi'), prefectures_path(pref_id: 23)
+          | , 
+          = link_to t('prefectures.index.mie'), prefectures_path(pref_id: 24)
+    .col-xs-12
       li
         = link_to t('prefectures.index.kinki_area'), prefectures_path(area_id: 6)
+    .col-xs-12
+      .prefs
+        .prefs__name
+          |
+          = link_to t('prefectures.index.kyoto'), prefectures_path(pref_id: 26)
+          | , 
+          = link_to t('prefectures.index.osaka'), prefectures_path(pref_id: 27)
+          | , 
+          = link_to t('prefectures.index.siga'), prefectures_path(pref_id: 25)
+          | , 
+          = link_to t('prefectures.index.hyogo'), prefectures_path(pref_id: 28)
+          | , 
+          = link_to t('prefectures.index.nara'), prefectures_path(pref_id: 29)
+          | , 
+          = link_to t('prefectures.index.wakayama'), prefectures_path(pref_id: 30)
     .col-xs-12
       li
         = link_to t('prefectures.index.chugoku_area'), prefectures_path(area_id: 7)
     .col-xs-12
+      .prefs
+        .prefs__name
+          |
+          = link_to t('prefectures.index.tottori'), prefectures_path(pref_id: 31)
+          | , 
+          = link_to t('prefectures.index.shimane'), prefectures_path(pref_id: 32)
+          | , 
+          = link_to t('prefectures.index.okayama'), prefectures_path(pref_id: 33)
+          | , 
+          = link_to t('prefectures.index.hiroshima'), prefectures_path(pref_id: 34)
+          | , 
+          = link_to t('prefectures.index.yamaguchi'), prefectures_path(pref_id: 35)
+    .col-xs-12
       li
         = link_to t('prefectures.index.shikoku_area'), prefectures_path(area_id: 8)
     .col-xs-12
+      .prefs
+        .prefs__name
+          |
+          = link_to t('prefectures.index.tokushima'), prefectures_path(pref_id: 36)
+          | , 
+          = link_to t('prefectures.index.kagawa'), prefectures_path(pref_id: 37)
+          | , 
+          = link_to t('prefectures.index.ehime'), prefectures_path(pref_id: 38)
+          | , 
+          = link_to t('prefectures.index.kochi'), prefectures_path(pref_id: 39)
+    .col-xs-12
       li
         = link_to t('prefectures.index.kyushu_area'), prefectures_path(area_id: 9)
-    .col-xs-12.text-center
+    .col-xs-12
+      .prefs
+        .prefs__name
+          |
+          = link_to t('prefectures.index.fukuoka'), prefectures_path(pref_id: 40)
+          | , 
+          = link_to t('prefectures.index.saga'), prefectures_path(pref_id: 41)
+          | , 
+          = link_to t('prefectures.index.nagasaki'), prefectures_path(pref_id: 42)
+          | , 
+          = link_to t('prefectures.index.oita'), prefectures_path(pref_id: 44)
+          | , 
+          = link_to t('prefectures.index.kumamoto'), prefectures_path(pref_id: 43)
+          | , 
+          = link_to t('prefectures.index.miyazaki'), prefectures_path(pref_id: 45)
+          | , 
+          = link_to t('prefectures.index.kagoshima'), prefectures_path(pref_id: 46)
+    .col-xs-12
       li
         = link_to t('prefectures.index.okinawa_area'), prefectures_path(area_id: 10)
+    .col-xs-12
+      .prefs
+        .prefs__name
+          |
+          = link_to t('prefectures.index.okinawa'), prefectures_path(pref_id: 47)
