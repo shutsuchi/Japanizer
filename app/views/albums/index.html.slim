@@ -38,19 +38,19 @@
             .album-index
               .album-index__title
                 - unless @others_albums_pg.nil?
+                  .col-xs-12
+                    h2.text-center
+                      = t('common.no_data')
+
+                  .col-xs-12
+                    .text-center
+                - else
                   h2
                     = t('albums.index.subtitle_o')
                   .col-xs-12
                     = render @others_albums_pg
                   .col-xs-12.text-center
                     = paginate @others_albums_pg, :param_name => 'other'
-
-                  .col-xs-12
-                    .text-center
-                - else
-                  .col-xs-12
-                    h2.text-center
-                      = t('common.no_data')
 
 - else
   .row
@@ -70,7 +70,7 @@
                 - if @albums_pg.nil?
                   .col-xs-12
                     h2
-                      = t('app.common.no_post')
+                      = t('app.common.no_album')
                 - else
                   h2
                     = t('albums.index.subtitle_o')

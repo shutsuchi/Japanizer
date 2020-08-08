@@ -76,11 +76,11 @@
           h2
             = t('genres.subtitle_a')
         .col-xs-12
-          - if @albums_pg.present?
+          - if @albums_pg.nil?
+            h2.bg-danger.text-center
+              = t('app.common.no_album')
+          - else
             - @albums_pg.each do |album|
               = render 'albums/album', album: album
             .col-xs-12.text-center
               = paginate @albums_pg
-          - else
-            h2.bg-danger.text-center
-              = t('app.common.no_album')
