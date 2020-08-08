@@ -38,7 +38,7 @@
               - else
                 - @posts_pg.each do |post|
                   = render 'posts/post', post: post
-                .text-center
+                .col-xs-12.text-center
                   = paginate @posts_pg, :param_name => 'post'
 
         .tab-pane id="tab_b" role="tabpanel"
@@ -53,5 +53,5 @@
                 - else
                   - @albums_pg.each do |album|
                     = render 'albums/album', album: album
-                  .text-center
+                  .col-xs-12.text-center
                     = paginate @albums_pg, :param_name => 'album'

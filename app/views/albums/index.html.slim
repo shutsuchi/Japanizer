@@ -58,9 +58,6 @@
       .tab-menu
         ul.nav.nav-tabs.text-center role="tablist"
           li.active role="presentation"
-            a.text-cetner aria-control="tab_a" data-toggle="tab" href="#tab_a" role="tab"
-              = t('posts.index.post_y')
-          li role="presentation"
             a.text-cetner aria-control="tab_b" data-toggle="tab" href="#tab_b" role="tab"
               = t('posts.index.post_o')
 
@@ -70,17 +67,17 @@
           .tab-content
             .album-index
               .album-index__title
-                - unless @others_albums_pg.nil?
+                - if @albums_pg.nil?
+                  .col-xs-12
+                    h2
+                      = t('app.common.no_post')
+                - else
                   h2
                     = t('albums.index.subtitle_o')
                   .col-xs-12
-                    = render @others_albums_pg
+                    = render @albums_pg
                   .col-xs-12.text-center
-                    = paginate @others_albums_pg, :param_name => 'other'
+                    = paginate @albums_pg
 
                   .col-xs-12
                     .text-center
-                - else
-                  .col-xs-12
-                    h2.text-center
-                      = t('common.no_data')
