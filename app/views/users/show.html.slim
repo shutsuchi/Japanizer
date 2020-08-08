@@ -39,7 +39,7 @@
             .mypage-post-list__title
               - if @posts.nil?
                 h2
-                  = t('users.show.no_post')
+                  = t('app.common.no_post')
               - else
                 h2
                   = t('users.show.subtitle_p')
@@ -52,13 +52,13 @@
         .mypage-post-list
           .col-xs-12.text-center
             .mypage-post-list__title
-              - if @posts.nil?
+              - if @albums.nil?
                 h2
-                  = t('users.show.no_album')
+                  = t('app.common.no_album')
               - else
                 h2
                   = t('users.show.subtitle_a')
-          .col-xs-12
-            = render @albums_pg
-            .text-center
-              = paginate @albums_pg, :param_name => 'album'
+                .col-xs-12
+                  = render @albums_pg
+                  .text-center
+                    = paginate @albums_pg, :param_name => 'album'

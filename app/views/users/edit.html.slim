@@ -48,7 +48,7 @@
                 = f.country_select :country_code, autofocus: true, autocomplete: "country", prompt: "Please select a country"
             tr
               th.active
-                = f.label t('users.edit.mail')
+                = f.label t('users.edit.f_mail')
               td
                 = f.email_field :email, autofocus: true, autocomplete: "email"
         = f.submit t('users.edit.f_submit'), class: "btn btn-primary btn-md pull-left update-btn"

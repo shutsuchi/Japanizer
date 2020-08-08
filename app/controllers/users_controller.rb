@@ -76,18 +76,18 @@ class UsersController < ApplicationController
   end
 
   def correct_user
-    binding.pry
-    if params[:id] == 'sign_out'
-      break
-    elsif params[:id]
-      user = User.find(params[:id])
-    else
+    if params[:user_id]
       user = User.find(params[:user_id])
+      if user.id != current_user.id
+        redirect_to top_path
+      end
+    elsif params[:id] != 'sign_out'
+      user = User.find(params[:id])
+      if user.id != current_user.id
+        redirect_to top_path
+      end
     end
 
-    if user.id != current_user.id
-      redirect_to top_path
-    end
   end
 
 end
