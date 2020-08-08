@@ -1,11 +1,10 @@
-### User data
 User.create!(
   id:              1,
   name:            "admin",
   email:           "admin@admin",
   age:             26,
   country_code:    "JP",
-  withdrawal_flag: "true",
+  withdrawal_flag: true,
   password:        "adminadmin"
 )
 
@@ -15,7 +14,7 @@ User.create!(
 #     email:           "test#{n + 1}@test",
 #     age:             n + 1,
 #     country_code:    "US",
-#     withdrawal_flag: "false",
+#     withdrawal_flag: false,
 #     password:        "111111"
 #   )
 # end
@@ -25,10 +24,10 @@ User.create!(
   id:              2,
   name:            "田中太郎",
   email:           "tanaka@email.com",
-  age:             "24",
+  age:             24,
   country_code:    "JP",
-  withdrawal_flag: "false",
-  password:        "tanakadesu"
+  withdrawal_flag: false,
+  password:        "tanakadesu",
 )
 
 # 3
@@ -36,10 +35,10 @@ User.create!(
   id:              3,
   name:            "山田次郎",
   email:           "jirojiro@email.com",
-  age:             "41",
+  age:             41,
   country_code:    "JP",
-  withdrawal_flag: "false",
-  password:        "yamadajiro21"
+  withdrawal_flag: false,
+  password:        "yamadajiro21",
 )
 
 # 4
@@ -47,10 +46,10 @@ User.create!(
   id:              4,
   name:            "John Smith",
   email:           "john1222@ezweb.com",
-  age:             "31",
+  age:             31,
   country_code:    "US",
-  withdrawal_flag: "false",
-  password:        "john1222"
+  withdrawal_flag: false,
+  password:        "john1222",
 )
 
 # 5
@@ -58,10 +57,10 @@ User.create!(
   id:              5,
   name:            "黄秀英",
   email:           "fanfan@gmail.com",
-  age:             "18",
+  age:             18,
   country_code:    "CN",
-  withdrawal_flag: "false",
-  password:        "chichifan"
+  withdrawal_flag: false,
+  password:        "chichifan",
 )
 
 # 6
@@ -69,10 +68,10 @@ User.create!(
   id:              6,
   name:            "Andrea Muller",
   email:           "eeeeand@gmail.com",
-  age:             "42",
+  age:             42,
   country_code:    "DE",
-  withdrawal_flag: "false",
-  password:        "germanyandrea"
+  withdrawal_flag: false,
+  password:        "germanyandrea",
 )
 
 # 7
@@ -80,8 +79,8 @@ User.create!(
   id:              7,
   name:            "金 本貫",
   email:           "kimkim@gmail.com",
-  age:             "42",
+  age:             42,
   country_code:    "KR",
-  withdrawal_flag: "false",
-  password:        "kimkimkim"
+  withdrawal_flag: false,
+  password:        "kimkimkim",
 )
