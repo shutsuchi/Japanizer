@@ -67,18 +67,18 @@
         .tab-content
           .tab-pane.active id="tab_b" role="tabpanel"
             .album-index
-              .album-index__title
-                - unless @others_posts_pg.nil?
-                    h2
-                      = t('posts.index.post_o')
-                    .col-xs-12
-                      / current_user以外userの投稿一覧
-                      = render @others_posts_pg
-
-                    .col-xs-12
-                      .text-center
-                        = paginate @others_posts_pg, :param_name => 'other'
-                - else
+              - if @posts_pg.nil?
+                .col-xs-12
+                  h2
+                    = t('app.common.no_post')
+              - else
+                .album-index__title
+                  h2
+                    = t('posts.index.post_o')
                   .col-xs-12
-                    h2
-                      = t('app.common.no_post')
+                    / current_user以外userの投稿一覧
+                    = render @posts_pg
+
+                  .col-xs-12
+                    .text-center
+                      = paginate @posts_pg

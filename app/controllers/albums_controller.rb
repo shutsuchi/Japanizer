@@ -5,16 +5,21 @@ class AlbumsController < ApplicationController
   # albums_path
   def index
     @album = Album.new
-    # Empth Album
-    @user_no_posts = Post.where(album_id: current_user.albums.first.id)
 
     pg1 = params[:user]
     pg2 = params[:other]
-    # Current_user's Album
-    @user_albums_pg = type_page_6(current_user.albums, pg1)
-    # Other User's Album
-    @others_albums_pg = type_page_6(Album.includes(:user)
-                                    .where.not(user_id: current_user.id), pg2)
+
+    if current_user.nil?
+      @albums_pg = Album.page(params[:page]).order(created_at: :desc).per(6)
+    else
+      # Current_user's Album
+      @user_albums_pg = type_page_6(current_user.albums, pg1)
+      # Other User's Album
+      @others_albums_pg = type_page_6(Album.includes(:user)
+                                      .where.not(user_id: current_user.id), pg2)
+      # User's Empty Album
+      @user_no_posts = Post.where(album_id: current_user.albums.first.id)
+    end
   end
 
   # GET /album/:id

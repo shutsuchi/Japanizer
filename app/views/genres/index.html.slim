@@ -13,24 +13,22 @@
             // ジャンルイメージ
             = render 'genre_list', genres: @genres
 
-      .col-xs-4.text-center
-        h2
+      .col-xs-4
+        h2.text-center
           = t('genres.index.subtitle')
         .genre-rank-list
           ol
             ul#area
-              .col-xs-12
+              .col-xs-8
                 - @genre_post_ranks.each.with_index(1) do |genre, i|
-                  .genre-rank-list__boxes
-                    .genre-rank-list__box
-                      .genre-rank-list__each
-                        li
-                          = link_to genres_path(id: genre.id)
-                            .col-xs-12
-                              .col-xs-1
-                                = i
-                              .col-xs-6
-                                = genre.name
+                  .genre-rank-list__box
+                    li
+                      = link_to genres_path(id: genre.id)
+                        .col-xs-12
+                          .col-xs-1
+                            = i
+                          .col-xs-9
+                            = genre.name
 
 .top-wrapper
   .row
@@ -57,7 +55,7 @@
               - else
                 - @posts_pg.each do |post|
                   = render 'posts/post', post: post
-                .text-center
+                .col-xs-12.text-center
                   = paginate @posts_pg, :param_name => 'post'
 
         .tab-pane id="tab_b" role="tabpanel"
@@ -72,5 +70,5 @@
                 - else
                   - @albums_pg.each do |album|
                     = render 'albums/album', album: album
-                  .text-center
+                  .col-xs-12.text-center
                     = paginate @albums_pg, :param_name => 'album'

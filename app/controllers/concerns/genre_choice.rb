@@ -4,27 +4,27 @@ module GenreChoice
   def budget_album(range)
     case range
     when '1'
-      @albums_pg = page_8(Album.budget_under)
+      @albums_pg = page_6(Album.budget_under)
     when '2'
-      @albums_pg = page_8(Album.budget_3)
+      @albums_pg = page_6(Album.budget_3)
     when '3'
-      @albums_pg = page_8(Album.budget_5)
+      @albums_pg = page_6(Album.budget_5)
     when '4'
-      @albums_pg = page_8(Album.budget_7)
+      @albums_pg = page_6(Album.budget_7)
     when '5'
-      @albums_pg = page_8(Album.budget_9)
+      @albums_pg = page_6(Album.budget_9)
     when '6'
-      @albums_pg = page_8(Album.budget_20)
+      @albums_pg = page_6(Album.budget_20)
     when '7'
-      @albums_pg = page_8(Album.budget_30)
+      @albums_pg = page_6(Album.budget_30)
     when '8'
-      @albums_pg = page_8(Album.budget_40)
+      @albums_pg = page_6(Album.budget_40)
     when '9'
-      @albums_pg = page_8(Album.budget_50)
+      @albums_pg = page_6(Album.budget_50)
     when '10'
-      @albums_pg = page_8(Album.budget_over)
+      @albums_pg = page_6(Album.budget_over)
     else
-      @albums_pg = page_8(Album)
+      @albums_pg = page_6(Album)
     end
   end
 
@@ -52,21 +52,21 @@ module GenreChoice
   def age_album(range, pg2)
     case range
     when '1'
-      @albums_pg = type_page_8(Album.joins(:user).age_20, pg2)
+      @albums_pg = type_page_6(Album.joins(:user).age_20, pg2)
     when '2'
-      @albums_pg = type_page_8(Album.joins(:user).age_30, pg2)
+      @albums_pg = type_page_6(Album.joins(:user).age_30, pg2)
     when '3'
-      @albums_pg = type_page_8(Album.joins(:user).age_40, pg2)
+      @albums_pg = type_page_6(Album.joins(:user).age_40, pg2)
     when '4'
-      @albums_pg = type_page_8(Album.joins(:user).age_50, pg2)
+      @albums_pg = type_page_6(Album.joins(:user).age_50, pg2)
     when '5'
-      @albums_pg = type_page_8(Album.joins(:user).age_60, pg2)
+      @albums_pg = type_page_6(Album.joins(:user).age_60, pg2)
     when '6'
-      @albums_pg = type_page_8(Album.joins(:user).age_70, pg2)
+      @albums_pg = type_page_6(Album.joins(:user).age_70, pg2)
     when '7'
-      @albums_pg = type_page_8(Album.joins(:user).age_80, pg2)
+      @albums_pg = type_page_6(Album.joins(:user).age_80, pg2)
     else
-      @albums_pg = type_page_8(Album, pg2)
+      @albums_pg = type_page_6(Album, pg2)
     end
   end
 
@@ -84,11 +84,11 @@ module GenreChoice
   def nation_album(nation, pg2)
     case nation
     when '1'
-      @albums_pg = type_page_8(Album.joins(:user).jp, pg2)
+      @albums_pg = type_page_6(Album.joins(:user).jp, pg2)
     when '2'
-      @albums_pg = type_page_8(Album.joins(:user).other, pg2)
+      @albums_pg = type_page_6(Album.joins(:user).other, pg2)
     else
-      @albums_pg = type_page_8(Album, pg2)
+      @albums_pg = type_page_6(Album, pg2)
     end
   end
 
