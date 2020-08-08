@@ -1,12 +1,15 @@
 .col-xs-4
   .post-index-box__detail-icon-bookmark--icon
-    - if album.bookmarked_by?(current_user)
-      = link_to album_bookmarks_path(album), method: :delete, remote: true do
-        i.fas.fa-bookmark aria-hidden="true" style="font-size:30px; color:#0099cc;"
+    - if current_user.nil?
+      i.far.fa-bookmark style="font-size:30px;"
     - else
-      = link_to album_bookmarks_path(album), method: :post, remote: true do
-        i.far.fa-bookmark aria-hidden="true" style="font-size:30px;"
-.col-xs-4
+      - if album.bookmarked_by?(current_user)
+        = link_to album_bookmarks_path(album), method: :delete, remote: true do
+          i.fas.fa-bookmark aria-hidden="true" style="font-size:30px; color:#0099cc;"
+      - else
+        = link_to album_bookmarks_path(album), method: :post, remote: true do
+          i.far.fa-bookmark aria-hidden="true" style="font-size:30px;"
+.col-xs-2
   .post-index-box__detail-icon-bookmark--count
     - if album.bookmarks.nil?
       span

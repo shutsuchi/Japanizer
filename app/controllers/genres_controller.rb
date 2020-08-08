@@ -31,7 +31,7 @@ class GenresController < ApplicationController
   def budget
     # 仮
     @range = params[:budget_range]
-    @album_pg = budget_album(@range)
+    @albums_pg = budget_album(@range)
   end
 
   # GET age/
@@ -55,13 +55,13 @@ class GenresController < ApplicationController
     case @nation
     when '1'
       @posts_pg = type_page_8(Post.joins(:user).jp, pg1)
-      @albums_pg = type_page_8(Album.joins(:user).jp, pg2)
+      @albums_pg = type_page_6(Album.joins(:user).jp, pg2)
     when '2'
       @posts_pg = type_page_8(Post.joins(:user).other, pg1)
-      @albums_pg = type_page_8(Album.joins(:user).other, pg2)
+      @albums_pg = type_page_6(Album.joins(:user).other, pg2)
     else
       @posts_pg = type_page_8(Post, pg1)
-      @albums_pg = type_page_8(Album, pg2)
+      @albums_pg = type_page_6(Album, pg2)
     end
   end
 

@@ -7,10 +7,14 @@ class PostsController < ApplicationController
     pg1 = params[:user]
     pg2 = params[:other]
 
-    # Current_user's Post
-    @user_posts_pg = page_4(current_user.posts, pg1)
-    # Other User's Post
-    @others_posts_pg = page_4(Post.includes(:user).where.not(user_id: current_user.id), pg2)
+    if current_user.nil?
+      @posts_pg = Post.page(params[:page]).order(created_at: :desc).per(8)
+    else
+      # Current_user's Post
+      @user_posts_pg = page_4(current_user.posts, pg1)
+      # Other User's Post
+      @others_posts_pg = page_4(Post.includes(:user).where.not(user_id: current_user.id), pg2)
+    end
   end
 
   # GET /post/:id

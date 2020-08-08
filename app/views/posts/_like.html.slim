@@ -1,11 +1,14 @@
 .col-xs-6
   .post-index-box__detail-icon-like--icon
-    - if post.liked_by?(current_user)
-      = link_to post_likes_path(post), method: :delete, remote: true do
-        i.fa.fa-heart aria-hidden="true" style="color: red; font-size:30px;"
+    - if current_user.nil?
+      i.fa.fa-heart style="color:red; font-size:30px;"
     - else
-      = link_to post_likes_path(post), method: :post, remote: true do
-        i.fa.fa-heart-o aria-hidden="true" style="font-size: 30px;"
+      - if post.liked_by?(current_user)
+        = link_to post_likes_path(post), method: :delete, remote: true do
+          i.fa.fa-heart aria-hidden="true" style="color:red; font-size:30px;"
+      - else
+        = link_to post_likes_path(post), method: :post, remote: true do
+          i.fa.fa-heart-o aria-hidden="true" style="font-size: 30px;"
 
 .col-xs-6
   .post-index-box__detail-icon-like--count
