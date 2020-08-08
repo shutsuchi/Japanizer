@@ -5,6 +5,8 @@ class UsersController < ApplicationController
   include UserStatus
   include Page
 
+  # GET /users/:id
+  # user_path
   def show
     pg_p = params[:post]
     pg_a = params[:album]
@@ -33,14 +35,20 @@ class UsersController < ApplicationController
     end
   end
 
+  # GET /users/:id/edit
+  # edit_user_path
   def edit
     @theuser = current_user
   end
 
+  # GET /users/:user_id/withdraw
+  # withdraw_path
   def withdraw
     @theuser = current_user
   end
 
+  # PATCH /users/:user_id/switch
+  # switch_path
   def switch
     @theuser = current_user
     if @theuser.update(withdrawal_flag: false)
@@ -50,6 +58,8 @@ class UsersController < ApplicationController
     end
   end
 
+  # PATCH /users/:id
+  # user_path
   def update
     @theuser = current_user
     if @theuser.update(user_params)
@@ -66,7 +76,10 @@ class UsersController < ApplicationController
   end
 
   def correct_user
-    if params[:id]
+    binding.pry
+    if params[:id] == 'sign_out'
+      break
+    elsif params[:id]
       user = User.find(params[:id])
     else
       user = User.find(params[:user_id])
