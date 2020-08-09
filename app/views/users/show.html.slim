@@ -15,12 +15,12 @@
           #calendar
 
       .col-xs-5
-        = render 'show_form', event: @event
+        = render 'users/show_form', event: @event
   .row
     .col-xs-8
-      = render 'show_setting', user: current_user
+      = render 'users/show_setting', user: current_user
     .col-xs-4
-      = render 'show_status', get_likes: @get_likes, get_comments: @get_comments, get_bookmarks: @get_bookmarks, give_likes: @give_likes, give_comments: @give_comments, give_bookmarks: @give_bookmarks
+      = render 'users/show_status', get_likes: @get_likes, get_comments: @get_comments, get_bookmarks: @get_bookmarks, give_likes: @give_likes, give_comments: @give_comments, give_bookmarks: @give_bookmarks
 
   .row
     .tab-menu
@@ -37,22 +37,22 @@
         .mypage-post-list
           .col-xs-12.text-center
             .mypage-post-list__title
-              - if @posts.nil?
+              - if @posts_pg.nil?
                 h2
                   = t('app.common.no_post')
               - else
                 h2
                   = t('users.show.subtitle_p')
-          .col-xs-12
-            = render @posts_pg
-            .text-center
-              = paginate @posts_pg, :param_name => 'post'
+                .col-xs-12
+                  = render @posts_pg
+                  .text-center
+                    = paginate @posts_pg, :param_name => 'post'
 
       .tab-pane id="tab_b" role="tabpanel"
         .mypage-post-list
           .col-xs-12.text-center
             .mypage-post-list__title
-              - if @albums.nil?
+              - if @albums_pg.nil?
                 h2
                   = t('app.common.no_album')
               - else

@@ -1,6 +1,7 @@
 class EventsController < ApplicationController
 
   include UserStatus
+  include Page
 
   # GET /events
   # GET /events.json
@@ -29,13 +30,15 @@ class EventsController < ApplicationController
     if @event.save
       redirect_to user_path(current_user), notice: 'Event was successfully created.'
     else
+      pg_p = params[:post]
+      pg_a = params[:album]
       @theuser = current_user
-      @posts = @theuser.posts
-      @albums = @theuser.albums
+      @posts_pg = type_page_8(@theuser.posts, pg_p)
+      @albums_pg = type_page_6(@theuser.albums, pg_a)
       @event = Event.new
       @events = Event.where(user_id: @theuser.id)
 
-      # Count User-Got
+      # Count User Got
       @posts = @theuser.posts
       @albums = @theuser.albums
 
@@ -43,11 +46,12 @@ class EventsController < ApplicationController
       @get_comments = get_post(@posts, PostComment)
       @get_bookmarks = get_album(@albums, Bookmark)
 
-      # Count User-Gave
+      # Count User Gave
       @give_likes = give_obj(Like, @theuser)
       @give_comments = give_obj(PostComment, @theuser)
       @give_bookmarks = give_obj(Bookmark, @theuser)
-      render user_path(current_user), notice: 'Event was failed to create.'
+      # render user_path(current_user), notice: 'Event was failed to create.'
+      render 'users/show'
     end
   end
 
