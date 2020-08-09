@@ -4,6 +4,19 @@
       = t('.title')
     p
       = t('.page_description')
+  .col-xs-12.text-center
+    p
+      span style="color:#888;"
+        = t('app.link.both')
+      |  / 
+      = link_to t('app.link.budget'), budget_path
+      |  / 
+      = link_to t('app.link.genre'), genres_path
+      |  / 
+      = link_to t('app.link.age'), age_path
+      |  / 
+      = link_to t('app.link.nation'), nation_path
+      |  / 
   .col-xs-7
     = render 'map'
 
@@ -17,11 +30,11 @@
         h2
           = t('.post_index')
         .col-xs-12
-          - if @posts.nil?
-            h2.bg-danger.text-center
-              = t('app.common.no_post')
-          - else
+          - if @posts.present?
             - @posts.each do |post|
               = render 'posts/post', post: post
             .col-xs-12.text-center
               = paginate @posts
+          - else
+            h3.bg-danger.text-center
+              = t('app.common.no_post')

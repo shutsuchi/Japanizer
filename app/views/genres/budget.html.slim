@@ -6,6 +6,19 @@
           = t('genres.budget.pagetitle')
         p
           = t('genres.budget.description')
+      .col-xs-12.text-center
+        p
+          span style="color:#888;"
+            = t('app.link.both')
+          |  / 
+          = link_to t('app.link.area'), prefectures_path
+          |  / 
+          = link_to t('app.link.genre'), genres_path
+          |  / 
+          = link_to t('app.link.age'), age_path
+          |  / 
+          = link_to t('app.link.nation'), nation_path
+          |  / 
       .col-xs-7
         .budget-icon
           // 予算アイコン
@@ -76,11 +89,11 @@
           h2
             = t('genres.subtitle_a')
         .col-xs-12
-          - if @albums_pg.nil?
-            h2.bg-danger.text-center
-              = t('app.common.no_album')
-          - else
+          - if @albums_pg.present?
             - @albums_pg.each do |album|
               = render 'albums/album', album: album
             .col-xs-12.text-center
               = paginate @albums_pg
+          - else
+            h3.bg-danger.text-center
+              = t('app.common.no_album')

@@ -5,6 +5,13 @@ ja:
       no_data: 'データなし'
       no_post: '該当の投稿なし'
       no_album: '該当のアルバムなし'
+    link:
+      both: '=> 他の条件からアルバムや投稿を探しますか？'
+      area: '地域'
+      genre: 'ジャンル'
+      age: '年齢'
+      nation: '国籍'
+      budget: '予算'
     error:
       er_text_1: ' 個の以下エラーが発生し、'
       er_text_2: 'この '
