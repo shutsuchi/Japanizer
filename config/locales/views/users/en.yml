@@ -1,5 +1,23 @@
 en:
   users:
+    common:
+      email: 'Email'
+      pass: 'Password'
+      pass_conf: 'Password Confirmation'
+      min: '(min 6 characters)'
+      remember: 'Remeber Me'
+      login: 'Log in'
+      signup: 'Sign up'
+      forget: 'Forget your password?'
+      tologin: 'Log in'
+      tosignup: 'Sign up'
+      image: 'Image'
+      name: 'Name'
+      age: 'Age'
+      nation: 'Naitonality'
+      mail: 'Email'
+      submit: 'Update'
+
     show:
       pagetitle: 'My Page'
       subtitle_p: 'Your Posts'
@@ -23,12 +41,6 @@ en:
     edit:
       pagetitle: 'User Setting'
       withdraw_btn: 'WITHDRAW'
-      f_image: 'Image'
-      f_name: 'Name'
-      f_age: 'Age'
-      f_nation: 'Naitonality'
-      f_mail: 'Email'
-      f_submit: 'Update'
 
     withdraw:
       text1: 'Are You Sure to Withdraw From Japanizer ?'

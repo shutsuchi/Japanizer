@@ -1,22 +1,26 @@
 .margin-wrapper
   .wrapper
     .container
-      .row
-        h2
-          | Log in
+      .row.text-center
+        h1
+          = t('users.common.login')
+      .col-xs-12.text-center
         = form_for(resource, as: resource_name, url: session_path(resource_name)) do |f|
-          .field
-            = f.label :email
+          .field.login-box__mail
+            = f.label t('users.common.email')
             br
             = f.email_field :email, autofocus: true, autocomplete: "email"
-          .field
-            = f.label :password
+          .field.login-box__pass
+            = f.label t('users.common.pass')
+            span
+              = t('users.common.min')
             br
             = f.password_field :password, autocomplete: "current-password"
           - if devise_mapping.rememberable?
-            .field
+            .field.login-box__remember
               = f.check_box :remember_me
-              = f.label :remember_me
-          .actions
-            = f.submit "Log in"
+              = f.label t('users.common.remember'), class:"margin-add__left-10"
+          .actions.login-box__button
+            = f.submit t('users.common.login'), class:"btn-lg"
+      .col-xs-12.text-center.login-box__link
         = render "users/shared/links"
