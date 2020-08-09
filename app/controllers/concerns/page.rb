@@ -1,6 +1,10 @@
 module Page
   extend ActiveSupport::Concern
 
+  def type_page_4(obj, pg_name)
+    obj.page(pg_name).order(created_at: :desc).per(4)
+  end
+
   def type_page_6(obj, pg_name)
     obj.page(pg_name).order(created_at: :desc).per(6)
   end

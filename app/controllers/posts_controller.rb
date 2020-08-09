@@ -7,16 +7,23 @@ class PostsController < ApplicationController
   def index
     @post = Post.new
 
-    pg1 = params[:user]
-    pg2 = params[:other]
-
     if current_user.nil?
       @posts_pg = Post.page(params[:page]).order(created_at: :desc).per(8)
     else
-      # Current_user's Post
-      @user_posts_pg = page_4(current_user.posts, pg1)
-      # Other User's Post
-      @others_posts_pg = page_4(Post.includes(:user).where.not(user_id: current_user.id), pg2)
+      if params[:user]
+        # Current_user's Post
+        pg1 = params[:user]
+        @user_posts_pg = page_4_req(current_user.posts, pg1)
+      else
+        @user_posts_pg = page_4(current_user.posts)
+      end
+      if params[:other]
+        pg2 = params[:other]
+        # Other User's Post
+        @others_posts_pg = type_page_4(Post.includes(:user).where.not(user_id: current_user.id), pg2)
+      else
+        @others_posts_pg = page_4(Post.includes(:user).where.not(user_id: current_user.id))
+      end
     end
   end
 

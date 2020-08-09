@@ -21,7 +21,7 @@
         .tab-pane.active id="tab_a" role="tabpanel"
           .album-index
             .album-index__title
-              - unless current_user.posts.nil?
+              - if current_user.posts.nil?
                   h2
                     / (予定)Link to THIS page-top
                     = t('posts.index.no_post')

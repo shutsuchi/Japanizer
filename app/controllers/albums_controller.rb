@@ -13,13 +13,23 @@ class AlbumsController < ApplicationController
     if current_user.nil?
       @albums_pg = Album.page(params[:page]).order(created_at: :desc).per(6)
     else
-      # Current_user's Album
-      @user_albums_pg = type_page_6(current_user.albums, pg1)
-      # Other User's Album
-      @others_albums_pg = type_page_6(Album.includes(:user)
-                                      .where.not(user_id: current_user.id), pg2)
       # User's Empty Album
       @user_no_posts = Post.where(album_id: current_user.albums.first.id)
+
+      if params[:user]
+        pg1 = params[:user]
+        # Current_user's Album
+        @user_albums_pg = type_page_6(current_user.albums, pg1)
+      else
+        @user_albums_pg = page_6(current_user.albums)
+      end
+      if params[:other]
+        pg2 = params[:other]
+        # Other User's Album
+        @others_albums_pg = type_page_6(Album.includes(:user).where.not(user_id: current_user.id), pg2)
+      else
+        @others_albums_pg = page_6(Album.includes(:user).where.not(user_id: current_user.id))
+      end
     end
   end
 
@@ -42,7 +52,6 @@ class AlbumsController < ApplicationController
     else
       redirect_to top_path
     end
-  end
   end
 
   # POST /albums
