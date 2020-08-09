@@ -6,7 +6,7 @@
           = t('users.common.signup')
       .row
         = render "devise/shared/error_messages", resource: resource
-        table.table.table-bordered.regi-box
+        table.table.table-bordered
           = form_for(resource, as: resource_name, url: registration_path(resource_name)) do |f|
             thead
               tr
@@ -44,4 +44,5 @@
               tr
                 th.actions
                   = f.submit t('users.common.signup'), class: "btn btn-primary btn-block pull-left"
+          = f.submit t('users.common.signup'), class: "btn btn-primary btn-md pull-left update-btn"
         = render "users/shared/links"
