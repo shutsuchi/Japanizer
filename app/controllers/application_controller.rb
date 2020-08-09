@@ -27,6 +27,17 @@ class ApplicationController < ActionController::Base
     { locale: I18n.locale }.merge options
   end
 
+  def incorrect_user
+    if current_user.present?
+      user = User.find(params[:user_id])
+      if user != current_user
+        redirect_to top_path
+      end
+    else
+      redirect_to top_path
+    end
+  end
+
   protected
 
   def configure_permitted_parameters

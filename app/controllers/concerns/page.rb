@@ -9,6 +9,10 @@ module Page
     obj.page(pg_name).order(created_at: :desc).per(8)
   end
 
+  def page_4(obj)
+    obj.page(params[:page]).order(created_at: :desc).per(4)
+  end
+
   def page_6(obj)
     obj.page(params[:page]).order(created_at: :desc).per(6)
   end

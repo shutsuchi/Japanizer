@@ -1,4 +1,6 @@
 class AlbumsController < ApplicationController
+  before_action :correct_user, only: %i[edit]
+
   include Page
 
   # GET /albums
