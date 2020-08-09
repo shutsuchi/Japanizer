@@ -5,4 +5,8 @@ module ApplicationHelper
     end
     # url_for(options)
   end
+
+  def time_fmt(time)
+    time.strftime('%Y/%m/%d')
+  end
 end

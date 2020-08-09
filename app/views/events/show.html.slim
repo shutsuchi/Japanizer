@@ -32,12 +32,12 @@ p#notice = notice
             .event-detail-box__title
               = t('events.show.start')
             .event-detail-box__content
-              = @theevent.start.strftime('%Y/%m/%d %H:%M')
+              = time_fmt @theevent.start
 
             .event-detail-box__title
               = t('events.show.end')
             .event-detail-box__content
-              = @theevent.end.strftime('%Y/%m/%d %H:%M')
+              = time_fmt @theevent.end
 
           .event-detail__btn
             .event-detail__btn-text

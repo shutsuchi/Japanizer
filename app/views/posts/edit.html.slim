@@ -55,11 +55,11 @@
                 tr
                   th.active = t('posts.edit.create')
                   td.post-sidebar__title
-                    = @thepost.created_at.strftime('%Y/%m/%d %H:%M')
+                    = time_fmt @thepost.created_at
                 tr
                   th.active = t('posts.edit.update')
                   td.post-sidebar__title
-                    = @thepost.updated_at.strftime('%Y/%m/%d %H:%M')
+                    = time_fmt @thepost.updated_at
 
   .col-xs-9
     .post-main.post-main__detail

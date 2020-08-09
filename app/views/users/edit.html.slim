@@ -21,7 +21,7 @@
           thead
             tr
               th.active
-                = f.label t('users.edit.f_image'), class:"post-main__color"
+                = f.label t('users.common.image'), class:"post-main__color"
               td
                 br
                   #img_field onClick="$('#file').click()"
@@ -33,22 +33,22 @@
                 = f.attachment_field :image, style:"display:none;", id:"file"
             tr
               th.active
-                = f.label t('users.edit.f_name')
+                = f.label t('users.common.name')
               td
                 = f.text_field :name
             tr
               th.active
-                = f.label t('users.edit.f_age')
+                = f.label t('users.common.age')
               td
                 = f.select :age, options_for_select(1..100), autofocus: true, autocomplete: "age"
             tr
               th.active
-                = f.label t('users.edit.f_nation')
+                = f.label t('users.common.nation')
               td
                 = f.country_select :country_code, autofocus: true, autocomplete: "country", prompt: "Please select a country"
             tr
               th.active
-                = f.label t('users.edit.f_mail')
+                = f.label t('users.common.mail')
               td
                 = f.email_field :email, autofocus: true, autocomplete: "email"
-        = f.submit t('users.edit.f_submit'), class: "btn btn-primary btn-md pull-left update-btn"
+        = f.submit t('users.common.submit'), class: "btn btn-primary btn-md pull-left update-btn"

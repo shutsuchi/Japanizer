@@ -5,6 +5,13 @@ en:
       no_data: 'NO DATA'
       no_post: 'NO POST'
       no_album: 'NO ALBUM'
+    link:
+      both: '=> look for Posts or Albums with another condition: '
+      area: 'Area'
+      genre: 'Genre'
+      age: 'Age'
+      natoin: 'Nation'
+      budget: 'Budget'
     error:
       er_text_1: ' errors prohibited'
       er_text_2: 'This '

@@ -23,6 +23,10 @@
             .album-index__title
               - unless current_user.posts.nil?
                   h2
+                    / (予定)Link to THIS page-top
+                    = t('posts.index.no_post')
+              - else
+                  h2
                     = t('posts.index.post_y')
                   .col-xs-12
                     / current_userの投稿一覧
@@ -31,15 +35,15 @@
                   .col-xs-12
                     .text-center
                       = paginate @user_posts_pg, :param_name => 'user'
-              - else
-                  h2
-                    / (予定)Link to THIS page-top
-                    = t('posts.index.no_post')
 
         .tab-pane id="tab_b" role="tabpanel"
           .album-index
             .album-index__title
-              - unless @others_posts_pg.nil?
+              - if @others_posts_pg.nil?
+                .col-xs-12
+                  h2
+                    = t('app.common.no_post')
+              - else
                   h2
                     = t('posts.index.post_o')
                   .col-xs-12
@@ -49,10 +53,6 @@
                   .col-xs-12
                     .text-center
                       = paginate @others_posts_pg, :param_name => 'other'
-              - else
-                .col-xs-12
-                  h2
-                    = t('app.common.no_post')
 - else
   .row
     .top-wrapper

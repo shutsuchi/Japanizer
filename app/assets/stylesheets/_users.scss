@@ -2,6 +2,79 @@
 // They will automatically be included in application.css.
 // You can use Sass (SCSS) here: http://sass-lang.com/
 
+//-------- Registration Page --------//
+.regi-box {
+  margin-top: 30px;
+  margin-bottom: 30px;
+}
+//-------- Session Page --------//
+.login-box {
+  &__mail {
+    margin-top: 50px;
+    font-size: 20px;
+  }
+  &__pass {
+    margin-top: 30px;
+    font-size: 20px;
+  }
+  &__remember {
+    margin-top: 20px;
+    margin-bottom: 20px;
+  }
+  &__link {
+    margin-top: 30px;
+  }
+  &__button {
+    margin-top: 30px;
+    position: relative;
+    display: inline-block;
+    font-weight: bold;
+    padding: 12px 0 8px;
+    text-decoration: none;
+    color: #67c5ff;
+    transition: .4s;
+    &:before {
+      position: absolute;
+      content: '';
+      width: 100%;
+      height: 4px;
+      top:100%;
+      left: 0;
+      border-radius: 3px;
+      background:#67c5ff;
+      transition: .2s;
+    }
+    &:after {
+      position: absolute;
+      content: '';
+      width: 100%;
+      height: 4px;
+      top:0;
+      left: 0;
+      border-radius: 3px;
+      background:#67c5ff;
+      transition: .2s;
+    }
+    &:hover {
+      color: #0000cd;
+    }
+    &:hover:before {
+      top: -webkit-calc(100% - 3px);
+      top: calc(100% - 3px);
+    }
+    &:hover:after {
+      top: 3px;
+    }
+  }
+}
+input[type="email"] {
+        width: 400px;
+        height: 50px;
+}
+input[type="password"] {
+        width: 400px;
+        height: 50px;
+}
 //-------- Show Page --------//
 
 //----- calendar

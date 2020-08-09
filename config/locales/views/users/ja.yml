@@ -1,5 +1,23 @@
 ja:
   users:
+    common:
+      email: 'メールアドレス'
+      pass: 'パスワード'
+      pass_conf: 'パスワード確認'
+      min: '(最低6文字)'
+      remember: 'パスワードを覚える'
+      login: 'ログイン'
+      signup: 'ユーザー登録'
+      forget: 'パスワードをお忘れですか？'
+      tologin: 'ログイン画面へ'
+      tosignup: 'ユーザー登録画面へ'
+      image: '画像'
+      name: 'ユーザー名'
+      age: '年齢'
+      nation: '国籍'
+      mail: 'メールアドレス'
+      submit: '更新する'
+
     show:
       pagetitle: 'マイページ'
       subtitle_p: 'あなたの投稿'
@@ -25,12 +43,6 @@ ja:
     edit:
       pagetitle: 'ユーザー設定'
       withdraw_btn: '退会する'
-      f_image: '画像'
-      f_name: 'ユーザー名'
-      f_age: '年齢'
-      f_nation: '国籍'
-      f_mail: 'メールアドレス'
-      f_submit: '更新する'
 
     withdraw:
       text1: '本当に退会しますか?'

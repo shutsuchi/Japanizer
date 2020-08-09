@@ -5,6 +5,19 @@
         = t('genres.age.pagetitle')
       p
         = t('genres.age.description')
+    .col-xs-12.text-center
+      p
+        span style="color:#888;"
+          = t('app.link.both')
+        |  / 
+        = link_to t('app.link.area'), prefectures_path
+        |  / 
+        = link_to t('app.link.genre'), genres_path
+        |  / 
+        = link_to t('app.link.budget'), budget_path
+        |  / 
+        = link_to t('app.link.nation'), nation_path
+        |  / 
     .col-xs-7
       .age-icon
         = render 'age_image', range: @range
@@ -32,14 +45,14 @@
             h2
               = t('genres.subtitle_p')
             .col-xs-12
-              - if @posts_pg.nil?
-                h3.bg-danger.text-center
-                  = t('app.common.no_post')
-              - else
+              - if @posts_pg.present?
                 - @posts_pg.each do |post|
                   = render 'posts/post', post: post
                 .col-xs-12.text-center
                   = paginate @posts_pg, :param_name => 'post'
+              - else
+                h3.bg-danger.text-center
+                  = t('app.common.no_post')
 
         .tab-pane id="tab_b" role="tabpanel"
           .album-index
@@ -47,11 +60,11 @@
               h2
                 = t('genres.subtitle_a')
               .col-xs-12
-                - if @albums_pg.nil?
-                  h2.bg-danger.text-center
-                    = t('app.common.no_album')
-                - else
+                - if @albums_pg.present?
                   - @albums_pg.each do |album|
                     = render 'albums/album', album: album
                   .col-xs-12.text-center
                     = paginate @albums_pg, :param_name => 'album'
+                - else
+                  h2.bg-danger.text-center
+                    = t('app.common.no_album')
