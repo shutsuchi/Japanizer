@@ -9,7 +9,7 @@
           span.btn.btn-primary.btn-md.col-xs-8.glyphicon.glyphicon-arrow-left.btn-icon-color
     .col-xs-2
       .post-main__top-btn
-        = link_to(album_path(thealbum), method: :delete) do
+        = link_to(album_path(thealbum), method: :delete, data: { confirm: t('app.common.confirm_del') }) do
           span.btn.btn-danger.btn-md.col-xs-8.glyphicon.glyphicon-trash.btn-icon-color
     .col-xs-12
       .col-xs-6

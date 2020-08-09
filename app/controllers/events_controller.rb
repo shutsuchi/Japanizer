@@ -12,8 +12,12 @@ class EventsController < ApplicationController
   # GET /events/1
   # GET /events/1.json
   def show
-    @theuser = current_user
     @theevent = find_event(params[:id])
+    if @theevent.user == current_user
+      @theuser = current_user
+    else
+      redirect_to top_path
+    end
   end
 
   # POST /events
