@@ -11,14 +11,15 @@
               .col-xs-10
                 .post-sidebar__image
                   = attachment_image_tag @thepost, :image, fallback:"img/no_photo.png", class:"field", size:"200x200"
-            .row
-              .col-xs-10.post-main__top-btn
-                = link_to(edit_post_path(@thepost), method: :get) do
-                  span.btn.btn-default.btn-md.col-xs-8.form-window.glyphicon.glyphicon-cog
-            .row
-              .col-xs-10.post-main__top-btn
-                = link_to(post_path(@thepost), method: :delete) do
-                  span.btn.btn-danger.btn-md.col-xs-8.glyphicon.glyphicon-trash.btn-icon-color
+            - if current_user.present?
+              .row
+                .col-xs-10.post-main__top-btn
+                  = link_to(edit_post_path(@thepost), method: :get) do
+                    span.btn.btn-default.btn-md.col-xs-8.form-window.glyphicon.glyphicon-cog
+              .row
+                .col-xs-10.post-main__top-btn
+                  = link_to(post_path(@thepost), method: :delete) do
+                    span.btn.btn-danger.btn-md.col-xs-8.glyphicon.glyphicon-trash.btn-icon-color
           .col-xs-7
             = render 'detail', thepost: @thepost
 .row
