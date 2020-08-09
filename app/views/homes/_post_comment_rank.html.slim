@@ -38,27 +38,27 @@
                 span
                 = post.post_comments.count
   .col-xs-12
-    .rank_box
-      .rank_box__table
+    .rank-box
+      .rank-box__table
         table.table.table-bordered
           thead
             tr
               th
-                | User Name
+                = t('posts.edit.user')
               td
                 = post.user.name
             tr
               th
-                | Title
+                = t('posts.edit.title')
               td
                 = post.title
             tr
               th
-                | Genre
+                = t('posts.edit.genre')
               td
                 = post.genre.name
             tr
               th
-                | Prefecture
+                = t('posts.edit.place')
               td
                 = post.prefecture.name

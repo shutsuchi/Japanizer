@@ -6,7 +6,7 @@
       .sidebar-outline__ranking-box
           .sidebar-outline__search-title-box
             p.text-center
-              = t('homes.ranking')
+              = t('homes.top.ranking')
           .col-xs-12
             .sidebar-outline__rank-body-boxes
               .col-xs-12
@@ -14,7 +14,7 @@
                   .sidebar-outline__rank
                     .sidebar-outline__post-like-rank--title
                       p.bg-success.text-center
-                        = t('homes.post_like')
+                        = t('homes.top.post_like')
                     .sidebar-outline__post-like-rank--body
                       .col-xs-12
                         - if @post_like_ranks.present?
@@ -22,13 +22,13 @@
                             = render 'post_like_rank', post: post, i: i
                         - else
                           h5
-                            | NO DATA
+                            = t('app.common.no_post')
               .col-xs-12
                 .sidebar-outline__rank-body-box
                   .sidebar-outline__rank
                     .sidebar-outline__post-like-rank--title
                       p.bg-success.text-center
-                        = t('homes.post_comment')
+                        = t('homes.top.post_comment')
                     .sidebar-outline__post-like-rank--body
                       .col-xs-12
                         - if @post_comment_ranks.present?
@@ -36,13 +36,13 @@
                             = render 'post_comment_rank', post: post, i: i
                         - else
                           h5
-                            | NO DATA
+                            = t('app.common.no_post')
               .col-xs-12
                 .sidebar-outline__rank-body-box
                   .sidebar-outline__rank
                     .sidebar-outline__post-like-rank--title
                       p.bg-success.text-center
-                        = t('homes.album_bookmark')
+                        = t('homes.top.album_bookmark')
                     .sidebar-outline__post-like-rank--body
                       .col-xs-12
                         - if @album_ranks.present?
@@ -50,4 +50,4 @@
                             = render 'album_rank', album: album, i: i
                         - else
                           h5
-                            | NO DATA
+                            = t('app.common.no_album')
