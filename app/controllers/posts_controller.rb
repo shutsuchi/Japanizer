@@ -1,5 +1,4 @@
 class PostsController < ApplicationController
-  before_action :correct_user, only: %[edit]
 
   include Page
 
@@ -33,8 +32,15 @@ class PostsController < ApplicationController
   # GET /post/:id/edit
   # edit_post_path
   def edit
-    @thepost = find_post(params[:id])
-    @user_albums = current_user.albums.all
+    if current_user.present?
+      @thepost = find_post(params[:id])
+      @user_albums = current_user.albums.all
+      if current_user != @thepost.user
+        redirect_to top_path
+      end
+    else
+      redirect_to top_path
+    end
   end
 
   # POST /posts

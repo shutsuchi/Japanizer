@@ -1,5 +1,4 @@
 class AlbumsController < ApplicationController
-  before_action :correct_user, only: %i[edit]
 
   include Page
 
@@ -34,8 +33,16 @@ class AlbumsController < ApplicationController
   # GET /album/:id/edit
   # edit_album_path
   def edit
-    @thealbum = find_album(params[:id])
-    @user_posts = current_user.posts
+    if current_user.present?
+      @thealbum = find_album(params[:id])
+      @user_posts = current_user.posts
+      if current_user != @thealbum.user
+        redirect_to top_path
+      end
+    else
+      redirect_to top_path
+    end
+  end
   end
 
   # POST /albums
