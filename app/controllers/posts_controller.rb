@@ -1,4 +1,8 @@
 class PostsController < ApplicationController
+  before_action :correct_user, only: %[edit]
+
+  include Page
+
   # GET /posts
   # posts_path
   def index
@@ -120,10 +124,6 @@ class PostsController < ApplicationController
 
   def find_post(post_id)
     Post.find(post_id)
-  end
-
-  def page_4(obj, pg)
-    obj.page(pg).reverse_order.per(4)
   end
 
 end
