@@ -5,7 +5,7 @@
         .col-xs-2
           = comment.user.name
         .col-xs-4
-          = comment.created_at.strftime('%Y/%m/%d %H:%M')
+          = time_fmt comment.created_at
         .col-xs-2
         .col-xs-1
             /.post-comment-box__reply
