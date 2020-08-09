@@ -2,9 +2,12 @@ ja:
   app:
     common:
       back: '戻る'
+      delete: '削除する'
       no_data: 'データなし'
       no_post: '該当の投稿なし'
       no_album: '該当のアルバムなし'
+      confirm_del: '削除しますか？'
+      confirm_withdraw: '本当に退会しますか？'
     link:
       both: '=> 他の条件からアルバムや投稿を探しますか？'
       area: '地域'

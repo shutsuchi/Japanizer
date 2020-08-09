@@ -11,14 +11,14 @@
               .col-xs-10
                 .post-sidebar__image
                   = attachment_image_tag @thepost, :image, fallback:"img/no_photo.png", class:"field", size:"200x200"
-            - if current_user.present?
+            - if @thepost.user == current_user
               .row
                 .col-xs-10.post-main__top-btn
                   = link_to(edit_post_path(@thepost), method: :get) do
                     span.btn.btn-default.btn-md.col-xs-8.form-window.glyphicon.glyphicon-cog
               .row
                 .col-xs-10.post-main__top-btn
-                  = link_to(post_path(@thepost), method: :delete) do
+                  = link_to(post_path(@thepost), method: :delete, data: { confirm: t('app.common.confirm_del') }) do
                     span.btn.btn-danger.btn-md.col-xs-8.glyphicon.glyphicon-trash.btn-icon-color
           .col-xs-7
             = render 'detail', thepost: @thepost

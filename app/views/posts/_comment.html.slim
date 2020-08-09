@@ -11,8 +11,9 @@
             /.post-comment-box__reply
               | repy
         .col-xs-3
-          .pot-comment-box__btn--delete
-            = link_to '', post_post_comments_path(id: comment, post_id: post.id), method: :delete, remote: true, class:"fa fa-trash pull-right", style:"color:#ee0000; font-size:20px;"
+          - if comment.user == current_user
+            .pot-comment-box__btn--delete
+              = link_to '', post_post_comments_path(id: comment, post_id: post.id), method: :delete, remote: true, data: { confirm: t('app.common.confirm_del') }, class:"fa fa-trash pull-right", style:"color:#ee0000; font-size:20px;"
     tr
       td.post-comment-box__title
         .col-xs-5
@@ -38,5 +39,6 @@
           = comment.comment
         .col-xs-5
         .col-xs-2
-          .post-comment-box__btn--edit
-            = link_to '', post_post_comments_path(id: comment, post_id: post.id), method: :patch, remote: true, class:"fas fa-edit pull-right text-primary", style:"font-size:20px;"
+          - if comment.user == current_user
+            .post-comment-box__btn--edit
+              = link_to '', post_post_comments_path(id: comment, post_id: post.id), method: :patch, remote: true, class:"fas fa-edit pull-right text-primary", style:"font-size:20px;"

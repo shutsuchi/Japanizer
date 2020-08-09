@@ -39,9 +39,18 @@ p#notice = notice
             .event-detail-box__content
               = time_fmt @theevent.end
 
-          .event-detail__btn
-            .event-detail__btn-text
-              = link_to(user_path(@theuser)) do
-                span.btn.btn-success = t('app.common.back')
-              /'|
-              /= link_to 'Edit', events_path
+          .row
+            .col-xs-6
+              .event-detail__btn
+                .event-detail__btn-text
+                  = link_to(user_path(@theuser)) do
+                    span.btn.btn-success
+                      = t('app.common.back')
+            .col-xs-6
+              .event-detail__btn
+                .event-detail__btn-text
+                  = link_to(event_path(@theevent), method: :delete, data: { confirm: t('app.common.confirm_del') }) do
+                    span.btn.btn-danger.pull-right
+                      = t('app.common.delete')
+                  /'|
+                  /= link_to 'Edit', events_path

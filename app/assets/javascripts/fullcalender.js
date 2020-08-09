@@ -70,12 +70,3 @@ $(function () {
 });
 
 
-//-------------------------- DateTimePicker-calendarForm
-var data = {'data-date-format': 'YYYY-MM-DD hh:mm' };
-$(function(){
-  $('.datetimepicker').attr(data);
-  $('.datetimepicker').datetimepicker({
-    format: 'YYYY-MM-DD hh:mm',
-  });
-});
-
