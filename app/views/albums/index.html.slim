@@ -21,7 +21,11 @@
           .tab-pane.active id="tab_a" role="tabpanel"
             .album-index
               .album-index__title
-                - unless current_user.albums.nil?
+                - if current_user.albums.nil?
+                    .col-xs-12
+                      h2
+                        = t('albums.index.no_album')
+                - else
                     h2
                       = t('albums.index.subtitle_y')
                     .col-xs-12
@@ -29,18 +33,14 @@
 
                     .col-xs-12.text-center
                         = paginate @user_albums_pg, :param_name => 'user'
-                - else
-                    .col-xs-12
-                      h2
-                        = t('albums.index.no_album')
 
           .tab-pane id="tab_b" role="tabpanel"
             .album-index
               .album-index__title
-                - unless @others_albums_pg.nil?
+                - if @others_albums_pg.nil?
                   .col-xs-12
                     h2.text-center
-                      = t('common.no_data')
+                      = t('common.no_album')
 
                   .col-xs-12
                     .text-center
