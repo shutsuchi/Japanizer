@@ -17,6 +17,7 @@ ja:
       nation: '国籍'
       mail: 'メールアドレス'
       submit: '更新する'
+      created: '登録日'
 
     flash:
       s_notice: 'ユーザー登録が完了しました。'
@@ -48,6 +49,7 @@ ja:
 
     edit:
       pagetitle: 'ユーザー設定'
+      back: 'マイページ'
       withdraw_btn: '退会する'
 
     withdraw:
