@@ -28,14 +28,13 @@ class EventsController < ApplicationController
     @event.user_id = current_user.id
 
     if @event.save
-      redirect_to user_path(current_user), notice: 'Event was successfully created.'
+      redirect_to user_path(current_user), notice: t('events.flash.notice')
     else
       pg_p = params[:post]
       pg_a = params[:album]
       @theuser = current_user
       @posts_pg = type_page_8(@theuser.posts, pg_p)
       @albums_pg = type_page_6(@theuser.albums, pg_a)
-      @event = Event.new
       @events = Event.where(user_id: @theuser.id)
 
       # Count User Got
@@ -51,6 +50,7 @@ class EventsController < ApplicationController
       @give_comments = give_obj(PostComment, @theuser)
       @give_bookmarks = give_obj(Bookmark, @theuser)
       # render user_path(current_user), notice: 'Event was failed to create.'
+      flash.now[:alert] = t('events.flash.alert')
       render 'users/show'
     end
   end

@@ -9,3 +9,7 @@ en:
       end: 'Last Day : '
 
       none: 'no content'
+
+    flash:
+      notice: 'Event is successfully saved.'
+      alert: 'Event is NOT saved.'

@@ -15,7 +15,10 @@
           #calendar
 
       .col-xs-5
-        = render 'users/show_form', event: @event
+        .col-xs-12
+          = render 'layouts/error_message', model: @event
+        .col-xs-12
+          = render 'users/show_form', event: @event
   .row
     .col-xs-8
       = render 'users/show_setting', user: current_user
