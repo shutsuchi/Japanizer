@@ -62,9 +62,8 @@ class AlbumsController < ApplicationController
     @album.album_create_rate
 
     if @album.save
-      redirect_to @album
+      redirect_to @album, notice: t('albums.flash.s_notice')
     else
-      @album = Album.new
       # User's Empty Album
       @user_no_posts = Post.where(album_id: current_user.albums.first.id)
 
@@ -73,6 +72,7 @@ class AlbumsController < ApplicationController
       @user_albums_pg = type_page_6(current_user.albums, pg1)
       @others_albums_pg = type_page_6(Album.includes(:user)
                                       .where.not(user_id: current_user.id), pg2)
+      flash.now[:alert] = t('albums.flash.s_alert')
       render :index
     end
   end
@@ -92,9 +92,10 @@ class AlbumsController < ApplicationController
       )
       # Update album_id of post selected when album update
       @thealbum.album_update_post
-      redirect_to @thealbum
+      redirect_to @thealbum, notice: t('albums.flash.u_notice')
     else
       @user_posts = current_user.posts
+      flash.now[:alert] = t('albums.flash.u_alert')
       render :edit
     end
   end
@@ -111,7 +112,7 @@ class AlbumsController < ApplicationController
       end
     end
 
-    redirect_to albums_path
+    redirect_to albums_path, notice: t('albums.flash.d_notice')
   end
 
   private

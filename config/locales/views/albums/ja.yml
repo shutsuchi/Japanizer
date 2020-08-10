@@ -1,5 +1,12 @@
 ja:
   albums:
+    flash:
+      s_notice: 'アルバムを保存しました。'
+      s_alert: 'アルバムの保存に失敗しました。'
+      d_notice: 'アルバムを削除しました。'
+      u_notice: 'アルバムを更新しました。'
+      u_alert: 'アルバムの更新に失敗しました。'
+
     index:
       new_form: 'アルバム作成'
       f_image: '画像'

@@ -11,5 +11,8 @@ en:
       none: 'no content'
 
     flash:
-      notice: 'Event is successfully saved.'
-      alert: 'Event is NOT saved.'
+      s_notice: 'Event was successfully saved.'
+      s_alert: 'Event was NOT saved.'
+      d_notice: 'Event was deleted'
+      u_notice: 'Event was successfully updated'
+      u_alert: 'Event was NOT updated'

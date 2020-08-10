@@ -28,7 +28,7 @@ class EventsController < ApplicationController
     @event.user_id = current_user.id
 
     if @event.save
-      redirect_to user_path(current_user), notice: t('events.flash.notice')
+      redirect_to user_path(current_user), notice: t('events.flash.s_notice')
     else
       pg_p = params[:post]
       pg_a = params[:album]
@@ -49,8 +49,7 @@ class EventsController < ApplicationController
       @give_likes = give_obj(Like, @theuser)
       @give_comments = give_obj(PostComment, @theuser)
       @give_bookmarks = give_obj(Bookmark, @theuser)
-      # render user_path(current_user), notice: 'Event was failed to create.'
-      flash.now[:alert] = t('events.flash.alert')
+      flash.now[:alert] = t('events.flash.s_alert')
       render 'users/show'
     end
   end
@@ -58,14 +57,19 @@ class EventsController < ApplicationController
   def update
     event = find_event(params[:id])
     @events = Event.where(user_id: current_user.id)
-    event.update(event_params)
+    if event.update(event_params)
+      redirect_to event, notice: t('events.flash.u_notice')
+    else
+      flash.now[:alert] = t('events.flash.u_alert')
+      render event_path(event)
+    end
   end
 
   def destroy
     @user = find_User(params[:id])
     event = Event.find(params[:id])
     if event.destroy
-      redirect_to user_path(@user)
+      redirect_to user_path(@user), notice: t('events.flash.d_notice')
     end
   end
 
