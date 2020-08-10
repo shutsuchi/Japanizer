@@ -101,7 +101,7 @@ class Post < ApplicationRecord
         else
           Post.eager_load(:user).where(users: { country_code: 'JP' })
       end
-    else
+    elsif nation == 'Others'
       case genre
         when '1'
           Post.eager_load(:genre, :user).where(genre_id: 1).where.not(users: { country_code: 'JP' })
@@ -126,6 +126,8 @@ class Post < ApplicationRecord
         else
           Post.eager_load(:user).where.not(users: { country_code: 'JP' })
       end
+    else
+      Post.all
     end
   end
 end

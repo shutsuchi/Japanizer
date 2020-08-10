@@ -115,7 +115,7 @@ class Album < ApplicationRecord
       else
         Album.eager_load(:user).where(users: { country_code: 'JP' })
       end
-    else
+    elsif nation == 'Others'
       case genre
       when '1'
         Album.eager_load(:genre, :user).where(genre_id: 1).where.not(users: { country_code: 'JP' })
@@ -140,6 +140,8 @@ class Album < ApplicationRecord
       else
         Album.eager_load(:user).where.not(users: { country_code: 'JP' })
       end
+    else
+      Album.all
     end
   end
 end

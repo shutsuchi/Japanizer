@@ -10,6 +10,10 @@ en:
     past_month: 'Past month'
     past_week: 'Past week'
     past_24: 'Past 24 hours'
+    any_time: 'Any time'
 
     nation_jp: 'Japanese'
     nation_ot: 'Other than Japanese'
+    nation_all: 'All users'
+
+    any_genre: 'Any genre'

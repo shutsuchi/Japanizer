@@ -18,7 +18,7 @@ class SearchesController < ApplicationController
       if params[:genre] =~ /\A[0-9]+\z/
         @result_genre = Genre.find(params[:genre])
       else
-        @result_genre = 'All'
+        @result_genre = t('searches.any_genre')
       end
 
       @option = params[:option]
