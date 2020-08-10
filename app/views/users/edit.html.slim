@@ -1,54 +1,47 @@
 .top-wrapper
-  .col-xs-8
-    .col-xs-5
-      h1
-        = t('users.edit.pagetitle')
-    .col-xs-2
-    .col-xs-2
-      .post-main__top-btn
-        = link_to user_path(@theuser), method: :get  do
-          span.btn.btn-success.btn-md.col-xs-8.glyphicon.glyphicon-arrow-left.btn-icon-color
-    .col-xs-2
-      .post-main__top-btn
-        = link_to withdraw_path(current_user), method: :get  do
-          span.btn.btn-danger.btn-md.col-xs-8.btn-icon-color
-           = t('users.edit.withdraw_btn')
-    .col-xs-12
-      = render 'layouts/error_message', model: @theuser
-    .user-edit-form
-      = form_with(model: @theuser , url: user_path, method: :patch, local: true) do |f|
-        table.table.table-bordered
-          thead
-            tr
-              th.active
-                = f.label t('users.common.image'), class:"post-main__color"
-              td
-                br
-                  #img_field onClick="$('#file').click()"
-                    - if @theuser.image.present?
-                      = attachment_image_tag @theuser, :image, fallback:"img/no_photo.png", class:"field", size:"60x60"
-                    - else
-                      i.fas.fa-image
-                      i.fas.fa-file-upload.add
-                = f.attachment_field :image, style:"display:none;", id:"file"
-            tr
-              th.active
-                = f.label t('users.common.name')
-              td
-                = f.text_field :name
-            tr
-              th.active
-                = f.label t('users.common.age')
-              td
-                = f.select :age, options_for_select(1..100, selected: @theuser.age), autofocus: true, autocomplete: "age"
-            tr
-              th.active
-                = f.label t('users.common.nation')
-              td
-                = f.country_select :country_code, autofocus: true, autocomplete: "country", prompt: "Please select a country"
-            tr
-              th.active
-                = f.label t('users.common.mail')
-              td
-                = f.email_field :email, autofocus: true, autocomplete: "email"
-        = f.submit t('users.common.submit'), class: "btn btn-primary btn-md pull-left update-btn"
+  .col-xs-3
+    .post-sidebar
+      .top-wrapper
+        h1
+          = t('users.edit.pagetitle')
+        .row
+          .post-sidebar__image
+            = attachment_image_tag @theuser, :image, fallback:"img/no_image.png", class:"field", size:"200x200"
+        .row
+          .post-sidebar__detail
+            table.table.table-bordered
+              thead
+                tr
+                  th.bg-primary = t('users.common.name')
+                  td.post-sidebar__title
+                    = @theuser.name
+                tr
+                  th.active = t('users.common.age')
+                  td.post-sidebar__title
+                    = @theuser.age
+                tr
+                  th.active = t('users.common.nation')
+                  td.post-sidebar__title
+                    = @theuser.country_code
+                tr
+                  th.active = t('users.common.email')
+                  td.post-sidebar__title
+                    = @theuser.email
+                tr
+                  th.active = t('users.common.created')
+                  td.post-sidebar__title
+                    = time_fmt @theuser.created_at
+        .row
+          .col-xs-6
+            .post-main__top-btn
+              = link_to user_path(@theuser), method: :get  do
+                span.btn.btn-success.btn-md.col-xs-8.btn-icon-color
+                  = t('users.edit.back')
+          .col-xs-6
+            .post-main__top-btn
+              = link_to withdraw_path(current_user), method: :get  do
+                span.btn.btn-danger.btn-md.col-xs-8.btn-icon-color
+                  = t('users.edit.withdraw_btn')
+
+  .col-xs-9.post-main__detail
+    = render 'edit_form', theuser: @theuser

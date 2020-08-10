@@ -65,11 +65,11 @@
                                   ["20 ~ 30", "20 ~ 30"],
                                   ["30 ~ 40", "30 ~ 40"],
                                   ["40 ~ 50", "40 ~ 50"],
-                                  ["50 ~", "50 ~"]], class:"form-control", prompt: "Please select"
+                                  ["50 ~", "50 ~"]], selected: thealbum.budget, class:"form-control", prompt: "Please select"
             .form-window.row
               = f.label t('albums.edit.f_people')
               br
-              = f.select :people, options_for_select(1..10), class:"form-control", prompt: "Please select"
+              = f.select :people, options_for_select(1..10, selected: thealbum.people), class:"form-control", prompt: "Please select"
             .form-window.row
               = f.label t('albums.edit.f_comment'), class:"post-main__color"
               br

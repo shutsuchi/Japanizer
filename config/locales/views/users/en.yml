@@ -17,6 +17,7 @@ en:
       nation: 'Naitonality'
       mail: 'Email'
       submit: 'Update'
+      created: 'Created'
 
     flash:
       s_notice: 'User was successfully registered'
@@ -46,6 +47,7 @@ en:
 
     edit:
       pagetitle: 'User Setting'
+      back: 'My page'
       withdraw_btn: 'WITHDRAW'
 
     withdraw:

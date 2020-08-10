@@ -1,0 +1,38 @@
+.post-main__box
+  .row
+    .col-xs-12
+      .col-xs-6
+        = render 'layouts/error_message', model: @theuser
+  .row
+    .col-xs-6
+      .post-main__new-forx
+        = form_with(model: @theuser , url: user_path, method: :patch, local: true) do |f|
+          .post-main__image
+            .form-window.row
+              = f.label t('users.common.image'), class:"post-main__color"
+              br
+                #img_field onClick="$('#file').click()"
+                  - if @theuser.image.present?
+                    = attachment_image_tag @theuser, :image, fallback:"img/no_photo.png", class:"field", size:"60x60"
+                  - else
+                    i.fas.fa-image
+                    i.fas.fa-file-upload.add
+              = f.attachment_field :image, style:"display:none;", id:"file"
+              .form-window.row
+                = f.label t('users.common.name')
+                br
+                = f.text_field :name
+              .form-window.row
+                = f.label t('users.common.age')
+                br
+                = f.select :age, options_for_select(1..100, selected: @theuser.age), autofocus: true, autocomplete: "age"
+              .form-window.row
+                = f.label t('users.common.nation')
+                br
+                = f.country_select :country_code, autofocus: true, autocomplete: "country", prompt: "Please select a country"
+              .form-window.row
+                = f.label t('users.common.mail')
+                br
+                = f.email_field :email, autofocus: true, autocomplete: "email"
+              .form-submit.row
+                = f.submit t('users.common.submit'), class: "btn btn-primary btn-md pull-left update-btn"
