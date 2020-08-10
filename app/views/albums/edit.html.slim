@@ -20,13 +20,17 @@
                   td.post-sidebar__title
                     = @thealbum.title
                 tr
-                  th.active = t('albums.show.index.rate')
+                  th.active = t('albums.show.rate')
                   td.post-sidebar__title
                     = @thealbum.rate
                 tr
                   th.active = t('albums.show.genre')
                   td.post-sidebar__title
                     = @thealbum.genre.name
+                tr
+                  th.active = t('albums.edit.f_budget')
+                  td.post-sidebar__title
+                    = @thealbum.budget
                 tr
                   th.active = t('albums.show.comment')
                   td.post-sidebar__title

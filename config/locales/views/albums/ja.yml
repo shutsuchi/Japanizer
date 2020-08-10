@@ -35,6 +35,7 @@ ja:
       no_posts: '格納している投稿数'
       rate: 'オススメ度'
       genre: 'ジャンル'
+      budget: '- 予算(万円) -'
       comment: 'コメント'
       create: '作成日'
       update: '最終更新日'
