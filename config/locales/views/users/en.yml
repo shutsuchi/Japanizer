@@ -18,6 +18,12 @@ en:
       mail: 'Email'
       submit: 'Update'
 
+    flash:
+      s_notice: 'User was successfully registered'
+      s_alert: "User was NOT registered"
+      u_notice: "User's information was successfully updated"
+      u_alert: "User's information was NOT updated"
+
     show:
       pagetitle: 'My Page'
       subtitle_p: 'Your Posts'

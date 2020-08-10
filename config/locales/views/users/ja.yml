@@ -18,6 +18,12 @@ ja:
       mail: 'メールアドレス'
       submit: '更新する'
 
+    flash:
+      s_notice: 'ユーザー登録が完了しました。'
+      s_alert: 'ユーザー登録に失敗しました。'
+      u_notice: 'ユーザー情報を更新しました。'
+      u_alert: 'ユーザー情報の更新に失敗しました。'
+
     show:
       pagetitle: 'マイページ'
       subtitle_p: 'あなたの投稿'

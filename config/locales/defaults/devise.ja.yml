@@ -1,0 +1,58 @@
+ja:
+  devise:
+    confirmations:
+      confirmed: "アカウントが確認されました。"
+      send_instructions: "アカウント確認メールが数分以内に届きます。"
+      send_paranoid_instructions: "メールアドレスが登録されている場合、アカウント確認メールが数分以内に届きます。"
+    failure:
+      already_authenticated: "ログイン済みです。"
+      inactive: "アカウントはまだ有効になっていません。"
+      invalid: "メールアドレス、もしくはパスワードに誤りがあります。"
+      invalid_token: "認証コードに誤りがあります。"
+      locked: "アカウントはロックされています。"
+      not_found_in_database: "メールアドレス、もしくはパスワードに誤りがあります。"
+      timeout: "一定時間が経過したため、再度ログインが必要です。"
+      unauthenticated: "ログインが必要です。"
+      unconfirmed: "本人確認を行う必要があります。"
+    mailer:
+      confirmation_instructions:
+        subject: "本人確認メール"
+      reset_password_instructions:
+        subject: "パスワード再設定メール"
+      unlock_instructions:
+        subject: "アカウントロック解除メール"
+    omniauth_callbacks:
+      failure: "%{kind} の認証に失敗しました。理由： \"%{reason}\"."
+      success: "%{kind} の認証が完了しました。"
+    passwords:
+      no_token: "有効期限が切れています。初めからやりなおしてください。"
+      send_instructions: "パスワード再設定メールが数分以内に届きます。"
+      send_paranoid_instructions: "メールアドレスが正しい場合、パスワード再設定メールが数分以内に届きます。"
+      updated: "パスワードを変更しました。"
+      updated_not_active: "パスワードを変更しました。続けるにはログインし直す必要があります。"
+    registrations:
+      destroyed: "アカウントを削除しました。"
+      signed_up: "アカウントを登録しました。"
+      signed_up_but_inactive: "アカウントは登録されていますが、有効ではないので利用できません。"
+      signed_up_but_locked: "アカウントは登録されていますが、ロックされているため利用できません。"
+      signed_up_but_unconfirmed: "数分以内に本人確認メールが届くので、リンクをクリックしてアカウントを有効にする必要があります。"
+      update_needs_confirmation: "アカウントはまだ更新されていません。数分以内に本人確認メールが届くので、リンクをクリックして更新を有効にする必要があります。"
+      updated: "アカウントが更新されました。"
+    sessions:
+      user:
+        signed_in: "ログインしました。"
+        signed_out: "ログアウトしました。"
+    unlocks:
+      send_instructions: "アカウントロック解除メールが数分以内に届きます。"
+      send_paranoid_instructions: "アカウントが正しい場合、アカウントロック解除メールが数分以内に届きます。"
+      unlocked: "アカウントのロックが解除されました、ログインしなおしてください。"
+  errors:
+    messages:
+      already_confirmed: "は既に登録済みです。"
+      confirmation_period_expired: "%{period} 以内に確認する必要があります。初めからやりなおしてください。"
+      expired: "有効期限が切れています。初めからやりなおしてください。"
+      not_found: "は見つかりませんでした。"
+      not_locked: "はロックされていません。"
+      not_saved:
+        one: "入力に誤りがあります。"
+        other: "入力に %{count} 個の誤りがあります。"

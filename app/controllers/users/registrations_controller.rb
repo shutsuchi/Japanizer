@@ -19,6 +19,7 @@ class Users::RegistrationsController < Devise::RegistrationsController
         album = @user.albums.new(user_id: @user.id, genre_id: 1, title: '', post_quantity: 0)
         album.save
       end
+      flash[:notice] = t('users.flash.s_notice')
     end
   end
 
