@@ -16,7 +16,7 @@
               = @result_genre
             - else
               = @result_genre.name
-            | / 
+            |  / 
             - if @time == "year_search"
               = t('searches.post_year')
             - elsif @time == "month_search"
@@ -25,6 +25,11 @@
               = t('searches.past_week')
             - else
               = t('searches.past_24')
+            |  / 
+            - if @nation == 'JP'
+              = t('searches.nation_jp')
+            - else
+              = t('searches.nation_ot')
         .col-xs-3
         .col-xs-12.text-center.search-condition__subtitle
             h3
@@ -39,7 +44,7 @@
             = @albums.name
             |  / 
             = @result_genre.name
-            | / 
+            |  / 
             - if @time == "year_search"
               = t('searches.post_year')
             - elsif @time == "month_search"
