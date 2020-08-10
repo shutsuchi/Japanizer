@@ -1,6 +1,7 @@
 class PostsController < ApplicationController
 
   include Page
+  include PostUpdate
 
   # GET /posts
   # posts_path
@@ -109,29 +110,12 @@ class PostsController < ApplicationController
     redirect_to user_path(current_user), notice: t('posts.flash.d_notice')
   end
 
-  private
-
-  def city_update(post)
-    if params[:post][:city_id].blank?
-      post.city_id
-    else
-      params[:post][:city_id]
-    end
-  end
-
-  def rate_update(post)
-    if post_params[:rate].blank?
-      # if blank, default value
-      post.rate.to_i
-    else
-      post_params[:rate].to_i
-    end
-  end
-
   # City Auto Select
   def cities_select
     render partial: 'city', locals: { prefecture_id: params[:prefecture_id] }
   end
+
+  private
 
   def post_params
     params.require(:post).permit(:user_id, :prefecture_id, :city_id, :genre_id, :image, :title, :rate, :comment, :album_id)

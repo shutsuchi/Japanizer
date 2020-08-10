@@ -15,7 +15,6 @@ class PrefecturesController < ApplicationController
     else
       @posts = page_8(Post)
     end
-
   end
 
 end

@@ -66,7 +66,7 @@ class UsersController < ApplicationController
       redirect_to user_path(@theuser.id), notice: t('users.flash.u_notice')
     else
       flash.now[:alert] = t('users.flash.u_alert')
-      render :edit, notice: 'Failed to Update'
+      render :edit
     end
   end
 
@@ -88,7 +88,6 @@ class UsersController < ApplicationController
         redirect_to top_path
       end
     end
-
   end
 
 end

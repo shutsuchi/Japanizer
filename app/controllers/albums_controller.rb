@@ -1,6 +1,7 @@
 class AlbumsController < ApplicationController
 
   include Page
+  include AlbumUpdate
 
   # GET /albums
   # albums_path
@@ -87,11 +88,13 @@ class AlbumsController < ApplicationController
       image: params[:album][:image],
       title: params[:album][:title],
       comment: params[:album][:comment],
-      post_quantity: @thealbum.post_quantity_update,
-      rate: @thealbum.rate_update
+      budget: params[:album][:budget],
+      people: params[:album][:people],
+      post_quantity: post_quantity_update(@thealbum),
+      rate: rate_update(@thealbum)
       )
       # Update album_id of post selected when album update
-      @thealbum.album_update_post
+      post_album_update(@thealbum)
       redirect_to @thealbum, notice: t('albums.flash.u_notice')
     else
       @user_posts = current_user.posts

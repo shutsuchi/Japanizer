@@ -1,11 +1,14 @@
 class PostCommentsController < ApplicationController
   protect_from_forgery
 
+  include Page
+
   # POST /posts/:post_id/post_comments
   # post_post_comments_path
   def create
     @thepost = find_post(params[:post_id])
-    @comments_pg = @thepost.post_comments.page(params[:page]).reverse_order.per(5)
+    # @comments_pg = @thepost.post_comments.page(params[:page]).reverse_order.per(5)
+    @comments_pg = page_5(@thepost.post_comments)
     comment = current_user.post_comments.new(post_comment_params)
     comment.post_id = @thepost.id
     respond_to do |format|
@@ -40,8 +43,8 @@ class PostCommentsController < ApplicationController
     params.require(:post_comment).permit(:title, :comment, :rate)
   end
 
-  def find_comment(post_comment_id)
-    PostComment.find(post_comment_id)
+  def find_comment(comment_id)
+    PostComment.find(comment_id)
   end
 
   def find_post(post_id)

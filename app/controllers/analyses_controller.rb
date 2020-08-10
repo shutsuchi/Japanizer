@@ -4,15 +4,15 @@ class AnalysesController < ApplicationController
 
   def data
     # Japanese User Ranking
-    posts_jp = Post.joins(:user).jp
-    albums_jp = Album.joins(:user).jp
+    posts_jp = Post.eager_load(:user).jp
+    albums_jp = Album.eager_load(:user).jp
     @jp_area_ranks = Prefecture.find(pref_rank(posts_jp))
     @jp_genre_ranks = Genre.find(genre_rank(posts_jp))
     @jp_budget_ranks = budget_rank(albums_jp)
 
     # Other Nationalities User Ranking
-    posts = Post.joins(:user).other
-    albums = Album.joins(:user).other
+    posts = Post.eager_load(:user).other
+    albums = Album.eager_load(:user).other
     @others_area_ranks = Prefecture.find(pref_rank(posts))
     @others_genre_ranks = Genre.find(genre_rank(posts))
     @others_budget_ranks = budget_rank(albums)

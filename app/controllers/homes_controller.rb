@@ -13,7 +13,6 @@ class HomesController < ApplicationController
     # @post_like_ranks = month(Post.find(Like.group(:post_id)
 
     # Ranking
-    # --- post Like
     @post_like_ranks = Post.find(post_first(Like))
     @post_comment_ranks = Post.find(post_first(PostComment))
     @album_ranks = Album.find(album_first(Bookmark))
