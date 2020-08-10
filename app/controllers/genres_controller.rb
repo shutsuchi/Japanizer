@@ -29,7 +29,6 @@ class GenresController < ApplicationController
   # GET budget/
   # budget_path
   def budget
-    # 仮
     @range = params[:budget_range]
     @albums_pg = budget_album(@range)
   end
@@ -72,7 +71,7 @@ class GenresController < ApplicationController
   end
 
   def find_genre(genre_id)
-    return Genre.find(genre_id) if genre_id.present?
+    Genre.find(genre_id) if genre_id.present?
   end
 
 end
