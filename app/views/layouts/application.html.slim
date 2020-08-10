@@ -18,6 +18,11 @@ html
       .search-nav#search-bar
         = render 'layouts/searchbar'
 
+      .row
+        .notification
+          - flash.each do |key, value|
+            = content_tag(:div, value, class: "notification__#{key}")
+
 
     = yield
 

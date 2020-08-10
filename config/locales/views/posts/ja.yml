@@ -5,6 +5,13 @@ ja:
       place: '都道府県:'
       create: '作成日:'
 
+    flash:
+      s_notice: '投稿を保存しました。'
+      s_alert: '投稿の保存に失敗しました。'
+      d_notice: '投稿を削除しました。'
+      u_notice: '投稿を更新しました。'
+      u_alert: '投稿の更新に失敗しました'
+
     index:
       new_form: '投稿してみる?'
       f_image: '画像'

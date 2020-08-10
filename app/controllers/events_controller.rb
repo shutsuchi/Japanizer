@@ -1,6 +1,7 @@
 class EventsController < ApplicationController
 
   include UserStatus
+  include Page
 
   # GET /events
   # GET /events.json
@@ -27,15 +28,16 @@ class EventsController < ApplicationController
     @event.user_id = current_user.id
 
     if @event.save
-      redirect_to user_path(current_user), notice: 'Event was successfully created.'
+      redirect_to user_path(current_user), notice: t('events.flash.s_notice')
     else
+      pg_p = params[:post]
+      pg_a = params[:album]
       @theuser = current_user
-      @posts = @theuser.posts
-      @albums = @theuser.albums
-      @event = Event.new
+      @posts_pg = type_page_8(@theuser.posts, pg_p)
+      @albums_pg = type_page_6(@theuser.albums, pg_a)
       @events = Event.where(user_id: @theuser.id)
 
-      # Count User-Got
+      # Count User Got
       @posts = @theuser.posts
       @albums = @theuser.albums
 
@@ -43,25 +45,31 @@ class EventsController < ApplicationController
       @get_comments = get_post(@posts, PostComment)
       @get_bookmarks = get_album(@albums, Bookmark)
 
-      # Count User-Gave
+      # Count User Gave
       @give_likes = give_obj(Like, @theuser)
       @give_comments = give_obj(PostComment, @theuser)
       @give_bookmarks = give_obj(Bookmark, @theuser)
-      render user_path(current_user), notice: 'Event was failed to create.'
+      flash.now[:alert] = t('events.flash.s_alert')
+      render 'users/show'
     end
   end
 
   def update
     event = find_event(params[:id])
     @events = Event.where(user_id: current_user.id)
-    event.update(event_params)
+    if event.update(event_params)
+      redirect_to event, notice: t('events.flash.u_notice')
+    else
+      flash.now[:alert] = t('events.flash.u_alert')
+      render event_path(event)
+    end
   end
 
   def destroy
     @user = find_User(params[:id])
     event = Event.find(params[:id])
     if event.destroy
-      redirect_to user_path(@user)
+      redirect_to user_path(@user), notice: t('events.flash.d_notice')
     end
   end
 

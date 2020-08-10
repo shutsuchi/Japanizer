@@ -13,7 +13,7 @@ class PostsController < ApplicationController
       if params[:user]
         # Current_user's Post
         pg1 = params[:user]
-        @user_posts_pg = page_4_req(current_user.posts, pg1)
+        @user_posts_pg = type_page_4(current_user.posts, pg1)
       else
         @user_posts_pg = page_4(current_user.posts)
       end
@@ -64,15 +64,16 @@ class PostsController < ApplicationController
       @post.title = 'No Title'
     end
     if @post.save
-      redirect_to @post
+      redirect_to @post, notice: t('posts.flash.s_notice')
     else
       pg1 = params[:user]
       pg2 = params[:other]
 
       # Current_user's Post
-      @user_posts_pg = page_4(current_user.posts, pg1)
+      @user_posts_pg = type_page_4(current_user.posts, pg1)
       # Other User's Post
-      @others_posts_pg = page_4(Post.includes(:user).where.not(user_id: current_user.id), pg2)
+      @others_posts_pg = type_page_4(Post.includes(:user).where.not(user_id: current_user.id), pg2)
+      flash.now[:alert] = t('posts.flash.s_alert')
       render :index
     end
   end
@@ -91,10 +92,11 @@ class PostsController < ApplicationController
       rate: rate_update(@thepost)
       )
 
-      redirect_to @thepost
+      redirect_to @thepost, notice: t('posts.flash.u_notice')
     else
       @thepost.user = current_user
       @user_albums = current_user.albums.all
+      flash.now[:alert] = t('posts.flash.u_alert')
       render :edit
     end
   end
@@ -104,7 +106,7 @@ class PostsController < ApplicationController
   def destroy
     @thepost = find_post(params[:id])
     @thepost.destroy
-    redirect_to user_path(current_user)
+    redirect_to user_path(current_user), notice: t('posts.flash.d_notice')
   end
 
   private

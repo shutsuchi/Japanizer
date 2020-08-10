@@ -5,6 +5,13 @@ en:
       place: 'PLACE:'
       create: 'CREATED:'
 
+    flash:
+      s_notice: 'Post was successfully saved'
+      s_alert: 'Post was NOT saved'
+      d_notice: 'Post was successfully deleted'
+      u_notice: 'Post was successfully updated'
+      u_alert: 'Post was NOT updated'
+
     index:
       new_form: 'New Post'
       f_image: 'Image'

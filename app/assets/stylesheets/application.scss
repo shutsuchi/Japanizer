@@ -247,6 +247,22 @@ h3:after {
   }
 }
 
+//*----------- Notification -----------*/
+.notification {
+  line-height: 2.5;
+  color: #fff;
+  text-align: center;
+  &__notice {
+    height: 50px;
+    background-color: #2c7cff;
+    font-size: 20px;
+  }
+  &__alert {
+    height: 50px;
+    background-color: #ff6928;
+    font-size: 20px;
+  }
+}
 //*----------- Pagination -----------*/
 .pagination>li>a {
   border: none;     /*枠線をなくす*/

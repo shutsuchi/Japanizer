@@ -1,5 +1,12 @@
 en:
   albums:
+    flash:
+      s_notice: 'Album was successfully saved'
+      s_alert: 'Album was NOT saved'
+      d_notice: 'Album was successfully deleted'
+      u_notice: 'Album was successfully updated'
+      u_alert: 'Album was NOT updated'
+
     index:
       new_form: 'New Album'
       f_image: 'Image'

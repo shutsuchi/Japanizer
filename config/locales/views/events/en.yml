@@ -9,3 +9,10 @@ en:
       end: 'Last Day : '
 
       none: 'no content'
+
+    flash:
+      s_notice: 'Event was successfully saved.'
+      s_alert: 'Event was NOT saved.'
+      d_notice: 'Event was deleted'
+      u_notice: 'Event was successfully updated'
+      u_alert: 'Event was NOT updated'

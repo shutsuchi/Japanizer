@@ -63,8 +63,9 @@ class UsersController < ApplicationController
   def update
     @theuser = current_user
     if @theuser.update(user_params)
-      redirect_to user_path(@theuser.id), notice: 'Successfully Updated'
+      redirect_to user_path(@theuser.id), notice: t('users.flash.u_notice')
     else
+      flash.now[:alert] = t('users.flash.u_alert')
       render :edit, notice: 'Failed to Update'
     end
   end

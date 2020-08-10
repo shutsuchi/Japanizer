@@ -40,7 +40,7 @@
               th.active
                 = f.label t('users.common.age')
               td
-                = f.select :age, options_for_select(1..100), autofocus: true, autocomplete: "age"
+                = f.select :age, options_for_select(1..100, selected: @theuser.age), autofocus: true, autocomplete: "age"
             tr
               th.active
                 = f.label t('users.common.nation')
