@@ -60,34 +60,6 @@ class Album < ApplicationRecord
     end
   end
 
-  def post_album_update
-    if self.post_quantity.present?
-      c = 0
-      while c < self.post_quantity
-          post_id = params[:album][:post_quantity][c].to_i
-          post = find_post(post_id)
-          post.update(album_id: self.id)
-          (c += 1)
-      end
-    end
-  end
-
-  def rate_update
-    if params[:album][:rate].blank?
-      self.rate.to_i
-    else
-      params[:album][:rate].to_i
-    end
-  end
-
-  def post_quantity_update(album)
-    if params[:album][:post_quantity]
-      params[:album][:post_quantity].count
-    else
-      album.post_quantity
-    end
-  end
-
   def self.params_album_search(genre, time, locale)
     albums = Album.genre_search(genre, locale)
     if time == 'anytime_search'
