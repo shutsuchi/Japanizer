@@ -18,17 +18,17 @@ class SearchesController < ApplicationController
       if params[:genre] =~ /\A[0-9]+\z/
         @result_genre = Genre.find(params[:genre])
       else
-        @result_genre = 'All'
+        @result_genre = t('searches.any_genre')
       end
 
       @option = params[:option]
       @genre = params[:genre]
       @time = params[:time]
-      @locale = params[:locale]
+      @nation = params[:nation]
       if @option == 'post_search'
-        @posts = Post.params_post_search(@genre, @time, @locale)
+        @posts = Post.params_post_search(@genre, @time, @nation)
       elsif @option == 'album_search'
-        @albums = Album.params_album_search(@genre, @time, @locale)
+        @albums = Album.params_album_search(@genre, @time, @nation)
       end
     end
 

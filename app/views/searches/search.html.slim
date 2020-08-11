@@ -10,21 +10,30 @@
           .search-condition__text
             = t('searches.condition')
             |  
-            = @posts.name
+            = t('searches.subtitle_post')
             |  / 
             - if @result_genre.instance_of?(String)
               = @result_genre
             - else
               = @result_genre.name
-            | / 
-            - if @time == "year_search"
+            |  / 
+            - if @time == 'year_search'
               = t('searches.post_year')
-            - elsif @time == "month_search"
+            - elsif @time == 'month_search'
               = t('searches.past_month')
-            - elsif @time == "week_search"
+            - elsif @time == 'week_search'
               = t('searches.past_week')
-            - else
+            - elsif @time == 'day_search'
               = t('searches.past_24')
+            - else
+              = t('searches.any_time')
+            |  / 
+            - if @nation == 'JP'
+              = t('searches.nation_jp')
+            - elsif @nation == 'Others'
+              = t('searches.nation_ot')
+            - else
+              = t('searches.nation_all')
         .col-xs-3
         .col-xs-12.text-center.search-condition__subtitle
             h3
@@ -36,28 +45,28 @@
           .search-condition__text
             = t('searches.condition')
             |  
-            = @albums.name
+            = t('searches.subtitle_albumt')
             |  / 
             = @result_genre.name
-            | / 
-            - if @time == "year_search"
+            |  / 
+            - if @time == 'year_search'
               = t('searches.post_year')
-            - elsif @time == "month_search"
+            - elsif @time == 'month_search'
               = t('searches.past_month')
-            - elsif @time == "week_search"
+            - elsif @time == 'week_search'
               = t('searches.past_week')
-            - else
+            - elsif @time == 'day_search'
               = t('searches.past_24')
+            - else
+              = t('searches.any_time')
           .col-xs-12.text-center.search-condition__subtitle
             h3
               = t('searches.subtitle_album')
           .col-xs-12
             = render @albums
-            /- @albums.each do |album|
-              = album.title
       - elsif @results
         h3 Search result(ALL LIST)
         - results.each do |result|
       - else
         h3
-          | NO DATA
+          = t('app.common.no_data')

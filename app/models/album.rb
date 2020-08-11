@@ -60,8 +60,8 @@ class Album < ApplicationRecord
     end
   end
 
-  def self.params_album_search(genre, time, locale)
-    albums = Album.genre_search(genre, locale)
+  def self.params_album_search(genre, time, nation)
+    albums = Album.genre_search(genre, nation)
     if time == 'anytime_search'
       albums
     elsif time == 'year_search'
@@ -89,57 +89,59 @@ class Album < ApplicationRecord
     end
   end
 
-  def self.genre_search(genre, locale)
-    if locale == 'JP'
+  def self.genre_search(genre, nation)
+    if nation == 'JP'
       case genre
       when '1'
-        Album.includes(:genre, :user).where(genre_id: 1).where('users.country_code' => 'JP')
+        Album.eager_load(:genre, :user).where(genre_id: 1).where(users: { country_code: 'JP' })
       when '2'
-        Album.includes(:genre, :user).where(genre_id: 2).where('users.country_code' => 'JP')
+        Album.eager_load(:genre, :user).where(genre_id: 2).where(users: { country_code: 'JP' })
       when '3'
-        Album.includes(:genre, :user).where(genre_id: 3).where('users.country_code' => 'JP')
+        Album.eager_load(:genre, :user).where(genre_id: 3).where(users: { country_code: 'JP' })
       when '4'
-        Album.includes(:genre, :user).where(genre_id: 4).where('users.country_code' => 'JP')
+        Album.eager_load(:genre, :user).where(genre_id: 4).where(users: { country_code: 'JP' })
       when '5'
-        Album.includes(:genre, :user).where(genre_id: 5).where('users.country_code' => 'JP')
+        Album.eager_load(:genre, :user).where(genre_id: 5).where(users: { country_code: 'JP' })
       when '6'
-        Album.includes(:genre, :user).where(genre_id: 6).where('users.country_code' => 'JP')
+        Album.eager_load(:genre, :user).where(genre_id: 6).where(users: { country_code: 'JP' })
       when '7'
-        Album.includes(:genre, :user).where(genre_id: 7).where('users.country_code' => 'JP')
+        Album.eager_load(:genre, :user).where(genre_id: 7).where(users: { country_code: 'JP' })
       when '8'
-        Album.includes(:genre, :user).where(genre_id: 8).where('users.country_code' => 'JP')
+        Album.eager_load(:genre, :user).where(genre_id: 8).where(users: { country_code: 'JP' })
       when '9'
-        Album.includes(:genre, :user).where(genre_id: 9).where('users.country_code' => 'JP')
+        Album.eager_load(:genre, :user).where(genre_id: 9).where(users: { country_code: 'JP' })
       when '10'
-        Album.includes(:genre, :user).where(genre_id: 10).where('users.country_code' => 'JP')
+        Album.eager_load(:genre, :user).where(genre_id: 10).where(users: { country_code: 'JP' })
       else
-        Album.includes(:user).where('users.country_code' => 'JP')
+        Album.eager_load(:user).where(users: { country_code: 'JP' })
+      end
+    elsif nation == 'Others'
+      case genre
+      when '1'
+        Album.eager_load(:genre, :user).where(genre_id: 1).where.not(users: { country_code: 'JP' })
+      when '2'
+        Album.eager_load(:genre, :user).where(genre_id: 2).where.not(users: { country_code: 'JP' })
+      when '3'
+        Album.eager_load(:genre, :user).where(genre_id: 3).where.not(users: { country_code: 'JP' })
+      when '4'
+        Album.eager_load(:genre, :user).where(genre_id: 4).where.not(users: { country_code: 'JP' })
+      when '5'
+        Album.eager_load(:genre, :user).where(genre_id: 5).where.not(users: { country_code: 'JP' })
+      when '6'
+        Album.eager_load(:genre, :user).where(genre_id: 6).where.not(users: { country_code: 'JP' })
+      when '7'
+        Album.eager_load(:genre, :user).where(genre_id: 7).where.not(users: { country_code: 'JP' })
+      when '8'
+        Album.eager_load(:genre, :user).where(genre_id: 8).where.not(users: { country_code: 'JP' })
+      when '9'
+        Album.eager_load(:genre, :user).where(genre_id: 9).where.not(users: { country_code: 'JP' })
+      when '10'
+        Album.eager_load(:genre, :user).where(genre_id: 10).where.not(users: { country_code: 'JP' })
+      else
+        Album.eager_load(:user).where.not(users: { country_code: 'JP' })
       end
     else
-      case genre
-      when '1'
-        Album.includes(:genre, :user).where(genre_id: 1).where.not('users.country_code' => 'JP')
-      when '2'
-        Album.includes(:genre, :user).where(genre_id: 2).where.not('users.country_code' => 'JP')
-      when '3'
-        Album.includes(:genre, :user).where(genre_id: 3).where.not('users.country_code' => 'JP')
-      when '4'
-        Album.includes(:genre, :user).where(genre_id: 4).where.not('users.country_code' => 'JP')
-      when '5'
-        Album.includes(:genre, :user).where(genre_id: 5).where.not('users.country_code' => 'JP')
-      when '6'
-        Album.includes(:genre, :user).where(genre_id: 6).where.not('users.country_code' => 'JP')
-      when '7'
-        Album.includes(:genre, :user).where(genre_id: 7).where.not('users.country_code' => 'JP')
-      when '8'
-        Album.includes(:genre, :user).where(genre_id: 8).where.not('users.country_code' => 'JP')
-      when '9'
-        Album.includes(:genre, :user).where(genre_id: 9).where.not('users.country_code' => 'JP')
-      when '10'
-        Album.includes(:genre, :user).where(genre_id: 10).where.not('users.country_code' => 'JP')
-      else
-        Album.includes(:user).where.not('users.country_code' => 'JP')
-      end
+      Album.all
     end
   end
 end

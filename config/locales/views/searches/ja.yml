@@ -10,3 +10,10 @@ ja:
     past_month: '過去1ヶ月'
     past_week: '過去1週間'
     past_24: '過去 24時間'
+    any_time: '指定なし'
+
+    nation_jp: '日本人ユーザー'
+    nation_ot: '日本以外ユーザー'
+    nation_all: '全ユーザー'
+
+    any_genre: '全ジャンル'
