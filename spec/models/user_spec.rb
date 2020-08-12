@@ -26,50 +26,147 @@
 require 'rails_helper'
 
 RSpec.describe 'User', type: :model do
-  describe 'Registered' do
+  describe 'validation' do
 
-    context 'Validly' do
-      before do
-        @user = FactoryBot.create(:user)
-      end
-      it 'is valid with a first_name, last_name, email, and password' do
-        expect(@user).to be_valid
-      end
-    end
+    context 'valid for presence' do
+      let(:user){ build(:user) }
 
-    context 'Invalidy' do
-      # Invalid without name
-      it 'is invalid without a name' do
-        @user = User.new(name: nil)
-        expect(@user.valid?).to eq(false)
-      end
-
-      # Invalid without email
-      it 'is invalid without a email' do
-        @user = User.new(email: nil)
-        expect(@user.valid?).to eq(false)
-      end
-
-      # Invalid without age
-      it 'is invalid without a age' do
-        @user = User.new(age: nil)
-        expect(@user.valid?).to eq(false)
-      end
-
-      # Invalid without withdrawal_flag
-      it 'is invalid without a withdrawal_flag' do
-        @user = User.new(withdrawal_flag: true)
-        expect(@user.valid?).to eq(false)
-      end
-
-      # Invalid without country_code
-      it 'is invalid without a country-code' do
-        @user = User.new(country_code: nil)
-        expect(@user.valid?).to eq(false)
+      it 'is valid with admin, age, country_code, email, password, name, withdrawal_flag' do
+        expect(user).to be_valid
       end
     end
 
-    # context 'when admin register' do
-    # end
+    context 'invalid for presence' do
+      let(:user){ build(:user) }
+      it "is invalid without a name" do
+        user.name = nil
+        user.valid?
+        expect(user.errors[:name]).to include('を入力してください')
+      end
+
+      it "is invalid without a password" do
+        user.password = nil
+        user.valid?
+        expect(user.errors[:password]).to include('を入力してください')
+      end
+
+      it "is invalid without a email" do
+        user = User.new(email: nil)
+        user.valid?
+        expect(user.errors[:email]).to include('を入力してください')
+      end
+
+      it "is invalid without a age" do
+        user = User.new(age: nil)
+        user.valid?
+        expect(user.errors[:age]).to include('を入力してください')
+      end
+
+      it "is invalid without a country_code" do
+        user = User.new(country_code: nil)
+        user.valid?
+        expect(user.errors[:country_code]).to include('を入力してください')
+      end
+    end
+
+    context 'valid for boolean' do
+      let(:user){ build(:user) }
+      it "is valid true or false for withdrawal_flag" do
+        user.withdrawal_flag = true
+        expect(user.valid?).to be_truthy
+      end
+
+      it "is valid true or false for admin flag" do
+        user.admin = false
+        expect(user.valid?).to be_truthy
+      end
+    end
+
+    context 'invalid for boolean' do
+      let(:user){ build(:user) }
+      it "is invalid neither true nor false for withdrawal_flag" do
+        user.withdrawal_flag = nil
+        user.valid?
+        expect(user.errors[:withdrawal_flag]).to include('は一覧にありません')
+      end
+
+      it "is invalid neither true nor false for admin flag" do
+        user.admin = nil
+        user.valid?
+        expect(user.errors[:admin]).to include('は一覧にありません')
+      end
+    end
+
+    context "valid for length" do
+      let(:user){ build(:user) }
+      it "is valid with OVER 6 chracters" do
+        user.password = '00000000'
+        expect(user.valid?).to be_truthy
+      end
+    end
+
+    context "invalid for length" do
+      let(:user){ build(:user) }
+      it "is invalid UNDER 6 chracters" do
+        user.password = '0'
+        user.valid?
+        expect(user.errors[:password]).to include('は6文字以上で入力してください')
+      end
+    end
+
+    context "valid for email regex" do
+      let(:user){ build(:user) }
+      it "is valid if matched with valid_email_regex" do
+        user.email = 'iiii@iii'
+        expect(user.valid?).to be_truthy
+      end
+
+      it "is invalid if not matched with valid_email_regex" do
+        user.email = 'あiiiiiii'
+        user.valid?
+        expect(user.errors[:email]).to include('は不正な値です')
+      end
+    end
+  end
+
+  describe 'validation' do
+    context 'has many' do
+      let!(:user){ create(:user) }
+      before { create(:post, title: 'cool', user: user) }
+      before { create(:album, title: 'nice', user: user) }
+      before { create(:event, title: 'date', user: user) }
+      before { create(:postComment, title: 'good', user: user) }
+      before { create(:bookmark, id: 1, user: user) }
+      before { create(:like, id: 1, user: user) }
+      it 'is be able to contain posts' do
+        post_first = user.posts.first
+        expect(post_first.title).to eq('cool')
+      end
+
+      it 'is be able to contain albums' do
+        album_first = user.albums.first
+        expect(album_first.title).to eq('nice')
+      end
+
+      it 'is be able to contain events' do
+        event_first = user.events.first
+        expect(event_first.title).to eq('date')
+      end
+
+      it 'is be able to contain post_comments' do
+        comment_first = user.post_comments.first
+        expect(comment_first.title).to eq('good')
+      end
+
+      it 'is be able to contain bookmarks' do
+        bookmark_first = user.bookmarks.first
+        expect(bookmark_first.id).to eq(1)
+      end
+
+      it 'is be able to contain likes' do
+        like_first = user.likes.first
+        expect(like_first.id).to eq(1)
+      end
+    end
   end
 end

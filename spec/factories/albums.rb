@@ -20,8 +20,8 @@ FactoryBot.define do
   factory :album do
     user
     genre
-    title         { 'Japan Tour' }
+    post_quantity { 3 }
     rate          { 4 }
-    post_quantity { 0 }
+    title         { 'nice' }
   end
 end
