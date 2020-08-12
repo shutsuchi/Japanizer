@@ -35,31 +35,31 @@ RSpec.describe 'Album', type: :model do
       it 'is invalid without post_quantity' do
         album.post_quantity = nil
         album.valid?
-        expect(album.errors[:post_quantity]).to include('を入力してください')
+        expect(album.errors[:post_quantity]).to include(I18n.t('errors.messages.blank'))
       end
 
       it 'is invalid without rate' do
         album.rate = nil
         album.valid?
-        expect(album.errors[:rate]).to include('を入力してください')
+        expect(album.errors[:rate]).to include(I18n.t('errors.messages.blank'))
       end
 
       it "is invalid without title" do
         album.title = nil
         album.valid?
-        expect(album.errors[:title]).to include('を入力してください')
+        expect(album.errors[:title]).to include(I18n.t('errors.messages.blank'))
       end
 
       it 'is invalid without a user_id' do
         album = Album.new(user_id: nil)
         album.valid?
-        expect(album.errors[:user]).to include('を入力してください')
+        expect(album.errors[:user]).to include(I18n.t('errors.messages.blank'))
       end
 
       it 'is invalid without a genre_id' do
         album = Album.new(genre_id: nil)
         album.valid?
-        expect(album.errors[:genre]).to include('を入力してください')
+        expect(album.errors[:genre]).to include(I18n.t('errors.messages.blank'))
       end
     end
   end

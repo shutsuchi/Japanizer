@@ -41,31 +41,31 @@ RSpec.describe 'User', type: :model do
       it "is invalid without a name" do
         user.name = nil
         user.valid?
-        expect(user.errors[:name]).to include('を入力してください')
+        expect(user.errors[:name]).to include(I18n.t('errors.messages.blank'))
       end
 
       it "is invalid without a password" do
         user.password = nil
         user.valid?
-        expect(user.errors[:password]).to include('を入力してください')
+        expect(user.errors[:password]).to include(I18n.t('errors.messages.blank'))
       end
 
       it "is invalid without a email" do
         user = User.new(email: nil)
         user.valid?
-        expect(user.errors[:email]).to include('を入力してください')
+        expect(user.errors[:email]).to include(I18n.t('errors.messages.blank'))
       end
 
       it "is invalid without a age" do
         user = User.new(age: nil)
         user.valid?
-        expect(user.errors[:age]).to include('を入力してください')
+        expect(user.errors[:age]).to include(I18n.t('errors.messages.blank'))
       end
 
       it "is invalid without a country_code" do
         user = User.new(country_code: nil)
         user.valid?
-        expect(user.errors[:country_code]).to include('を入力してください')
+        expect(user.errors[:country_code]).to include(I18n.t('errors.messages.blank'))
       end
     end
 
@@ -87,13 +87,13 @@ RSpec.describe 'User', type: :model do
       it "is invalid neither true nor false for withdrawal_flag" do
         user.withdrawal_flag = nil
         user.valid?
-        expect(user.errors[:withdrawal_flag]).to include('は一覧にありません')
+        expect(user.errors[:withdrawal_flag]).to include(I18n.t('errors.messages.inclusion'))
       end
 
       it "is invalid neither true nor false for admin flag" do
         user.admin = nil
         user.valid?
-        expect(user.errors[:admin]).to include('は一覧にありません')
+        expect(user.errors[:admin]).to include(I18n.t('errors.messages.inclusion'))
       end
     end
 
@@ -110,7 +110,7 @@ RSpec.describe 'User', type: :model do
       it "is invalid UNDER 6 chracters" do
         user.password = '0'
         user.valid?
-        expect(user.errors[:password]).to include('は6文字以上で入力してください')
+        expect(user.errors[:password]).to include(I18n.t('errors.messages.too_short', count: 6))
       end
     end
 
@@ -124,7 +124,7 @@ RSpec.describe 'User', type: :model do
       it "is invalid if not matched with valid_email_regex" do
         user.email = 'あiiiiiii'
         user.valid?
-        expect(user.errors[:email]).to include('は不正な値です')
+        expect(user.errors[:email]).to include(I18n.t('errors.messages.invalid'))
       end
     end
   end
