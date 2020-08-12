@@ -22,24 +22,7 @@ RSpec.describe 'Post', type: :model do
 
     context 'Collectly' do
       before do
-        @post = Post.new(
-          id:         1,
-          comment:    'good',
-          rate:       3.5,
-          title:      'around Japan',
-          created_at:    'Thu, 06 Aug 2020 21:38:22 +0000',
-          updated_at:    'Thu, 06 Aug 2020 21:40:24 +0000'
-        )
-        user = FactoryBot.create(:user)
-        @post.user_id = user.id
-        album = FactoryBot.create(:album)
-        @post.album_id = album.id
-        city = FactoryBot.create(:city)
-        @post.city_id = city.id
-        genre = FactoryBot.create(:genre)
-        @post.genre_id = genre.id
-        prefecture = FactoryBot.create(:prefecture)
-        @post.prefecture_id = prefecture.id
+        @post = FactoryBot.create(:post)
       end
       # can save with all fill in
       it 'with a comment, rate, title, album_id, city_id, genre_id, pref_id' do

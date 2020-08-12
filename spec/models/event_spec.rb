@@ -20,11 +20,7 @@ RSpec.describe 'Event', type: :model do
 
     context 'Collectly' do
       before do
-        @event = Event.new(id: 1)
-        user = FactoryBot.create(:user)
-        @event.user_id = user.id
-        genre = FactoryBot.create(:genre)
-        @event.genre_id = genre.id
+        @event = FactoryBot.create(:event)
       end
       # can save with all fill in
       it 'with genre_id, user_id' do

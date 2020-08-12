@@ -14,11 +14,7 @@ RSpec.describe 'Bookmark', type: :model do
     # album_id, user_idがあれば保存可能であること
     context 'Collectly' do
       before do
-        @bookmark = Bookmark.new(id: 1)
-        user = FactoryBot.create(:user)
-        @bookmark.user_id = user.id
-        album = FactoryBot.create(:album)
-        @bookmark.album_id = album.id
+        @bookmark = FactoryBot.create(:bookmark)
       end
       # can save with all fill in
       it 'with album_id, user_id' do

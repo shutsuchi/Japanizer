@@ -30,17 +30,7 @@ RSpec.describe 'User', type: :model do
 
     context 'Validly' do
       before do
-         @user = User.new(
-           id:              1,
-           name:            'tanaka Taro',
-           email:           'tanaka@email.com',
-           password:        'tanakatanaka',
-           age:              24,
-           country_code:    'JP',
-           withdrawal_flag: false,
-           created_at:      'Thu, 06 Aug 2020 21:38:22 +0000',
-           updated_at:      'Thu, 06 Aug 2020 21:40:24 +0000'
-         )
+        @user = FactoryBot.create(:user)
       end
       it 'is valid with a first_name, last_name, email, and password' do
         expect(@user).to be_valid

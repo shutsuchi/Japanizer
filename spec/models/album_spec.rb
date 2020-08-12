@@ -24,15 +24,16 @@ RSpec.describe 'Album', type: :model do
     context 'Collectly' do
       # post_quantity, rate, title, user_id, genre_idがあれば保存可能であること
       before do
-        @album = Album.new(
-          id:             1,
-          post_quantity: 'good',
-          rate:          3.5,
-          title:         'around Japan',
-          created_at:    'Thu, 06 Aug 2020 21:38:22 +0000',
-          updated_at:    'Thu, 06 Aug 2020 21:40:24 +0000'
-        )
         user = FactoryBot.create(:user)
+        @album = FactoryBot.create(:album)
+        #@album = Album.new(
+        #  id:             1,
+        #  post_quantity: 'good',
+        #  rate:          3.5,
+        #  title:         'around Japan',
+        #  created_at:    'Thu, 06 Aug 2020 21:38:22 +0000',
+        #  updated_at:    'Thu, 06 Aug 2020 21:40:24 +0000'
+        #)
         @album.user_id = user.id
         genre = FactoryBot.create(:genre)
         @album.genre_id = genre.id
@@ -69,6 +70,19 @@ RSpec.describe 'Album', type: :model do
       it 'without a genre_id' do
         @album = Album.new(genre_id: nil)
         expect(@album.valid?).to eq(false)
+      end
+    end
+  end
+
+  describe 'Belongs' do
+    context 'to Specific User' do
+      # post_quantity, rate, title, user_id, genre_idがあれば保存可能であること
+      before do
+        @album = FactoryBot.create(:album)
+      end
+      # can save with all fill in
+      it 'with post_quantity, rate, title, user_id, genre_id' do
+        expect(@album).to be_valid
       end
     end
   end

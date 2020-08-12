@@ -15,11 +15,7 @@ RSpec.describe 'Like', type: :model do
 
     context 'Collectly' do
       before do
-        @like = Like.new(id: 1)
-        user = FactoryBot.create(:user)
-        @like.user_id = user.id
-        post = FactoryBot.create(:post)
-        @like.post_id = post.id
+        @like = FactoryBot.create(:like)
       end
       # can save with all fill in
       it 'with album_id, user_id' do
