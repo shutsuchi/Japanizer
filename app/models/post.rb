@@ -30,6 +30,7 @@ class Post < ApplicationRecord
                     length: { minimum: 1 }
   validates :comment, presence: true,
                       length: { minimum: 1 }
+  validates :rate, presence: true
 
   scope :age_20, -> { where(users: {age: 1..20}) }
   scope :age_30, -> { where(users: {age: 20..30}) }

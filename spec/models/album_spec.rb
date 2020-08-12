@@ -19,57 +19,82 @@
 require 'rails_helper'
 
 RSpec.describe 'Album', type: :model do
-  describe 'Save' do
+  describe 'validation' do
 
-    context 'Collectly' do
-      # post_quantity, rate, title, user_id, genre_idがあれば保存可能であること
-      before do
-        @album = Album.new(
-          id:             1,
-          post_quantity: 'good',
-          rate:          3.5,
-          title:         'around Japan',
-          created_at:    'Thu, 06 Aug 2020 21:38:22 +0000',
-          updated_at:    'Thu, 06 Aug 2020 21:40:24 +0000'
-        )
-        user = FactoryBot.create(:user)
-        @album.user_id = user.id
-        genre = FactoryBot.create(:genre)
-        @album.genre_id = genre.id
-      end
-      # can save with all fill in
-      it 'with post_quantity, rate, title, user_id, genre_id' do
-        expect(@album).to be_valid
+    context 'valid for presence' do
+      let(:album){ build(:album) }
+      it 'is valid with post_quantity, rate, title, user_id, genre_id' do
+        expect(album).to be_valid
       end
     end
 
-    context 'Incollectly' do
-      # can't save without post_quantity
-      it 'without a post_quantity' do
-        @album = Album.new(post_quantity: nil)
-        expect(@album.valid?).to eq(false)
+    context 'invalid for presence' do
+      let(:album){ build(:album) }
+      let(:user){ create(:user) }
+      let(:genre){ create(:genre) }
+      it 'is invalid without post_quantity' do
+        album.post_quantity = nil
+        album.valid?
+        expect(album.errors[:post_quantity]).to include('を入力してください')
       end
 
-      # can't save without rate
-      it 'without a rate' do
-        @album = Album.new(rate: nil)
-        expect(@album.valid?).to eq(false)
+      it 'is invalid without rate' do
+        album.rate = nil
+        album.valid?
+        expect(album.errors[:rate]).to include('を入力してください')
       end
-      # can't save without title
-      it 'without a title' do
-        @album = Album.new(title: nil)
-        expect(@album.valid?).to eq(false)
+
+      it "is invalid without title" do
+        album.title = nil
+        album.valid?
+        expect(album.errors[:title]).to include('を入力してください')
       end
-      # can't save without user_id
-      it 'without a album_id' do
-        @album = Album.new(user_id: nil)
-        expect(@album.valid?).to eq(false)
+
+      it 'is invalid without a user_id' do
+        album = Album.new(user_id: nil)
+        album.valid?
+        expect(album.errors[:user]).to include('を入力してください')
       end
-      # can't save without genre_id
-      it 'without a genre_id' do
-        @album = Album.new(genre_id: nil)
-        expect(@album.valid?).to eq(false)
+
+      it 'is invalid without a genre_id' do
+        album = Album.new(genre_id: nil)
+        album.valid?
+        expect(album.errors[:genre]).to include('を入力してください')
       end
     end
   end
+
+  describe 'association' do
+    context 'belongs to' do
+      let!(:user){ create(:user) }
+      let!(:genre){ create(:genre) }
+      before { create(:album, title: 'nice', user: user) }
+      before { create(:album, title: 'ok', genre: genre) }
+      it 'is be able to refer specific user' do
+        album_first = user.albums.first
+        expect(album_first.title).to eq('nice')
+      end
+
+      it 'is be able to refer specific genre' do
+        album_first = genre.albums.first
+        expect(album_first.title).to eq('ok')
+      end
+    end
+
+    context 'has many' do
+      let!(:album){ create(:album) }
+      before { create(:post, title: 'cool', album: album) }
+      before { create(:bookmark, id: 1, album: album) }
+      it 'is be able to contain posts' do
+        post_first = album.posts.first
+        expect(post_first.title).to eq('cool')
+      end
+
+      it 'is be able to contain bookmarks' do
+        bookmark_first = album.bookmarks.first
+        expect(bookmark_first.id).to eq(1)
+      end
+    end
+  end
+
 end

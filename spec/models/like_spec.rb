@@ -11,33 +11,45 @@
 require 'rails_helper'
 
 RSpec.describe 'Like', type: :model do
-  describe 'Save' do
+  describe 'validation' do
+    let(:like){ create(:like) }
 
-    context 'Collectly' do
-      before do
-        @like = Like.new(id: 1)
-        user = FactoryBot.create(:user)
-        @like.user_id = user.id
-        post = FactoryBot.create(:post)
-        @like.post_id = post.id
-      end
+    context 'valid for presence' do
       # can save with all fill in
-      it 'with album_id, user_id' do
-        expect(@like).to be_valid
+      it 'is valid with user_id, post_id' do
+        expect(like).to be_valid
       end
     end
 
-    context 'Incollectly' do
-      # can't save without post_id
-      it 'without a post_id' do
-        @like = Like.new(post_id: nil)
-        expect(@like.valid?).to eq(false)
+    context 'invalid for presence' do
+      it 'is invalid without user_id' do
+        like = Like.new(user_id: nil)
+        like.valid?
+        expect(like.errors[:user]).to include('を入力してください')
       end
 
-      # can't save without user_id
-      it 'without a user_id' do
-        @like = Like.new(user_id: nil)
-        expect(@like.valid?).to eq(false)
+      it 'is invalid without post_id' do
+        like = Like.new(post_id: nil)
+        like.valid?
+        expect(like.errors[:post]).to include('を入力してください')
+      end
+    end
+  end
+
+  describe 'association' do
+    context 'belongs to' do
+      let!(:user){ create(:user) }
+      let!(:post){ create(:post) }
+      before { create(:like, id: 1, user: user) }
+      before { create(:like, id: 2, post: post) }
+      it 'is be able to refer specific user' do
+        like_first = user.likes.first
+        expect(like_first.id).to eq(1)
+      end
+
+      it 'is be able to refer specific genre' do
+        like_first = post.likes.first
+        expect(like_first.id).to eq(2)
       end
     end
   end
