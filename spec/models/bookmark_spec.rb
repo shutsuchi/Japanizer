@@ -22,13 +22,13 @@ RSpec.describe 'Bookmark', type: :model do
       it "can't be saved without a album_id" do
         bookmark = Bookmark.new(album_id: nil)
         bookmark.valid?
-        expect(bookmark.errors[:album]).to include('を入力してください')
+        expect(bookmark.errors[:album]).to include(I18n.t('errors.messages.blank'))
       end
 
       it "can't be saved without a user_id" do
         bookmark = Bookmark.new(user_id: nil)
         bookmark.valid?
-        expect(bookmark.errors[:user]).to include('を入力してください')
+        expect(bookmark.errors[:user]).to include(I18n.t('errors.messages.blank'))
       end
     end
   end

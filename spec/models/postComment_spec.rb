@@ -15,31 +15,31 @@ RSpec.describe 'PostComment', type: :model do
       it 'is invalid without comment' do
         postComment.comment = nil
         postComment.valid?
-        expect(postComment.errors[:comment]).to include('を入力してください')
+        expect(postComment.errors[:comment]).to include(I18n.t('errors.messages.blank'))
       end
 
       it 'is invalid without rate' do
         postComment.rate = nil
         postComment.valid?
-        expect(postComment.errors[:rate]).to include('を入力してください')
+        expect(postComment.errors[:rate]).to include(I18n.t('errors.messages.blank'))
       end
 
       it 'is invalid without rate' do
         postComment.title = nil
         postComment.valid?
-        expect(postComment.errors[:title]).to include('を入力してください')
+        expect(postComment.errors[:title]).to include(I18n.t('errors.messages.blank'))
       end
 
       it 'is invalid without user_id' do
         comment = PostComment.new(user_id: nil)
         comment.valid?
-        expect(comment.errors[:user]).to include('を入力してください')
+        expect(comment.errors[:user]).to include(I18n.t('errors.messages.blank'))
       end
 
       it 'without a user_id' do
         comment = PostComment.new(post_id: nil)
         comment.valid?
-        expect(comment.errors[:post]).to include('を入力してください')
+        expect(comment.errors[:post]).to include(I18n.t('errors.messages.blank'))
       end
     end
   end

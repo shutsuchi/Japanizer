@@ -32,32 +32,32 @@ RSpec.describe 'Post', type: :model do
       it 'is invalid without comment' do
         post.comment = nil
         post.valid?
-        expect(post.errors[:comment]).to include('を入力してください')
+        expect(post.errors[:comment]).to include(I18n.t('errors.messages.blank'))
       end
       it 'is invalid without rate' do
         post.rate = nil
         post.valid?
-        expect(post.errors[:rate]).to include('を入力してください')
+        expect(post.errors[:rate]).to include(I18n.t('errors.messages.blank'))
       end
       it 'is invalid without title' do
         post.title = nil
         post.valid?
-        expect(post.errors[:title]).to include('を入力してください')
+        expect(post.errors[:title]).to include(I18n.t('errors.messages.blank'))
       end
       it 'is invalid without album_id' do
         post = Post.new(album_id: nil)
         post.valid?
-        expect(post.errors[:album]).to include('を入力してください')
+        expect(post.errors[:album]).to include(I18n.t('errors.messages.blank'))
       end
       it 'is invalid without city_id' do
         post = Post.new(city_id: nil)
         post.valid?
-        expect(post.errors[:city]).to include('を入力してください')
+        expect(post.errors[:city]).to include(I18n.t('errors.messages.blank'))
       end
       it 'is invalid without genre_id' do
         post = Post.new(genre_id: nil)
         post.valid?
-        expect(post.errors[:genre]).to include('を入力してください')
+        expect(post.errors[:genre]).to include(I18n.t('errors.messages.blank'))
       end
       it 'is invalid without prefecture_id' do
         post = Post.new(prefecture_id: nil)
@@ -67,7 +67,7 @@ RSpec.describe 'Post', type: :model do
       it 'is invalid without user_id' do
         post = Post.new(user_id: nil)
         post.valid?
-        expect(post.errors[:user]).to include('を入力してください')
+        expect(post.errors[:user]).to include(I18n.t('errors.messages.blank'))
       end
     end
   end

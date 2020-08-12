@@ -29,14 +29,14 @@ RSpec.describe 'Event', type: :model do
       it 'is invalid without user_id' do
         event = Event.new(user_id: nil)
         event.valid?
-        expect(event.errors[:user]).to include('を入力してください')
+        expect(event.errors[:user]).to include(I18n.t('errors.messages.blank'))
       end
 
       # can't save without genre_id
       it 'is invalid without a genre_id' do
         event = Event.new(genre_id: nil)
         event.valid?
-        expect(event.errors[:genre]).to include('を入力してください')
+        expect(event.errors[:genre]).to include(I18n.t('errors.messages.blank'))
       end
     end
   end

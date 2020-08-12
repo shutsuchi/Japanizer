@@ -25,13 +25,13 @@ RSpec.describe 'Like', type: :model do
       it 'is invalid without user_id' do
         like = Like.new(user_id: nil)
         like.valid?
-        expect(like.errors[:user]).to include('を入力してください')
+        expect(like.errors[:user]).to include(I18n.t('errors.messages.blank'))
       end
 
       it 'is invalid without post_id' do
         like = Like.new(post_id: nil)
         like.valid?
-        expect(like.errors[:post]).to include('を入力してください')
+        expect(like.errors[:post]).to include(I18n.t('errors.messages.blank'))
       end
     end
   end
