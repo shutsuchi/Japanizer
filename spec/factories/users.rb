@@ -32,4 +32,12 @@ FactoryBot.define do
     country_code        { 'JP' }
     withdrawal_flag     { false }
   end
+  factory :another_user, class: User do
+    name                { 'Jhon yard' }
+    sequence(:email)    { |n| "jhon#{n}@example.com" }
+    sequence(:password) { |n| "TEST_JHON#{n}" }
+    age                 { 45 }
+    country_code        { 'US' }
+    withdrawal_flag     { false }
+  end
 end
