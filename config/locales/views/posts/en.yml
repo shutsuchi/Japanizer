@@ -56,7 +56,7 @@ en:
       f_submit: 'Update'
 
     show:
-      title: 'Post Detail'
+      pagetitle: 'Post Detail'
       album: 'Album'
       user: 'User'
       title: 'Title'
