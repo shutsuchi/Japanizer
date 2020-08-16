@@ -1,6 +1,6 @@
 class UsersController < ApplicationController
-  before_action :authenticate_user!, only: %i[show edit update withdraw]
-  before_action :correct_user, only: %i[show edit withdraw]
+  before_action :authenticate_user!
+  before_action :correct_user, only: %i[show edit withdraw switch update destroy]
 
   include UserStatus
   include Page
@@ -51,7 +51,7 @@ class UsersController < ApplicationController
   # switch_path
   def switch
     @theuser = current_user
-    if @theuser.update(withdrawal_flag: false)
+    if @theuser.update(withdrawal_flag: true)
       redirect_to top_path
     else
       render :withdraw
@@ -77,17 +77,14 @@ class UsersController < ApplicationController
   end
 
   def correct_user
-    if params[:user_id]
+    if params[:user_id].present?
       user = User.find(params[:user_id])
-      if user.id != current_user.id
-        redirect_to top_path
-      end
-    elsif params[:id] != 'sign_out'
+    elsif params[:id].present?
       user = User.find(params[:id])
-      if user.id != current_user.id
-        redirect_to top_path
-      end
+    end
+
+    if user.id != current_user.id
+      redirect_to user_path(current_user), alert: t('app.flash.no_access')
     end
   end
-
 end

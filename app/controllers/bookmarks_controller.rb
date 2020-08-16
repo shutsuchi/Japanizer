@@ -1,10 +1,16 @@
 class BookmarksController < ApplicationController
+  before_action :authenticate_user!
+
   include BookmarkAlbum
 
+  # GET /bookmarks
+  # bookmarks_path
   def index
     @albums = bookmark_album
   end
 
+  # POST /albums/:album_id/bookmarks
+  # album_bookmarks_path
   def create
     @album = find_album(params[:album_id])
     bookmark = current_user.bookmarks.new(album_id: @album.id)
@@ -15,6 +21,8 @@ class BookmarksController < ApplicationController
     end
   end
 
+  # DELETE /albums/:album_id/bookmarks
+  # album_bookmarks_path
   def destroy
     @album = find_album(params[:album_id])
     bookmark = current_user.bookmarks.find_by(album_id: @album.id)

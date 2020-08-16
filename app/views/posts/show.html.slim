@@ -22,28 +22,32 @@
                     span.btn.btn-danger.btn-md.col-xs-8.glyphicon.glyphicon-trash.btn-icon-color
           .col-xs-7
             = render 'detail', thepost: @thepost
-.row
-  .col-xs-6
-    .post-show-new-form
+- if current_user.nil?
+  .row
+    .col-xs-6
+      .post-show-new-form
+        .col-xs-12
+          = render 'layouts/error_message', model: @comment
+        .col-xs-12
+          .post-show-new-form__title.text-center
+            h2
+              = t('posts.show.new_comment')
       .col-xs-12
-        = render 'layouts/error_message', model: @comment
-      .col-xs-12
-        .post-show-new-form__title.text-center
-          h2
-            = t('posts.show.new_comment')
-    .col-xs-12
-      = render 'comment_form', thepost: @thepost, comment: @comment
+        = render 'comment_form', thepost: @thepost, comment: @comment
 
-  .col-xs-6
-    .post-show-comment
-      .col-xs-12.text-center
-        h2
-          = t('posts.show.c_comment')
-          | (
-          = @comments.count
-          | )
-        .col-xs-12
-          = render 'posts/area_comment', comments: @comments_pg, post: @thepost
-        .col-xs-12
-          .text-center
-            = paginate @comments_pg
+- else
+  .row
+    .col-xs-6
+    .col-xs-6
+      .post-show-comment
+        .col-xs-12.text-center
+          h2
+            = t('posts.show.c_comment')
+            | (
+            = @comments.count
+            | )
+          .col-xs-12
+            = render 'posts/area_comment', comments: @comments_pg, post: @thepost
+          .col-xs-12
+            .text-center
+              = paginate @comments_pg

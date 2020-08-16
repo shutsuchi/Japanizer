@@ -1,4 +1,6 @@
 class LikesController < ApplicationController
+  before_action :authenticate_user!
+
   # POST /posts/:post_id/likes
   # post_likes_path
   def create

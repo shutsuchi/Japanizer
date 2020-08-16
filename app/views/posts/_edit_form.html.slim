@@ -58,7 +58,8 @@
               br
               = f.collection_select :prefecture_id, Prefecture.all, :id, :name, prompt: "Please select"
             .form-window.row.city-pulldown
-              = render partial: 'city', locals: { prefecture_id: Prefecture.first.id }
+              // テストにおいて'first'がnilになるため、下記変数化
+              = render partial: 'city', locals: { prefecture_id: @pref_first_id }
             .form-window.row
               = f.label t('posts.edit.f_comment'), class:"post-main__color"
               br

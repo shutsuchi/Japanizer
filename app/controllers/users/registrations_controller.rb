@@ -5,11 +5,13 @@ class Users::RegistrationsController < Devise::RegistrationsController
   # before_action :configure_account_update_params, only: [:update]
 
   # GET /resource/sign_up
+  # new_user_registration_path
   # def new
   #   super
   # end
 
   # POST /resource
+  # user_registration_path
   def create
     super
     # Empty Recorde Create (album, event)
@@ -24,16 +26,19 @@ class Users::RegistrationsController < Devise::RegistrationsController
   end
 
   # GET /resource/edit
+  # edit_user_registration_path
   # def edit
   #   super
   # end
 
   # PUT /resource
+  # user_registration_path
   # def update
   #   super
   # end
 
   # DELETE /resource
+  # user_registration_path
   # def destroy
   #   super
   # end

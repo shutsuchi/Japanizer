@@ -1,4 +1,6 @@
 class AlbumsController < ApplicationController
+  before_action :authenticate_user!, only: %i[edit create update destroy]
+  before_action :correct_album, only: %i[edit update destroy]
 
   include Page
   include AlbumUpdate
@@ -14,8 +16,12 @@ class AlbumsController < ApplicationController
     if current_user.nil?
       @albums_pg = Album.page(params[:page]).order(created_at: :desc).per(6)
     else
-      # User's Empty Album
-      @user_no_posts = Post.where(album_id: current_user.albums.first.id)
+      # User's Empty Album---------------------- tmp for Test
+      current_user.albums.each do |album|
+        @first_album = album
+        break
+      end
+      @user_no_posts = Post.where(album_id: @first_album)
 
       if params[:user]
         pg1 = params[:user]
@@ -65,14 +71,19 @@ class AlbumsController < ApplicationController
     if @album.save
       redirect_to @album, notice: t('albums.flash.s_notice')
     else
-      # User's Empty Album
-      @user_no_posts = Post.where(album_id: current_user.albums.first.id)
+      # User's Empty Album---------------------- tmp for Test
+      current_user.albums.each do |album|
+        @first_album = album
+        break
+      end
+      @user_no_posts = Post.where(album_id: @first_album)
+      #@user_no_posts = Post.where(album_id: current_user.albums.first.id)
 
       pg1 = params[:user]
       pg2 = params[:other]
       @user_albums_pg = type_page_6(current_user.albums, pg1)
       @others_albums_pg = type_page_6(Album.includes(:user)
-                                      .where.not(user_id: current_user.id), pg2)
+                                  .where.not(user_id: current_user.id), pg2)
       flash.now[:alert] = t('albums.flash.s_alert')
       render :index
     end
@@ -103,6 +114,8 @@ class AlbumsController < ApplicationController
     end
   end
 
+  # DELETE /albums/:id
+  # album_path
   def destroy
     thealbum = find_album(params[:id])
     posts = Post.where(album_id: thealbum.id)
@@ -121,16 +134,7 @@ class AlbumsController < ApplicationController
   private
 
   def album_params
-    params.require(:album).permit(:user_id,
-                                  :genre_id,
-                                  :title,
-                                  :image,
-                                  :post_quantity,
-                                  :comment,
-                                  :rate,
-                                  :budget,
-                                  :mean,
-                                  :people)
+    params.require(:album).permit(:user_id, :genre_id, :title, :image, :post_quantity, :comment, :rate, :budget, :mean, :people)
   end
 
   def post_params
@@ -145,4 +149,10 @@ class AlbumsController < ApplicationController
     Post.find(post_id)
   end
 
+  def correct_album
+    album = Album.find(params[:id])
+    if album.user.id != current_user.id
+      redirect_to user_path(album.user), alert: t('app.flash.no_access')
+    end
+  end
 end

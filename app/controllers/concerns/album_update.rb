@@ -3,7 +3,7 @@ module AlbumUpdate
 
   def post_quantity_update(album)
     if params[:album][:post_quantity]
-      params[:album][:post_quantity].count
+      params[:album][:post_quantity]
     else
       album.post_quantity
     end
