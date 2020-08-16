@@ -41,4 +41,5 @@
         .col-xs-2
           - if comment.user == current_user
             .post-comment-box__btn--edit
-              = link_to '', post_post_comments_path(id: comment, post_id: post.id), method: :patch, remote: true, class:"fas fa-edit pull-right text-primary", style:"font-size:20px;"
+              .fas.fa-edit.pull-right.text-primary style="font-size:20px"
+                //= link_to '', post_post_comments_path(id: comment, post_id: post.id), method: :patch, remote: true, class:"fas fa-edit pull-right text-primary", style:"font-size:20px;"
