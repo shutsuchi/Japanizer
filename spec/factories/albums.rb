@@ -24,4 +24,10 @@ FactoryBot.define do
     rate          { 4 }
     title         { 'nice' }
   end
+  factory :another_album, class: Album do
+    genre
+    post_quantity { 10 }
+    rate          { 1 }
+    title         { 'fantastic!!' }
+  end
 end
