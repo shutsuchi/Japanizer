@@ -30,7 +30,8 @@
   Planning itenerary in Japan which suit with traveler, and obtain information or trend of popular spots in Japan.
 
 ## 設計書 - Documentation
-
+* テーブル設計図 - Table Design
+https://drive.google.com/file/d/1VKU5MB11sPT2XpxYjsAjiyD4Yz5e53zW/view?usp=sharing
 
 ### 機能一覧 - Features List
 https://docs.google.com/spreadsheets/d/141FbmfG4j3t6OtdURnItRFzQxImdU7picuxVJAs_XcY/edit?usp=sharing
