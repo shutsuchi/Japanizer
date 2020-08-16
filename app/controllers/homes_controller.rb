@@ -1,9 +1,13 @@
 class HomesController < ApplicationController
   include RankData
 
+  # GET /about
+  # about_path
   def about
   end
 
+  # GET /top
+  # top_path
   def top
     # plan to add => range
     # day = Date.today

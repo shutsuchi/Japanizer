@@ -49,7 +49,8 @@
           br
           = f.collection_select :prefecture_id, Prefecture.all, :id, :name, prompt: "Please select"
         .form-window.row.city-pulldown
-          = render partial: 'city', locals: { prefecture_id: Prefecture.first.id }
+          // テストにおいて、'first'がnilになるため変数化
+          = render partial: 'city', locals: { prefecture_id: @pref_first_id }
         .form-submit.row
           = f.submit t('posts.index.f_submit'), class:"btn btn-primary col-xs-5"
       .col-xs-8

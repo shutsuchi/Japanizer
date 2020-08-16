@@ -1,4 +1,5 @@
 class PostCommentsController < ApplicationController
+  before_action :authenticate_user!
   protect_from_forgery
 
   include Page
@@ -7,7 +8,6 @@ class PostCommentsController < ApplicationController
   # post_post_comments_path
   def create
     @thepost = find_post(params[:post_id])
-    # @comments_pg = @thepost.post_comments.page(params[:page]).reverse_order.per(5)
     @comments_pg = page_5(@thepost.post_comments)
     comment = current_user.post_comments.new(post_comment_params)
     comment.post_id = @thepost.id

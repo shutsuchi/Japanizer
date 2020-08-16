@@ -1,17 +1,20 @@
 class EventsController < ApplicationController
+  before_action :authenticate_user!
 
   include UserStatus
   include Page
 
   # GET /events
   # GET /events.json
+  # events_path
   def index
     @events = Event.all
-    redirect_to user_path(current_user.id)
+    redirect_to user_path(current_user)
   end
 
-  # GET /events/1
+  # GET /events/:id
   # GET /events/1.json
+  # event_path
   def show
     @theevent = find_event(params[:id])
     if @theevent.user == current_user
@@ -23,6 +26,7 @@ class EventsController < ApplicationController
 
   # POST /events
   # POST /events.json
+  # events_path
   def create
     @event = Event.new(event_params)
     @event.user_id = current_user.id
@@ -54,20 +58,24 @@ class EventsController < ApplicationController
     end
   end
 
-  def update
-    event = find_event(params[:id])
-    @events = Event.where(user_id: current_user.id)
-    if event.update(event_params)
-      redirect_to event, notice: t('events.flash.u_notice')
-    else
-      flash.now[:alert] = t('events.flash.u_alert')
-      render event_path(event)
-    end
-  end
+  # PATCH /event/:id
+  # event_path
+  #def update
+  #  event = find_event(params[:id])
+  #  @events = Event.where(user_id: current_user.id)
+  #  if event.update(event_params)
+  #    redirect_to event, notice: t('events.flash.u_notice')
+  #  else
+  #    flash.now[:alert] = t('events.flash.u_alert')
+  #    render user_path(current_user)
+  #  end
+  #end
 
+  # DELETE /event/:id
+  # event_path
   def destroy
-    @user = find_User(params[:id])
     event = Event.find(params[:id])
+    @user = event.user
     if event.destroy
       redirect_to user_path(@user), notice: t('events.flash.d_notice')
     end
@@ -86,5 +94,4 @@ class EventsController < ApplicationController
   def event_params
     params.require(:event).permit(:user_id, :genre_id, :title, :body, :start, :end)
   end
-
 end

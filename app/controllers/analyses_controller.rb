@@ -2,6 +2,8 @@ class AnalysesController < ApplicationController
   include Page
   include RankData
 
+  # GET /data
+  # data_path
   def data
     # Japanese User Ranking
     posts_jp = Post.eager_load(:user).jp
@@ -18,6 +20,8 @@ class AnalysesController < ApplicationController
     @others_budget_ranks = budget_rank(albums)
   end
 
+  # GET /rank
+  # rank_path
   def rank
     @genres = Genre.where.not(id: 1).all
     @posts = page_8(Post)

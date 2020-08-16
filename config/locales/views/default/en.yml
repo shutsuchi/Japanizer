@@ -19,6 +19,8 @@ en:
       er_text_1: ' errors prohibited'
       er_text_2: 'This '
       er_text_3: ' from being saved:'
+    flash:
+      no_access: 'Access denied'
     header:
       title_desc: 'Having nice journey with Japanizer'
       home: 'Home'

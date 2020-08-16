@@ -19,6 +19,8 @@ ja:
       er_text_1: ' 個の以下エラーが発生し、'
       er_text_2: 'この '
       er_text_3: ' は保存できません。'
+    flash:
+      no_access: 'アクセスを拒否されました。'
     header:
       title_desc: 'さあ、良い日本旅を'
       home: 'ホーム'
