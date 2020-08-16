@@ -4,24 +4,17 @@ RSpec.describe 'Likes', type: :request do
   describe 'POST /posts/:post_id/likes' do
     context 'as an authorized user' do
       context 'as a user who created' do
-        it 'returns a 200 response' do
+        before do
+          sign_in user
         end
-        it 'updates a like record' do
+        let(:user){ create(:user) }
+        let(:post_param){ create(:post) }
+        let(:like_params){ create(:like) }
+        it 'creates a like record' do
+          expect do
+            post post_likes_path(post_id: post_param.id), params: { like: like_params }, xhr: true
+          end.to change(user.likes, :count).by(1)
         end
-        it 'redirects the page to /album/:id' do
-        end
-      end
-      context 'as a user who did not create' do
-        it 'returns a 302 respose' do
-        end
-        it 'redirect the page to /users/sign_in' do
-        end
-      end
-    end
-    context 'as a guest user' do
-      it 'returns a 302 response' do
-      end
-      it 'redirect the page to /users/sign_in' do
       end
     end
   end
@@ -29,17 +22,18 @@ RSpec.describe 'Likes', type: :request do
   describe 'DELETE /posts/:post_id/likes' do
     context 'as an authorized user' do
       context 'as a user who created' do
+        before do
+          sign_in user
+          post post_likes_path(post_id: post_param.id), params: {like: like_params }, xhr: true
+        end
+        let(:user){ create(:user) }
+        let(:post_param){ create(:post) }
+        let(:like){ create(:like) }
+        let(:like_params){ attributes_for(:like) }
         it 'deletes a album' do
-        end
-        it 'redirect the page to /user/:id' do
-        end
-      end
-    end
-    context 'as a guest user' do
-      context 'as a user who created' do
-        it 'returns a 302 response' do
-        end
-        it 'redirect the page to /users/sign_in' do
+          expect do
+            delete post_likes_path(post_id: post_param.id), xhr: true
+          end.to change(user.likes, :count).by(-1)
         end
       end
     end
