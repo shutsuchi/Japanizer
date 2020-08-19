@@ -57,6 +57,8 @@ en:
 
     show:
       pagetitle: 'Post Detail'
+      edit_btn: 'Edit'
+      delete_btn: 'Delete'
       album: 'Album'
       user: 'User'
       title: 'Title'

@@ -79,12 +79,17 @@ class UsersController < ApplicationController
   def correct_user
     if params[:user_id].present?
       user = User.find(params[:user_id])
+      if user.id != current_user.id
+        redirect_to user_path(current_user), alert: t('app.flash.no_access')
+      end
     elsif params[:id].present?
-      user = User.find(params[:id])
+      unless params[:id] != 'sign_out' || params[:id] != 'sign_in'
+        user = User.find(params[:id])
+        if user.id != current_user.id
+          redirect_to user_path(current_user), alert: t('app.flash.no_access')
+        end
+      end
     end
 
-    if user.id != current_user.id
-      redirect_to user_path(current_user), alert: t('app.flash.no_access')
-    end
   end
 end

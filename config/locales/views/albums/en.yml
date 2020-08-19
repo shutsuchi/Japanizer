@@ -29,6 +29,8 @@ en:
 
     show:
       pagetitle: 'Album Detail'
+      edit_btn: 'Edit'
+      delete_btn: 'Delete'
       posts: 'Posts in This Album'
       user: 'User'
       title: 'Title'
