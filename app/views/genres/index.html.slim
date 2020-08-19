@@ -62,7 +62,7 @@
             h2
               = t('genres.subtitle_p')
             .col-xs-12
-              - if @posts_pg.nil?
+              - if @posts_pg.present?
                 - @posts_pg.each do |post|
                   = render 'posts/post', post: post
                 .col-xs-12.text-center

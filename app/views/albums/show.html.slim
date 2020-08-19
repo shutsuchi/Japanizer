@@ -15,10 +15,14 @@
               .col-xs-10.post-main__top-btn
                 = link_to(edit_album_path(@thealbum), method: :get) do
                   span.btn.btn-default.btn-md.col-xs-8.form-window.glyphicon.glyphicon-cog
+                    span
+                      = t('albums.show.edit_btn')
             .row
               .col-xs-10.post-main__top-btn
                 = link_to(album_path(@thealbum), method: :delete, data: { confirm: t('app.common.confirm_del') }) do
                   span.btn.btn-danger.btn-md.col-xs-8.glyphicon.glyphicon-trash.btn-icon-color
+                    span
+                      = t('albums.show.delete_btn')
         .col-xs-8
           table.table.table-bordered
             thead
@@ -69,11 +73,7 @@
               tr
                 th.active = t('albums.show.create')
                 td.post-sedebar__title
-                  = @thealbum.created_at
-              tr
-                th.active = t('albums.show.update')
-                td.post-sedebar__title
-                  = @thealbum.updated_at
+                  = time_fmt @thealbum.created_at
       .row
         h2
           = t('albums.show.posts')

@@ -5,8 +5,10 @@
     .row
       .sidebar-outline__ranking-box
           .sidebar-outline__search-title-box
-            p.text-center
+            h5.text-center
               = t('homes.top.ranking')
+              br
+              = link_to t('homes.top.more'), rank_path, class:"pull-right sidebar-outline__search-title-box--more"
           .col-xs-12
             .sidebar-outline__rank-body-boxes
               .col-xs-12

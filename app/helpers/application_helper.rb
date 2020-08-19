@@ -7,6 +7,6 @@ module ApplicationHelper
   end
 
   def time_fmt(time)
-    time.strftime('%Y/%m/%d')
+    time.in_time_zone('Tokyo').strftime('%Y/%m/%d')
   end
 end
