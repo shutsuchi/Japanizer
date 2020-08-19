@@ -28,7 +28,28 @@ module GenreChoice
     end
   end
 
-  def age_post(range, pg1)
+  def age_post(range)
+    case range
+    when '1'
+      @posts_pg = page_8(Post.eager_load(:user).age_20)
+    when '2'
+      @posts_pg = page_8(Post.eager_load(:user).age_30)
+    when '3'
+      @posts_pg = page_8(Post.eager_load(:user).age_40)
+    when '4'
+      @posts_pg = page_8(Post.eager_load(:user).age_50)
+    when '5'
+      @posts_pg = page_8(Post.eager_load(:user).age_60)
+    when '6'
+      @posts_pg = page_8(Post.eager_load(:user).age_70)
+    when '7'
+      @posts_pg = page_8(Post.eager_load(:user).age_80)
+    else
+      @posts_pg = page_8(Post)
+    end
+  end
+
+  def age_post_pg(range, pg1)
     case range
     when '1'
       @posts_pg = type_page_8(Post.eager_load(:user).age_20, pg1)
@@ -49,7 +70,28 @@ module GenreChoice
     end
   end
 
-  def age_album(range, pg2)
+  def age_album(range)
+    case range
+    when '1'
+      @albums_pg = page_6(Album.eager_load(:user).age_20)
+    when '2'
+      @albums_pg = page_6(Album.eager_load(:user).age_30)
+    when '3'
+      @albums_pg = page_6(Album.eager_load(:user).age_40)
+    when '4'
+      @albums_pg = page_6(Album.eager_load(:user).age_50)
+    when '5'
+      @albums_pg = page_6(Album.eager_load(:user).age_60)
+    when '6'
+      @albums_pg = page_6(Album.eager_load(:user).age_70)
+    when '7'
+      @albums_pg = page_6(Album.eager_load(:user).age_80)
+    else
+      @albums_pg = page_6(Album, pg2)
+    end
+  end
+
+  def age_album_pg(range, pg2)
     case range
     when '1'
       @albums_pg = type_page_6(Album.eager_load(:user).age_20, pg2)
