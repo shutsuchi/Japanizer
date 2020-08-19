@@ -20,12 +20,18 @@ FactoryBot.define do
   factory :album do
     user
     genre
+    budget        { '1 ~ 3' }
+    people        { 4 }
+    comment       { 'wow' }
     post_quantity { 3 }
     rate          { 4 }
     title         { 'nice' }
   end
   factory :another_album, class: Album do
     genre
+    budget        { '1 ~ 3' }
+    people        { 4 }
+    comment       { 'booooo' }
     post_quantity { 10 }
     rate          { 1 }
     title         { 'fantastic!!' }
