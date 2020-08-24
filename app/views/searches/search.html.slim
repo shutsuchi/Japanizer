@@ -59,6 +59,13 @@
               = t('searches.past_24')
             - else
               = t('searches.any_time')
+            |  / 
+            - if @nation == 'JP'
+              = t('searches.nation_jp')
+            - elsif @nation == 'Others'
+              = t('searches.nation_ot')
+            - else
+              = t('searches.nation_all')
           .col-xs-12.text-center.search-condition__subtitle
             h3
               = t('searches.subtitle_album')

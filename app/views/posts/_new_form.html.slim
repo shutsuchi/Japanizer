@@ -43,15 +43,21 @@
         .form-window.row
           = f.label t('posts.index.f_genre')
           br
-          = f.collection_select :genre_id, Genre.all, :id, :name, prompt: "Please select"
+          - if params[:locale] == 'ja'
+            = f.collection_select :genre_id, Genre.all, :id, :name, prompt: "Please select"
+          - else
+            = f.collection_select :genre_id, Genre.all, :id, :en_name, prompt: "Please select"
         .form-window.row
           = f.label t('posts.index.f_place')
           br
-          = f.collection_select :prefecture_id, Prefecture.all, :id, :name, prompt: "Please select"
+          - if params[:locale] == 'ja'
+            = f.collection_select :prefecture_id, Prefecture.all, :id, :name, prompt: "Please select"
+          - else
+            = f.collection_select :prefecture_id, Prefecture.all, :id, :en_name, prompt: "Please select"
         .form-window.row.city-pulldown
           // テストにおいて、'first'がnilになるため変数化
           = render partial: 'city', locals: { prefecture_id: @pref_first_id }
         .form-submit.row
-          = f.submit t('posts.index.f_submit'), class:"btn btn-primary col-xs-5"
+          = f.submit t('posts.index.f_submit'), class:"btn btn-primary col-xs-7"
       .col-xs-8
         = render 'layouts/error_message', model: post

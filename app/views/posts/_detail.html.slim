@@ -31,15 +31,24 @@ table.table.table-bordered
     tr
       th.active = t('posts.show.place')
       td.post-sidebar__title
-        = thepost.prefecture.name
+        - if params[:locale] == 'ja'
+          = thepost.prefecture.name
+        - else
+          = thepost.prefecture.en_name
     tr
       th.active = t('posts.show.city')
       td.post-sidebar__title
-        = thepost.city.name
+        - if params[:locale] == 'ja'
+          = thepost.city.name
+        - else
+          = thepost.city.en_name
     tr
       th.active = t('posts.show.genre')
       td.post-sidebar__title
-        = thepost.genre.name
+        - if params[:locale] == 'ja'
+          = thepost.genre.name
+        - else
+          = thepost.genre.en_name
     tr
       th.active = t('posts.show.comment')
       td.post-sidebar__title

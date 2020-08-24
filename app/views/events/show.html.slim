@@ -30,25 +30,21 @@
             .event-detail-box__title
               = t('events.show.start')
             .event-detail-box__content
-              = time_fmt @theevent.start
+              = @theevent.start
 
             .event-detail-box__title
               = t('events.show.end')
             .event-detail-box__content
-              = time_fmt @theevent.end
+              = @theevent.end
 
           .row
             .col-xs-6
               .event-detail__btn
                 .event-detail__btn-text
-                  = link_to(user_path(@theuser)) do
-                    span.btn.btn-success
-                      = t('app.common.back')
+                  = link_to t('app.common.back'), user_path(@theuser), class:"btn btn-success"
             .col-xs-6
               .event-detail__btn
                 .event-detail__btn-text
-                  = link_to(event_path(@theevent), method: :delete, data: { confirm: t('app.common.confirm_del') }) do
-                    span.btn.btn-danger.pull-right
-                      = t('app.common.delete')
+                  = link_to t('app.common.delete'), event_path(@theevent), method: :delete, data: { confirm: t('app.common.confirm_del') }, class:"btn btn-danger pull-right"
                   /'|
                   /= link_to 'Edit', events_path

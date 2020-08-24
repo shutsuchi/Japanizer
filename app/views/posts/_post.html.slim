@@ -8,9 +8,8 @@
   .col-xs-3
     .post-index-box
     .post-index-box__image
-      .post-index-box__image--pic
-        = link_to post_path(post), method: :get do
-          = attachment_image_tag post, :image, fallback:"img/no_photo.png", class:"field", size:"190x150"
+      = link_to post_path(post), method: :get do
+        = attachment_image_tag post, :image, fallback:"img/no_photo.png", class:"field post-index-box__image--pic", size:"190x150"
     .post-index-box__detail
       .row
         .col-xs-12
@@ -34,10 +33,16 @@
               .col-xs-7
                   .post-index-box__detail-element-others--genre
                     col-xs-12
-                      = post.genre.name
+                      - if params[:locale] == 'ja'
+                        = post.genre.name
+                      - else
+                        = post.genre.en_name
                   .post-index-box__detail-element-others--pref
                     col-xs-12
-                      = post.prefecture.name
+                      - if params[:locale] == 'ja'
+                        = post.prefecture.name
+                      - else
+                        = post.prefecture.en_name
                   .post-index-box__detail-element-others--time
                     col-xs-12
                       = time_fmt post.created_at

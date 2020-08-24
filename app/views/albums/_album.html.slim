@@ -13,7 +13,7 @@
             .album-index-box__image--content
               .album-index-box__image--pic
                 = link_to album_path(album), method: :get do
-                  = attachment_image_tag album, :image, fallback:"img/no_photo.png", class:"field", size:"90x70"
+                  = attachment_image_tag album, :image, fallback:"img/no_photo.png", class:"field", size:"150x120"
               .row
                 .album-index-box__detail-icon
                   .col-xs-12 id="bookmarks_buttons_#{ album.id }"
@@ -37,7 +37,10 @@
                               = t('albums.index.genre')
                           .album-index-box__detail-element-others--genre
                             col-xs-12
-                              = album.genre.name
+                              - if params[:locale] == 'ja'
+                                = album.genre.name
+                              - else
+                                = album.genre.en_name
                           .album-index-box__detail-element-others--item
                             col-xs-12
                               = t('albums.index.budget')
