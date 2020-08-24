@@ -4,7 +4,7 @@
 #
 #  id            :bigint           not null, primary key
 #  comment       :text(65535)      not null
-#  rate          :float(24)        not null
+#  rate          :float(24)        default(0.0)
 #  title         :string(255)      not null
 #  created_at    :datetime         not null
 #  updated_at    :datetime         not null
@@ -30,7 +30,6 @@ class Post < ApplicationRecord
                     length: { minimum: 1 }
   validates :comment, presence: true,
                       length: { minimum: 1 }
-  validates :rate, presence: true
 
   scope :age_20, -> { where(users: {age: 1..20}) }
   scope :age_30, -> { where(users: {age: 20..30}) }
