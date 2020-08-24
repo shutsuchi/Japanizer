@@ -8,7 +8,7 @@
 #  mean          :string(255)
 #  people        :integer
 #  post_quantity :integer          default(0), not null
-#  rate          :float(24)        not null
+#  rate          :float(24)        default(0.0)
 #  title         :string(255)      not null
 #  created_at    :datetime         not null
 #  updated_at    :datetime         not null
@@ -26,7 +26,6 @@ class Album < ApplicationRecord
 
   validates :title, presence: true, length: { minimum: 1 }
   validates :post_quantity, presence: true
-  validates :rate, presence: true
 
   scope :budget_under, -> { where(budget: '~ 1') }
   scope :budget_3, -> { where(budget: '1 ~ 3') }

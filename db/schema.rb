@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2020_03_22_083836) do
+ActiveRecord::Schema.define(version: 2020_03_22_082112) do
 
   create_table "albums", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8", force: :cascade do |t|
     t.integer "user_id", null: false
@@ -19,7 +19,7 @@ ActiveRecord::Schema.define(version: 2020_03_22_083836) do
     t.string "image_id"
     t.integer "post_quantity", default: 0, null: false
     t.text "comment"
-    t.float "rate", null: false
+    t.float "rate", default: 0.0
     t.string "budget"
     t.string "mean"
     t.integer "people"
@@ -35,6 +35,7 @@ ActiveRecord::Schema.define(version: 2020_03_22_083836) do
   create_table "cities", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8", force: :cascade do |t|
     t.integer "prefecture_id", null: false
     t.string "name", null: false
+    t.string "en_name", null: false
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
   end
@@ -53,6 +54,7 @@ ActiveRecord::Schema.define(version: 2020_03_22_083836) do
 
   create_table "genres", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8", force: :cascade do |t|
     t.string "name", null: false
+    t.string "en_name", null: false
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
   end
@@ -69,7 +71,7 @@ ActiveRecord::Schema.define(version: 2020_03_22_083836) do
     t.integer "post_id", null: false
     t.string "title", null: false
     t.text "comment", null: false
-    t.float "rate", default: 0.0, null: false
+    t.float "rate", default: 0.0
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
   end
@@ -82,7 +84,7 @@ ActiveRecord::Schema.define(version: 2020_03_22_083836) do
     t.integer "genre_id", null: false
     t.string "image_id"
     t.string "title", null: false
-    t.float "rate", null: false
+    t.float "rate", default: 0.0
     t.text "comment", null: false
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
@@ -90,6 +92,7 @@ ActiveRecord::Schema.define(version: 2020_03_22_083836) do
 
   create_table "prefectures", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8", force: :cascade do |t|
     t.string "name", null: false
+    t.string "en_name", null: false
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
   end

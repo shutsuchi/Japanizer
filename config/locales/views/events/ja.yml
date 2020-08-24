@@ -5,8 +5,8 @@ ja:
       user_id: 'ユーザーID : '
       title: 'イベントタイトル : '
       body: 'イベント概要 : '
-      start: '初日 : '
-      end: '最終日 : '
+      start: '開始時間 : '
+      end: '終了日 : '
 
       none: 'なし'
 

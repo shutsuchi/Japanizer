@@ -1,7 +1,7 @@
 class SearchesController < ApplicationController
 
   # GET /searches
-  # searches_path
+  # search_path
   def search
 
     @keywords = params[:keyword]

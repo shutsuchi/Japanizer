@@ -20,5 +20,5 @@
         = link_to t('.btn1'), user_path(@theuser), class:"btn-success btn btn-lg"
 
       .col-xs-2
-        = button_to t('.btn2'), switch_path(@theuser), data: { confirm: t('app.common.confirm_withdraw') }, class:"btn-danger btn btn-lg"
+        = button_to t('.btn2'), switch_path(@theuser), method: :patch,  data: { confirm: t('app.common.confirm_withdraw') }, class:"btn-danger btn btn-lg"
       .col-xs-4

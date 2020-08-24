@@ -4,7 +4,7 @@
 #
 #  id         :bigint           not null, primary key
 #  comment    :text(65535)      not null
-#  rate       :float(24)        default(0.0), not null
+#  rate       :float(24)        default(0.0)
 #  title      :string(255)      not null
 #  created_at :datetime         not null
 #  updated_at :datetime         not null
@@ -17,5 +17,4 @@ class PostComment < ApplicationRecord
 
   validates :title, presence: true, length: { minimum: 1 }
   validates :comment, presence: true, length: { minimum: 1 }
-  validates :rate, presence: true, length: { minimum: 1 }
 end

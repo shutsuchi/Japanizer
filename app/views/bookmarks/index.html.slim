@@ -3,8 +3,8 @@
     .col-xs-12.text-center
       h1
         = t('bookmarks.pagetitle')
-    .col-xs-12
-      - if @albums
+    .col-xs-12.text-center
+      - if @albums.present?
         .col-xs-12
           - @albums.each do |album|
             /h2
@@ -12,4 +12,5 @@
             = render 'albums/album', album: album
 
       - else
-        = t('app.common.no_album')
+        h2.bg-danger
+          = t('app.common.no_album')

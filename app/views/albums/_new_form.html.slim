@@ -47,7 +47,10 @@
             .form-window.row
               = f.label t('albums.index.f_genre')
               br
-              = f.collection_select :genre_id, Genre.all, :id, :name, prompt: "Please select"
+              - if params[:locale] == 'ja'
+                = f.collection_select :genre_id, Genre.all, :id, :name, prompt: "Please select"
+              - else
+                = f.collection_select :genre_id, Genre.all, :id, :en_name, prompt: "Please select"
             .form-window.row
               = f.label t('albums.index.f_budget')
               br

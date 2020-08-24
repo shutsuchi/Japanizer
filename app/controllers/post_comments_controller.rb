@@ -14,6 +14,9 @@ class PostCommentsController < ApplicationController
     respond_to do |format|
       if comment.save
         format.js
+      else
+        flash.now[:alert] = t('posts.cm_flash.s_alert')
+        render post_path(@thepost)
       end
     end
   end

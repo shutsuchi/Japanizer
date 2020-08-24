@@ -22,10 +22,13 @@
         .search-nav__form#select_option
           = form_with(url: search_path, local: true, method: :get, class: 'form4') do |f|
               = f.select :option, [[t('searches.subtitle_post'), 'post_search'], [t('searches.subtitle_album'), 'album_search']]
-              = f.collection_select :genre, Genre.all, :id, :name, prompt: t('searches.any_genre')
+              - if params[:locale] == 'ja'
+                = f.collection_select :genre, Genre.all, :id, :name, prompt: t('searches.any_genre')
+              - else
+                = f.collection_select :genre, Genre.all, :id, :en_name, prompt: t('searches.any_genre')
               = f.select :time, [[t('searches.any_time'), 'anytime_search'],
                                  [t('searches.past_year'), 'year_search'], [t('searches.past_month'), 'month_search'],
-                                 [t('searches.past_week'), 'week_search'], [t('searches.past_24hours'), 'day_search']]
-              = f.select :nation, [[t('searches.nation_all'), 'Any'], [t('searches.nation_jp'), 'JP'], [t('nation_ot'), 'Others']]
+                                 [t('searches.past_week'), 'week_search'], [t('searches.past_24'), 'day_search']]
+              = f.select :nation, [[t('searches.nation_all'), 'Any'], [t('searches.nation_jp'), 'JP'], [t('searches.nation_ot'), 'Others']]
               = button_tag type: 'submit', method: :get, class:'btn-primary search-nav__form-btn' do
                 i.fas.fa-search

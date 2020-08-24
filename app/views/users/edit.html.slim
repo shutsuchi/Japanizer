@@ -35,12 +35,12 @@
           .col-xs-6
             .post-main__top-btn
               = link_to user_path(@theuser), method: :get  do
-                span.btn.btn-success.btn-md.col-xs-8.btn-icon-color
+                span.btn.btn-success.btn-md.col-xs-12.btn-icon-color
                   = t('users.edit.back')
           .col-xs-6
             .post-main__top-btn
               = link_to withdraw_path(current_user), method: :get  do
-                span.btn.btn-danger.btn-md.col-xs-8.btn-icon-color
+                span.btn.btn-danger.btn-md.col-xs-12.btn-icon-color
                   = t('users.edit.withdraw_btn')
 
   .col-xs-9.post-main__detail

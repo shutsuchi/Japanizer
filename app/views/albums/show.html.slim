@@ -57,7 +57,10 @@
               tr
                 th.active = t('albums.show.genre')
                 td.post-sedebar__title
-                  = @thealbum.genre.name
+                  - if params[:locale] == 'ja'
+                    = @thealbum.genre.name
+                  - else
+                    = @thealbum.genre.en_name
               tr
                 th.active = t('albums.edit.f_budget')
                 td.post-sedebar__title
