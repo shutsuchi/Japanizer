@@ -1,7 +1,7 @@
 require 'rails_helper'
 
-RSpec.describe 'Bookmarks', type: :request do
-  describe 'GET /bookmarks' do
+RSpec.describe 'BOOKMARKS-TEST', type: :request do
+  describe '# GET /bookmarks' do
     context 'as an authorized user' do
       let(:user){ create(:user) }
       before do
@@ -28,7 +28,7 @@ RSpec.describe 'Bookmarks', type: :request do
     end
   end
 
-  describe 'POST /bookmarks' do
+  describe '# POST /bookmarks' do
     context 'as an authorized user' do
       before do
         sign_in user
@@ -44,7 +44,7 @@ RSpec.describe 'Bookmarks', type: :request do
     end
   end
 
-  describe 'DELETE /bookmarks/:id' do
+  describe '# DELETE /bookmarks/:id' do
     context 'as an authorized user' do
       before do
         sign_in user

@@ -1,7 +1,7 @@
 require 'rails_helper'
 
-RSpec.describe 'Searches', type: :request do
-  describe 'GET /searches' do
+RSpec.describe 'SEARCHES-TEST', type: :request do
+  describe '# GET /searches' do
     before do
       get search_path
     end

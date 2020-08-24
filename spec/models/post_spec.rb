@@ -4,7 +4,7 @@
 #
 #  id            :bigint           not null, primary key
 #  comment       :text(65535)      not null
-#  rate          :float(24)        not null
+#  rate          :float(24)        default(0.0)
 #  title         :string(255)      not null
 #  created_at    :datetime         not null
 #  updated_at    :datetime         not null
@@ -33,11 +33,6 @@ RSpec.describe 'Post', type: :model do
         post.comment = nil
         post.valid?
         expect(post.errors[:comment]).to include(I18n.t('errors.messages.blank'))
-      end
-      it 'is invalid without rate' do
-        post.rate = nil
-        post.valid?
-        expect(post.errors[:rate]).to include(I18n.t('errors.messages.blank'))
       end
       it 'is invalid without title' do
         post.title = nil

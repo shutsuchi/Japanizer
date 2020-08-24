@@ -1,7 +1,7 @@
 require 'rails_helper'
 
-RSpec.describe 'PostComments', type: :request do
-  describe 'POST /posts/:post_id/post_comments' do
+RSpec.describe 'POSTCOMMENTS-TEST', type: :request do
+  describe '# POST /posts/:post_id/post_comments' do
     context 'as an authorized user' do
       before do
         sign_in user
@@ -44,7 +44,7 @@ RSpec.describe 'PostComments', type: :request do
   #  end
   #end
 
-  describe 'DELETE /posts/:post_id/post_comments' do
+  describe '# DELETE /posts/:post_id/post_comments' do
     context 'as an authorized user' do
       before do
         sign_in user

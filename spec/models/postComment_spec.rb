@@ -18,13 +18,7 @@ RSpec.describe 'PostComment', type: :model do
         expect(postComment.errors[:comment]).to include(I18n.t('errors.messages.blank'))
       end
 
-      it 'is invalid without rate' do
-        postComment.rate = nil
-        postComment.valid?
-        expect(postComment.errors[:rate]).to include(I18n.t('errors.messages.blank'))
-      end
-
-      it 'is invalid without rate' do
+      it 'is invalid without title' do
         postComment.title = nil
         postComment.valid?
         expect(postComment.errors[:title]).to include(I18n.t('errors.messages.blank'))
