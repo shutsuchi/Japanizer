@@ -8,7 +8,7 @@
 #  mean          :string(255)
 #  people        :integer
 #  post_quantity :integer          default(0), not null
-#  rate          :float(24)        not null
+#  rate          :float(24)        default(0.0)
 #  title         :string(255)      not null
 #  created_at    :datetime         not null
 #  updated_at    :datetime         not null
@@ -38,11 +38,6 @@ RSpec.describe 'Album', type: :model do
         expect(album.errors[:post_quantity]).to include(I18n.t('errors.messages.blank'))
       end
 
-      it 'is invalid without rate' do
-        album.rate = nil
-        album.valid?
-        expect(album.errors[:rate]).to include(I18n.t('errors.messages.blank'))
-      end
 
       it "is invalid without title" do
         album.title = nil

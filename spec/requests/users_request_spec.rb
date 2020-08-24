@@ -1,7 +1,7 @@
 require 'rails_helper'
 
-RSpec.describe 'Users', type: :request do
-  describe 'GET /users/:id' do
+RSpec.describe 'USERS-TEST', type: :request do
+  describe '# GET /users/:id' do
     context 'as an authorized user' do
       before do
         sign_in user
@@ -46,7 +46,7 @@ RSpec.describe 'Users', type: :request do
     end
   end
 
-  describe 'GET /users/:id/edit' do
+  describe '# GET /users/:id/edit' do
     context 'as an authorized user' do
       before do
         sign_in user
@@ -90,7 +90,7 @@ RSpec.describe 'Users', type: :request do
     end
   end
 
-  describe 'GET /users/:user_id/withdraw' do
+  describe '# GET /users/:user_id/withdraw' do
     context 'as an authorized user' do
       let(:user){ create(:user) }
       let(:another_user){ create(:another_user) }
@@ -133,7 +133,7 @@ RSpec.describe 'Users', type: :request do
     end
   end
 
-  describe 'PATCH /users/:user_id/switch' do
+  describe '# PATCH /users/:user_id/switch' do
     context 'as an authorized user' do
       before do
         sign_in user
@@ -196,7 +196,7 @@ RSpec.describe 'Users', type: :request do
     end
   end
 
-  describe 'PATCH /users/:id' do
+  describe '# PATCH /users/:id' do
     context 'as an authorized user' do
       before do
         sign_in user

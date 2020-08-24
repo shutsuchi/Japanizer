@@ -1,7 +1,7 @@
 require 'rails_helper'
 
-RSpec.describe 'Likes', type: :request do
-  describe 'POST /posts/:post_id/likes' do
+RSpec.describe 'LILES-TEST', type: :request do
+  describe '# POST /posts/:post_id/likes' do
     context 'as an authorized user' do
       context 'as a user who created' do
         before do
@@ -19,7 +19,7 @@ RSpec.describe 'Likes', type: :request do
     end
   end
 
-  describe 'DELETE /posts/:post_id/likes' do
+  describe '# DELETE /posts/:post_id/likes' do
     context 'as an authorized user' do
       context 'as a user who created' do
         before do
