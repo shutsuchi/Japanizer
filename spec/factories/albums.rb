@@ -8,7 +8,7 @@
 #  mean          :string(255)
 #  people        :integer
 #  post_quantity :integer          default(0), not null
-#  rate          :float(24)        not null
+#  rate          :float(24)        default(0.0)
 #  title         :string(255)      not null
 #  created_at    :datetime         not null
 #  updated_at    :datetime         not null

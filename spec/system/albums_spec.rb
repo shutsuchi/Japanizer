@@ -54,15 +54,10 @@ describe 'ALBUM-TEST', type: :system do
     context 'check function of create-form' do
       it 'create a album successfully' do
         fill_in 'album[title]', with: 'nice'
-        fill_in 'album[rate]', with: 4
         fill_in 'album[comment]', with: 'good'
 
         first_gen_el = find("#album_genre_id > option:nth-child(1)").text
-        select(first_gen_el, from: "album_genre_el")
-        first_bud_el = find("#album_budget_id > option:nth-child(1)").text
-        select(first_bud_el, from: "album_budget_el")
-        first_peo_el = find("#album_people_id > option:nth-child(1)").text
-        select(first_peo_el, from: "album_people_el")
+        select(first_gen_el, from: "album_genre_id")
         click_on 'commit'
       end
       it 'failed to create a album' do
@@ -96,7 +91,7 @@ describe 'ALBUM-TEST', type: :system do
         expect(page).to have_content album.rate
       end
       it 'contains a album-genre-name' do
-        expect(page).to have_content album.genre.name
+        expect(page).to have_content album.genre.en_name
       end
       it 'contains a album-budget' do
         expect(page).to have_content album.budget
@@ -179,7 +174,6 @@ describe 'ALBUM-TEST', type: :system do
       end
       it 'edit a album successfully' do
         fill_in 'album[title]', with: 'fuuuuu'
-        check('album_post_quantity_1')
         click_button 'commit'
         expect(page).to have_content I18n.t('albums.flash.u_notice')
         expect(current_path).to eq '/ja/albums/' + album.id.to_s

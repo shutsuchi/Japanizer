@@ -5,7 +5,9 @@ describe 'POST-TEST', type: :system do
   let!(:user2){ create(:another_user) }
   let!(:post){ create(:post, user: user, album: album) }
   let!(:post2){ create(:another_post, user: user2) }
-  let!(:album){ create(:album) }
+  let!(:album){ create(:album, user: user) }
+  let!(:prefecture){ create(:prefecture) }
+  let!(:city){ create(:city, prefecture: prefecture) }
   before do
     visit new_user_session_path
     fill_in 'user[email]', with: user.email
@@ -13,7 +15,7 @@ describe 'POST-TEST', type: :system do
     click_on 'commit'
   end
 
-  describe '# INDEX(new)-page test' do
+  describe '# INDEX(new)-page-test' do
     before do
       visit posts_path
     end
@@ -49,22 +51,23 @@ describe 'POST-TEST', type: :system do
       end
     end
     context 'check function of create-form'  do
-      it 'create a post successfully' do
+      before do
         fill_in 'post[title]', with: 'nice'
-        #find("#review_star", minimum: 1).select_option
-        fill_in 'post[rate]', with: 4
         fill_in 'post[comment]', with: 'good'
 
-        first_gen_el = find("#post_genre_id > option:nth-child(2)").text
-        select(first_gen_el, from: "post_genre_id")
-        first_pre_el = find("#post_prefecture_id > option:nth-child(2)").text
-        select(first_pre_el, from: "post_prefecture_id")
-        first_cit_el = find("#post_city_id > option:nth-child(2)").text
-        select(first_cit_el, from: "post_city_id")
+        gen_el = find("#post_genre_id > option:nth-child(2)").text
+        select(gen_el, from: "post_genre_id", match: :first)
+        pre_el = find("#post_prefecture_id > option:nth-child(2)").text
+        select(pre_el, from: "post_prefecture_id", match: :first)
+        cit_el = find("#post_city_id> option:nth-child(1)").text
+        select(cit_el, from: "post_city_id", match: :first)
+      end
+      it 'create a post successfully' do
         click_on 'commit'
-        expect(page).to have_content 'successfully'
+        expect(page).to have_content I18n.t('posts.flash.s_alert')
       end
       it 'failed to create a post' do
+        fill_in 'post[title]', with: ''
         click_on 'commit'
         expect(page).to have_content I18n.t('posts.flash.s_alert')
         expect(current_path).to eq('/ja/posts')
@@ -93,13 +96,13 @@ describe 'POST-TEST', type: :system do
         expect(page).to have_content post.rate
       end
       it 'contains a post-prefecture' do
-        expect(page).to have_content post.prefecture.name
+        expect(page).to have_content post.prefecture.en_name
       end
       it 'contains a post-city' do
-        expect(page).to have_content post.city.name
+        expect(page).to have_content post.city.en_name
       end
       it 'contains a post-genre' do
-        expect(page).to have_content post.genre.name
+        expect(page).to have_content post.genre.en_name
       end
       it 'contains a post-comment' do
         expect(page).to have_content post.comment
@@ -109,22 +112,41 @@ describe 'POST-TEST', type: :system do
       before do
         visit post_path(id: post)
       end
-      it 'contains an edit-button of the post' do
-        expect(page).to have_link I18n.t('posts.show.edit_btn'), href: '/ja/posts/' + post.id.to_s + '/edit'
+      context 'check contains' do
+        it 'contains an edit-button of the post' do
+          expect(page).to have_link I18n.t('posts.show.edit_btn'), href: '/ja/posts/' + post.id.to_s + '/edit'
+        end
+        it 'contains a delete-button of the post' do
+          expect(page).to have_link I18n.t('posts.show.delete_btn'), href: '/ja/posts/' + post.id.to_s
+        end
       end
-      it 'contains a delete-button of the post' do
-        expect(page).to have_link I18n.t('posts.show.delete_btn'), href: '/ja/posts/' + post.id.to_s
+      context 'check links' do
+        it 'click the link to edit_post_path' do
+          click_on I18n.t('posts.show.edit_btn')
+          expect(current_path).to eq '/ja/posts/' + post.id.to_s + '/edit'
+        end
       end
+      context 'check functions' do
+        it 'deleting a post' do
+          expect{
+            click_on I18n.t('posts.show.delete_btn')
+            expect(current_path).to eq '/ja/users/' + user.id.to_s
+          }.to change(user.posts, :count).by(-1)
+        end
+      end
+
     end
     context "visit other's post detail page" do
       before do
         visit post_path(id: post2)
       end
-      it "doesn't contains an edit-button of the post" do
-        expect(page).to have_no_link I18n.t('posts.show.edit_btn'), href: '/ja/posts/' + post2.id.to_s + '/edit'
-      end
-      it "doesn't contains a delete-button of the post" do
-        expect(page).to have_no_link I18n.t('posts.show.delete_btn'), href: '/ja/psots/' + post.id.to_s
+      context 'check contains' do
+        it "doesn't contains an edit-button of the post" do
+          expect(page).to have_no_link I18n.t('posts.show.edit_btn'), href: '/ja/posts/' + post2.id.to_s + '/edit'
+        end
+        it "doesn't contains a delete-button of the post" do
+          expect(page).to have_no_link I18n.t('posts.show.delete_btn'), href: '/ja/posts/' + post.id.to_s
+        end
       end
     end
   end
@@ -152,23 +174,23 @@ describe 'POST-TEST', type: :system do
         expect(page).to have_field 'post[title]', with: post.title
       end
       it 'contains a genre-edit-select-box' do
-        first_gen_el = find("#post_genre_id > option:nth-child(1)").text
-        expect(page).to have_select('post[genre_id]'), with: first_gen_el
+        gen_el = find("#post_genre_id > option:nth-child(1)").text
+        expect(page).to have_select('post[genre_id]'), with: gen_el, match: :first
       end
       it 'contains a prefecture-edit-select-box' do
-        first_pre_el = find("#post_prefecture_id > option:nth-child(1)").text
-        expect(page).to have_select('post[prefecture_id]'), with: first_pre_el
+        pre_el = find("#post_prefecture_id > option:nth-child(1)").text
+        expect(page).to have_select('post[prefecture_id]'), with: pre_el
       end
       it 'contains a city-edit-select-box' do
-        first_cit_el = find("#post_city_id > option:nth-child(1)").text
-        expect(page).to have_select('post[city_id]'), with: first_cit_el
+        cit_el = find("#post_city_id > option:nth-child(1)").text
+        expect(page).to have_select('post[city_id]'), with: cit_el
       end
       it 'contains a comment-edit-form' do
         expect(page).to have_field 'post[comment]', with: post.comment
       end
       it 'contains a album-edit-select-box' do
-        first_alb_el = find("#post_album_id > option:nth-child(1)").text
-        expect(page).to have_select('post[album_id]'), with: first_alb_el
+        alb_el = find("#post_album_id").text
+        expect(page).to have_select('post[album_id]'), with: alb_el
       end
     end
     context 'check function of edit-form'  do

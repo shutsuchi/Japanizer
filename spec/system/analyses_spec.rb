@@ -21,8 +21,6 @@ describe 'ANALYSES-TEST', type: :system do
       it 'contains a budget-rank-subtitle' do
         expect(page).to have_content I18n.t('analyses.data.budget_rank')
       end
-      it '' do
-      end
     end
   end
   describe '# RANK-page-test' do
