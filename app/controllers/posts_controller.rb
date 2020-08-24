@@ -21,16 +21,16 @@ class PostsController < ApplicationController
       if params[:user]
         # Current_user's Post
         pg1 = params[:user]
-        @user_posts_pg = type_page_4(current_user.posts, pg1)
+        @user_posts_pg = type_page_8(current_user.posts, pg1)
       else
-        @user_posts_pg = page_4(current_user.posts)
+        @user_posts_pg = page_8(current_user.posts)
       end
       if params[:other]
         pg2 = params[:other]
         # Other User's Post
-        @others_posts_pg = type_page_4(Post.includes(:user).where.not(user_id: current_user.id), pg2)
+        @others_posts_pg = type_page_8(Post.includes(:user).where.not(user_id: current_user.id), pg2)
       else
-        @others_posts_pg = page_4(Post.includes(:user).where.not(user_id: current_user.id))
+        @others_posts_pg = page_8(Post.includes(:user).where.not(user_id: current_user.id))
       end
     end
   end

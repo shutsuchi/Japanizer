@@ -12,6 +12,10 @@ en:
       u_notice: 'Post was successfully updated'
       u_alert: 'Post was NOT updated'
 
+    cm_flash:
+      s_alert: 'Comment was NOT saved'
+      u_alert: 'Comment was NOT updated'
+
     index:
       new_form: 'New Post'
       f_image: 'Image'

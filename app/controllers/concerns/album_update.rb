@@ -18,7 +18,7 @@ module AlbumUpdate
   end
 
   def post_album_update(album)
-    if album.post_quantity.present?
+    unless album.post_quantity.nil?
       c = 0
       while c < album.post_quantity
           post_id = params[:album][:post_quantity][c].to_i
