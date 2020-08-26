@@ -12,6 +12,10 @@ ja:
       u_notice: '投稿を更新しました。'
       u_alert: '投稿の更新に失敗しました'
 
+    cm_flash:
+      s_alert: 'コメントしました。'
+      s_alert: 'コメントの作成に失敗しました'
+
     index:
       new_form: '投稿してみる?'
       f_image: '画像'

@@ -41,7 +41,7 @@ class PostsController < ApplicationController
     @thepost = find_post(params[:id])
     @comment = PostComment.new
     @comments = @thepost.post_comments.all
-    @comments_pg = @thepost.post_comments.page(params[:page]).reverse_order.per(5)
+    @comments_pg = page_5(@thepost.post_comments)
   end
 
   # GET /post/:id/edit
@@ -87,7 +87,6 @@ class PostsController < ApplicationController
         @pref_first_id = pref.id
         break
       end
-      @post = Post.new
       # Current_user's Post
       @user_posts_pg = page_4(current_user.posts)
       # Other User's Post

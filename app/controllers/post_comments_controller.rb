@@ -9,14 +9,17 @@ class PostCommentsController < ApplicationController
   def create
     @thepost = find_post(params[:post_id])
     @comments_pg = page_5(@thepost.post_comments)
-    comment = current_user.post_comments.new(post_comment_params)
-    comment.post_id = @thepost.id
+    @comment = current_user.post_comments.new(post_comment_params)
+    @comment.post_id = @thepost.id
     respond_to do |format|
-      if comment.save
-        format.js
+      if @comment.save
+        @comment = PostComment.new
+        format.js { render :create }
       else
+        @comments = @thepost.post_comments
         flash.now[:alert] = t('posts.cm_flash.s_alert')
-        render post_path(@thepost)
+        format.js { render :show }
+        #render post_path(@thepost)
       end
     end
   end
