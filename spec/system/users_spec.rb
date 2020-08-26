@@ -89,7 +89,7 @@ describe 'USER-TEST', type: :system do
         end
         context "transit other user's page" do
           it 'redirect the page to own user page' do
-            expect(current_path).to eq '/users/' + user2.id.to_s
+            expect(current_path).to eq '/ja/users/' + user.id.to_s
           end
         end
       end
@@ -192,9 +192,9 @@ describe 'USER-TEST', type: :system do
         before do
           visit user_path(id: user2)
         end
-        context 'transit to withdraw_path' do
+        context 'transit to edit_user_path' do
           it 'redirets the page to own user_path' do
-            expect(current_path).to eq '/users/' + user2.id.to_s
+            expect(current_path).to eq '/ja/users/' + user.id.to_s
           end
         end
       end

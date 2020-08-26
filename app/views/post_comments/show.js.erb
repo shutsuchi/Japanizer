@@ -1,0 +1,5 @@
+$('#comment-form-js').html("<%= j(render 'posts/comment_form', thepost: @thepost, comment: @comment, comments: @comments) %>");
+$('#error_pop').html("<%= j(render 'layouts/error_message', model: @comment) %>");
+$('#comment-title').val('');
+$('.comment-rate').val(0.0);
+$('#comment-body').val('');
