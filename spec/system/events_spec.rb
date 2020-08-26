@@ -102,7 +102,7 @@ describe 'EVENT-TEST', type: :system do
       end
       it 'cannot visit other user-show page' do
         visit user_path(id: user2)
-        expect(current_path).to eq '/users/' + user2.id.to_s
+        expect(current_path).to eq '/ja/users/' + user.id.to_s
       end
     end
     context 'check function of new-form' do

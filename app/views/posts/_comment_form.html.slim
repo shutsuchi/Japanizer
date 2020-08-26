@@ -1,26 +1,30 @@
-.post-show-new-form__form
-  = form_with(model: [thepost, comment], remote: true) do |f|
-    .form-window.row
-      = f.label t('posts.show.c_title')
-      br
-      = f.text_field :title, id:"comment-title",  placeholder:"Title"
-    .form-window.row#star.comment-rate
-      = f.label t('posts.show.c_rate')
-      br
-      = f.hidden_field :rate, id: :review_star
-      //rate 評価javascript
-      javascript:
-          $('#star').raty({
-            size      : 36,
-            starOff   : '#{asset_path('star-off.png')}',
-            starOn    : '#{asset_path('star-on.png')}',
-            starHalf  : '#{asset_path('star-half.png')}',
-            scoreName : 'post[rate]',
-            half      : true,
-          });
-    .form-window.row
-      = f.label t('posts.show.c_comment')
-      br
-      = f.text_area :comment, rows:'5', id:"comment-body", class:"field col-xs-8", placeholder:"comment here"
-    .form-submit.row
-      = f.submit t('posts.show.c_submit'), class:"btn btn-md btn-base-1 btn-primary pull-left"
+.col-xs-12
+  = render 'layouts/error_message', model: comment
+.col-xs-12
+  .post-show-new-form__form
+    = form_with(model: [thepost, comment], remote: true) do |f|
+      .form-window.row
+        = f.label t('posts.show.c_title')
+        br
+        = f.text_field :title, id:"comment-title",  placeholder:"Title"
+      /評価が0になってしまうため一時表示停止
+      /.form-window.row#star.comment-rate
+        = f.label t('posts.show.c_rate')
+        br
+        = f.hidden_field :rate, id: :review_star
+        //rate 評価javascript
+        javascript:
+            $('#star').raty({
+              size      : 36,
+              starOff   : '#{asset_path('star-off.png')}',
+              starOn    : '#{asset_path('star-on.png')}',
+              starHalf  : '#{asset_path('star-half.png')}',
+              scoreName : 'post[rate]',
+              half      : true,
+            });
+      .form-window.row
+        = f.label t('posts.show.c_comment')
+        br
+        = f.text_area :comment, rows:'5', id:"comment-body", class:"field col-xs-8", placeholder:"comment here"
+      .form-submit.row
+        = f.submit t('posts.show.c_submit'), class:"btn btn-md btn-base-1 btn-primary pull-left"

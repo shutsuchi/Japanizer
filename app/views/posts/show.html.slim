@@ -25,18 +25,16 @@
                       span
                         = t('posts.show.delete_btn')
           .col-xs-7
-            = render 'detail', thepost: @thepost
+            = render 'posts/detail', thepost: @thepost
 - if @thepost.user != current_user
   .col-xs-6
-    .post-show-new-form
-      .col-xs-12
-        = render 'layouts/error_message', model: @comment
-      .col-xs-12
-        .post-show-new-form__title.text-center
-          h2
-            = t('posts.show.new_comment')
     .col-xs-12
-      = render 'comment_form', thepost: @thepost, comment: @comment
+      .post-show-new-form__title.text-center
+        h2
+          = t('posts.show.new_comment')
+    .post-show-new-form
+      .post-show-comment#comment-form-js
+        = render 'posts/comment_form', thepost: @thepost, comment: @comment
   .col-xs-6
     .post-show-comment
       .col-xs-12.text-center

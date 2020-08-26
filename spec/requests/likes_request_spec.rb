@@ -1,6 +1,6 @@
 require 'rails_helper'
 
-RSpec.describe 'LILES-TEST', type: :request do
+RSpec.describe 'LIKES-TEST', type: :request do
   describe '# POST /posts/:post_id/likes' do
     context 'as an authorized user' do
       context 'as a user who created' do
