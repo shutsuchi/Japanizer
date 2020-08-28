@@ -11,7 +11,7 @@
       .rank-box__image-box
         .rank-box__icon
           = link_to album_path(album) do
-            = attachment_image_tag album, :image, fallback:"img/no_photo.png", class:"field", size:"85x65"
+            = attachment_image_tag album, :image, fallback:"img/no_photo.png", class:"field rank-box__image-box--pic", size:"85x65"
       .rank-box__icon-box
         .col-xs-12
           .col-xs-4
