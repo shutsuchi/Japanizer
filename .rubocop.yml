@@ -1,0 +1,25 @@
+AllCops:
+  Exclude:
+    - 'tmp/**/*'
+    - 'config/initializers/*'
+    - 'vendor/**/*'
+    - 'db/schema.rb'
+    - 'db/migrate/*.rb'
+    - 'bin/*'
+    - '.git/**/*'
+  DisplayCopNames: true
+  TargetRubyVersion: 2.5.7
+
+Rails:
+  Enabled: true
+
+Style/BlockDelimiters:
+  AutoCorrect: false
+  Exclude:
+    - 'spec/**/*'
+
+Style/AsciiComments:
+  Enabled: false
+
+Bundler/OrderedGems:
+  Enabled: false
