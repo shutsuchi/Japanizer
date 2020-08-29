@@ -12,7 +12,7 @@ require 'rails_helper'
 
 RSpec.describe 'Like', type: :model do
   describe 'validation' do
-    let(:like){ create(:like) }
+    let(:like) { create(:like) }
 
     context 'valid for presence' do
       # can save with all fill in
@@ -38,8 +38,8 @@ RSpec.describe 'Like', type: :model do
 
   describe 'association' do
     context 'belongs to' do
-      let!(:user){ create(:user) }
-      let!(:post){ create(:post) }
+      let!(:user) { create(:user) }
+      let!(:post) { create(:post) }
       before { create(:like, id: 1, user: user) }
       before { create(:like, id: 2, post: post) }
       it 'is be able to refer specific user' do

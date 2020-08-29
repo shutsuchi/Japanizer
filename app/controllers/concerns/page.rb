@@ -26,15 +26,12 @@ module Page
   end
 
   def page_8(obj)
-    if obj == nil
-      return nil
-    else
-      obj.page(params[:page]).order(created_at: :desc).per(8)
-    end
+    return nil if obj.nil?
+
+    obj.page(params[:page]).order(created_at: :desc).per(8)
   end
 
   def array_page(obj)
     Kaminari.paginate_array([obj]).page(params[:page]).per(8)
   end
-
 end

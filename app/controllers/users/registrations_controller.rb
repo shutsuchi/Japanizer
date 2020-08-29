@@ -15,14 +15,14 @@ class Users::RegistrationsController < Devise::RegistrationsController
   def create
     super
     # Empty Recorde Create (album, event)
-    if @user.save
-      event = @user.events.new(user_id: @user.id, genre_id: 1)
-      if event.save
-        album = @user.albums.new(user_id: @user.id, genre_id: 1, title: '', post_quantity: 0)
-        album.save
-      end
-      flash[:notice] = t('users.flash.s_notice')
+    return unless @user.save
+
+    event = @user.events.new(user_id: @user.id, genre_id: 1)
+    if event.save
+      album = @user.albums.new(user_id: @user.id, genre_id: 1, title: '', post_quantity: 0)
+      album.save
     end
+    flash[:notice] = t('users.flash.s_notice')
   end
 
   # GET /resource/edit

@@ -7,9 +7,7 @@ class LikesController < ApplicationController
     @post = find_post(params[:post_id])
     like = current_user.likes.new(post_id: @post.id)
     respond_to do |format|
-      if like.save
-        format.js
-      end
+      format.js if like.save
     end
   end
 
@@ -19,9 +17,7 @@ class LikesController < ApplicationController
     @post = find_post(params[:post_id])
     like = current_user.likes.find_by(post_id: @post.id)
     respond_to do |format|
-      if like.destroy
-        format.js
-      end
+      format.js if like.destroy
     end
   end
 

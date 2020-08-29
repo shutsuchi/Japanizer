@@ -20,5 +20,4 @@ module UserStatus
   def give_obj(obj, theuser)
     obj.where(user_id: theuser.id)
   end
-
 end

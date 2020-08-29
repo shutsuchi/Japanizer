@@ -31,4 +31,3 @@ module Japanizer
 
   end
 end
-

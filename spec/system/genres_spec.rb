@@ -5,9 +5,9 @@ describe 'GENRE-TEST', type: :system do
     before do
       visit genres_path
     end
-    let(:genre){ create(:genre, id: 1) }
-    let(:genre2){ create(:genre, id: 2) }
-    let(:genre3){ create(:genre, id: 3) }
+    let(:genre) { create(:genre, id: 1) }
+    let(:genre2) { create(:genre, id: 2) }
+    let(:genre3) { create(:genre, id: 3) }
     context 'check contents' do
       it 'contains a page-title' do
         expect(page).to have_content I18n.t('genres.index.pagetitle')

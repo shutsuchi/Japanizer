@@ -19,7 +19,6 @@ class PostCommentsController < ApplicationController
         @comments = @thepost.post_comments
         flash.now[:alert] = t('posts.cm_flash.s_alert')
         format.js { render :show }
-        #render post_path(@thepost)
       end
     end
   end
@@ -37,9 +36,7 @@ class PostCommentsController < ApplicationController
   def destroy
     @comment = find_comment(params[:id])
     respond_to do |format|
-      if @comment.destroy
-        format.js
-      end
+      format.js if @comment.destroy
     end
   end
 

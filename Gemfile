@@ -41,7 +41,7 @@ group :development, :test do
   gem 'pry-rails'
   # Call 'byebug' anywhere in the code to stop execution,
   # and get a debugger console
-  gem 'byebug', platforms: [:mri, :mingw, :x64_mingw]
+  gem 'byebug', platforms: %i[mri mingw x64_mingw]
   # For Display schema on model-file
   gem 'annotate'
 end
@@ -64,14 +64,14 @@ group :test do
   gem 'capybara', '>= 2.15'
   gem 'selenium-webdriver'
   # Easy installation and use of chromedriver to run system tests with Chrome
-  #gem 'chromedriver-helper'
+  # gem 'chromedriver-helper'
   gem 'webdrivers'
   gem 'rspec-rails'
   gem 'factory_bot_rails'
 end
 
 # Windows does not include zoneinfo files, so bundle the tzinfo-data gem
-gem 'tzinfo-data', platforms: [:mingw, :mswin, :x64_mingw, :jruby]
+gem 'tzinfo-data', platforms: %i[mingw mswin x64_mingw jruby]
 
 # For UserFunc
 gem 'devise', '~> 4.7.1'

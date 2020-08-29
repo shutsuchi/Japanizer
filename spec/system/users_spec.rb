@@ -1,9 +1,9 @@
 require 'rails_helper'
 
 describe 'USER-TEST', type: :system do
-  let(:user){ create(:user) }
-  let!(:user2){ create(:another_user) }
-  let!(:event){ create(:event) }
+  let(:user) { create(:user) }
+  let!(:user2) { create(:another_user) }
+  let!(:event) { create(:event) }
 
   describe '# SHOW-page-test' do
     context 'as an authorized user' do

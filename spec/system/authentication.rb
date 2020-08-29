@@ -1,11 +1,11 @@
 require 'rails_helper'
 
 describe 'USER-AUTH-TEST' do
-  let!(:user){ create(:user) }
-  let!(:post){ create(:post, user: user) }
-  let!(:album){ create(:album, user: user) }
+  let!(:user) { create(:user) }
+  let!(:post) { create(:post, user: user) }
+  let!(:album) { create(:album, user: user) }
   describe "# User doesn't log in" do
-    context "Access URL related to user" do
+    context 'Access URL related to user' do
       it 'cannot transit to show-page' do
         visit user_path(id: user)
         expect(current_path).to eq('/users/sign_in')
@@ -39,7 +39,7 @@ describe 'USER-AUTH-TEST' do
         expect(current_path).to eq('/users/sign_in')
       end
     end
-    context "Access URL related to album" do
+    context 'Access URL related to album' do
       it 'can transit to index-page' do
         visit albums_path
         expect(current_path).to eq('/albums')
@@ -53,7 +53,7 @@ describe 'USER-AUTH-TEST' do
         expect(current_path).to eq('/users/sign_in')
       end
     end
-    context "Access URL related to search" do
+    context 'Access URL related to search' do
       it 'can transit to data-page' do
         visit data_path
         expect(current_path).to eq('/data')

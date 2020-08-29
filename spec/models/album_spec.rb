@@ -22,24 +22,23 @@ RSpec.describe 'Album', type: :model do
   describe 'validation' do
 
     context 'valid for presence' do
-      let(:album){ build(:album) }
+      let(:album) { build(:album) }
       it 'is valid with post_quantity, rate, title, user_id, genre_id' do
         expect(album).to be_valid
       end
     end
 
     context 'invalid for presence' do
-      let(:album){ build(:album) }
-      let(:user){ create(:user) }
-      let(:genre){ create(:genre) }
+      let(:album) { build(:album) }
+      let(:user) { create(:user) }
+      let(:genre) { create(:genre) }
       it 'is invalid without post_quantity' do
         album.post_quantity = nil
         album.valid?
         expect(album.errors[:post_quantity]).to include(I18n.t('errors.messages.blank'))
       end
 
-
-      it "is invalid without title" do
+      it 'is invalid without title' do
         album.title = nil
         album.valid?
         expect(album.errors[:title]).to include(I18n.t('errors.messages.blank'))
@@ -61,8 +60,8 @@ RSpec.describe 'Album', type: :model do
 
   describe 'association' do
     context 'belongs to' do
-      let!(:user){ create(:user) }
-      let!(:genre){ create(:genre) }
+      let!(:user) { create(:user) }
+      let!(:genre) { create(:genre) }
       before { create(:album, title: 'nice', user: user) }
       before { create(:album, title: 'ok', genre: genre) }
       it 'is be able to refer specific user' do
@@ -77,7 +76,7 @@ RSpec.describe 'Album', type: :model do
     end
 
     context 'has many' do
-      let!(:album){ create(:album) }
+      let!(:album) { create(:album) }
       before { create(:post, title: 'cool', album: album) }
       before { create(:bookmark, id: 1, album: album) }
       it 'is be able to contain posts' do

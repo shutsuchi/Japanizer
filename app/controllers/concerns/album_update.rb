@@ -2,11 +2,7 @@ module AlbumUpdate
   extend ActiveSupport::Concern
 
   def post_quantity_update(album)
-    if params[:album][:post_quantity]
-      params[:album][:post_quantity]
-    else
-      album.post_quantity
-    end
+    params[:album][:post_quantity] || album.post_quantity
   end
 
   def rate_update(album)
@@ -18,15 +14,14 @@ module AlbumUpdate
   end
 
   def post_album_update(album)
-    unless album.post_quantity.nil?
-      c = 0
-      while c < album.post_quantity
-          post_id = params[:album][:post_quantity][c].to_i
-          post = find_post(post_id)
-          post.update(album_id: album.id)
-          (c += 1)
-      end
+    return if album.post_quantity.nil?
+
+    c = 0
+    while c < album.post_quantity
+      post_id = params[:album][:post_quantity][c].to_i
+      post = find_post(post_id)
+      post.update(album_id: album.id)
+      (c += 1)
     end
   end
-
 end

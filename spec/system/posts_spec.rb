@@ -1,13 +1,13 @@
 require 'rails_helper'
 
 describe 'POST-TEST', type: :system do
-  let(:user){ create(:user) }
-  let!(:user2){ create(:another_user) }
-  let!(:post){ create(:post, user: user, album: album) }
-  let!(:post2){ create(:another_post, user: user2) }
-  let!(:album){ create(:album, user: user) }
-  let!(:prefecture){ create(:prefecture) }
-  let!(:city){ create(:city, prefecture: prefecture) }
+  let(:user) { create(:user) }
+  let!(:user2) { create(:another_user) }
+  let!(:post) { create(:post, user: user, album: album) }
+  let!(:post2) { create(:another_post, user: user2) }
+  let!(:album) { create(:album, user: user) }
+  let!(:prefecture) { create(:prefecture) }
+  let!(:city) { create(:city, prefecture: prefecture) }
   before do
     visit new_user_session_path
     fill_in 'user[email]', with: user.email
@@ -25,7 +25,7 @@ describe 'POST-TEST', type: :system do
       end
     end
     context 'visit as authorized user' do
-      it "contains a page-title" do
+      it 'contains a page-title' do
         expect(page).to have_content(I18n.t('posts.index.new_form'))
       end
       it 'contains a image-form' do
@@ -55,12 +55,12 @@ describe 'POST-TEST', type: :system do
         fill_in 'post[title]', with: 'nice'
         fill_in 'post[comment]', with: 'good'
 
-        gen_el = find("#post_genre_id > option:nth-child(2)").text
-        select(gen_el, from: "post_genre_id", match: :first)
-        pre_el = find("#post_prefecture_id > option:nth-child(2)").text
-        select(pre_el, from: "post_prefecture_id", match: :first)
-        cit_el = find("#post_city_id> option:nth-child(1)").text
-        select(cit_el, from: "post_city_id", match: :first)
+        gen_el = find('#post_genre_id > option:nth-child(2)').text
+        select(gen_el, from: 'post_genre_id', match: :first)
+        pre_el = find('#post_prefecture_id > option:nth-child(2)').text
+        select(pre_el, from: 'post_prefecture_id', match: :first)
+        cit_el = find('#post_city_id> option:nth-child(1)').text
+        select(cit_el, from: 'post_city_id', match: :first)
       end
       it 'create a post successfully' do
         click_on 'commit'
@@ -128,7 +128,7 @@ describe 'POST-TEST', type: :system do
       end
       context 'check functions' do
         it 'deleting a post' do
-          expect{
+          expect {
             click_on I18n.t('posts.show.delete_btn')
             expect(current_path).to eq '/ja/users/' + user.id.to_s
           }.to change(user.posts, :count).by(-1)
@@ -174,22 +174,22 @@ describe 'POST-TEST', type: :system do
         expect(page).to have_field 'post[title]', with: post.title
       end
       it 'contains a genre-edit-select-box' do
-        gen_el = find("#post_genre_id > option:nth-child(1)").text
+        gen_el = find('#post_genre_id > option:nth-child(1)').text
         expect(page).to have_select('post[genre_id]'), with: gen_el, match: :first
       end
       it 'contains a prefecture-edit-select-box' do
-        pre_el = find("#post_prefecture_id > option:nth-child(1)").text
+        pre_el = find('#post_prefecture_id > option:nth-child(1)').text
         expect(page).to have_select('post[prefecture_id]'), with: pre_el
       end
       it 'contains a city-edit-select-box' do
-        cit_el = find("#post_city_id > option:nth-child(1)").text
+        cit_el = find('#post_city_id > option:nth-child(1)').text
         expect(page).to have_select('post[city_id]'), with: cit_el
       end
       it 'contains a comment-edit-form' do
         expect(page).to have_field 'post[comment]', with: post.comment
       end
       it 'contains a album-edit-select-box' do
-        alb_el = find("#post_album_id").text
+        alb_el = find('#post_album_id').text
         expect(page).to have_select('post[album_id]'), with: alb_el
       end
     end

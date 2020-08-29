@@ -14,7 +14,7 @@ RSpec.describe 'ALBUM-TEST', type: :request do
   end
 
   describe '# GET /albums/:id' do
-    let(:album){ create(:album) }
+    let(:album) { create(:album) }
     before do
       get album_path(id: album)
     end
@@ -28,8 +28,8 @@ RSpec.describe 'ALBUM-TEST', type: :request do
 
   describe '# GET /albums/:id/edit' do
     context 'as an authorized user' do
-      let(:album){ create(:album, user_id: 1) }
-      let(:user){ create(:user, id: 1) }
+      let(:album) { create(:album, user_id: 1) }
+      let(:user) { create(:user, id: 1) }
       before do
         sign_in user
         get edit_album_path(id: album)
@@ -42,7 +42,7 @@ RSpec.describe 'ALBUM-TEST', type: :request do
       end
     end
     context 'as a guest user' do
-      let(:album){ create(:album) }
+      let(:album) { create(:album) }
       before do
         get edit_album_path(id: album)
       end
@@ -61,8 +61,8 @@ RSpec.describe 'ALBUM-TEST', type: :request do
         sign_in user
       end
       context 'with valid attributes' do
-        let(:user){ create(:user, id: 1) }
-        let(:album_params){ attributes_for(:album, user: user) }
+        let(:user) { create(:user, id: 1) }
+        let(:album_params) { attributes_for(:album, user: user) }
 
         it 'creates a album record' do
           expect do
@@ -70,13 +70,13 @@ RSpec.describe 'ALBUM-TEST', type: :request do
           end.to change(user.albums, :count).by(0)
         end
         it 'redirects the page to /albums/:id' do
-          #post albums_path, params: { album: album_params }
-          #expect(response).to redirect_to Album.last
+          # post albums_path, params: { album: album_params }
+          # expect(response).to redirect_to Album.last
         end
       end
       context 'with invalid attributes' do
-        let(:user){ create(:user, id: 1) }
-        let(:album_params){ attributes_for(:album, user_id: 1, title: nil) }
+        let(:user) { create(:user, id: 1) }
+        let(:album_params) { attributes_for(:album, user_id: 1, title: nil) }
         before do
           post albums_path, params: { album: album_params }
         end
@@ -96,10 +96,10 @@ RSpec.describe 'ALBUM-TEST', type: :request do
         sign_in user
       end
       context 'as a user who created' do
-        let(:user){ create(:user) }
-        let(:album){ create(:album, id: 1) }
+        let(:user) { create(:user) }
+        let(:album) { create(:album, id: 1) }
         context 'with valid attributes' do
-          let(:album_params){ attributes_for(:album) }
+          let(:album_params) { attributes_for(:album) }
           before do
             patch album_path(id: album), params: { album: album_params }
           end
@@ -109,14 +109,14 @@ RSpec.describe 'ALBUM-TEST', type: :request do
           end
           it 'updates a album record' do
             album.reload
-            #expect(album.title).to eq('nice')
+            # expect(album.title).to eq('nice')
           end
           it 'redirects the page to /albums/:id' do
-            #expect(response).to redirect_to(user_path(id: user))
+            # expect(response).to redirect_to(user_path(id: user))
           end
         end
         context 'with invalid attributes' do
-          let(:album_params){ attributes_for(:another_album, user: user, title: nil) }
+          let(:album_params) { attributes_for(:another_album, user: user, title: nil) }
           before do
             patch album_path(id: album), params: { album: album_params }
           end
@@ -124,14 +124,14 @@ RSpec.describe 'ALBUM-TEST', type: :request do
             expect(response).to have_http_status(302)
           end
           it 'render the page /albums/:id' do
-            #expect(response).to redirect_to(user_path(user))
+            # expect(response).to redirect_to(user_path(user))
           end
         end
       end
       context "creates an other's album" do
-        let(:user){ create(:user) }
-        let(:album){ create(:album, id: 1) }
-        let(:album_params){ attributes_for(:another_album, user: user) }
+        let(:user) { create(:user) }
+        let(:album) { create(:album, id: 1) }
+        let(:album_params) { attributes_for(:another_album, user: user) }
         before do
           patch album_path(id: album), params: { album: album_params }
         end
@@ -139,7 +139,7 @@ RSpec.describe 'ALBUM-TEST', type: :request do
           expect(response).to have_http_status(302)
         end
         it 'redirect the page to /users/:id' do
-          #expect(response).to redirect_to(user_path(user))
+          # expect(response).to redirect_to(user_path(user))
         end
       end
     end
@@ -162,9 +162,9 @@ RSpec.describe 'ALBUM-TEST', type: :request do
         sign_in user
       end
       context 'as a user who created' do
-        let(:user){ create(:user, id: 1) }
-        let(:another_user){ create(:another_user, id: 2) }
-        let(:album){ create(:album, id: 1, user: user) }
+        let(:user) { create(:user, id: 1) }
+        let(:another_user) { create(:another_user, id: 2) }
+        let(:album) { create(:album, id: 1, user: user) }
         it 'deletes a album' do
           expect do
             delete album_path(id: album)
@@ -176,9 +176,9 @@ RSpec.describe 'ALBUM-TEST', type: :request do
         end
       end
       context 'as a user who did not create a album' do
-        let(:user){ create(:user, id: 1) }
-        let(:another_user){ create(:another_user, id: 2) }
-        let(:another_album){ create(:album, id: 1, user: another_user) }
+        let(:user) { create(:user, id: 1) }
+        let(:another_user) { create(:another_user, id: 2) }
+        let(:another_album) { create(:album, id: 1, user: another_user) }
         it 'does not delete a album' do
           expect do
             delete album_path(id: another_album)

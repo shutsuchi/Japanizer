@@ -2,7 +2,7 @@ require 'rails_helper'
 
 RSpec.describe 'PostComment', type: :model do
   describe 'validation' do
-    let(:postComment){ create(:postComment) }
+    let(:postComment) { create(:postComment) }
 
     context 'valid for presence' do
       it 'is valid with title, comment, rate, user_id, post_id' do
@@ -11,7 +11,7 @@ RSpec.describe 'PostComment', type: :model do
     end
 
     context 'invalid for prensence' do
-      let(:postComment){ build(:postComment) }
+      let(:postComment) { build(:postComment) }
       it 'is invalid without comment' do
         postComment.comment = nil
         postComment.valid?
@@ -40,8 +40,8 @@ RSpec.describe 'PostComment', type: :model do
 
   describe 'association' do
     context 'belongs to' do
-      let!(:user){ create(:user) }
-      let!(:post){ create(:post) }
+      let!(:user) { create(:user) }
+      let!(:post) { create(:post) }
       before { create(:postComment, title: 'nice', user: user) }
       before { create(:postComment, title: 'nice', post: post) }
       it 'is be able to refer specific user' do

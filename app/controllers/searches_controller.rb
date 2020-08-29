@@ -3,9 +3,7 @@ class SearchesController < ApplicationController
   # GET /searches
   # search_path
   def search
-
     @keywords = params[:keyword]
-
     if @keyword.present?
       # Plan to add Free-Word search
       # @results = []
@@ -22,7 +20,6 @@ class SearchesController < ApplicationController
       else
         @result_genre = t('searches.any_genre')
       end
-
       @option = params[:option]
       @genre = params[:genre]
       @time = params[:time]
@@ -33,6 +30,5 @@ class SearchesController < ApplicationController
         @albums = Album.params_album_search(@genre, @time, @nation)
       end
     end
-
   end
 end

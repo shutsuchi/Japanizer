@@ -13,7 +13,7 @@ describe 'HEADER-TEST' do
         expect(page).to have_content I18n.t('app.header.title_desc')
       end
       it 'local time' do
-        expect(page).to have_content I18n.l(Time.now)
+        expect(page).to have_content I18n.l(Time.zone.now)
       end
       it 'search icon' do
         expect(page).to have_css('#search-icon')
@@ -49,7 +49,7 @@ describe 'HEADER-TEST' do
     end
   end
   describe '# when logged in' do
-    let(:user){ create(:user) }
+    let(:user) { create(:user) }
     before do
       visit new_user_session_path
       fill_in 'user[email]', with: user.email

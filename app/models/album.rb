@@ -20,7 +20,7 @@ class Album < ApplicationRecord
   belongs_to :user
   belongs_to :genre
   has_many :posts
-  has_many :bookmarks
+  has_many :bookmarks, dependent: :destroy
 
   attachment :image
 
@@ -38,25 +38,25 @@ class Album < ApplicationRecord
   scope :budget_50, -> { where(budget: '40 ~ 50') }
   scope :budget_over, -> { where(budget: '50 ~') }
 
-  scope :age_20, -> { where(users: {age: 1..20}) }
-  scope :age_30, -> { where(users: {age: 20..30}) }
-  scope :age_40, -> { where(users: {age: 30..40}) }
-  scope :age_50, -> { where(users: {age: 40..50}) }
-  scope :age_60, -> { where(users: {age: 50..60}) }
-  scope :age_70, -> { where(users: {age: 60..70}) }
-  scope :age_80, -> { where(users: {age: 70..80}) }
+  scope :age_20, -> { where(users: { age: 1..20 }) }
+  scope :age_30, -> { where(users: { age: 20..30 }) }
+  scope :age_40, -> { where(users: { age: 30..40 }) }
+  scope :age_50, -> { where(users: { age: 40..50 }) }
+  scope :age_60, -> { where(users: { age: 50..60 }) }
+  scope :age_70, -> { where(users: { age: 60..70 }) }
+  scope :age_80, -> { where(users: { age: 70..80 }) }
 
-  scope :jp, -> { where(users: {country_code: 'JP'}) }
-  scope :other, -> { where.not(users: {country_code: 'JP'}) }
+  scope :jp, -> { where(users: { country_code: 'JP' }) }
+  scope :other, -> { where.not(users: { country_code: 'JP' }) }
 
   def bookmarked_by?(user)
     bookmarks.where(user_id: user.id).exists?
   end
 
-  def album_create_rate
-    if self.rate.nil?
-      self.rate = 0
-    end
+  def album_create_rate(album)
+    return unless album.rate.nil?
+
+    album.rate = 0
   end
 
   def self.params_album_search(genre, time, nation)
@@ -64,25 +64,25 @@ class Album < ApplicationRecord
     if time == 'anytime_search'
       albums
     elsif time == 'year_search'
-      day = Date.today
+      day = Time.zone.today
       start_day = day.prev_day(365)
-      end_day = Time.now
+      end_day = Time.zone.now
       range = start_day.beginning_of_day..end_day
       albums.where(created_at: range)
     elsif time == 'month_search'
-      day = Date.today
+      day = Time.zone.today
       start_day = day.prev_day(30)
-      end_day = Time.now
+      end_day = Time.zone.now
       range = start_day.beginning_of_day..end_day
       albums.where(created_at: range)
     elsif time == 'week_search'
-      day = Date.today
+      day = Time.zone.today
       start_day = day.prev_day(7)
-      end_day = Time.now
+      end_day = Time.zone.now
       range = start_day.beginning_of_day..end_day
       albums.where(created_at: range)
     elsif time == 'day_search'
-      end_day = Time.now
+      end_day = Time.zone.now
       range = Date.yesterday.beginning_of_day..end_day
       albums.where(created_at: range)
     end

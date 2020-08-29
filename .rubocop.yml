@@ -1,17 +1,34 @@
+inherit_from: .rubocop_todo.yml
+
+require:
+  - rubocop-rails
+
 AllCops:
   Exclude:
-    - 'tmp/**/*'
+    - 'bin/*'
+    - 'config.ru'
+    - 'config/**/*'
     - 'config/initializers/*'
-    - 'vendor/**/*'
+    - 'db/**/*'
     - 'db/schema.rb'
     - 'db/migrate/*.rb'
-    - 'bin/*'
+    - 'lib/**'
+    - 'lib/**/*'
+    - 'tmp/**/*'
+    - 'vendor/**/*'
     - '.git/**/*'
   DisplayCopNames: true
   TargetRubyVersion: 2.5.7
 
 Rails:
   Enabled: true
+
+Bundler/OrderedGems:
+  Enabled: false
+
+Style/BlockComments:
+  Exclude:
+    - 'spec/spec_helper.rb'
 
 Style/BlockDelimiters:
   AutoCorrect: false
@@ -21,5 +38,56 @@ Style/BlockDelimiters:
 Style/AsciiComments:
   Enabled: false
 
-Bundler/OrderedGems:
+Style/Documentation:
   Enabled: false
+
+Style/ClassAndModuleChildren:
+  Enabled: false
+
+Style/ConditionalAssignment:
+  EnforcedStyle: assign_inside_condition
+
+Style/FrozenStringLiteralComment:
+  Enabled: false
+
+Style/EmptyMethod:
+  Exclude:
+    - 'app/controllers/homes_controller.rb'
+
+Layout/CommentIndentation:
+  Exclude:
+    - 'spec/requests/events_request_spec.rb'
+
+Layout/EmptyLinesAroundBlockBody:
+  Exclude:
+    - 'spec/**/*'
+
+Layout/EmptyLinesAroundClassBody:
+  Enabled: false
+
+Layout/ExtraSpacing:
+  Exclude:
+    - 'spec/requests/post_comments_request_spec.rb'
+    - 'spec/system/albums_spec.rb'
+    - 'spec/system/posts_spec.rb'
+
+Layout/HashAlignment:
+  Enabled: false
+
+Layout/LineLength:
+  Enabled: false
+
+Metrics/BlockLength:
+  Enabled: false
+
+Rails/FilePath:
+  Exclude:
+    - 'spec/rails_helper.rb'
+
+Rails/HasManyOrHasOneDependent:
+  Exclude:
+    - 'app/models/prefecture.rb'
+    - 'app/models/city.rb'
+    - 'app/models/genre.rb'
+    - 'app/models/album.rb'
+    - 'app/models/post.rb'
