@@ -41,7 +41,7 @@ class User < ApplicationRecord
   validates :name, presence: true, length: { in: 1..50 }
   validates :age, presence: true
   validates :country_code, presence: true
-  VALID_EMAIL_REGEX = /\A[\w+\-.]+@[a-z\d\-.]+\.[a-z]+\z/i
+  VALID_EMAIL_REGEX = /\A[\w+\-.]+@[a-z\d\-.]+\.[a-z]+\z/i.freeze
   validates :email, presence: true # format: { with: VALID_EMAIL_REGEX, allow_blank: true }
   validates :withdrawal_flag, inclusion: { in: [true, false] }
   validates :admin, inclusion: { in: [true, false] }

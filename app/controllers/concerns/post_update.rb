@@ -2,11 +2,7 @@ module PostUpdate
   extend ActiveSupport::Concern
 
   def city_update(post)
-    if params[:post][:city_id].blank?
-      post.city_id
-    else
-      params[:post][:city_id]
-    end
+    params[:post][:city_id].presence || post.city_id
   end
 
   def rate_update(post)
@@ -17,5 +13,4 @@ module PostUpdate
       post_params[:rate].to_i
     end
   end
-
 end

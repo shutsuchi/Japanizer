@@ -6,12 +6,10 @@ class GenresController < ApplicationController
   # genres_path
   def index
     @genres = Genre.where.not(id: 1)
-
     @genre_post_ranks = Genre.find(Post.group(:genre_id)
                                       .where.not(genre_id: 1)
                                       .order(Arel.sql('count(genre_id) desc'))
                                       .pluck(:genre_id))
-
     if params[:id].present?
       genre = find_genre(params[:id])
       if params[:post].present?
@@ -74,7 +72,6 @@ class GenresController < ApplicationController
       @posts_pg = page_8(Post)
       @albums_pg = page_6(Album)
     end
-
   end
 
   # GET nation/
@@ -127,5 +124,4 @@ class GenresController < ApplicationController
   def find_genre(genre_id)
     Genre.find(genre_id) if genre_id.present?
   end
-
 end

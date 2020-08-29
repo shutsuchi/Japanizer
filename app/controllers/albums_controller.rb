@@ -10,9 +10,6 @@ class AlbumsController < ApplicationController
   def index
     @album = Album.new
 
-    pg1 = params[:user]
-    pg2 = params[:other]
-
     if current_user.nil?
       @albums_pg = Album.page(params[:page]).order(created_at: :desc).per(6)
     else
@@ -53,9 +50,7 @@ class AlbumsController < ApplicationController
     if current_user.present?
       @thealbum = find_album(params[:id])
       @user_posts = current_user.posts
-      if current_user != @thealbum.user
-        redirect_to top_path
-      end
+      redirect_to top_path if current_user != @thealbum.user
     else
       redirect_to top_path
     end
@@ -66,7 +61,7 @@ class AlbumsController < ApplicationController
   def create
     @album = Album.new(album_params)
     @album.user_id = current_user.id
-    @album.album_create_rate
+    album_create_rate(@album)
 
     if @album.save
       redirect_to @album, notice: t('albums.flash.s_notice')
@@ -77,13 +72,12 @@ class AlbumsController < ApplicationController
         break
       end
       @user_no_posts = Post.where(album_id: @first_album)
-      #@user_no_posts = Post.where(album_id: current_user.albums.first.id)
+      # @user_no_posts = Post.where(album_id: current_user.albums.first.id)
 
       pg1 = params[:user]
       pg2 = params[:other]
       @user_albums_pg = type_page_6(current_user.albums, pg1)
-      @others_albums_pg = type_page_6(Album.includes(:user)
-                                  .where.not(user_id: current_user.id), pg2)
+      @others_albums_pg = type_page_6(Album.includes(:user).where.not(user_id: current_user.id), pg2)
       flash.now[:alert] = t('albums.flash.s_alert')
       render :index
     end
@@ -103,7 +97,7 @@ class AlbumsController < ApplicationController
       people: params[:album][:people],
       post_quantity: post_quantity_update(@thealbum),
       rate: rate_update(@thealbum)
-      )
+    )
       # Update album_id of post selected when album update
       post_album_update(@thealbum)
       redirect_to @thealbum, notice: t('albums.flash.u_notice')
@@ -119,7 +113,7 @@ class AlbumsController < ApplicationController
   def destroy
     thealbum = find_album(params[:id])
     posts = Post.where(album_id: thealbum.id)
-    
+
     # Change Album_id post attached Deleted Album
     # Into id of undefined album
     if thealbum.destroy
@@ -151,8 +145,9 @@ class AlbumsController < ApplicationController
 
   def correct_album
     album = Album.find(params[:id])
-    if album.user.id != current_user.id
-      redirect_to user_path(album.user), alert: t('app.flash.no_access')
-    end
+    # if album.user.id != current_user.id
+    return unless album.user.id != current_user.id
+
+    redirect_to user_path(album.user), alert: t('app.flash.no_access')
   end
 end

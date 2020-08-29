@@ -3,7 +3,7 @@ require 'rails_helper'
 RSpec.describe 'BOOKMARKS-TEST', type: :request do
   describe '# GET /bookmarks' do
     context 'as an authorized user' do
-      let(:user){ create(:user) }
+      let(:user) { create(:user) }
       before do
         sign_in user
         get bookmark_path
@@ -33,9 +33,9 @@ RSpec.describe 'BOOKMARKS-TEST', type: :request do
       before do
         sign_in user
       end
-      let(:user){ create(:user) }
-      let(:album){ create(:album) }
-      let(:bookmark_params){ attributes_for(:bookmark) }
+      let(:user) { create(:user) }
+      let(:album) { create(:album) }
+      let(:bookmark_params) { attributes_for(:bookmark) }
       it 'creates a bookmark' do
         expect do
           post album_bookmarks_path(album_id: album.id), params: { bookmark: bookmark_params }, xhr: true
@@ -50,10 +50,10 @@ RSpec.describe 'BOOKMARKS-TEST', type: :request do
         sign_in user
         post album_bookmarks_path(album_id: album.id), params: { bookmark: bookmark_params }, xhr: true
       end
-      let(:user){ create(:user) }
-      let(:album){ create(:album) }
-      let(:bookmark){ create(:bookmark) }
-      let(:bookmark_params){ attributes_for(:bookmark) }
+      let(:user) { create(:user) }
+      let(:album) { create(:album) }
+      let(:bookmark) { create(:bookmark) }
+      let(:bookmark_params) { attributes_for(:bookmark) }
 
       it 'deletes a bookmark' do
         expect do

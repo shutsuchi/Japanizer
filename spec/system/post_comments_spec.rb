@@ -1,11 +1,11 @@
 require 'rails_helper'
 
 describe 'POSTCOMMENT-TEST', type: :system, js: true do
-  let(:user){ create(:user) }
-  let!(:user2){ create(:another_user) }
-  let!(:post){ create(:post, user: user, album: album) }
-  let!(:post2){ create(:another_post, user: user2) }
-  let!(:album){ create(:album, user: user) }
+  let(:user) { create(:user) }
+  let!(:user2) { create(:another_user) }
+  let!(:post) { create(:post, user: user, album: album) }
+  let!(:post2) { create(:another_post, user: user2) }
+  let!(:album) { create(:album, user: user) }
   before do
     visit new_user_session_path
     fill_in 'user[email]', with: user.email
@@ -33,4 +33,3 @@ describe 'POSTCOMMENT-TEST', type: :system, js: true do
     end
   end
 end
- 

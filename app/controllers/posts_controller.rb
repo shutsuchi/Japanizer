@@ -2,7 +2,6 @@ class PostsController < ApplicationController
   before_action :authenticate_user!, only: %i[edit create update destroy]
   before_action :correct_post, only: %i[edit update destroy]
 
-  #include SessionHelper
   include Page
   include PostUpdate
 
@@ -56,9 +55,7 @@ class PostsController < ApplicationController
     if current_user.present?
       @thepost = find_post(params[:id])
       @user_albums = current_user.albums.all
-      if current_user != @thepost.user
-        redirect_to top_path
-      end
+      redirect_to top_path if current_user != @thepost.user
     else
       redirect_to top_path
     end
@@ -70,15 +67,13 @@ class PostsController < ApplicationController
     @post = Post.new(post_params)
     @post.user_id = current_user.id
     # Post attach temporary to album created when user signup
-      # テスト実行時'first'でnilになるため、下記each文に変更中
-      #@post.album_id = current_user.albums.first.id
+    # テスト実行時'first'でnilになるため、下記each文に変更中
+    # @post.album_id = current_user.albums.first.id
     current_user.albums.each do |album|
       @post.album_id = album.id
       break
     end
-    if @post.rate.nil?
-      @post.rate = 0
-    end
+    @post.rate = 0 if @post.rate.nil?
     if @post.save
       redirect_to @post, notice: t('posts.flash.s_notice')
     else
@@ -108,13 +103,13 @@ class PostsController < ApplicationController
       title: post_params[:title],
       comment: post_params[:comment],
       rate: rate_update(@thepost)
-      )
+    )
 
       redirect_to @thepost, notice: t('posts.flash.u_notice')
     else
       @thepost = find_post(params[:id])
-      #@thepost.user = current_user
-      #@user_albums = current_user.albums.all
+      # @thepost.user = current_user
+      # @user_albums = current_user.albums.all
       @user_albums = @thepost.user.albums
       flash.now[:alert] = t('posts.flash.u_alert')
       render :edit
@@ -150,9 +145,9 @@ class PostsController < ApplicationController
     elsif params[:post_id].present?
       post = Post.find(params[:post_id])
     end
-    
-    if post.user.id != current_user.id
-      redirect_to user_path(current_user), alert: t('app.flash.no_access')
-    end
+
+    return unless post.user.id != current_user.id
+
+    redirect_to user_path(current_user), alert: t('app.flash.no_access')
   end
 end

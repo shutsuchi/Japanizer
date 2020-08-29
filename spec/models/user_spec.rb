@@ -29,7 +29,7 @@ RSpec.describe 'User', type: :model do
   describe 'validation' do
 
     context 'valid for presence' do
-      let(:user){ build(:user) }
+      let(:user) { build(:user) }
 
       it 'is valid with admin, age, country_code, email, password, name, withdrawal_flag' do
         expect(user).to be_valid
@@ -37,32 +37,32 @@ RSpec.describe 'User', type: :model do
     end
 
     context 'invalid for presence' do
-      let(:user){ build(:user) }
-      it "is invalid without a name" do
+      let(:user) { build(:user) }
+      it 'is invalid without a name' do
         user.name = nil
         user.valid?
         expect(user.errors[:name]).to include(I18n.t('errors.messages.blank'))
       end
 
-      it "is invalid without a password" do
+      it 'is invalid without a password' do
         user.password = nil
         user.valid?
         expect(user.errors[:password]).to include(I18n.t('errors.messages.blank'))
       end
 
-      it "is invalid without a email" do
+      it 'is invalid without a email' do
         user = User.new(email: nil)
         user.valid?
         expect(user.errors[:email]).to include(I18n.t('errors.messages.blank'))
       end
 
-      it "is invalid without a age" do
+      it 'is invalid without a age' do
         user = User.new(age: nil)
         user.valid?
         expect(user.errors[:age]).to include(I18n.t('errors.messages.blank'))
       end
 
-      it "is invalid without a country_code" do
+      it 'is invalid without a country_code' do
         user = User.new(country_code: nil)
         user.valid?
         expect(user.errors[:country_code]).to include(I18n.t('errors.messages.blank'))
@@ -70,58 +70,58 @@ RSpec.describe 'User', type: :model do
     end
 
     context 'valid for boolean' do
-      let(:user){ build(:user) }
-      it "is valid true or false for withdrawal_flag" do
+      let(:user) { build(:user) }
+      it 'is valid true or false for withdrawal_flag' do
         user.withdrawal_flag = true
         expect(user.valid?).to be_truthy
       end
 
-      it "is valid true or false for admin flag" do
+      it 'is valid true or false for admin flag' do
         user.admin = false
         expect(user.valid?).to be_truthy
       end
     end
 
     context 'invalid for boolean' do
-      let(:user){ build(:user) }
-      it "is invalid neither true nor false for withdrawal_flag" do
+      let(:user) { build(:user) }
+      it 'is invalid neither true nor false for withdrawal_flag' do
         user.withdrawal_flag = nil
         user.valid?
         expect(user.errors[:withdrawal_flag]).to include(I18n.t('errors.messages.inclusion'))
       end
 
-      it "is invalid neither true nor false for admin flag" do
+      it 'is invalid neither true nor false for admin flag' do
         user.admin = nil
         user.valid?
         expect(user.errors[:admin]).to include(I18n.t('errors.messages.inclusion'))
       end
     end
 
-    context "valid for length" do
-      let(:user){ build(:user) }
-      it "is valid with OVER 6 chracters" do
+    context 'valid for length' do
+      let(:user) { build(:user) }
+      it 'is valid with OVER 6 chracters' do
         user.password = '00000000'
         expect(user.valid?).to be_truthy
       end
     end
 
-    context "invalid for length" do
-      let(:user){ build(:user) }
-      it "is invalid UNDER 6 chracters" do
+    context 'invalid for length' do
+      let(:user) { build(:user) }
+      it 'is invalid UNDER 6 chracters' do
         user.password = '0'
         user.valid?
         expect(user.errors[:password]).to include(I18n.t('errors.messages.too_short', count: 6))
       end
     end
 
-    context "valid for email regex" do
-      let(:user){ build(:user) }
-      it "is valid if matched with valid_email_regex" do
+    context 'valid for email regex' do
+      let(:user) { build(:user) }
+      it 'is valid if matched with valid_email_regex' do
         user.email = 'iiii@iii'
         expect(user.valid?).to be_truthy
       end
 
-      it "is invalid if not matched with valid_email_regex" do
+      it 'is invalid if not matched with valid_email_regex' do
         user.email = 'あiiiiiii'
         user.valid?
         expect(user.errors[:email]).to include(I18n.t('errors.messages.invalid'))
@@ -131,7 +131,7 @@ RSpec.describe 'User', type: :model do
 
   describe 'validation' do
     context 'has many' do
-      let!(:user){ create(:user) }
+      let!(:user) { create(:user) }
       before { create(:post, title: 'cool', user: user) }
       before { create(:album, title: 'nice', user: user) }
       before { create(:event, title: 'date', user: user) }

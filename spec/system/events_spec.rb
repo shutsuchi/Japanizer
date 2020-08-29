@@ -1,9 +1,9 @@
 require 'rails_helper'
 
 describe 'EVENT-TEST', type: :system do
-  let(:user){ create(:user) }
-  let!(:user2){ create(:another_user) }
-  let!(:event){ create(:event, user: user, end: 'Sat, 16 Aug 2019 14:22:84 UTC +00:00') }
+  let(:user) { create(:user) }
+  let!(:user2) { create(:another_user) }
+  let!(:event) { create(:event, user: user, end: 'Sat, 16 Aug 2019 14:22:84 UTC +00:00') }
   before do
     visit new_user_session_path
     fill_in 'user[email]', with: user.email
@@ -106,14 +106,14 @@ describe 'EVENT-TEST', type: :system do
       end
     end
     context 'check function of new-form' do
-    before do
-      visit user_path(id: user)
-    end
+      before do
+        visit user_path(id: user)
+      end
       it 'create a event successfully' do
         fill_in 'event[title]', with: 'meeting'
         fill_in 'event[body]', with: 'about new project'
-        gen_el = find("#event_genre_id > option:nth-child(2)").text
-        select(gen_el, from: "event_genre_id")
+        gen_el = find('#event_genre_id > option:nth-child(2)').text
+        select(gen_el, from: 'event_genre_id')
         fill_in 'event[start]', with: '2020/08/03 12:00'
         fill_in 'event[end]', with: '2020/08/03 14:00'
         click_button 'commit'

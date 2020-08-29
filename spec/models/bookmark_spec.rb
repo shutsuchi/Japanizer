@@ -10,7 +10,7 @@ require 'rails_helper'
 
 RSpec.describe 'Bookmark', type: :model do
   describe 'validation' do
-    let(:bookmark){ create(:bookmark) }
+    let(:bookmark) { create(:bookmark) }
 
     context 'valid for presence' do
       it 'is valid with album_id, user_id' do
@@ -35,8 +35,8 @@ RSpec.describe 'Bookmark', type: :model do
 
   describe 'association' do
     context 'belongs to' do
-      let!(:user){ create(:user) }
-      let!(:album){ create(:album) }
+      let!(:user) { create(:user) }
+      let!(:album) { create(:album) }
       before { create(:bookmark, id: 1, user: user) }
       before { create(:bookmark, id: 2, album: album) }
       it 'is be able to refer specific user' do

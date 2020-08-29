@@ -1,6 +1,6 @@
 class UsersController < ApplicationController
   before_action :authenticate_user!
-  before_action :correct_user, only: %i[show edit withdraw switch update destroy]
+  before_action :correct_user, only: %i[show edit withdraw switch update]
 
   include UserStatus
   include Page
@@ -15,20 +15,16 @@ class UsersController < ApplicationController
     @albums_pg = type_page_6(@theuser.albums, pg_a)
     @event = Event.new
     @events = Event.where(user_id: @theuser.id)
-
     # Count User Got
     @posts = @theuser.posts
     @albums = @theuser.albums
-
     @get_likes = get_post(@posts, Like)
     @get_comments = get_post(@posts, PostComment)
     @get_bookmarks = get_album(@albums, Bookmark)
-
     # Count User Gave
     @give_likes = give_obj(Like, @theuser)
     @give_comments = give_obj(PostComment, @theuser)
     @give_bookmarks = give_obj(Bookmark, @theuser)
-
     respond_to do |format|
       format.html
       format.json { render json: @events }
@@ -79,17 +75,12 @@ class UsersController < ApplicationController
   def correct_user
     if params[:user_id].present?
       user = User.find(params[:user_id])
-      if user.id != current_user.id
-        redirect_to user_path(current_user), alert: t('app.flash.no_access')
-      end
+      redirect_to user_path(current_user), alert: t('app.flash.no_access') if user.id != current_user.id
     elsif params[:id].present?
       if params[:id] != 'sign_out' || params[:id] != 'sign_in'
         user = User.find(params[:id])
-        if user.id != current_user.id
-          redirect_to user_path(current_user), alert: t('app.flash.no_access')
-        end
+        redirect_to user_path(current_user), alert: t('app.flash.no_access') if user.id != current_user.id
       end
     end
-
   end
 end

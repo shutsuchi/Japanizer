@@ -14,8 +14,8 @@ RSpec.describe 'POST-TEST', type: :request do
   end
 
   describe '# GET posts/:id' do
-    let(:post){ create(:post, id: 1, user_id: 1) }
-    let(:user){ create(:user, id: 1) }
+    let(:post) { create(:post, id: 1, user_id: 1) }
+    let(:user) { create(:user, id: 1) }
     before do
       sign_in user
       get post_path(id: post)
@@ -30,8 +30,8 @@ RSpec.describe 'POST-TEST', type: :request do
 
   describe '# GET posts/:id/edit' do
     context 'as an authorized user' do
-      let(:post){ create(:post, user_id: 1) }
-      let(:user){ create(:user, id: 1) }
+      let(:post) { create(:post, user_id: 1) }
+      let(:user) { create(:user, id: 1) }
       before do
         sign_in user
         get edit_post_path(id: post)
@@ -45,7 +45,7 @@ RSpec.describe 'POST-TEST', type: :request do
     end
 
     context 'as a guest user' do
-      let(:post){ create(:post, id: 1) }
+      let(:post) { create(:post, id: 1) }
       before do
         get edit_post_path(id: post)
       end
@@ -63,16 +63,15 @@ RSpec.describe 'POST-TEST', type: :request do
       before do
         sign_in user
       end
-      let(:user){ create(:user, id: 1) }
-      let(:another_user){ create(:another_user) }
+      let(:user) { create(:user, id: 1) }
+      let(:another_user) { create(:another_user) }
       context 'with valid attributes' do
-        #let(:post){ build(:post, id: 1, user_id: 1) }
-        let(:another_post){ attributes_for(:another_post, user: user) }
+        # let(:post) { build(:post, id: 1, user_id: 1) }
+        let(:another_post) { attributes_for(:another_post, user: user) }
 
         it 'creates a post record' do
-          #binding.pry
           expect do
-            #post posts_path(id: another_post), params: { post: another_post }
+            # post posts_path(id: another_post), params: { post: another_post }
             post posts_path, params: {
               post: {
                 user_id: 1,
@@ -81,7 +80,7 @@ RSpec.describe 'POST-TEST', type: :request do
                 city_id: 1,
                 genre_id: 1,
                 title: 'awesome',
-                comment: 'good',
+                comment: 'good'
               }
             }
           end.to change(user.posts, :count).by(0)
@@ -92,7 +91,7 @@ RSpec.describe 'POST-TEST', type: :request do
         before do
           post posts_path, params: { post: post_params }
         end
-        let(:post_params){ attributes_for(:post, title: nil) }
+        let(:post_params) { attributes_for(:post, title: nil) }
 
         it 'returns a 200 status code' do
           expect(response).to have_http_status(200)
@@ -111,19 +110,19 @@ RSpec.describe 'POST-TEST', type: :request do
         sign_in user
       end
       context 'as a user who posted' do
-        let(:user){ create(:user) }
-        let(:post){ create(:post, id: 1) }
+        let(:user) { create(:user) }
+        let(:post) { create(:post, id: 1) }
         context 'with valid attributes' do
-          let(:post_params){ attributes_for(:post, user: user, title: 'awesome') }
+          let(:post_params) { attributes_for(:post, user: user, title: 'awesome') }
 
           it 'returns a 302 status code' do
             patch post_path(id: post), params: { post: post_params }
             expect(response).to have_http_status(302)
           end
-          it "updates a post record" do
-            #expect do
-            #  patch post_path(id: post), params: { post: post_params }
-            #end.to change { post.reload.title }.from('Japan Tour').to('awesome')
+          it 'updates a post record' do
+            # expect do
+            #   patch post_path(id: post), params: { post: post_params }
+            # end.to change { post.reload.title }.from('Japan Tour').to('awesome')
           end
           it 'redirects the page to /post/:id' do
             patch post_path(id: post), params: { post: post_params }
@@ -131,7 +130,7 @@ RSpec.describe 'POST-TEST', type: :request do
           end
         end
         context 'with invalid attributes' do
-          let(:post_params){ attributes_for(:post, user: user, title: nil) }
+          let(:post_params) { attributes_for(:post, user: user, title: nil) }
           before do
             patch post_path(id: post), params: { post: post_params }
           end
@@ -163,9 +162,9 @@ RSpec.describe 'POST-TEST', type: :request do
         sign_in user
       end
       context 'as a user who posted' do
-        let(:user){ create(:user, id: 1) }
-        let(:another_user){ create(:another_user, id: 2) }
-        let(:post){ create(:post, id: 1, user: user) }
+        let(:user) { create(:user, id: 1) }
+        let(:another_user) { create(:another_user, id: 2) }
+        let(:post) { create(:post, id: 1, user: user) }
         it 'deletes a post' do
           expect do
             delete post_path(id: post)
@@ -177,9 +176,9 @@ RSpec.describe 'POST-TEST', type: :request do
         end
       end
       context 'as a user who did not post' do
-        let(:user){ create(:user, id: 1) }
-        let(:another_user){ create(:another_user, id: 2) }
-        let(:another_post){ create(:post, id: 1, user: another_user, title: 'wooo', rate: 2, comment: 'amazing') }
+        let(:user) { create(:user, id: 1) }
+        let(:another_user) { create(:another_user, id: 2) }
+        let(:another_post) { create(:post, id: 1, user: another_user, title: 'wooo', rate: 2, comment: 'amazing') }
         it 'does not delete a post' do
           expect do
             delete post_path(id: another_post)

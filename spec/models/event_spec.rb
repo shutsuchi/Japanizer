@@ -19,7 +19,7 @@ RSpec.describe 'Event', type: :model do
   describe 'validation' do
 
     context 'valid for presence' do
-      let(:event){ create(:event) }
+      let(:event) { create(:event) }
       it 'is valid with user_id, genre_id' do
         expect(event).to be_valid
       end
@@ -43,8 +43,8 @@ RSpec.describe 'Event', type: :model do
 
   describe 'association' do
     context 'belongs to' do
-      let!(:user){ create(:user) }
-      let!(:genre){ create(:genre) }
+      let!(:user) { create(:user) }
+      let!(:genre) { create(:genre) }
       before { create(:event, id: 1, user: user) }
       before { create(:event, id: 2, genre: genre) }
       it 'is be able to refer specific user' do

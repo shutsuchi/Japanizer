@@ -6,8 +6,8 @@ RSpec.describe 'USERS-TEST', type: :request do
       before do
         sign_in user
       end
-      let(:user){ create(:user, id: 1) }
-      let(:another_user){ create(:another_user, id: 2) }
+      let(:user) { create(:user, id: 1) }
+      let(:another_user) { create(:another_user, id: 2) }
 
       context 'request own user page' do
         before do
@@ -36,7 +36,7 @@ RSpec.describe 'USERS-TEST', type: :request do
       before do
         get user_path(id: user)
       end
-      let(:user){ create(:user) }
+      let(:user) { create(:user) }
       it 'returns a 302 status code' do
         expect(response).to have_http_status(302)
       end
@@ -51,8 +51,8 @@ RSpec.describe 'USERS-TEST', type: :request do
       before do
         sign_in user
       end
-      let(:user){ create(:user) }
-      let(:another_user){ create(:another_user) }
+      let(:user) { create(:user) }
+      let(:another_user) { create(:another_user) }
       context 'request own user page' do
         before do
           get edit_user_path(id: user)
@@ -80,7 +80,7 @@ RSpec.describe 'USERS-TEST', type: :request do
       before do
         get user_path(id: user)
       end
-      let(:user){ create(:user) }
+      let(:user) { create(:user) }
       it 'returns a 302 status code' do
         expect(response).to have_http_status(302)
       end
@@ -92,8 +92,8 @@ RSpec.describe 'USERS-TEST', type: :request do
 
   describe '# GET /users/:user_id/withdraw' do
     context 'as an authorized user' do
-      let(:user){ create(:user) }
-      let(:another_user){ create(:another_user) }
+      let(:user) { create(:user) }
+      let(:another_user) { create(:another_user) }
       context 'request own user page' do
         before do
           sign_in user
@@ -123,7 +123,7 @@ RSpec.describe 'USERS-TEST', type: :request do
       before do
         get user_path(id: user)
       end
-      let(:user){ create(:user) }
+      let(:user) { create(:user) }
       it 'returns a 302 status code' do
         expect(response).to have_http_status(302)
       end
@@ -139,10 +139,10 @@ RSpec.describe 'USERS-TEST', type: :request do
         sign_in user
       end
       context 'updates own settings' do
-        let(:user){ create(:user) }
-        let(:another_user){ create(:another_user) }
+        let(:user) { create(:user) }
+        let(:another_user) { create(:another_user) }
         context 'with valid attributes' do
-          let(:user_params){ attributes_for(:user) }
+          let(:user_params) { attributes_for(:user) }
           it 'returns a 302 status code' do
             patch switch_path(user_id: user), params: { user: user_params }
             expect(response).to have_http_status(302)
@@ -150,7 +150,7 @@ RSpec.describe 'USERS-TEST', type: :request do
           it 'updates a user record' do
             expect do
               patch switch_path(user_id: user), params: { user: user_params }
-            end.to change{ user.withdrawal_flag }.from(false).to(true)
+            end.to change { user.withdrawal_flag }.from(false).to(true)
           end
           it 'redirects the page to /top' do
             patch switch_path(user_id: user), params: { user: user_params }
@@ -161,7 +161,7 @@ RSpec.describe 'USERS-TEST', type: :request do
           before do
             patch switch_path(user_id: user), params: { user: user_params }
           end
-          let(:user_params){ attributes_for(:user, withdrawal_flag: nil) }
+          let(:user_params) { attributes_for(:user, withdrawal_flag: nil) }
           it 'returns a 302 status code' do
             expect(response).to have_http_status(302)
           end
@@ -174,8 +174,8 @@ RSpec.describe 'USERS-TEST', type: :request do
         before do
           patch switch_path(user_id: another_user)
         end
-        let(:user){ create(:user) }
-        let(:another_user){ create(:another_user) }
+        let(:user) { create(:user) }
+        let(:another_user) { create(:another_user) }
         it 'returns a 302 status code' do
           expect(response).to have_http_status(302)
         end
@@ -201,11 +201,11 @@ RSpec.describe 'USERS-TEST', type: :request do
       before do
         sign_in user
       end
-      let(:user){ create(:user) }
-      let(:another_user){ create(:another_user) }
+      let(:user) { create(:user) }
+      let(:another_user) { create(:another_user) }
       context 'own settings' do
         context 'with valid attributes' do
-          let(:user_params){ attributes_for(:user, name: 'Ichiro Tanaka') }
+          let(:user_params) { attributes_for(:user, name: 'Ichiro Tanaka') }
           it 'returns a 302 status code' do
             patch user_path(id: user), params: { user: user_params }
             expect(response).to have_http_status(302)
@@ -213,7 +213,7 @@ RSpec.describe 'USERS-TEST', type: :request do
           it 'updates a user record' do
             expect do
               patch user_path(id: user), params: { user: user_params }
-            end.to change{ user.name }.from('Tanaka Taro').to('Ichiro Tanaka')
+            end.to change { user.name }.from('Tanaka Taro').to('Ichiro Tanaka')
           end
           it 'redirects the page to /users/:id' do
             patch user_path(id: user), params: { user: user_params }
@@ -221,7 +221,7 @@ RSpec.describe 'USERS-TEST', type: :request do
           end
         end
         context 'with invalid attributes' do
-          let(:user_params){ attributes_for(:user, name: nil) }
+          let(:user_params) { attributes_for(:user, name: nil) }
           it 'returns a 200 status code' do
             patch user_path(id: user), params: { user: user_params }
             expect(response).to have_http_status(200)
@@ -236,7 +236,7 @@ RSpec.describe 'USERS-TEST', type: :request do
         before do
           patch user_path(id: another_user), params: { user: another_user_params }
         end
-        let(:another_user_params){ attributes_for(:another_user) }
+        let(:another_user_params) { attributes_for(:another_user) }
         it 'returns a 302 status code' do
           expect(response).to have_http_status(302)
         end

@@ -58,27 +58,28 @@ class EventsController < ApplicationController
     end
   end
 
-  # PATCH /event/:id
-  # event_path
-  #def update
-  #  event = find_event(params[:id])
-  #  @events = Event.where(user_id: current_user.id)
-  #  if event.update(event_params)
-  #    redirect_to event, notice: t('events.flash.u_notice')
-  #  else
-  #    flash.now[:alert] = t('events.flash.u_alert')
-  #    render user_path(current_user)
-  #  end
-  #end
+  #  PATCH /event/:id
+  #  event_path
+  # def update
+  #   event = find_event(params[:id])
+  #   @events = Event.where(user_id: current_user.id)
+  #   if event.update(event_params)
+  #     redirect_to event, notice: t('events.flash.u_notice')
+  #   else
+  #     flash.now[:alert] = t('events.flash.u_alert')
+  #     render user_path(current_user)
+  #   end
+  # end
 
   # DELETE /event/:id
   # event_path
   def destroy
     event = Event.find(params[:id])
     @user = event.user
-    if event.destroy
-      redirect_to user_path(@user), notice: t('events.flash.d_notice')
-    end
+    # if event.destroy
+    return unless event.destroy
+
+    redirect_to user_path(@user), notice: t('events.flash.d_notice')
   end
 
   private

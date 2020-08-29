@@ -14,5 +14,4 @@ module BookmarkAlbum
     end
     albums
   end
-
 end

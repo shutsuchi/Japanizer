@@ -1,11 +1,11 @@
 require 'rails_helper'
 
 describe 'ALBUM-TEST', type: :system do
-  let(:user){ create(:user) }
-  let!(:user2){ create(:another_user) }
-  let!(:album){ create(:album, user: user) }
-  let!(:album2){ create(:another_album, user: user2) }
-  let!(:post){ create(:post, album: album) }
+  let(:user) { create(:user) }
+  let!(:user2) { create(:another_user) }
+  let!(:album) { create(:album, user: user) }
+  let!(:album2) { create(:another_album, user: user2) }
+  let!(:post) { create(:post, album: album) }
   before do
     visit new_user_session_path
     fill_in 'user[email]', with: user.email
@@ -56,8 +56,8 @@ describe 'ALBUM-TEST', type: :system do
         fill_in 'album[title]', with: 'nice'
         fill_in 'album[comment]', with: 'good'
 
-        first_gen_el = find("#album_genre_id > option:nth-child(1)").text
-        select(first_gen_el, from: "album_genre_id")
+        first_gen_el = find('#album_genre_id > option:nth-child(1)').text
+        select(first_gen_el, from: 'album_genre_id')
         click_on 'commit'
       end
       it 'failed to create a album' do
@@ -150,15 +150,15 @@ describe 'ALBUM-TEST', type: :system do
         expect(page).to have_field 'album[title]', with: album.title
       end
       it 'contains a genre-edit-select-box' do
-        first_gen_el = find("#album_genre_id > option:nth-child(1)").text
+        first_gen_el = find('#album_genre_id > option:nth-child(1)').text
         expect(page).to have_select('album[genre_id]'), with: first_gen_el
       end
       it 'contains a budget-edit-select-box' do
-        first_bud_el = find("#album_budget > option:nth-child(1)").text
+        first_bud_el = find('#album_budget > option:nth-child(1)').text
         expect(page).to have_select('album[budget]'), with: first_bud_el
       end
       it 'contains a people-edit-select-box' do
-        first_peo_el = find("#album_people > option:nth-child(1)").text
+        first_peo_el = find('#album_people > option:nth-child(1)').text
         expect(page).to have_select('album[people]'), with: first_peo_el
       end
       it 'contains a comment-edit-form' do
@@ -173,11 +173,11 @@ describe 'ALBUM-TEST', type: :system do
         visit edit_album_path(id: album)
       end
       it 'edit a album successfully' do
-        #fill_in 'album[title]', with: 'fuuuuu'
-        #find(:css, "#album_post_quantity_1[value='1']").set(true)
-        #click_button 'commit'
-        #expect(page).to have_content I18n.t('albums.flash.u_notice')
-        #expect(current_path).to eq '/ja/albums/' + album.id.to_s
+        # fill_in 'album[title]', with: 'fuuuuu'
+        # find(:css, '#album_post_quantity_1[value='1']').set(true)
+        # click_button 'commit'
+        # expect(page).to have_content I18n.t('albums.flash.u_notice')
+        # expect(current_path).to eq '/ja/albums/' + album.id.to_s
       end
       it 'failed to edit a album' do
         fill_in 'album[title]', with: ''

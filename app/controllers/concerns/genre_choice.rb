@@ -133,5 +133,4 @@ module GenreChoice
       @albums_pg = type_page_6(Album, pg2)
     end
   end
-
 end

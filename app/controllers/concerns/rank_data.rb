@@ -28,5 +28,4 @@ module RankData
   def album_first(obj)
     obj.group(:album_id).order(Arel.sql('count(album_id) desc')).limit(1).pluck(:album_id)
   end
-
 end

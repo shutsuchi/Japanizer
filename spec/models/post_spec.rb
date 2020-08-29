@@ -21,14 +21,14 @@ RSpec.describe 'Post', type: :model do
   describe 'validation' do
 
     context 'valid for presence' do
-    let(:post){ create(:post) }
+      let(:post) { create(:post) }
       it 'is valid with title, comment, rate, album_id, city_id, genre_id, prefecutre_id, user_id' do
         expect(post).to be_valid
       end
     end
 
     context 'invalid for presence' do
-      let(:post){ build(:post) }
+      let(:post) { build(:post) }
       it 'is invalid without comment' do
         post.comment = nil
         post.valid?
@@ -69,11 +69,11 @@ RSpec.describe 'Post', type: :model do
 
   describe 'association' do
     context 'belongs to' do
-      let!(:user){ create(:user) }
-      let!(:prefecture){ create(:prefecture) }
-      let!(:city){ create(:city) }
-      let!(:genre){ create(:genre) }
-      let!(:album){ create(:album) }
+      let!(:user) { create(:user) }
+      let!(:prefecture) { create(:prefecture) }
+      let!(:city) { create(:city) }
+      let!(:genre) { create(:genre) }
+      let!(:album) { create(:album) }
       before { create(:post, title: 'nice', user: user) }
       before { create(:post, title: 'nice', prefecture: prefecture) }
       before { create(:post, title: 'nice', city: city) }
@@ -107,7 +107,7 @@ RSpec.describe 'Post', type: :model do
     end
 
     context 'has many' do
-      let!(:post){ create(:post) }
+      let!(:post) { create(:post) }
       before { create(:like, id: 1, post: post) }
       before { create(:postComment, title: 'good', post: post) }
       it 'is be able to contain posts' do
