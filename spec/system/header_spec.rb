@@ -13,7 +13,7 @@ describe 'HEADER-TEST' do
         expect(page).to have_content I18n.t('app.header.title_desc')
       end
       it 'local time' do
-        expect(page).to have_content I18n.l(Time.zone.now)
+        expect(page).to have_content I18n.l(Time.now)
       end
       it 'search icon' do
         expect(page).to have_css('#search-icon')

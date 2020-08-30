@@ -91,3 +91,7 @@ Rails/HasManyOrHasOneDependent:
     - 'app/models/genre.rb'
     - 'app/models/album.rb'
     - 'app/models/post.rb'
+
+Rails/TimeZone:
+  Exclude:
+    - 'spec/system/header_spec.rb'

@@ -61,7 +61,7 @@ class AlbumsController < ApplicationController
   def create
     @album = Album.new(album_params)
     @album.user_id = current_user.id
-    album_create_rate(@album)
+    @album.rate = 0 if @album.rate.nil?
 
     if @album.save
       redirect_to @album, notice: t('albums.flash.s_notice')
