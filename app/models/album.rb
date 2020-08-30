@@ -53,12 +53,6 @@ class Album < ApplicationRecord
     bookmarks.where(user_id: user.id).exists?
   end
 
-  def album_create_rate(album)
-    return unless album.rate.nil?
-
-    album.rate = 0
-  end
-
   def self.params_album_search(genre, time, nation)
     albums = Album.genre_search(genre, nation)
     if time == 'anytime_search'
