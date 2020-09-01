@@ -1,3 +1,25 @@
+//-------------------------- Navopen-toppage
+$(function() {
+  $('#js-toggle-menu').click(function() {
+    $('.search-select-boxes__toggle-menu').slideToggle();
+  });
+});
+$(function() {
+  $('#js-toggle-menu2').click(function() {
+    $('.search-select-boxes__toggle-menu2').slideToggle();
+  });
+});
+$(function() {
+  $('#js-toggle-menu3').click(function() {
+    $('.search-select-boxes__toggle-menu3').slideToggle();
+  });
+});
+$(function() {
+  $('#js-toggle-menu-rank').click(function() {
+    $('.search-select-boxes__toggle-menu-rank').slideToggle();
+  });
+});
+
 //-------------------------- Navopen-aboutpage
 function toggleNav() {
 

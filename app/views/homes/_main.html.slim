@@ -1,111 +1,116 @@
-.col-xs-9
+.top-mainmain
   .row
     .col-xs-12.top-page__title.text-center
       h1
         = t('homes.top.title_text')
       p
         = t('homes.top.title_description')
-  .row
-    .col-xs-12.text-center
-      .top-page__subtitle
-        .top-page__subtitle--text
-          h2
+  .top-main
+    .row
+      .col-xs-12.text-center
+        .top-page__subtitle
+          .top-page__subtitle--text#js-toggle-menu
             = t('homes.top.subtitle_1')
-
-        .search-select-boxes
-          .col-xs-12
-            = link_to data_path do
-              .search-select-boxes__data-box
-                .search-select-boxes__title.text-center
-                  h3
-                    = t('homes.top.data_title')
-                .search-select-boxes__main-text
-                  p
-                    = t('homes.top.data_text_1')
-                    br
-                    = t('homes.top.data_text_2')
-                    br
-                    = t('homes.top.data_text_3')
-  .row
-    .col-xs-12.text-center
-      .top-page__subtitle
-        .top-page__subtitle--text
-          h2
+          .search-select-boxes.search-select-boxes__toggle-menu
+            .col-xs-12.rank-bottom
+              = link_to data_path do
+                .search-select-boxes__data-box
+                  .search-select-boxes__title.text-center
+                    h3
+                      = t('homes.top.data_title')
+                  .search-select-boxes__main-text
+                    p
+                      = t('homes.top.data_text_1')
+                      br
+                      = t('homes.top.data_text_2')
+                      br
+                      = t('homes.top.data_text_3')
+    .row
+      .col-xs-12.text-center
+        .top-page__subtitle
+          .top-page__subtitle--text#js-toggle-menu2
             = t('homes.top.subtitle_2')
+          .search-select-boxes.search-select-boxes__toggle-menu2
+            .col-xs-12.rank-bottom
+              = link_to budget_path do
+                .search-select-boxes__budget-box
+                  .search-select-boxes__title
+                    h3
+                      = t('homes.top.budget_title')
+                  .search-select-boxes__big-text
+                    p
+                      = t('homes.top.budget_text_1')
+                      br
+                      = t('homes.top.budget_text_2')
+                      br
+                      = t('homes.top.budget_text_3')
 
-        .col-xs-12
-          = link_to budget_path do
-            .search-select-boxes__budget-box
-              .search-select-boxes__title
-                h3
-                  = t('homes.top.budget_title')
-              .search-select-boxes__big-text
-                p
-                  = t('homes.top.budget_text_1')
-                  br
-                  = t('homes.top.budget_text_2')
-                  br
-                  = t('homes.top.budget_text_3')
-
-  .row
-    .col-xs-12.text-center
-      .top-page__subtitle
-        .top-page__subtitle--text
-          h2
+    .row
+      .col-xs-12.text-center
+        .top-page__subtitle
+          .top-page__subtitle--text#js-toggle-menu3
             = t('homes.top.subtitle_3')
+          .search-select-boxes.search-select-boxes__toggle-menu3
+            .col-xs-12
+              .col-xs-6
+                = link_to genres_path do
+                  .search-select-boxes__genre-box
+                    .search-select-boxes__title
+                      h3
+                        = t('homes.top.genre_title')
+                    .search-select-boxes__text
+                      p
+                        = t('homes.top.genre_text_1')
+                        br
+                        = t('homes.top.genre_text_2')
+                        br
+                        = t('homes.top.genre_text_3')
+              .col-xs-6
+                = link_to prefectures_path do
+                  .search-select-boxes__area-box
+                    .search-select-boxes__title
+                      h3
+                        = t('homes.top.area_title')
+                    .search-select-boxes__text
+                      p
+                        = t('homes.top.area_text_1')
+                        br
+                        = t('homes.top.area_text_2')
+                        br
+                        = t('homes.top.area_text_3')
 
-        .col-xs-6
-          = link_to genres_path do
-            .search-select-boxes__genre-box
-              .search-select-boxes__title
-                h3
-                  = t('homes.top.genre_title')
-              .search-select-boxes__text
-                p
-                  = t('homes.top.genre_text_1')
-                  br
-                  = t('homes.top.genre_text_2')
-                  br
-                  = t('homes.top.genre_text_3')
+            .col-xs-12.rank-bottom
+              .col-xs-6
+                = link_to age_path do
+                  .search-select-boxes__age-box
+                    .search-select-boxes__title
+                      h3
+                        = t('homes.top.age_title')
+                    .search-select-boxes__text
+                      p
+                        = t('homes.top.age_text_1')
+                        br
+                        = t('homes.top.age_text_2')
+                        br
+                        = t('homes.top.age_text_3')
+              .col-xs-6
+                = link_to nation_path do
+                  .search-select-boxes__nation-box
+                    .search-select-boxes__title
+                      h3
+                        = t('homes.top.nation_title')
+                    .search-select-boxes__text
+                      p
+                        = t('homes.top.nation_text_1')
+                        br
+                        = t('homes.top.nation_text_2')
+                        br
+                        = t('homes.top.nation_text_3')
 
-        .col-xs-6
-          = link_to prefectures_path do
-            .search-select-boxes__area-box
-              .search-select-boxes__title
-                h3
-                  = t('homes.top.area_title')
-              .search-select-boxes__text
-                p
-                  = t('homes.top.area_text_1')
-                  br
-                  = t('homes.top.area_text_2')
-                  br
-                  = t('homes.top.area_text_3')
-
-        .col-xs-6
-          = link_to age_path do
-            .search-select-boxes__age-box
-              .search-select-boxes__title
-                h3
-                  = t('homes.top.age_title')
-              .search-select-boxes__text
-                p
-                  = t('homes.top.age_text_1')
-                  br
-                  = t('homes.top.age_text_2')
-                  br
-                  = t('homes.top.age_text_3')
-
-        .col-xs-6
-          = link_to nation_path do
-            .search-select-boxes__nation-box
-              .search-select-boxes__title
-                h3
-                  = t('homes.top.nation_title')
-              .search-select-boxes__text
-                p
-                  = t('homes.top.nation_text_1')
-                  br
-                  = t('homes.top.nation_text_2')
-                  br
-                  = t('homes.top.nation_text_3')
+    .row
+      .col-xs-12.text-center
+        .rank-page__subtitle
+          .rank-page__subtitle--text#js-toggle-menu-rank
+            = t('homes.top.ranking')
+          .search-select-boxes__toggle-menu-rank
+            = render 'ranking', post_like_ranks: post_like_ranks, post_comment_ranks: post_comment_ranks, album_ranks: album_ranks

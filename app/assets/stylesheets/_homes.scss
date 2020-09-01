@@ -475,114 +475,197 @@
 
 //-------- Top Page --------
 //------ MAIN
+.top-mainmain {
+  padding-top: 40px;
+  padding-bottom: 60px;
+  width: 100%;
+  height: auto;
+  background-color: rgb(27, 39, 56);
+}
+.top-main {
+  margin: 0 auto;
+  padding: 20px;
+  width: 90%;
+  height: auto;
+  background-color: rgb(23, 35, 60);
+}
 .top-page {
   &__title {
-    color: #000;
+    color: #eee;
+    font-size: 20px;
+    margin-bottom: 30px;
   }
   &__subtitle {
-    height: 40px;
-    margin-bottom: 30px;
+    //background: #333;
     &--text {
-      margin: 0 auto;
+      width: 100%;
+      position: relative;
+      display: inline-block;
+      margin-bottom: 10px;
+      padding-top: 20px;
+      height: 70px;
+      text-align: center;
       line-height: 30px;
+      font-size: 20px;
+      color: #bbb;
+      &:before, &:after {
+        content: '';
+        position: absolute;
+        top: 50%;
+        width: 35%;
+        display: inline-block;
+        height: 2px;
+        background: #888;
+      }
+      &:before {
+        left: 0;
+      }
+      &:after {
+        right: 0;
+      }
+      &:hover {
+        color: #fff;
+      }
     }
   }
 }
+#js-toggle-menu {
+  cursor: pointer;
+}
+#js-toggle-menu2 {
+  cursor: pointer;
+}
+#js-toggle-menu3 {
+  cursor: pointer;
+}
+#js-toggle-menu-rank {
+  cursor: pointer;
+}
 .search-select-boxes {
+  &__toggle-menu {
+    display: none;
+  }
+  &__toggle-menu2 {
+    display: none;
+  }
+  &__toggle-menu3 {
+    display: none;
+  }
+  &__toggle-menu-rank {
+    display: none;
+  }
   &__data-box {
     margin: 20px auto;
     height: 300px;
-    width: 95%;
-    color: white;
+    width: 80%;
+    color: #fff;
     font-weight: bold;
-    border: 1px solid #000000;
-    border-radius: 15px;
+    border: 1px solid #000;
     background-image: url(img/top_data.jpg);
     background-repeat: no-repeat;
     background-size: cover;
+    &:hover {
+      color: #880000;
+      font-weight: bold;
+    }
   }
   &__main-text {
-    margin-left: 5em;
-    margin-top: 10em;
+    margin-left: 1em;
+    margin-top: 5em;
   }
   &__budget-box {
     margin: 20px auto;
     height: 250px;
-    width: 65%;
+    width: 80%;
     font-weight: bold;
-    color: black;
-    border: 1px solid #000000;
-    border-radius: 15px;
+    color: #000;
+    border: 1px solid #000;
     background-image: url(img/top_price.jpeg);
     background-repeat: no-repeat;
     background-size: cover;
     background-position: center;
+    &:hover {
+      color: #880000;
+      font-weight: bold;
+    }
   }
   &__genre-box {
     margin: 20px auto;
     height: 250px;
     width: 95%;
-    color: white;
+    color: #fff;
     font-weight: bold;
-    border: 1px solid #000000;
-    border-radius: 15px;
+    border: 1px solid #000;
     background-image: url(img/top_genre.jpeg);
     background-repeat: no-repeat;
     background-size: cover;
     background-position: center;
+    &:hover {
+      color: #880000;
+      font-weight: bold;
+    }
   }
   &__area-box {
     margin: 20px auto;
     height: 250px;
     width: 95%;
-    color: black;
+    color: #000;
     font-weight: bold;
-    border: 1px solid #000000;
-    border-radius: 15px;
+    border: 1px solid #000;
     background-image: url(img/top_area.jpg);
     background-repeat: no-repeat;
     background-size: cover;
+    &:hover {
+      color: #880000;
+      font-weight: bold;
+    }
   }
   &__age-box {
     margin: 20px auto;
     height: 250px;
     width: 95%;
-    color: black;
+    color: #000;
     font-weight: bold;
-    border: 1px solid #000000;
-    border-radius: 15px;
+    border: 1px solid #000;
     background-image: url(img/top_age.jpg);
     background-repeat: no-repeat;
     background-size: cover;
+    &:hover {
+      color: #880000;
+      font-weight: bold;
+    }
   }
   &__nation-box {
     margin: 20px auto;
     height: 250px;
     width: 95%;
-    color: black;
+    color: #000;
     font-weight: bold;
-    border: 1px solid #000000;
-    border-radius: 15px;
+    border: 1px solid #000;
     background-image: url(img/top_nation.jpg);
     background-repeat: no-repeat;
     background-size: cover;
+    &:hover {
+      color: #880000;
+      font-weight: bold;
+    }
   }
   &__big-text {
     margin-top: 130px;
-    margin-right: 300px;
-    color: white;
+    margin-right: 400px;
+    color: #fff;
     font-size: 55px;
     font-weight: bold;
-    background-color: black;
+    background-color: #000;
     border-radius: 50px;
     opacity: 0.8;
   }
   &__text {
     margin-top: 130px;
     margin-right: 150px;
-    color: white;
+    color: #fff;
     font-weight: bold;
-    background-color: black;
+    background-color: #000;
     border-radius: 50px;
     opacity: 0.8;
   }
@@ -592,76 +675,138 @@
 }
 
 //------ SIDEBAR
-.sidebar-outline {
-  margin: 0 auto;
-  height: 1600px;
-  width: 100%;
-  background-color: #333333;
-  &__title-box {
-    padding-left: 5px;
-    &--more {
-      color: white;
+.rank-page {
+  &__subtitle {
+    //background: #333;
+    &--text {
+      width: 100%;
+      position: relative;
+      display: inline-block;
+      margin-bottom: 10px;
+      padding-top: 20px;
+      height: 70px;
+      text-align: center;
+      line-height: 30px;
+      font-size: 20px;
+      color: #bbb;
+      &:before, &:after {
+        content: '';
+        position: absolute;
+        top: 50%;
+        width: 35%;
+        display: inline-block;
+        height: 2px;
+        background: #888;
+      }
+      &:before {
+        left: 0;
+      }
+      &:after {
+        right: 0;
+      }
+      &:hover {
+        color: #fff;
+      }
     }
   }
-  &__title {
-    color: white;
-    margin-left: 20px;
-  }
+}
+.sidebar-outline {
+  margin-top: 20px;
+  padding-top: 15px;
+  height: 600px;
+  width: 100%;
+  background-color: #333;
   &__search-title-box {
-    margin: 0 auto;
     padding-left: 5px;
-    padding-top: 10px;
-    padding-right: 5px;
-    height: 50px;
-    width: 80%;
-    background-color: #006600;
-    color: white;
-    font-size: 15px;
-    font-weight: bold;
-    border: 1px solid #333333;
+    &--more {
+      position: relative;
+      display: inline-block;
+      padding-left: 20px;
+      line-height: 20px;
+      margin-right: 5px;
+      font-size: 20px;
+      color: #fff;
+      &::before {
+        content: '';
+        width: 10px;
+        height: 10px;
+        border: 0px;
+        border-top: solid 2px #5bc0de;
+        border-right: solid 2px #5bc0de;
+        -ms-transform: rotate(45deg);
+        -webkit-transform: rotate(45deg);
+        transform: rotate(45deg);
+        position: absolute;
+        top: 50%;
+        left: 0;
+        margin-top: -4px;
+      }
+    }
   }
-  &__search-body-box {
-    margin: 0 auto;
-    padding-left: 5px;
-    margin-bottom: 10px;
-    height: 200px;
-    width: 80%;
-    background-color: #ffffff;
-    border: 1px solid #333333;
-  }
-
   &__ranking-box {
     margin-top: 20px;
-    color: #333333;
+    color: #333;
   }
   &__rank-body-boxes {
     margin: 0 auto;
+    padding-top: 20px;
     padding-left: 5px;
     margin-bottom: 10px;
-    height: 1500px;
-    width: 80%;
-    background-color: #ffffff;
-    border: 1px solid #333333;
+    height: 500px;
+    width: 90%;
+    background-color: #666;
+    color: #fff;
+    border: 1px solid #333;
   }
+  &__rank-body-box {
+    margin-top: 10px;
+    height: 200px;
+  }
+  &__post-like-rank {
+    &--title {
+      margin-bottom: 20px;
+      font-size: 30px;
+    }
+    &--title span {
+      font-size: 15px;
+    }
+    &--body {
+      margin-bottom: 10px;
+    }
+    &--big {
+      font-size: 30px;
+    }
+    &--no {
+      margin-top: 50px;
+      font-size: 30px;
+      color: #ff8856;
+    }
+  }
+}
+.rank-bottom {
+  margin-bottom: 30px;
 }
 
 //------ RANK
 .rank-box {
   margin: 0 auto;
-  height: 400px;
+  height: 200px;
   &__margin-bottom {
     margin-bottom: 20px;
+    padding: 5px;
   }
   &__number {
     padding-left: 10px;
+    font-size: 20px;
   }
   &__box {
-    margin: 0 auto;
+    text-align: center;
+    margin-bottom: 20px;
   }
   &__image-box {
-    width: 100%;
+    width: 70%;
     height: 100px;
-    border: 3px solid #333333;
+    border: 3px solid #333;
     text-align: center;
     &--pic {
       width: 100%;
@@ -669,21 +814,15 @@
     }
   }
   &__icon-box {
-    width: 100%;
-    height: 50px;
-    border: 3px solid #333333;
+    padding-top: 10px;
+    width: 70%;
+    height: 70px;
+    border: 3px solid #333;
     text-align: center;
+    background: #2f4f4f;
   }
   &__icon {
     padding: 1px;
-  }
-  &__like-icon {
-  }
-  &__like-count {
-  }
-  &__comment-icon {
-  }
-  &__comment-count {
   }
   &__bookmark-icon {
     padding: 10px;
@@ -691,5 +830,11 @@
   &__bookmark-count {
     padding: 10px;
   }
+  &__table, th {
+    background: #222;
+  }
+  &__table, td {
+    background: #fff;
+    color: #000;
+  }
 }
-
