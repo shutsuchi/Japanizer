@@ -37,13 +37,16 @@ gem 'jbuilder', '~> 2.5'
 gem 'bootsnap', '>= 1.1.0', require: false
 
 group :development, :test do
-  gem 'pry-byebug'
-  gem 'pry-rails'
-  # Call 'byebug' anywhere in the code to stop execution,
-  # and get a debugger console
-  gem 'byebug', platforms: %i[mri mingw x64_mingw]
   # For Display schema on model-file
   gem 'annotate'
+  # and get a debugger console
+  gem 'byebug', platforms: %i[mri mingw x64_mingw]
+  # Call 'byebug' anywhere in the code to stop execution,
+  gem 'pry-byebug'
+  gem 'pry-rails'
+  # For Readable-code
+  gem 'rubocop', '~> 0.80.1', require: false
+  gem 'rubocop-rails', require: false
 end
 
 group :development do
@@ -67,6 +70,7 @@ group :test do
   # gem 'chromedriver-helper'
   gem 'webdrivers'
   gem 'rspec-rails'
+  gem 'rspec_junit_formatter'
   gem 'factory_bot_rails'
 end
 
@@ -104,10 +108,6 @@ gem 'paranoia', '~> 2.4.2'
 gem 'bootstrap3-datetimepicker-rails'
 gem 'fullcalendar-rails'
 gem 'momentjs-rails'
-
-# For Readable-code
-gem 'rubocop', '~> 0.80.1', require: false
-gem 'rubocop-rails', require: false
 
 # For Internationalization
 gem 'rails-i18n', '~> 5.1.3'

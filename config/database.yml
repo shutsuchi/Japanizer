@@ -51,12 +51,12 @@ production:
   <<: *default
   database: <%= ENV['DB_DATABASE'] %>
   adapter: mysql2
-  encoding: utfmb4
-  charset: utfmb4
-  collation: utf8mb4_general_ci
+  encoding: utf8
+  charset: utf8
   host: <%= ENV['DB_HOST'] %>
   username: <%= ENV['DB_USERNAME'] %>
-  password: <%= ENV['DATABASE_PASSWORD'] %>
-  #database: Japanizer_production
-  #username: Japanizer
-  #password: <%= ENV['JAPANIZER_DATABASE_PASSWORD'] %>
+  password: <%= ENV['DB_PASSWORD'] %>
+
+  # database: Japanizer_production
+  # username: Japanizer
+  # password: <%= ENV['JAPANIZER_DATABASE_PASSWORD'] %>
