@@ -1,0 +1,61 @@
+.rank-box
+  .col-xs-1
+  .col-xs-10
+    .rank-box__box
+      .rank-box__image-box
+        .rank-box__icon
+          = link_to post_path(post) do
+            = attachment_image_tag post, :image, fallback:"img/no_photo.png", class:"field rank-box__image-box--pic", size:"85x65"
+      .rank-box__icon-box
+        .col-xs-12
+          .col-xs-2
+          .col-xs-4
+            .rank-box__like-icon.pull-left
+              i.fa.fa-heart aria-hidden="true" style="color: red; font-size:20px;"
+          .col-xs-2
+            .rank-box__like-count
+              - if post.likes.nil?
+                span
+                  | 0
+              - else
+                span
+                  = post.likes.count
+        .col-xs-12
+          .col-xs-2
+          .col-xs-4
+            .rank-box__comment-icon
+              i.glyphicon.glyphicon-comment style="font-size:20px;"
+          .col-xs-2
+            .rank-box__comment-count
+              - if post.post_comments.nil?
+                span
+                  | 0
+              - else
+                span
+                = post.post_comments.count
+  .col-xs-1
+  .col-xs-12
+    .rank_box
+      .rank_box__table
+        table.table.table-bordered
+          thead
+            tr
+              th
+                = t('posts.edit.user')
+              td
+                = post.user.name
+            tr
+              th
+                = t('posts.edit.title')
+              td
+                = post.title
+            tr
+              th
+                = t('posts.edit.genre')
+              td
+                = post.genre.name
+            tr
+              th
+                = t('posts.edit.place')
+              td
+                = post.prefecture.name

@@ -28,4 +28,3 @@ $(function(){
     format: 'YYYY-MM-DD hh:mm',
   });
 });
-

@@ -3,7 +3,7 @@ en:
     top:
       title_text: 'What do you want to do'
       title_description: 'Enjoy Japanizer with ways down below'
-      more: 'more...'
+      more: 'more'
 
       subtitle_1: 'Trend in journey'
       subtitle_2: 'Search albums'
@@ -47,10 +47,12 @@ en:
       nation_text_3: 'or Your buddy might have some recommendations'
 
     about:
-      subtitle_1: 'About Japanizer'
-      subtitle_2: 'Have a fun with Japanizer !!'
-      subtitle_3: 'Contact with me'
+      subtitle_1: 'About    '
 
+      menu: 'Menu'
+      sign_in: 'Log in'
+      sign_up: 'Sign up'
+      top: 'Top Page'
       know: 'Know'
       know_text_1: 'What type of journey in Japan'
       know_text_2: 'Focus on age, area, budget, etc...'
@@ -60,6 +62,15 @@ en:
       post: 'Post'
       post_text_1: 'Record your amazing journey in Japan'
       post_text_2: 'Then bind in one album'
-
-      click_text_1: 'Click plane icon'
-      click_text_2: 'To enjoy Japan on Japanizer'
+      share: 'Share'
+      share_text_1: 'Share your experiences on journey'
+      share_text_2: 'and information about places'
+      search: 'Search'
+      search_text_1: 'Search for info, data'
+      search_text_2: 'Help to plan, reginal revitalization..'
+      activity: 'Activities'
+      activity_text: 'Search activities and place'
+      sight: 'Sightseeing'
+      sight_text: 'Search famous or popular place'
+      food: 'Food'
+      food_text: 'Enjoy delicious meal'

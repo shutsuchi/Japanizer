@@ -10,7 +10,19 @@ $(function() {
     $('#search-bar').slideToggle();
   });
 });
-
+//function toggleBar() {
+//
+//  document.addEventListener('DOMContentLoaded', function() {
+//    bar = document.getElementById('js-search-bar');
+//    icon = document.getElementById('js-search-icon');
+//
+//    bar.hide();
+//    icon.addElementListener('click', function() {
+//      $('this').slideToggle();
+//    });
+//  });
+//}
+//toggleBar();
 ////--------------------------  ページネーション
 //$(function() {
 //  search = location.search

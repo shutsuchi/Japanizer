@@ -1,0 +1,53 @@
+.col-xs-12
+  .sidebar-outline
+    .sidebar-outline__ranking-box
+      .col-xs-12
+          = link_to rank_path, class:"pull-right sidebar-outline__search-title-box--more" do
+            = t('homes.top.more')
+      .col-xs-12
+        .sidebar-outline__rank-body-boxes
+          .col-xs-4
+            .sidebar-outline__rank-body-box
+              .sidebar-outline__rank
+                .sidebar-outline__post-like-rank--title
+                  .fas.fa-crown style="color:#ffd700; font-size: 30px;"
+                  span.sidebar-outline__post-like-rank--title
+                    = t('homes.top.post_like')
+                .sidebar-outline__post-like-rank--body
+                  .col-xs-12
+                    - if post_like_ranks.present?
+                      - post_like_ranks.each do |post|
+                        = render 'post_first_rank', post: post
+                    - else
+                      .sidebar-outline__post-like-rank--no
+                        = t('app.common.no_post')
+          .col-xs-4
+            .sidebar-outline__rank-body-box
+              .sidebar-outline__rank
+                .sidebar-outline__post-like-rank--title
+                  .fas.fa-crown style="color:#ffd700; font-size: 30px;"
+                  span
+                    = t('homes.top.post_comment')
+                .sidebar-outline__post-like-rank--body
+                  .col-xs-12
+                    - if post_comment_ranks.present?
+                      - post_comment_ranks.each do |post|
+                        = render 'post_first_rank', post: post
+                    - else
+                      .sidebar-outline__post-like-rank--no
+                        = t('app.common.no_post')
+          .col-xs-4
+            .sidebar-outline__rank-body-box
+              .sidebar-outline__rank
+                .sidebar-outline__post-like-rank--title
+                  .fas.fa-crown style="color:#ffd700; font-size: 30px;"
+                  span
+                    = t('homes.top.album_bookmark')
+                .sidebar-outline__post-like-rank--body
+                  .col-xs-12
+                    - if album_ranks.present?
+                      - album_ranks.each do |album, i|
+                        = render 'album_rank', album: album
+                    - else
+                      .sidebar-outline__post-like-rank--no
+                        = t('app.common.no_album')

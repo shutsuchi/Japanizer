@@ -12,16 +12,19 @@ html
     = javascript_include_tag 'application', 'data-turbolinks-track': 'reload'
     script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"
   body
-    header.common-bar.navbar-inverse
-      = render 'layouts/header'
+    - req = request.path
+    - text = ['sign_in', 'sign_up', 'about']
+    - unless text.any? { |t| req.include?(t) }
+      header.common-bar.navbar-inverse
+        = render 'layouts/header'
 
-      .search-nav#search-bar
-        = render 'layouts/searchbar'
+        .search-nav#search-bar
+          = render 'layouts/searchbar'
 
-      .row
-        .notification
-          - flash.each do |key, value|
-            = content_tag(:div, value, class: "notification__#{key}")
+        .row
+          .notification
+            - flash.each do |key, value|
+              = content_tag(:div, value, class: "notification__#{key}")
 
 
     = yield

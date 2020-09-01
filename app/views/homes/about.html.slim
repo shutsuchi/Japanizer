@@ -1,80 +1,139 @@
-  .top-wrapper
-    .row.title-row
-      .col-xs-12
-        .title-row__row-title
-          | Japanizer
+.global-nav
+  .global-nav__close id='js-close'
+    | X
+  .global-nav__list
+    .global-nav__item
+      = link_to new_user_session_path do
+        = t('homes.about.sign_in')
+    .global-nav__item
+      = link_to new_user_registration_path do
+        = t('homes.about.sign_up')
+    .global-nav__item
+      = link_to top_path
+        = t('homes.about.top')
+  .black-bg id='js-black-bg'
 
-    .row.black-row
-      .col-xs-12
-        .col-xs-6
-          .col-xs-6
-            .black-row__pic1
-          .col-xs-6.text-center
-            .black-row__pic2.fas.fa-level-down-alt style="font-size:100px; margin-top:50px;"
-          .col-xs-6.text-center
-            .black-row__pic3.fas.fa-level-up-alt style="font-size:100px; margin-top:50px; transform:rotateY(180deg);"
-          .col-xs-6
-            .black-row__pic4
+.title-row
+  .col-xs-12
+    .title-row__menu-box id='js-menu-btn'
+      span
+        = t('homes.about.menu')
+    .title-row__bg
+    .title-row__switch
+      .title-row__switch-container
+        a.title-row__btn-box href="/ja/about"
+          | 日本語
+        /= link_to('日本語', locale: 'ja', class:'title-row__switch--shine')
+      .title-row__switch-container2
+        a.title-row__btn-box2.is-pink href="/en/about"
+          | English
+        /= link_to('English', locale: 'en', class:'title-row__switch--shine is-pink')
+    .title-row__row-title
+      | Japanizer
 
+.black-row
+  .black-row__img
+  .black-row__bg
+  .col-xs-12
+    .col-xs-4
+      .black-row__left
         .col-xs-6
-          .black-row__row-title
-            = t('homes.about.subtitle_1')
-          .col-xs-12.text-center
-            p.black-row__row-text
-              = t('homes.about.know')
-              p
-                = t('homes.about.know_text_1')
-              p
-                = t('homes.about.know_text_2')
-          .col-xs-12.text-center
-            p.black-row__row-text
-              = t('homes.about.compare')
-              p
-                = t('homes.about.compare_text_1')
-              p
-                = t('homes.about.compare_text_2')
-          .col-xs-12.text-center
-            p.black-row__row-text
-              = t('homes.about.post')
-              p
-                = t('homes.about.post_text_1')
-              p
-                = t('homes.about.post_text_2')
-
-    .row.white-row
-      .col-xs-12
-        .col-xs-6
-          .white-row__row-title
-            = t('homes.about.subtitle_2')
-          p.white-row__row-text
-            = t('homes.about.click_text_1')
-          br
-          p.white-row__row-text
-            = t('homes.about.click_text_2')
-        .col-xs-6
-          .col-xs-12
-            i.fas.fa-book style="font-size:60px; padding-right:300px; margin-top:20px; color:green;"
-          .col-xs-12
-            i.fas.fa-camera-retro style="font-size:60px; padding-left:200px;"
-          .col-xs-12
-            i.far.fa-images style="font-size:50px; padding-right:250px; color:blue;"
-          br
-          = link_to top_path do
-            i.fas.fa-plane-departure style="font-size:170px; margin-top:30px; margin-left:200px; color:#ff8c00"
-
-    .row.black-row
-      .col-xs-12
+          .black-row__left--pic1
         .col-xs-6.text-center
-          .col-xs-4
-            i.far.fa-envelope style="font-size:100px; padding-top:130px"
-          .col-xs-4
-            i.fas.fa-arrows-alt-h style="font-size:80px; padding-top:130px"
-          .col-xs-4
-            i.far.fa-envelope style="font-size:100px; padding-top:130px"
+          .black-row__left--pic2.fas.fa-level-down-alt
+        .col-xs-6.text-center
+          .black-row__left--pic3.fas.fa-level-up-alt
         .col-xs-6
-          .black-row__row-title
-            .black-row__row-title--more
-              = t('homes.about.subtitle_3')
-          .col-xs-12.text-center
-            p.black-row__row-text
-              | example@example.com
+          .black-row__left--pic4
+
+    .col-xs-8
+      .black-row__right
+        - if params[:locale] == 'ja'
+          .col-xs-12.black-row__right--line-title
+            span.black-row__right--row-title
+              | Japanizer
+            span.black-row__right--row-title2
+              = t('homes.about.subtitle_1')
+        - else
+          .col-xs-12.black-row__right--line-title
+            span.black-row__right--row-title2
+              = t('homes.about.subtitle_1')
+            span.black-row__right--row-title
+              | Japanizer
+        .col-xs-12.black-row__right--line1
+          .col-xs-4.text-center
+            .black-row__right--row-text
+              = t('homes.about.know')
+            .black-row__right--part
+              = t('homes.about.know_text_1')
+            .black-row__right--part
+              = t('homes.about.know_text_2')
+          .col-xs-4.text-center
+            .black-row__right--row-text
+              = t('homes.about.compare')
+            .black-row__right--part
+              = t('homes.about.compare_text_1')
+            .black-row__right--part
+              = t('homes.about.compare_text_2')
+          .col-xs-4.text-center
+            .black-row__right--row-text
+              = t('homes.about.post')
+            .black-row__right--part
+              = t('homes.about.post_text_1')
+            .black-row__right--part
+              = t('homes.about.post_text_2')
+        .col-xs-12.black-row__right--line2
+          .col-xs-2
+          .col-xs-4.text-center
+            .black-row__right--row-text
+              = t('homes.about.share')
+            .black-row__right--part
+              = t('homes.about.share_text_1')
+            .black-row__right--part
+              = t('homes.about.share_text_2')
+          .col-xs-4.text-center
+            .black-row__right--row-text
+              = t('homes.about.search')
+            .black-row__right--part
+              = t('homes.about.search_text_1')
+            .black-row__right--part
+              = t('homes.about.search_text_2')
+          .col-xs-2
+
+.row.slide-wrapper
+  .slider
+    .slides
+      .slides-img id=""
+        .slides-img__filter
+        .slide-caption
+          .slide-caption__title
+            = t('homes.about.activitity')
+          .slide-caption__subtitle
+            = t('homes.about.activity_text')
+          .slide-caption__text
+
+      .slides-img id=""
+        .slides-img__filter
+        .slide-caption
+          .slide-caption__title
+            = t('homes.about.sight')
+          .slide-caption__subtitle
+            = t('homes.about.sight_text')
+          .slide-caption__text
+
+      .slides-img id=""
+        .slides-img__filter
+        .slide-caption
+          .slide-caption__title
+            = t('homes.about.food')
+          .slide-caption__subtitle
+            = t('homes.about.food_text')
+          .slide-caption__text
+
+  a.control.fas.fa-chevron-left#prev
+  a.control.fas.fa-chevron-right#next
+
+  .dots
+    span.dots__single id=""
+    span.dots__single id=""
+    span.dots__single id=""
