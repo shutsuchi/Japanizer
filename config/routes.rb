@@ -2,8 +2,10 @@ Rails.application.routes.draw do
   # For details on the DSL available within this file, see http://guides.rubyonrails.org/routing.html
   mount RailsAdmin::Engine => '/admin', as: 'rails_admin'
   devise_for :users, controllers: {
-    registrations: 'users/registrations'
+    registrations: 'users/registrations',
+    sessions: 'users/sessions'
   }
+
   scope '(:locale)', locale: /#{I18n.available_locales.map(&:to_s).join('|')}/ do
     root to: 'homes#top', as: 'top'
     get 'about', to: 'homes#about', as: 'about'
@@ -17,7 +19,7 @@ Rails.application.routes.draw do
     patch 'users/:user_id/switch', to: 'users#switch', as: 'switch'
     resources :posts, only: %i[index show edit create update destroy] do
       resource :likes, only: %i[index create destroy]
-      resource :post_comments, only: %i[create update destroy]
+      resources :post_comments, only: %i[create update destroy]
       collection do
         get :cities_select
       end

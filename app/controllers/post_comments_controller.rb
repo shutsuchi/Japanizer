@@ -17,22 +17,25 @@ class PostCommentsController < ApplicationController
         format.js { render :create }
       else
         @comments = @thepost.post_comments
-        flash.now[:alert] = t('posts.cm_flash.s_alert')
         format.js { render :show }
       end
     end
   end
 
-  # PATCH /posts/:post_id/post_comments
-  # post_post_comments_path
+  # PATCH /posts/:post_id/post_comments/:id
+  # post_post_comment_path
   def update
-    @comment = find_comment(params[:id])
-    @comment.update(post_comment_params)
-    render json: @comment
+    @thepost = find_post(params[:post_id])
+    @comments_pg = page_5(@thepost.post_comments)
+    @thecomment = find_comment(params[:id])
+    respond_to do |format|
+      format.js if @thecomment.update(post_comment_params)
+      format.js { render :comment }
+    end
   end
 
-  # DELETE /posts/:post_id/post_comments
-  # post_post_comments_path
+  # DELETE /posts/:post_id/post_comment/:id
+  # post_post_comment_path
   def destroy
     @comment = find_comment(params[:id])
     respond_to do |format|

@@ -10,7 +10,7 @@
             .row
               .col-xs-10
                 .post-sidebar__image
-                  = attachment_image_tag @thepost, :image, fallback:"img/no_photo.png", class:"field", size:"200x200"
+                  = attachment_image_tag @thepost, :image, fallback:"img/no_photo.png", class:"field", size:"300x300"
             - if @thepost.user == current_user
               .row
                 .col-xs-10.post-main__top-btn
@@ -36,15 +36,15 @@
       .post-show-comment#comment-form-js
         = render 'posts/comment_form', thepost: @thepost, comment: @comment
   .col-xs-6
-    .post-show-comment
-      .col-xs-12.text-center
+    .col-xs-12
+      .post-show-new-form__title.text-center
         h2
           = t('posts.show.c_comment')
           | (
           = @comments.count
           | )
         .col-xs-12
-          = render 'posts/area_comment', comments: @comments_pg, post: @thepost
+          = render 'posts/area_comment', comments: @comments_pg, post: @thepost, comment: @comment
         .col-xs-12
           .text-center
             = paginate @comments_pg
