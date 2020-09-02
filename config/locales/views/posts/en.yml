@@ -79,3 +79,5 @@ en:
       c_rate: 'Rate'
       c_comment: 'Comment'
       c_submit: 'Post'
+      c_cancel: 'Cancel'
+      c_update: 'Update'

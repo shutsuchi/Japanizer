@@ -78,3 +78,5 @@ ja:
       c_rate: '評価'
       c_comment: 'コメント'
       c_submit: '投稿'
+      c_cancel: 'キャンセル'
+      c_update: '更新'

@@ -1,0 +1,2 @@
+$('#table-comment-js').html("<%= j(render 'posts/area_comment',  comments: @comments_pg, post: @thepost, comment: @thecomment ) %>");
+$('#error-pop').html("<%= j(render 'layouts/error_message', model: @thecomment) %>");
