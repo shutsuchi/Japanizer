@@ -125,3 +125,6 @@ gem 'html2slim', '~> 0.2.0'
 
 # Country & Area-name
 gem 'carmen-rails', git: 'https://github.com/Studiosity/carmen-rails.git', branch: 'master'
+
+# depict graph for ranking
+gem 'lazy_high_charts'

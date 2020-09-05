@@ -1,22 +1,30 @@
 //-------------------------- Navopen-toppage
 $(function() {
-  $('#js-toggle-menu').click(function() {
-    $('.search-select-boxes__toggle-menu').slideToggle();
+  $(document).on('click', '#js-toggle-menu', function() {
+    const menuArea = $('.search-select-boxes__toggle-menu');
+
+    menuArea.slideToggle();
   });
 });
 $(function() {
-  $('#js-toggle-menu2').click(function() {
-    $('.search-select-boxes__toggle-menu2').slideToggle();
+  $(document).on('click', '#js-toggle-menu2', function() {
+    const menuArea2 = $('.search-select-boxes__toggle-menu2');
+
+    menuArea2.slideToggle();
   });
 });
 $(function() {
-  $('#js-toggle-menu3').click(function() {
-    $('.search-select-boxes__toggle-menu3').slideToggle();
+  $(document).on('click', '#js-toggle-menu3', function() {
+    const menuArea3 = $('.search-select-boxes__toggle-menu3');
+
+    menuArea3.slideToggle();
   });
 });
 $(function() {
-  $('#js-toggle-menu-rank').click(function() {
-    $('.search-select-boxes__toggle-menu-rank').slideToggle();
+  $(document).on('click', '#js-toggle-menu-rank', function() {
+    const menuAreaRank = $('.search-select-boxes__toggle-menu-rank');
+
+    menuAreaRank.slideToggle();
   });
 });
 

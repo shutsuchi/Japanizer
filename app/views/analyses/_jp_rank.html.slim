@@ -1,12 +1,12 @@
 .jp-data
   .jp-data__title.text-center
-    h2
+    .jp-data__title--text
       = t('analyses.data.subtitle_jp')
   .jp-data__box
     .jp-data__rank-unit
       .jp-data__rank-unit--area
         .col-xs-12
-          h3
+          .jp-data__rank-unit--subtitle
             = t('analyses.data.area_rank')
         .col-xs-12
           - if jp_area_ranks.nil?
@@ -29,11 +29,14 @@
                         //= link_to prefectures_path(area_id: genre.id)
                         div class="map-img__#{ pref.id }"
                   .jp-data__area-rank-name
-                    = pref.name
+                    - if params[:locale] = 'ja'
+                      = pref.name
+                    - else
+                      = pref.en_name
     .jp-data__rank-unit
       .jp-data__rank-unit--genre
         .col-xs-12
-          h3
+          .jp-data__rank-unit--subtitle
             = t('analyses.data.genre_rank')
         .col-xs-12
         .col-xs-12
@@ -56,11 +59,14 @@
                       = link_to genres_path(id: genre.id)
                         div class="genre-img__#{ genre.id }"
                   .jp-data__genre-rank-name
-                    = genre.name
+                    - if params[:locale] = 'ja'
+                      = genre.name
+                    - else
+                      = genre.en_name
     .jp-data__rank-unit
       .jp-data__rank-unit--budget
         .col-xs-12
-          h3
+          .jp-data__rank-unit--subtitle
             = t('analyses.data.budget_rank')
         .col-xs-12
           - if jp_budget_ranks.nil?
