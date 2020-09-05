@@ -105,12 +105,14 @@ gem 'ransack', '~> 2.3.2'
 # For Logical-deletion
 gem 'paranoia', '~> 2.4.2'
 # For calenderFunc
-gem 'bootstrap3-datetimepicker-rails'
-gem 'fullcalendar-rails'
+gem 'bootstrap3-datetimepicker-rails', '~> 4.17.47'
+gem 'fullcalendar-rails', '~> 3.9.0.0'
 gem 'momentjs-rails'
 
 # For Internationalization
 gem 'rails-i18n', '~> 5.1.3'
+# For Internationalization(javascript)
+gem 'i18n-js'
 
 ### For Management
 # For Authority-mng
@@ -127,4 +129,4 @@ gem 'html2slim', '~> 0.2.0'
 gem 'carmen-rails', git: 'https://github.com/Studiosity/carmen-rails.git', branch: 'master'
 
 # depict graph for ranking
-gem 'lazy_high_charts'
+gem 'lazy_high_charts', '~> 1.6.1'

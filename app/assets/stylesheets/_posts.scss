@@ -3,6 +3,45 @@
 // You can use Sass (SCSS) here: http://sass-lang.com/
 
 //*----- Index -----*//
+.post-page-bg {
+  padding: 20px;
+  width: 100%;
+  height: auto;
+  background-color: rgb(27, 39, 56);
+}
+.post-index {
+  &__subtitle {
+    margin: 20px 0;
+    width: 100%;
+    position: relative;
+    display: inline-block;
+    margin-bottom: 10px;
+    padding-top: 20px;
+    height: 70px;
+    text-align: center;
+    line-height: 30px;
+    font-size: 30px;
+    color: #eee;
+    &:before, &:after {
+      content: '';
+      position: absolute;
+      top: 50%;
+      width: 30%;
+      display: inline-block;
+      height: 2px;
+      background: #888;
+    }
+    &:before {
+      left: 0;
+    }
+    &:after {
+      right: 0;
+    }
+    &:hover {
+      color: #fff;
+    }
+  }
+}
 
 //*---- Preview @NewPage
 .preview {
@@ -64,9 +103,12 @@ li {
   }
 
   &__detail {
+    margin-bottom: 20px;
     width: 90%;
     height: 230px;
     border: 1px solid #333333;
+    background: #ccc;
+    color: #222;
   }
   &__detail-element {
     height: 150px;
