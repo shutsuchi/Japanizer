@@ -1,6 +1,8 @@
 en:
   analyses:
     data:
+      tab_rate: 'Pie Graph'
+      tab_rank: 'Ranking'
       title: 'Journey Trend in Japan'
       subtitle_jp: 'Japanese Ranking'
       subtitle_ot: 'The Other Nationalities Ranking'
@@ -9,6 +11,12 @@ en:
       genre_rank: 'Genre Ranking'
       budget_rank: 'Budget Ranking (/0000 yen)'
 
+      graph_genre_t: 'Genre Ranking'
+      graph_genre_n: 'the Num of Posts'
+      graph_pref_t: 'Area Ranking'
+      graph_pref_n: 'the Num of Posts'
+      graph_budget_t: 'Budget Ranking(/000 yen)'
+      graph_budget_n: 'the Num of Albums'
     rank:
       pagetitle: 'Ranking'
       subtitle: 'What is popular post or album ?'
@@ -23,3 +31,6 @@ en:
       genre: 'Genre'
       pref: 'Prefecture'
       create: 'Created at'
+
+      grade: ' th'
+      have_look: 'Have a look at this post'

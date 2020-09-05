@@ -1,6 +1,8 @@
 ja:
   analyses:
     data:
+      tab_rate: '円グラフ'
+      tab_rank: 'ランキング'
       title: '日本旅行における人気ランキングを見てみる?'
       subtitle_jp: '日本ユーザランキング'
       subtitle_ot: '海外ユーザランキング'
@@ -9,6 +11,12 @@ ja:
       genre_rank: 'ジャンル'
       budget_rank: '予算 (万円)'
 
+      graph_genre_t: 'ジャンルランキング'
+      graph_genre_n: '投稿数'
+      graph_pref_t: '都道府県ランキング'
+      graph_pref_n: '投稿数'
+      graph_budget_t: '予算ランキング(万円)'
+      graph_budget_n: 'アルバム数'
     rank:
       pagetitle: 'ランキング'
       subtitle: '投稿・アルバムの人気ランキングをみてみよう'
@@ -23,3 +31,6 @@ ja:
       genre: 'ジャンル'
       pref: '都道府県'
       create: '作成日'
+
+      grade: ' 位'
+      have_look: 'この投稿の詳細を見る'

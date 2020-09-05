@@ -1,11 +1,57 @@
-.top-wrapper
-  .row
-    .col-xs-12.text-center
-      h1
-        = t('.title')
-    .col-xs-12
-      .col-xs-6
-        = render 'jp_rank', jp_area_ranks: @jp_area_ranks, jp_genre_ranks: @jp_genre_ranks, jp_budget_ranks: @jp_budget_ranks
-      .col-xs-6
-        = render 'others_rank', others_area_ranks: @others_area_ranks, others_genre_ranks: @others_genre_ranks, others_budget_ranks: @others_budget_ranks
+.data-page-bg
+  .top-wrapper
+    .row
+      .col-xs-12.text-center
+        h1
+          = t('.title')
+      .row
+        .tab-menu
+          ul.nav.nav-tabs.text-center role="tablist"
+            li.active role="presentation"
+              a.text-cetner aria-control="tab_a" data-toggle="tab" href="#tab_a" role="tab"
+                = t('analyses.data.tab_rate')
+            li role="presentation"
+              a.text-cetner aria-control="tab_b" data-toggle="tab" href="#tab_b" role="tab"
+                = t('analyses.data.tab_rank')
+      .row
+        .tab-content
+          .tab-pane.active id="tab_a" role="tabpanel"
+            .col-xs-12
+              .col-xs-6
+                .jp-data
+                  .jp-data__title
+                    .jp-data__title--text.text-center
+                      = t('analyses.data.subtitle_jp')
+                = high_chart_globals(@chart_globals)
+                = high_chart('sample', @jp_genre_graph)
+                  = raw "options.tooltip.formatter = function() {return '<b> '+ this.point.name +'</b>: '+ this.y +' %';},"
+                  = raw "options.plotOptions.pie.dataLabels.formatter = function() {return '<b> '+ this.point.name +'</b>: '+ this.y +' %';}"
+                = high_chart('sample2', @jp_pref_graph)
+                  = raw "options.tooltip.formatter = function() {return '<b> '+ this.point.name +'</b>: '+ this.y +' %';},"
+                  = raw "options.plotOptions.pie.dataLabels.formatter = function() {return '<b> '+ this.point.name +'</b>: '+ this.y +' %';}"
+                = high_chart('sample3', @jp_budget_graph)
+                  = raw "options.tooltip.formatter = function() {return '<b> '+ this.point.name +'</b>: '+ this.y +' %';},"
+                  = raw "options.plotOptions.pie.dataLabels.formatter = function() {return '<b> '+ this.point.name +'</b>: '+ this.y +' %';}"
+              .col-xs-6
+                .jp-data
+                  .jp-data__title
+                    .jp-data__title--text.text-center
+                      = t('analyses.data.subtitle_ot')
+                = high_chart('sample4', @others_genre_graph)
+                  = raw "options.tooltip.formatter = function() {return '<b> '+ this.point.name +'</b>: '+ this.y +' %';},"
+                  = raw "options.plotOptions.pie.dataLabels.formatter = function() {return '<b> '+ this.point.name +'</b>: '+ this.y +' %';}"
+                = high_chart('sample5', @others_pref_graph)
+                  = raw "options.tooltip.formatter = function() {return '<b> '+ this.point.name +'</b>: '+ this.y +' %';},"
+                  = raw "options.plotOptions.pie.dataLabels.formatter = function() {return '<b> '+ this.point.name +'</b>: '+ this.y +' %';}"
+                = high_chart('sample6', @others_budget_graph)
+                  = raw "options.tooltip.formatter = function() {return '<b> '+ this.point.name +'</b>: '+ this.y +' %';},"
+                  = raw "options.plotOptions.pie.dataLabels.formatter = function() {return '<b> '+ this.point.name +'</b>: '+ this.y +' %';}"
+          .tab-pane id="tab_b" role="tabpanel"
+            .col-xs-12
+              .col-xs-6
+                = render 'jp_rank', jp_area_ranks: @jp_area_ranks, jp_genre_ranks: @jp_genre_ranks, jp_budget_ranks: @jp_budget_ranks
+              .col-xs-6
+                = render 'others_rank', others_area_ranks: @others_area_ranks, others_genre_ranks: @others_genre_ranks, others_budget_ranks: @others_budget_ranks
+
+script src='https://code.highcharts.com/highcharts.js'
 

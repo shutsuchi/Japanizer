@@ -1,45 +1,46 @@
-.margin-wrapper
-  .top-wrapper
-    .row
-      .col-xs-12.margin-bottom-40.text-center
-        h1
-          = t('analyses.rank.pagetitle')
-        p
-          = t('analyses.rank.subtitle')
-    // Post Like
-    .row
-      .col-xs-12
-    .row
-      .col-xs-4
-        h2
-          = t('analyses.rank.like')
-        - if @post_like_genre_ranks.present?
-          h4 = @post_like_genre_ranks.first.genre.name
-          - @pickgenre_post_like_ranks.each.with_index(1) do |post, i|
-            = render 'post_rank', post: post, i: i
-        - else
-          - @post_like_ranks.each.with_index(1) do |post, i|
-            = render 'post_rank', post: post, i: i
-
-      // Post Comment数ランキング
-      .col-xs-4
-        h2
-          = t('analyses.rank.comment')
-        - if @post_comment_genre_ranks.present?
-          h4 = @post_comment_genre_ranks.first.genre.name
-          - @pickgenre_post_comment_ranks.each.with_index do |post, i|
+.rank-page-bg
+  .margin-wrapper
+    .top-wrapper
+      .row
+        .col-xs-12.margin-bottom-40.text-center
+          h1
+            = t('analyses.rank.pagetitle')
+          p
+            = t('analyses.rank.subtitle')
+      // Post Like
+      .row
+        .col-xs-12
+      .row
+        .col-xs-4
+          h2
+            = t('analyses.rank.like')
+          - if @post_like_genre_ranks.present?
+            h4 = @post_like_genre_ranks.first.genre.name
+            - @pickgenre_post_like_ranks.each.with_index(1) do |post, i|
               = render 'post_rank', post: post, i: i
-        - else
-          - @post_comment_ranks.each.with_index(1) do |post, i|
-            = render 'post_rank', post: post, i: i
+          - else
+            - @post_like_ranks.each.with_index(1) do |post, i|
+              = render 'post_rank', post: post, i: i
 
-      // Album Bookmark数ランキング
-      .col-xs-4
-        h2
-          = t('analyses.rank.bookmark')
-        - if @album_bookmark_genre_ranks.present?
-          - @album_bookmark_genre_ranks.each.with_index(1) do |album, i|
-            = render 'album_rank', album: album, i: i
-        - else
-          - @album_bookmark_ranks.each.with_index(1) do |album, i|
-            = render 'album_rank', album: album, i: i
+        // Post Comment数ランキング
+        .col-xs-4
+          h2
+            = t('analyses.rank.comment')
+          - if @post_comment_genre_ranks.present?
+            h4 = @post_comment_genre_ranks.first.genre.name
+            - @pickgenre_post_comment_ranks.each.with_index do |post, i|
+                = render 'post_rank', post: post, i: i
+          - else
+            - @post_comment_ranks.each.with_index(1) do |post, i|
+              = render 'post_rank', post: post, i: i
+
+        // Album Bookmark数ランキング
+        .col-xs-4
+          h2
+            = t('analyses.rank.bookmark')
+          - if @album_bookmark_genre_ranks.present?
+            - @album_bookmark_genre_ranks.each.with_index(1) do |album, i|
+              = render 'album_rank', album: album, i: i
+          - else
+            - @album_bookmark_ranks.each.with_index(1) do |album, i|
+              = render 'album_rank', album: album, i: i

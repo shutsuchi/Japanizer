@@ -2,21 +2,88 @@
 // They will automatically be included in application.css.
 // You can use Sass (SCSS) here: http://sass-lang.com/
 
+//------------- RANK PAGE --------------//
+.rank-page-bg {
+  padding: 20px;
+  width: 100%;
+  height: auto;
+  background-color: rgb(27, 39, 56);
+  color: #ddd;
+}
+.rank-post-like {
+  &__table th {
+    background-color: #222;
+  }
+  &__table td {
+    background-color: #fff;
+    color: #555;
+  }
+}
+//------------- DATA PAGE --------------//
+.data-page-bg {
+  padding: 40px;
+  width: 100%;
+  height: auto;
+  background-color: rgb(27, 39, 56);
+  color: #ddd;
+}
 .jp-data {
   &__title {
     margin: 20px 0 20px 0;
+    &--text {
+      width: 100%;
+      position: relative;
+      display: inline-block;
+      margin-bottom: 10px;
+      padding-top: 20px;
+      height: 70px;
+      text-align: center;
+      line-height: 30px;
+      font-size: 30px;
+      color: #eee;
+      &:before, &:after {
+        content: '';
+        position: absolute;
+        top: 50%;
+        width: 25%;
+        display: inline-block;
+        height: 2px;
+        background: #888;
+      }
+      &:before {
+        left: 0;
+      }
+      &:after {
+        right: 0;
+      }
+      &:hover {
+        color: #fff;
+      }
+    }
   }
   &__box {
     margin: 0 auto;
     padding-top: 20px;
+    padding-bottom: 20px;
     padding-left: 40px;
-    height: 800px;
+    height: 850px;
     width: 90%;
-    background-color: #b0c4de;
+    background-color: rgb(23, 45, 70);
   }
   &__rank-unit {
     margin-bottom: 50px;
     height: 200px;
+    &--subtitle {
+      width: 35%;
+      margin-top: 40px;
+      margin-bottom: 20px;
+      padding: 0.4em 0.5em;
+      color: #333;
+      background: #eee;
+      border-left: solid 8px #7db4e6;
+      border-bottom: solid 3px #d7d7d7;
+      font-size: 20px;
+    }
   }
   &__area-rank {
   }
@@ -127,7 +194,7 @@
   }
   &__8:before {
     font-family: "FontAwesome";
-    content:"\fce";
+    content:"\f7ce";
     font-size: 70px;
     color: #00ecff;
   }

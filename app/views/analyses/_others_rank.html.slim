@@ -1,12 +1,12 @@
-.others-data
-  .others-data__title.text-center
-    h2
+.jp-data
+  .jp-data__title.text-center
+    .jp-data__title--text
       = t('analyses.data.subtitle_ot')
-  .others-data__box
-    .others-data__rank-unit
-      .others-data__rank-unit--area
+  .jp-data__box
+    .jp-data__rank-unit
+      .jp-data__rank-unit--area
         .col-xs-12
-          h3
+          .jp-data__rank-unit--subtitle
             = t('analyses.data.area_rank')
         .col-xs-12
           - if @others_area_ranks.nil?
@@ -15,25 +15,25 @@
           - else
             - @others_area_ranks.each.with_index(1) do |pref, i|
               .col-xs-4
-                .others-data__area-rank
-                  .others-data__area-rank-icon
+                .jp-data__area-rank
+                  .jp-data__area-rank-icon
                     - if i == 1 then
                       i.fas.fa-crown style="color:#ffd700; font-size:30px;"
                     - elsif i == 2 then
                       i.fas.fa-crown style="color:#aaa; font-size:30px;"
                     - elsif i == 3 then
                       i.fas.fa-crown style="color:#d2691e; font-size:30px;"
-                  .others-data__area-rank-img
+                  .jp-data__area-rank-img
                     .map-img
                         // 投稿のarea検索ページに推移したいが、area_idとの差を埋められない
                         //= link_to prefectures_path(area_id: genre.id)
                         div class="map-img__#{ pref.id }"
-                  .others-data__area-rank-name
+                  .jp-data__area-rank-name
                     = pref.name
-    .others-data__rank-unit
-      .others-data__rank-unit--genre
+    .jp-data__rank-unit
+      .jp-data__rank-unit--genre
         .col-xs-12
-          h3
+          .jp-data__rank-unit--subtitle
             = t('analyses.data.genre_rank')
         .col-xs-12
           - if @others_genre_ranks.nil?
@@ -42,24 +42,24 @@
           - else
             - @others_genre_ranks.each.with_index(1) do |genre, i|
               .col-xs-4
-                .others-data__genre-rank
-                  .others-data__genre-rank-icon
+                .jp-data__genre-rank
+                  .jp-data__genre-rank-icon
                     - if i == 1 then
                       i.fas.fa-crown style="color:#ffd700; font-size:30px;"
                     - elsif i == 2 then
                       i.fas.fa-crown style="color:#aaa; font-size:30px;"
                     - elsif i == 3 then
                       i.fas.fa-crown style="color:#d2691e; font-size:30px;"
-                  .others-data__genre-rank-img
+                  .jp-data__genre-rank-img
                     .genre-img
                       = link_to genres_path(id: genre.id)
                         div class="genre-img__#{ genre.id }"
-                  .others-data__genre-rank-name
+                  .jp-data__genre-rank-name
                     = genre.name
-    .others-data__rank-unit
-      .others-data__rank-unit--budget
+    .jp-data__rank-unit
+      .jp-data__rank-unit--budget
         .col-xs-12
-          h3
+          .jp-data__rank-unit--subtitle
             = t('analyses.data.budget_rank')
         .col-xs-12
           - if @others_budget_ranks.nil?
@@ -68,17 +68,17 @@
           - else
             - @others_budget_ranks.each.with_index(1) do |budget, i|
               .col-xs-4
-                .others-data__budget-rank
-                  .others-data__budget-rank-icon
+                .jp-data__budget-rank
+                  .jp-data__budget-rank-icon
                     - if i == 1 then
                       i.fas.fa-crown style="color:#ffd700; font-size:30px;"
                     - elsif i == 2 then
                       i.fas.fa-crown style="color:#aaa; font-size:30px;"
                     - elsif i == 3 then
                       i.fas.fa-crown style="color:#d2691e; font-size:30px;"
-                  .others-data__budget-rank-img
+                  .jp-data__budget-rank-img
                     .budget-img
                       / 動的にimgを変更する予定
                       /div class="budget-img__#{ .id }"
-                  .others-data__budget-rank-name
+                  .jp-data__budget-rank-name
                     = budget
