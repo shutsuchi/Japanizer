@@ -1,67 +1,96 @@
-.top-wrapper
-  .row
-    .col-xs-12.text-center
-      - if current_user.admin?
-        h4
-          | 管理者ページ
+.user-page-bg
+  .top-wrapper
+    .row
+      .col-xs-12.text-center
+        - if current_user.admin?
+          h4
+            | 管理者ページ
 
-      - else
-        h1
-          = t('users.show.pagetitle')
-  .row
-    .calendar-box
-      .col-xs-7
-        .calendar-box__cal
-          #calendar
-
-      .col-xs-5
+        - else
+          h1.user-show__font-white
+            = t('users.show.pagetitle')
+    .row
+      .col-xs-12.user-detail-box
+        .col-xs-3
+          .col-xs-12
+            = attachment_image_tag @theuser, :image, fallback:'img/no_icon.png', class:'user-detail-box__img'
+          .col-xs-12.user-detail-box__item
+            .col-xs-4
+              | Name: 
+            .col-xs-8
+              = @theuser.name
+          .col-xs-12.user-detail-box__item
+            .col-xs-4
+              | Email: 
+            .col-xs-8
+              = @theuser.email
+          .col-xs-12.user-detail-box__item
+            .col-xs-4
+              | Age: 
+            .col-xs-8
+              = @theuser.age
+          .col-xs-12.user-detail-box__item
+            .col-xs-4
+              | Nationality: 
+            .col-xs-8
+              = @theuser.country_code
+          .col-xs-12.user-detail-box__item
+            .col-xs-4
+              | Sign up: 
+            .col-xs-8
+              = time_fmt @theuser.created_at
+          .col-xs-12
+        .col-xs-3
+          = render 'users/show_status', get_likes: @get_likes, get_comments: @get_comments, get_bookmarks: @get_bookmarks, give_likes: @give_likes, give_comments: @give_comments, give_bookmarks: @give_bookmarks
+        .col-xs-6
         .col-xs-12
-          = render 'layouts/error_message', model: @event
-        .col-xs-12
-          = render 'users/show_form', event: @event
-  .row
-    .col-xs-8
-      = render 'users/show_setting', user: current_user
-    .col-xs-4
-      = render 'users/show_status', get_likes: @get_likes, get_comments: @get_comments, get_bookmarks: @get_bookmarks, give_likes: @give_likes, give_comments: @give_comments, give_bookmarks: @give_bookmarks
+          .col-xs-6
+            = render 'users/show_setting', user: current_user
 
-  .row
-    .tab-menu
-      ul.nav.nav-tabs.text-center role="tablist"
-        li.active role="presentation"
-          a.text-cetner aria-control="tab_a" data-toggle="tab" href="#tab_a" role="tab"
-            = t('activerecord.models.post')
-        li role="presentation"
-          a.text-cetner aria-control="tab_b" data-toggle="tab" href="#tab_b" role="tab"
-            = t('activerecord.models.album')
-  .row
-    .tab-content
-      .tab-pane.active id="tab_a" role="tabpanel"
-        .mypage-post-list
-          .col-xs-12.text-center
-            .mypage-post-list__title
-              - if @posts_pg.nil?
-                h2
-                  = t('app.common.no_post')
-              - else
-                h2
-                  = t('users.show.subtitle_p')
-                .col-xs-12
-                  = render @posts_pg
-                  .text-center
-                    = paginate @posts_pg, :param_name => 'post'
+    .row
+      .calendar-box
+        .col-xs-7
+          .calendar-box__cal
+            #calendar
 
-      .tab-pane id="tab_b" role="tabpanel"
-        .mypage-post-list
-          .col-xs-12.text-center
-            .mypage-post-list__title
-              - if @albums_pg.nil?
-                h2
-                  = t('app.common.no_album')
-              - else
-                h2
-                  = t('users.show.subtitle_a')
-                .col-xs-12
-                  = render @albums_pg
-                  .text-center
-                    = paginate @albums_pg, :param_name => 'album'
+        .col-xs-5
+          .col-xs-12
+            = render 'layouts/error_message', model: @event
+          .col-xs-12
+            = render 'users/show_form', event: @event
+    .row
+      .tab-menu
+        ul.nav.nav-tabs.text-center role="tablist"
+          li.active role="presentation"
+            a.text-cetner aria-control="tab_a" data-toggle="tab" href="#tab_a" role="tab"
+              = t('activerecord.models.post')
+          li role="presentation"
+            a.text-cetner aria-control="tab_b" data-toggle="tab" href="#tab_b" role="tab"
+              = t('activerecord.models.album')
+    .row
+      .tab-content
+        .tab-pane.active id="tab_a" role="tabpanel"
+          .mypage-post-list
+            .col-xs-12.text-center
+              .mypage-post-list__title
+                - if @posts_pg.nil?
+                    = t('app.common.no_post')
+                - else
+                    = t('users.show.subtitle_p')
+              .col-xs-12
+                = render @posts_pg
+                .text-center
+                  = paginate @posts_pg, :param_name => 'post'
+
+        .tab-pane id="tab_b" role="tabpanel"
+          .mypage-post-list
+            .col-xs-12.text-center
+              .mypage-post-list__title
+                - if @albums_pg.nil?
+                    = t('app.common.no_album')
+                - else
+                    = t('users.show.subtitle_a')
+              .col-xs-12
+                = render @albums_pg
+                .text-center
+                  = paginate @albums_pg, :param_name => 'album'

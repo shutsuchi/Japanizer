@@ -3,7 +3,7 @@
     .mypage-setting__part
       .mypage-setting__icon
         = link_to edit_user_path(user), method: :get do
-          i.fas.fa-cogs style="font-size:80px;" name="edit_user"
+          i.fas.fa-cogs name="edit_user"
       .mypage-setting__text
         = link_to edit_user_path(user), method: :get do
           h4
@@ -12,7 +12,7 @@
     .mypage-setting__part
       .mypage-setting__icon
         = link_to albums_path, method: :get do
-          i.fas.fa-book style="font-size:80px; color:green;" name="create_album"
+          i.fas.fa-book name="create_album"
       .mypage-setting__text
         = link_to albums_path, method: :get do
           h4
@@ -21,7 +21,7 @@
     .mypage-setting__part
       .mypage-setting__icon
         = link_to posts_path, method: :get, value:"create_post" do
-          i.fas.fa-file-signature style="font-size:80px; color:blue;" value="create_post"
+          i.fas.fa-file-signature value="create_post"
         /= link_to posts_path, method: :get, value:"create_post" do
       .mypage-setting__text
         = link_to posts_path, method: :get, value:"create_post" do
