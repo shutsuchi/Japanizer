@@ -12,7 +12,7 @@ ja:
       tologin: 'ログイン画面へ'
       tosignup: 'ユーザー登録画面へ'
       image: '画像'
-      name: 'ユーザー名'
+      name: '名前'
       age: '年齢'
       nation: '国籍'
       mail: 'メールアドレス'
@@ -33,12 +33,15 @@ ja:
       no_album: "Let's create your FIRST album"
 
       new_form: '予定を作成します？'
+      edit_form: '予定を編集します？'
       f_title: 'タイトル'
       f_description: '予定内容'
       f_genre: 'ジャンル'
       f_start: '開始日'
       f_end: '終了日'
-      f_submit: '予定を作成する'
+      f_submit: '予定を作成'
+      f_update: '更新'
+      f_delete: '削除'
 
       edit_info: '登録情報を編集'
       create_post: '投稿を作成'
@@ -46,6 +49,12 @@ ja:
 
       got: '獲得数'
       gave: '実行数'
+
+      event_notice: 'イベント作成履歴(最新10件)'
+      notice_text_1: 'に "'
+      notice_text_2: '" を作成しました。'
+
+      user_notice: '最新情報(10件)'
 
     edit:
       pagetitle: 'ユーザー設定'

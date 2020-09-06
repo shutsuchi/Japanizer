@@ -1,0 +1,4 @@
+$('.modal-backdrop').remove();
+$('#inputScheduleEditForm').modal('hide');
+$('#inputEditForm').html("<%= j(render 'events/edit_form',  events: @events) %>");
+$('#calendar').fullCalendar('refetchEvents')

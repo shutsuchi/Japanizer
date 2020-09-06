@@ -31,55 +31,33 @@ class EventsController < ApplicationController
     @event = Event.new(event_params)
     @event.user_id = current_user.id
 
-    if @event.save
-      redirect_to user_path(current_user), notice: t('events.flash.s_notice')
-    else
-      pg_p = params[:post]
-      pg_a = params[:album]
-      @theuser = current_user
-      @posts_pg = type_page_8(@theuser.posts, pg_p)
-      @albums_pg = type_page_6(@theuser.albums, pg_a)
-      @events = Event.where(user_id: @theuser.id)
-
-      # Count User Got
-      @posts = @theuser.posts
-      @albums = @theuser.albums
-
-      @get_likes = get_post(@posts, Like)
-      @get_comments = get_post(@posts, PostComment)
-      @get_bookmarks = get_album(@albums, Bookmark)
-
-      # Count User Gave
-      @give_likes = give_obj(Like, @theuser)
-      @give_comments = give_obj(PostComment, @theuser)
-      @give_bookmarks = give_obj(Bookmark, @theuser)
-      flash.now[:alert] = t('events.flash.s_alert')
-      render 'users/show'
+    @events = Event.where(user_id: current_user.id)
+    respond_to do |format|
+      format.js if @event.save
+      format.js { render :modal_create }
     end
   end
 
-  #  PATCH /event/:id
-  #  event_path
-  # def update
-  #   event = find_event(params[:id])
-  #   @events = Event.where(user_id: current_user.id)
-  #   if event.update(event_params)
-  #     redirect_to event, notice: t('events.flash.u_notice')
-  #   else
-  #     flash.now[:alert] = t('events.flash.u_alert')
-  #     render user_path(current_user)
-  #   end
-  # end
+  # PATCH /event/:id
+  # event_path
+  def update
+    @event = find_event(params[:id])
+    @events = Event.where(user_id: current_user.id)
+    respond_to do |format|
+      format.js if @event.update(event_params)
+    end
+  end
 
   # DELETE /event/:id
   # event_path
   def destroy
     event = Event.find(params[:id])
     @user = event.user
-    # if event.destroy
-    return unless event.destroy
+    @events = Event.where(user_id: current_user.id)
 
-    redirect_to user_path(@user), notice: t('events.flash.d_notice')
+    respond_to do |format|
+      format.js if event.destroy
+    end
   end
 
   private

@@ -91,7 +91,6 @@ input[type="password"] {
 #calendar {
   margin: 20px 0 50px 10px;
   width: 90%;
-  text-align: center;
   background-color: rgb(23, 45, 70);
   color: #eee;
 }
@@ -130,16 +129,25 @@ input[type="password"] {
   }
 }
 .event-form {
-  margin-top: 80px;
-  height: 450px;
-  width: 80%;
-  //margin-left: 30px;
-  background-color: #b0c4de;
+  margin: 80px auto;
+  height: 500px;
+  width: 60%;
+  background-color: rgb(51, 123, 161);
+  color: #333;
   &__title {
     padding-left: 50px;
+    &--btn {
+      margin-top: 30px;
+    }
+  }
+  &__title button {
+    border-radius: 50%;
   }
   &__form {
     padding-left: 50px;
+    &--btn {
+      margin-top: 30px;
+    }
   }
 }
 .user-detail-box {
@@ -157,8 +165,6 @@ input[type="password"] {
   &__item:nth-child(6) {
     margin-bottom: 20px;
   }
-}
-.user-image {
 }
 .mypage-setting {
   margin-left: 50px;
@@ -188,8 +194,6 @@ input[type="password"] {
   }
   &__icon .fa-signature, &__icon i {
     color: rgb(51, 65, 201);
-  }
-  &__text {
   }
 }
 
@@ -267,6 +271,22 @@ input[type="password"] {
   }
 }
 
+.user-cal-history {
+  margin-top: 50px;
+  &__title {
+    margin-bottom: 20px;
+    color: #ddd;
+    font-size: 20px;
+    font-weight: bold;
+  }
+  &__items {
+    color: #ddd;
+    font-size: 15px;
+  }
+  &__item {
+    margin-top: 10px;
+  }
+}
 
 //-------- Withdraw Page --------//
 .withdraw-text p {

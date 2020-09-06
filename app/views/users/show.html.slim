@@ -11,53 +11,80 @@
             = t('users.show.pagetitle')
     .row
       .col-xs-12.user-detail-box
-        .col-xs-3
-          .col-xs-12
-            = attachment_image_tag @theuser, :image, fallback:'img/no_icon.png', class:'user-detail-box__img'
-          .col-xs-12.user-detail-box__item
-            .col-xs-4
-              | Name: 
-            .col-xs-8
-              = @theuser.name
-          .col-xs-12.user-detail-box__item
-            .col-xs-4
-              | Email: 
-            .col-xs-8
-              = @theuser.email
-          .col-xs-12.user-detail-box__item
-            .col-xs-4
-              | Age: 
-            .col-xs-8
-              = @theuser.age
-          .col-xs-12.user-detail-box__item
-            .col-xs-4
-              | Nationality: 
-            .col-xs-8
-              = @theuser.country_code
-          .col-xs-12.user-detail-box__item
-            .col-xs-4
-              | Sign up: 
-            .col-xs-8
-              = time_fmt @theuser.created_at
-          .col-xs-12
-        .col-xs-3
-          = render 'users/show_status', get_likes: @get_likes, get_comments: @get_comments, get_bookmarks: @get_bookmarks, give_likes: @give_likes, give_comments: @give_comments, give_bookmarks: @give_bookmarks
-        .col-xs-6
-        .col-xs-12
+        .col-xs-7
           .col-xs-6
+            .col-xs-12
+              = attachment_image_tag @theuser, :image, fallback:'img/no_icon.png', class:'user-detail-box__img'
+            .col-xs-12.user-detail-box__item
+              .col-xs-4
+                = t('users.common.name')
+              .col-xs-8
+                = @theuser.name
+            .col-xs-12.user-detail-box__item
+              .col-xs-4
+                = t('users.common.mail')
+              .col-xs-8
+                = @theuser.email
+            .col-xs-12.user-detail-box__item
+              .col-xs-4
+                = t('users.common.age')
+              .col-xs-8
+                = @theuser.age
+            .col-xs-12.user-detail-box__item
+              .col-xs-4
+                = t('users.common.nation')
+              .col-xs-8
+                = @theuser.country_code
+            .col-xs-12.user-detail-box__item
+              .col-xs-4
+                = t('users.common.created')
+              .col-xs-8
+                = time_fmt @theuser.created_at
+            .col-xs-12
+          .col-xs-6
+            = render 'users/show_status', get_likes: @get_likes, get_comments: @get_comments, get_bookmarks: @get_bookmarks, give_likes: @give_likes, give_comments: @give_comments, give_bookmarks: @give_bookmarks
+          .col-xs-12
             = render 'users/show_setting', user: current_user
+        .col-xs-5
+          .user-cal-history
+            .col-xs-12
+              .user-cal-history__title
+                = t('users.show.user_notice')
+            .col-xs-12
+              .user-cal-history__items
 
     .row
       .calendar-box
         .col-xs-7
           .calendar-box__cal
             #calendar
+              div id='inputForm'
+                = render 'events/form', event: @event
+              div id='inputEditForm'
+                = render 'events/edit_form', events: @events
 
         .col-xs-5
-          .col-xs-12
-            = render 'layouts/error_message', model: @event
-          .col-xs-12
-            = render 'users/show_form', event: @event
+          .user-cal-history
+            .col-xs-12
+              .user-cal-history__title
+                = t('users.show.event_notice')
+            .col-xs-12
+              .user-cal-history__items
+                - @events.each.with_index do |event, i|
+                  - if i < 11
+                    .col-xs-12
+                      .user-cal-history__item
+                        - if params[:locale] == 'ja'
+                          = ja_hour_fmt event.created_at
+                          |  
+                          = t('users.show.notice_text_1')
+                          = event.title
+                          = t('users.show.notice_text_2')
+                        - else
+                          = hour_fmt event.create_at
+                          = t('users.show.notice_text_1')
+                          = event.title
+
     .row
       .tab-menu
         ul.nav.nav-tabs.text-center role="tablist"
@@ -94,3 +121,13 @@
                 = render @albums_pg
                 .text-center
                   = paginate @albums_pg, :param_name => 'album'
+/javascript:
+/  var data = {'data-date-format': 'YYYY-MM-DD hh:mm' };
+/  $(function() {
+/    $('.datetimepicker').attr(data);
+/    $('.datetimepicker').datetimepicker( {
+/      format: 'YYYY/MM/DD hh:mm'
+/    });
+/  });
+/script type='text/javascript' src='../bootstrap-datepicker-1.6.4-dist/js/bootstrap-datepicker.min.js'
+/script type='text/javascript' src='../bootstrap-datepicker-1.6.4-dist/locales/bootstrap-datepicker.ja.min.js'

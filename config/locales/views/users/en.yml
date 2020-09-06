@@ -31,12 +31,15 @@ en:
       subtitle_a: 'Your albums'
 
       new_form: 'New Plan'
+      edit_form: 'Edit Plan'
       f_title: 'Title'
       f_description: 'Plan'
       f_genre: 'Genre'
       f_start: 'First Date'
       f_end: 'End Date'
       f_submit: 'Create Plan'
+      f_update: 'Update'
+      f_delete: 'Delete'
 
       edit_info: 'Edit User Info'
       create_post: 'Create Post'
@@ -45,6 +48,10 @@ en:
       got: 'Got'
       gave: 'Gave'
 
+      event_notice: 'Created Event History(latest 10)'
+      notice_text_1: 'created'
+
+      user_notice: 'User Notice'
     edit:
       pagetitle: 'User Setting'
       back: 'My page'

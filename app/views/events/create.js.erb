@@ -1,0 +1,5 @@
+$('#error-pop').remove();
+$('input[type="text"]').val('');
+$('#inputScheduleForm').modal('hide');
+$('#inputEditForm').html("<%= j(render 'events/edit_form',  events: @events) %>");
+$('#calendar').fullCalendar('refetchEvents')
