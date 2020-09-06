@@ -76,23 +76,43 @@ input[type="password"] {
         height: 50px;
 }
 //-------- Show Page --------//
-
+.user-page-bg {
+  padding: 20px;
+  width: 100%;
+  height: auto;
+  background-color: rgb(27, 39, 56);
+}
+.user-show {
+  &__font-white {
+    color: #ddd;
+  }
+}
 //----- calendar
 #calendar {
   margin: 20px 0 50px 10px;
   width: 90%;
   text-align: center;
+  background-color: rgb(23, 45, 70);
+  color: #eee;
 }
 .fc-sat {
   color: blue;
-  background-color: #f0f0ff;
+  //background-color: #f0f0ff;
+  background: rgb(104, 153, 186);
 }
 .fc-sun {
   color: red;
-  background-color: #fff0f0;
+  //background-color: #fff0f0;
+  //background: rgb(195, 109, 130);
+  background: rgb(205, 128, 161);
 }
 .fc-today {
   background-color: #f3f3f3 !important;
+  color: #000;
+  font-weight: bold;
+}
+.fc-left button, .fc-right button {
+  background: rgb(23, 140, 164);
 }
 .fc-right .fc-prev-button, .fc-right .fc-next-button {
   background-color: #262626;
@@ -122,24 +142,65 @@ input[type="password"] {
     padding-left: 50px;
   }
 }
+.user-detail-box {
+  margin-top: 30px;
+  margin-bottom: 50px;
+  padding-bottom: 30px;
+  border-bottom: 1px solid #eee;
+  color: #ddd;
+  &__img {
+    margin-bottom: 10px;
+    width: 80px;
+    height: 80px;
+    border-radius: 50%;
+  }
+  &__item:nth-child(6) {
+    margin-bottom: 20px;
+  }
+}
+.user-image {
+}
 .mypage-setting {
   margin-left: 50px;
-  padding-top: 20px;
-  padding-left: 100px;
   margin-right: 50px;
-  width: 90%;
+  padding-top: 20px;
+  padding-left: 10px;
+  padding-right: 10px;
+  width: 80%;
   height: 150px;
-  background-color: #f3ffd8 ;
   &__part {
+    text-align: center;
+  }
+  &__text h4 {
+    margin-top: 20px;
+    color: #fff;
+    font-size: 15px;
+  }
+  &__icon i {
+    margin-top: 10px;
+    font-size: 50px;
+  }
+  &__icon .fa-book, &__icon i {
+    color: rgb(42, 122, 68);
+  }
+  &__icon .fa-cogs, &__icon i {
+    color: rgb(223, 153, 69);
+  }
+  &__icon .fa-signature, &__icon i {
+    color: rgb(51, 65, 201);
+  }
+  &__text {
   }
 }
 
 .mypage-status {
+  margin-top: 30px;
   padding-top: 5px;
   padding-left: 10px;
   width: 80%;
-  height: 75px;
-  //background-color: #f3ffd8 ;
+  height: 160px;
+  border: 3px solid rgb(82, 108, 161);
+  background-color: rgb(82, 128, 161);
   &__got {
   }
   &__gave {
@@ -149,6 +210,15 @@ input[type="password"] {
   }
   &__icon {
     margin-left: 10px;
+    & .glyphicon-thumbs-up {
+      color: #ff8856;
+    }
+    & .glyphicon-comment {
+      color: #ddd;
+    }
+    & .glyphicon-bookmark {
+      color: #0000cd;
+    }
   }
   &__count {
     padding-left: 30px;
@@ -158,6 +228,7 @@ input[type="password"] {
     }
     &--bookmark {
       margin-left: 10px;
+      color: #eee;
     }
   }
 }
@@ -165,7 +236,34 @@ input[type="password"] {
 .mypage-post-list {
   margin-top: 30px;
   &__title {
+    width: 100%;
+    position: relative;
+    display: inline-block;
     margin-bottom: 10px;
+    padding-top: 20px;
+    height: 70px;
+    text-align: center;
+    line-height: 30px;
+    font-size: 20px;
+    color: #bbb;
+    &:before, &:after {
+      content: '';
+      position: absolute;
+      top: 50%;
+      width: 25%;
+      height: 2px;
+      display: inline-block;
+      background: #888;
+    }
+    &:before {
+      left: 0;
+    }
+    &:after {
+      right: 0;
+    }
+    &:hover {
+      color: #fff;
+    }
   }
 }
 

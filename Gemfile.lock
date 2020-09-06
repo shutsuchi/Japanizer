@@ -137,7 +137,6 @@ GEM
     haml (5.1.2)
       temple (>= 0.8.0)
       tilt
-    hash-deep-merge (0.1.1)
     hpricot (0.8.6)
     html2slim (0.2.0)
       hpricot
@@ -146,6 +145,8 @@ GEM
       domain_name (~> 0.5)
     i18n (1.8.5)
       concurrent-ruby (~> 1.0)
+    i18n-js (3.7.1)
+      i18n (>= 0.6.6)
     jaro_winkler (1.5.4)
     jbuilder (2.10.0)
       activesupport (>= 5.0.0)
@@ -169,8 +170,6 @@ GEM
     kaminari-core (1.2.1)
     launchy (2.5.0)
       addressable (~> 2.7)
-    lazy_high_charts (1.6.1)
-      hash-deep-merge
     letter_opener (1.7.0)
       launchy (~> 2.2)
     letter_opener_web (1.4.0)
@@ -416,7 +415,7 @@ DEPENDENCIES
   annotate
   bootsnap (>= 1.1.0)
   bootstrap-sass (~> 3.4.1)
-  bootstrap3-datetimepicker-rails
+  bootstrap3-datetimepicker-rails (~> 4.17.47)
   byebug
   cancancan (~> 3.1.0)
   capybara (>= 2.15)
@@ -425,13 +424,13 @@ DEPENDENCIES
   devise (~> 4.7.1)
   dotenv-rails (~> 2.7.5)
   factory_bot_rails
-  fullcalendar-rails
+  fullcalendar-rails (~> 3.9.0.0)
   geocoder (~> 1.6.2)
   html2slim (~> 0.2.0)
+  i18n-js
   jbuilder (~> 2.5)
   jquery-rails (~> 4.3, >= 4.3.3)
   kaminari (~> 1.2.1)
-  lazy_high_charts
   letter_opener
   letter_opener_web
   listen (>= 3.0.5, < 3.2)

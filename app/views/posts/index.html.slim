@@ -3,82 +3,83 @@
     = render 'new_form', post: @post
 
 
-- if user_signed_in?
-  .row
-    .top-wrapper
-      .tab-menu
-        ul.nav.nav-tabs.text-center role="tablist"
-          li.active role="presentation"
-            a.text-cetner aria-control="tab_a" data-toggle="tab" href="#tab_a" role="tab"
-              = t('posts.index.post_y')
-          li role="presentation"
-            a.text-cetner aria-control="tab_b" data-toggle="tab" href="#tab_b" role="tab"
-              = t('posts.index.post_o')
-
-  .top-wrapper
+.post-page-bg
+  - if user_signed_in?
     .row
-      .tab-content
-        .tab-pane.active id="tab_a" role="tabpanel"
-          .album-index
-            .album-index__title
-              - if current_user.posts.nil?
-                  h2
-                    / (予定)Link to THIS page-top
-                    = t('posts.index.no_post')
-              - else
-                  h2
-                    = t('posts.index.post_y')
-                  .col-xs-12
-                    / current_userの投稿一覧
-                    = render @user_posts_pg
-
-                  .col-xs-12
-                    .text-center
-                      = paginate @user_posts_pg, :param_name => 'user'
-
-        .tab-pane id="tab_b" role="tabpanel"
-          .album-index
-            .album-index__title
-              - if @others_posts_pg.nil?
-                .col-xs-12
-                  h2
-                    = t('app.common.no_post')
-              - else
-                  h2
-                    = t('posts.index.post_o')
-                  .col-xs-12
-                    / current_user以外userの投稿一覧
-                    = render @others_posts_pg
-
-                  .col-xs-12
-                    .text-center
-                      = paginate @others_posts_pg, :param_name => 'other'
-- else
-  .row
-    .top-wrapper
-      .tab-menu
-        ul.nav.nav-tabs.text-center role="tablist"
-          li.active role="presentation"
-            a.text-cetner aria-control="tab_b" data-toggle="tab" href="#tab_b" role="tab"
-              = t('posts.index.post_o')
+      .top-wrapper
+        .tab-menu
+          ul.nav.nav-tabs.text-center role="tablist"
+            li.active role="presentation"
+              a.text-cetner aria-control="tab_a" data-toggle="tab" href="#tab_a" role="tab"
+                = t('posts.index.post_y')
+            li role="presentation"
+              a.text-cetner aria-control="tab_b" data-toggle="tab" href="#tab_b" role="tab"
+                = t('posts.index.post_o')
 
     .top-wrapper
       .row
         .tab-content
-          .tab-pane.active id="tab_b" role="tabpanel"
+          .tab-pane.active id="tab_a" role="tabpanel"
             .album-index
-              - if @posts_pg.nil?
-                .col-xs-12
-                  h2
-                    = t('app.common.no_post')
-              - else
-                .album-index__title
-                  h2
-                    = t('posts.index.post_o')
-                  .col-xs-12
-                    / current_user以外userの投稿一覧
-                    = render @posts_pg
+              .album-index__title
+                - if current_user.posts.nil?
+                    .post-index__subtitle
+                      / (予定)Link to THIS page-top
+                      = t('posts.index.no_post')
+                - else
+                    .post-index__subtitle
+                      = t('posts.index.post_y')
+                    .col-xs-12
+                      / current_userの投稿一覧
+                      = render @user_posts_pg
 
+                    .col-xs-12
+                      .text-center
+                        = paginate @user_posts_pg, :param_name => 'user'
+
+          .tab-pane id="tab_b" role="tabpanel"
+            .album-index
+              .album-index__title
+                - if @others_posts_pg.nil?
                   .col-xs-12
-                    .text-center
-                      = paginate @posts_pg
+                    .post-index__subtitle
+                      = t('app.common.no_post')
+                - else
+                    .post-index__subtitle
+                      = t('posts.index.post_o')
+                    .col-xs-12
+                      / current_user以外userの投稿一覧
+                      = render @others_posts_pg
+
+                    .col-xs-12
+                      .text-center
+                        = paginate @others_posts_pg, :param_name => 'other'
+  - else
+    .row
+      .top-wrapper
+        .tab-menu
+          ul.nav.nav-tabs.text-center role="tablist"
+            li.active role="presentation"
+              a.text-cetner aria-control="tab_b" data-toggle="tab" href="#tab_b" role="tab"
+                = t('posts.index.post_o')
+
+      .top-wrapper
+        .row
+          .tab-content
+            .tab-pane.active id="tab_b" role="tabpanel"
+              .album-index
+                - if @posts_pg.nil?
+                  .col-xs-12
+                    .post-index__subtitle
+                      = t('app.common.no_post')
+                - else
+                  .album-index__title
+                    .post-index__subtitle
+                      = t('posts.index.post_o')
+                    .col-xs-12
+                      / current_user以外userの投稿一覧
+                      = render @posts_pg
+
+                    .col-xs-12
+                      .text-center
+                        = paginate @posts_pg
