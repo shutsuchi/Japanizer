@@ -76,7 +76,10 @@
               tr
                 th.active = t('albums.show.create')
                 td.post-sedebar__title
-                  = time_fmt @thealbum.created_at
+                  - if params[:locale] == 'ja'
+                    = ja_time_fmt @thealbum.created_at
+                  - else
+                    = time_fmt @thealbum.created_at
       .row
         h2
           = t('albums.show.posts')

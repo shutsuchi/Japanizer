@@ -11,7 +11,10 @@ table.table.table-bordered
     tr
       th.active = t('posts.show.create')
       td.post-sidebar__title
-        = time_fmt thepost.created_at
+        - if params[:locale] == 'ja'
+          = ja_time_fmt thepost.created_at
+        - else
+          = time_fmt thepost.created_at
     tr
       th.active = t('posts.show.rate')
       td.post-sidebar__title

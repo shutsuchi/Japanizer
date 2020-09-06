@@ -30,7 +30,10 @@
                 tr
                   th.active = t('users.common.created')
                   td.post-sidebar__title
-                    = time_fmt @theuser.created_at
+                    - if params[:locale] == 'ja'
+                      = ja_time_fmt @theuser.created_at
+                    - else
+                      = time_fmt @theuser.created_at
         .row
           .col-xs-6
             .post-main__top-btn

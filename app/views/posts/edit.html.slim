@@ -55,11 +55,17 @@
                 tr
                   th.active = t('posts.edit.create')
                   td.post-sidebar__title
-                    = time_fmt @thepost.created_at
+                    - if params[:locale] == 'ja'
+                      = ja_time_fmt @thepost.created_at
+                    - else
+                      = time_fmt @thepost.created_at
                 tr
                   th.active = t('posts.edit.update')
                   td.post-sidebar__title
-                    = time_fmt @thepost.updated_at
+                    - if params[:locale] == 'ja'
+                      = ja_time_fmt @thepost.updated_at
+                    - else
+                      = time_fmt @thepost.updated_at
 
   .col-xs-9
     .post-main.post-main__detail
