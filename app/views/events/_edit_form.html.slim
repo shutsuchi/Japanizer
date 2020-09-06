@@ -1,17 +1,16 @@
-.modal.fade id='inputScheduleForm' tabindex='-1'
-  .event-form
-    .col-xs-12
+- events.each do |event|
+  .modal.fade id="inputScheduleEditForm#{ event.id }" tabindex='-1'
+    .event-form
       .event-form__title
         .col-xs-12
           .col-xs-11
             h2
-              = t('users.show.new_form')
+              = t('users.show.edit_form')
           .col-xs-1.event-form__title--btn
             button type='button' class='btn btn-default' data-dismiss="modal"
               | X
-    .col-xs-7
       .event-form__form
-        = form_with(model: @event, url: events_path, method: :post, remote: true) do |f|
+        = form_with(model: event, url: event_path(event), method: :patch, remote: true) do |f|
           .form-window.row
             = f.label t('users.show.f_title')
             br
@@ -36,6 +35,9 @@
             br
             = f.text_field :end, data: {date_format: 'YYYY/MM/DD hh:mm' }, class:"col-xs-8 datetimepicker", placeholder: 'YYYY/MM/DD hh:mm'
           .event-form__form--btn.action.row
-            = f.submit t('users.show.f_submit'), class:"btn btn-success"
-    .col-xs-5#error-pop
-      = render 'layouts/error_message', model: @event
+            .col-xs-12
+              .col-xs-1
+                = f.submit t('users.show.f_update'), class:"btn btn-success"
+              .col-xs-1
+              .col-xs-1
+                = link_to t('users.show.f_delete'), event_path(event), method: :delete, remote: true, data: { confirm: t('app.common.confirm_del') }, class:"btn btn-danger pull-right"

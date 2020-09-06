@@ -14,7 +14,7 @@ class UsersController < ApplicationController
     @posts_pg = type_page_8(@theuser.posts, pg_p)
     @albums_pg = type_page_6(@theuser.albums, pg_a)
     @event = Event.new
-    @events = Event.where(user_id: @theuser.id)
+    @events = current_user.events.order(created_at: 'DESC')
     # Count User Got
     @posts = @theuser.posts
     @albums = @theuser.albums

@@ -68,23 +68,33 @@ $(function () {
           slotMinutes: 15,
           snapMinutes: 15,
           firstHour: 9,
-          eventClick: function(event) {
-            var id = event.id
-            var show_url = "/events/"+id
-            location.href = show_url;
+          navLinks: true,
+          selectable: true,
+          selectHelper: true,
+          dayClick: function(day, jsEvent, view) {
+            //jsEvent.preventDefault();
+            $('#inputScheduleForm').modal('show');
+          },
+          //eventClick: function(event) {
+          //  var id = event.id
+          //  var show_url = "/events/"+id
+          //  location.href = show_url;
+          eventClick: function(event, jsEvent, view) {
+            jsEvent.preventDefault();
+            $(`#inputScheduleEditForm${ event.id }`).modal('show');
+          },
+          eventMouseover: function(event, jsEvent, view) {
+            jsEvent.preventDefault();
           },
 
           timeFormat: "HH:mm",
-
           eventColor: '#87cefa',
-
           eventTextColor: '#000000',
           eventRender: function(event, element) {
               element.css("font-size", "0.8em");
               element.css("padding", "5px");
           },
           events: '/events.json'
-
         });
       } else {
         $('#calendar').fullCalendar({

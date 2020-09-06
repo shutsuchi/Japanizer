@@ -16,13 +16,5 @@
         = f.label t('users.show.f_genre')
         br
         = f.collection_select :genre_id, Genre.all, :id, :name, prompt: "Please select"
-      .form-window.row
-        = f.label t('users.show.f_start')
-        br
-        = f.text_field :start, data: {date_format: 'YYYY/MM/DD hh:mm' }, class:"col-xs-8 datetimepicker", placeholder: 'YYYY/MM/DD hh:mm'
-      .form-window.row
-        = f.label t('users.show.f_end')
-        br
-        = f.text_field :end, data: {date_format: 'YYYY/MM/DD hh:mm' }, class:"col-xs-8 datetimepicker", placeholder: 'YYYY/MM/DD hh:mm'
       .action.row
         = f.submit t('users.show.f_submit'), class:"btn btn-primary"
