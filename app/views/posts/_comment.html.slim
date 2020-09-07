@@ -45,20 +45,12 @@
                   button data-cancel-id="#{ comment.id }" type='button' class='btn btn-default comment-cancel-button comm-btn'
                     = t('posts.show.c_cancel')
                   = f.submit t('posts.show.c_update'), class:"btn btn-success comment-update-button"
-              /textarea.comment-post-error id="js-comment-textarea-#{ comment.id }" style='display:none;' size='60x10'
-                = comment.comment
-              /div id="js-comment-button-#{ comment.id }" style='display:none;'
-                button data-cancel-id="#{ comment.id }" type='button' class='btn btn-default comment-cancel-button'
-                  | キャンセル
-                button data-update-id="#{ comment.id }" type='submit' class='btn btn-success comment-update-button'
-                  | Update
 
           .col-xs-1
             - if comment.user == current_user
               .post-comment-box__btn--edit
                 span.js-edit-comment-button data-comment-id="#{ comment.id }"
                   i.fas.fa-edit.pull-right.text-primary style="font-size:20px"
-                    /= link_to '', post_post_comments_path(id: comment, post_id: post.id), method: :patch, remote: true, class:"fas fa-edit pull-right text-primary", style:"font-size:20px;"
           .col-xs-1
             - if comment.user == current_user
               .pot-comment-box__btn--delete
