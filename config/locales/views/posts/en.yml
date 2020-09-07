@@ -46,7 +46,7 @@ en:
       city: 'City'
       create: 'Created'
       update: 'Updated'
-      back: 'Mypage'
+      back: 'Detail Page'
       delete: 'Delete'
 
       edit_form: 'Edit'

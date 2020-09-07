@@ -18,13 +18,11 @@
                       span
                         = t('posts.show.edit_btn')
               .col-xs-12.post-show-main__top-btn
-                = link_to(post_path(@thepost), method: :delete, data: { confirm: t('app.common.confirm_del') }) do
-              .col-xs-12
-                  span.btn.btn-danger.btn-md.col-xs-8.glyphicon.glyphicon-trash.btn-icon-color
-                    span
-                      = t('posts.show.delete_btn')
+                button#js-modal-open-btn.btn.btn-danger.btn-md.col-xs-8.glyphicon.glyphicon-trash.btn-icon-color
+                  = t('posts.edit.delete')
           .col-xs-7
             = render 'posts/detail', thepost: @thepost
+
   - if @thepost.user != current_user
     .col-xs-6
       .col-xs-12
@@ -63,3 +61,13 @@
             .col-xs-12
               .text-center
                 = paginate @comments_pg
+
+  div id='js-overlay'
+    div id='js-modal-window'
+      .modal-message-box
+        div
+          = t('app.common.confirm')
+        div
+          = t('app.common.confirm_del')
+      button id='js-modal-close-btn' = t('app.common.cancel')
+      = link_to t('posts.edit.delete'), post_path(@thepost), method: :delete, id:'js-delete-confirmation-btn', class:'modal-delete-btn'

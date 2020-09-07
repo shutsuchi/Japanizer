@@ -55,8 +55,59 @@
             .form-window.row
               = f.label t('posts.edit.f_album'), class:"post-main__color"
               br
-                button.btn.btn-sm.btn-default type='button' id='js-album-btn' 確認
+                button.btn.btn-sm.btn-default type='button' id='js-album-btn' = t('app.common.check')
               br
               = f.collection_select :album_id, user_albums, :id, :title, prompt: "Please select"
             .form-submit.row.post-main__top-btn
               = f.submit t('posts.edit.f_submit'), class:"btn btn-lg btn-base-1 btn-primary pull-left"
+
+div id='js-album-modal'
+  .modal-album-box
+    .post-album-form
+      .col-xs-12
+        .post-album-form__title
+          .col-xs-12
+            .col-xs-11
+            .col-xs-1.post-album-form__title--btn
+              button type='button' class='btn btn-default' id='js-album-close-btn'
+                | X
+      .col-xs-12
+        .post-album-form__form
+          - user_albums.each do |album|
+            .col-xs-4
+              .post-album-box
+                .post-album-box__book
+                  .col-xs-6
+                    .post-album-box__image
+                      .post-album-box__image--content
+                        .post-album-box__image--pic
+                          = attachment_image_tag album, :image, fallback:"img/no_photo.png", size:"70x70"
+                  .col-xs-6
+                    .post-album-box__detail
+                      .post-album-box__detail--content
+                        .row
+                          .col-xs-12
+                            .post-album-box__detail-element
+                              .post-album-box__detail-element-others
+                                .col-xs-12
+                                  .post-album-box__detail-element-others--title.text-center
+                                    = album.title
+                                .col-xs-12
+                                  .post-album-box__detail-element-others--item
+                                    = t('posts.edit.al_genre')
+                                    span
+                                      - if params[:locale] == 'ja'
+                                        = album.genre.name
+                                      - else
+                                          = album.genre.en_name
+                                  .post-album-box__detail-element-others--item
+                                    = t('posts.edit.al_budget')
+                                    span
+                                      = album.budget
+                                  .post-album-box__detail-element-others--item
+                                    = t('posts.edit.al_create')
+                                    span
+                                      - if params[:locale] == 'ja'
+                                        = ja_time_fmt album.created_at
+                                      - else
+                                        = time_fmt album.created_at

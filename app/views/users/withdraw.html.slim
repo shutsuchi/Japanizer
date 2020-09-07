@@ -18,7 +18,17 @@
       .col-xs-4
       .col-xs-2
         = link_to t('.btn1'), user_path(@theuser), class:"btn-success btn btn-lg"
-
       .col-xs-2
-        = button_to t('.btn2'), switch_path(@theuser), method: :patch,  data: { confirm: t('app.common.confirm_withdraw') }, class:"btn-danger btn btn-lg"
+        button#js-modal-open-btn.btn.btn-danger.btn-lg.col-xs-8.btn-icon-color
+          = t('.btn2')
       .col-xs-4
+
+  div id='js-overlay'
+    div id='js-modal-window'
+      .modal-message-box
+        div
+          = t('app.common.confirm')
+        div
+          = t('app.common.confirm_del')
+      button id='js-modal-close-btn' = t('app.common.cancel')
+      = link_to t('posts.edit.delete'), switch_path(@theuser), method: :delete, id:'js-delete-confirmation-btn', class:'modal-delete-btn'
