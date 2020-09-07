@@ -46,7 +46,6 @@ Planning itenerary in Japan which suit with traveler, and obtain information or 
 ## 設計書 - Documentation
 * テーブル設計図 - Table Design  
 https://drive.google.com/file/d/1VKU5MB11sPT2XpxYjsAjiyD4Yz5e53zW/view?usp=sharing
-<br>
 * テーブル定義書 - Table Definition  
 https://docs.google.com/spreadsheets/d/115smM2AqfYlr7t8LhWpUxJIpmDCgJtYhGzmRImmbIGA/edit?usp=sharing
 
