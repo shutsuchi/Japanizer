@@ -46,6 +46,8 @@ en:
       city: 'City'
       create: 'Created'
       update: 'Updated'
+      back: 'Mypage'
+      delete: 'Delete'
 
       edit_form: 'Edit'
       f_image: 'Image'
@@ -57,6 +59,9 @@ en:
       city: 'City'
       create: 'Created'
       f_album: 'Album'
+      al_genre: 'Genre: '
+      al_budget: 'Budget: '
+      al_create: 'Created: '
       f_submit: 'Update'
 
     show:

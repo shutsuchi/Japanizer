@@ -1,5 +1,5 @@
-.row
-  .col-xs-3
+.post-edit-page-bg
+  .col-xs-4
     .post-sidebar
       .top-wrapper
         h1
@@ -12,42 +12,59 @@
             table.table.table-bordered
               thead
                 tr
-                  th.bg-primary = t('albums.show.user')
+                  th = t('albums.show.user')
                   td.post-sidebar__title
                     = @thealbum.user.name
                 tr
-                  th.active = t('albums.show.title')
+                  th = t('albums.show.title')
                   td.post-sidebar__title
                     = @thealbum.title
                 tr
-                  th.active = t('albums.show.rate')
+                  th = t('albums.show.rate')
                   td.post-sidebar__title
                     = @thealbum.rate
                 tr
-                  th.active = t('albums.show.genre')
+                  th = t('albums.show.genre')
                   td.post-sidebar__title
                     = @thealbum.genre.name
                 tr
-                  th.active = t('albums.edit.f_budget')
+                  th = t('albums.edit.f_budget')
                   td.post-sidebar__title
                     = @thealbum.budget
                 tr
-                  th.active = t('albums.edit.f_people')
+                  th = t('albums.edit.f_people')
                   td.post-sidebar__title
                     = @thealbum.people
                 tr
-                  th.active = t('albums.show.comment')
+                  th = t('albums.show.comment')
                   td.post-sidebar__title
                     = @thealbum.comment
                 tr
-                  th.active = t('albums.show.create')
+                  th = t('albums.show.create')
                   td.post-sidebar__title
-                    = time_fmt @thealbum.created_at
+                    - if params[:locale] == 'ja'
+                      = ja_time_fmt @thealbum.created_at
+                    - else
+                      = time_fmt @thealbum.created_at
                 tr
-                  th.active = t('albums.show.update')
+                  th = t('albums.show.update')
                   td.post-sidebar__title
-                    = time_fmt @thealbum.updated_at
+                    - if params[:locale] == 'ja'
+                      = ja_time_fmt @thealbum.updated_at
+                    - else
+                      = time_fmt @thealbum.updated_at
+        .row
+          .col-xs-8
+            .col-xs-12
+              .post-main__top-btn
+                = link_to(album_path(@thealbum), method: :get) do
+                  span.btn.btn-success.btn-md.col-xs-8.glyphicon.glyphicon-arrow-left.btn-icon-color
+                    = t('posts.edit.back')
+            .col-xs-12
+              .post-main__top-btn
+                = link_to(album_path(@thealbum), method: :delete, data: { confirm: t('app.common.confirm_del') }) do
+                  span.btn.btn-danger.btn-md.col-xs-8.glyphicon.glyphicon-trash.btn-icon-color
+                    = t('posts.edit.delete')
 
-  .col-xs-9
-    .post-main.post-main__detail
-      = render 'edit_form', thealbum: @thealbum, user_posts: @user_posts
+  .col-xs-8.post-main__detail
+    = render 'edit_form', thealbum: @thealbum, user_posts: @user_posts

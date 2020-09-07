@@ -39,7 +39,10 @@
               .col-xs-4
                 = t('users.common.created')
               .col-xs-8
-                = time_fmt @theuser.created_at
+                - if params[:locale] == 'ja'
+                  = ja_time_fmt @theuser.created_at
+                - else
+                  = time_fmt @theuser.created_at
             .col-xs-12
           .col-xs-6
             = render 'users/show_status', get_likes: @get_likes, get_comments: @get_comments, get_bookmarks: @get_bookmarks, give_likes: @give_likes, give_comments: @give_comments, give_bookmarks: @give_bookmarks

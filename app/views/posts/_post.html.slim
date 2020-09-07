@@ -45,7 +45,10 @@
                         = post.prefecture.en_name
                   .post-index-box__detail-element-others--time
                     col-xs-12
-                      = time_fmt post.created_at
+                      - if params[:locale] == 'ja'
+                        = ja_time_fmt post.created_at
+                      - else
+                        = time_fmt post.created_at
       .row
         .post-index-box__detail-icon
           .col-xs-6 id="likes_buttons_#{ post.id }"

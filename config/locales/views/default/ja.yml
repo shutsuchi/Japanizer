@@ -1,11 +1,13 @@
 ja:
   app:
     common:
+      cancel: 'キャンセル'
       back: '戻る'
       delete: '削除する'
       no_data: 'データなし'
       no_post: '該当の投稿なし'
       no_album: '該当のアルバムなし'
+      confirm: '確認'
       confirm_del: '削除しますか？'
       confirm_withdraw: '本当に退会しますか？'
     link:

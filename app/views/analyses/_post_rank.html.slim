@@ -79,7 +79,10 @@
             th
               = t('analyses.rank.create')
             td
-              = time_fmt post.created_at
+              - if params[:locale] == 'ja'
+                = ja_time_fmt post.created_at
+              - else
+                = time_fmt post.created_at
   .col-xs-12
     = link_to post_path(post) do
       h5

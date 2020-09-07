@@ -1,20 +1,8 @@
 .post-main__box
   .row
-    .col-xs-3.post-main__color
-      h2
-        = t('albums.edit.subtitle')
-    .col-xs-2
-      .post-main__top-btn
-        = link_to(album_path(thealbum), method: :get) do
-          span.btn.btn-primary.btn-md.col-xs-8.glyphicon.glyphicon-arrow-left.btn-icon-color
-    .col-xs-2
-      .post-main__top-btn
-        = link_to(album_path(thealbum), method: :delete, data: { confirm: t('app.common.confirm_del') }) do
-          span.btn.btn-danger.btn-md.col-xs-8.glyphicon.glyphicon-trash.btn-icon-color
     .col-xs-12
       .col-xs-6
         = render 'layouts/error_message', model: thealbum
-      .col-xs-6
   .row
     .col-xs-12
       .post-main__new-form
@@ -53,34 +41,35 @@
               br
               = f.collection_select :genre_id, Genre.all, :id, :name, prompt: "Please select"
             .form-window.row
-              = f.label t('albums.edit.f_budget')
+              = f.label t('albums.edit.f_budget'), class:"post-main__color"
               br
               /= f.select :budget, options_for_select(1..50), class:"form-control", prompt: "Please select"
-              = f.select :budget, [["under 1", "~ 1"],
-                                  ["1 ~ 3", "1 ~ 3"],
-                                  ["3 ~ 5", "3 ~ 5"],
-                                  ["5 ~ 7", "5 ~ 7"],
-                                  ["7 ~ 9", "7 ~ 9"],
-                                  ["10 ~ 20", "10 ~ 20"],
-                                  ["20 ~ 30", "20 ~ 30"],
-                                  ["30 ~ 40", "30 ~ 40"],
-                                  ["40 ~ 50", "40 ~ 50"],
-                                  ["50 ~", "50 ~"]], selected: thealbum.budget, class:"form-control", prompt: "Please select"
+              = f.select :budget, [['under 1', '~ 1'],
+                                  ['1 ~ 3', '1 ~ 3'],
+                                  ['3 ~ 5', '3 ~ 5'],
+                                  ['5 ~ 7', '5 ~ 7'],
+                                  ['7 ~ 9', '7 ~ 9'],
+                                  ['10 ~ 20', '10 ~ 20'],
+                                  ['20 ~ 30', '20 ~ 30'],
+                                  ['30 ~ 40', '30 ~ 40'],
+                                  ['40 ~ 50', '40 ~ 50'],
+                                  ['50 ~', '50 ~']], selected: thealbum.budget, class:'form-control', prompt:'Please select'
             .form-window.row
-              = f.label t('albums.edit.f_people')
+              = f.label t('albums.edit.f_people'), class:'post-main__color'
               br
-              = f.select :people, options_for_select(1..10, selected: thealbum.people), class:"form-control", prompt: "Please select"
+              = f.select :people, options_for_select(1..10, selected: thealbum.people), class:'form-control', prompt:'Please select'
             .form-window.row
-              = f.label t('albums.edit.f_comment'), class:"post-main__color"
+              = f.label t('albums.edit.f_comment'), class:'post-main__color'
               br
-              = f.text_area :comment, rows:'5', class:"field col-xs-8", placeholder:"comment here"
+              = f.text_area :comment, rows:'5', class:'field col-xs-8', placeholder:'comment here'
             .form-window.row
-              = f.label t('albums.edit.f_post'), class:"post-main__color"
+              = f.label t('albums.edit.f_post'), class:'post-main__color'
               br
-              = f.collection_check_boxes :post_quantity, user_posts, :id, :title, prompt: "Please select",
-                include_hidden: false, class:"post-main__color" do |a|
-                  = a.check_box
-                  = a.label { a.text }
-                  br
+              .album-select
+                = f.collection_check_boxes :post_quantity, user_posts, :id, :title, class:'album-select', prompt:'Please select',
+                  include_hidden: false, class:'post-main__color' do |a|
+                    = a.check_box
+                    = a.label { a.text }
+                    br
             .form-submit.row
               = f.submit t('albums.edit.f_submit'), class:"btn btn-md btn-base-1 btn-primary pull-left"

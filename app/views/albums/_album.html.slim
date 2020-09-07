@@ -52,4 +52,7 @@
                               = t('albums.index.create')
                           .album-index-box__detail-element-others--time
                             col-xs-12
-                              = time_fmt album.created_at
+                              - if params[:locale] == 'ja'
+                                = ja_time_fmt album.created_at
+                              - else
+                                = time_fmt album.created_at

@@ -1,88 +1,92 @@
-.row
-  .col-xs-12.post-main.post-main__detail-form
-    .post-detail_box.top-wrapper
-      .row
-        h2
-          = t('albums.show.pagetitle')
-      .row
-        .col-xs-3
-          .row
-            .col-xs-10
-              .post-sidebar__image
-                = attachment_image_tag @thealbum, :image, fallback:"img/image_icon.png", class:"field", size:"200x200"
-          - if current_user == @thealbum.user
+.post-page-bg
+  .row
+    .col-xs-12.post-show-main.post-show-main__detail-form
+      .post-detail_box.top-wrapper
+        .row
+          h1
+            = t('albums.show.pagetitle')
+        .row
+          .col-xs-3
             .row
-              .col-xs-10.post-main__top-btn
-                = link_to(edit_album_path(@thealbum), method: :get) do
-                  span.btn.btn-default.btn-md.col-xs-8.form-window.glyphicon.glyphicon-cog
-                    span
-                      = t('albums.show.edit_btn')
-            .row
-              .col-xs-10.post-main__top-btn
-                = link_to(album_path(@thealbum), method: :delete, data: { confirm: t('app.common.confirm_del') }) do
-                  span.btn.btn-danger.btn-md.col-xs-8.glyphicon.glyphicon-trash.btn-icon-color
-                    span
-                      = t('albums.show.delete_btn')
-        .col-xs-8
-          table.table.table-bordered
-            thead
-              tr
-                th.bg-primary = t('albums.show.user')
-                td.post-sedebar__title
-                  = @thealbum.user.name
-              tr
-                th.active = t('albums.show.title')
-                td.post-sedebar__title
-                  = @thealbum.title
-              tr
-                th.active = t('albums.show.no_posts')
-                td.post-sedebar__title
-                  = @thealbum.posts.count
-              tr
-                th.active = t('albums.show.rate')
-                td.post-sedebar__title
-                  h5.md-e
-                    = @thealbum.rate
-                  div id="star-rate-#{@thealbum.id}"
-                    javascript:
-                      $('#star-rate-#{@thealbum.id}').raty({
-                        size      : 36,
-                        starOff   : '#{asset_path('star-off.png')}',
-                        starOn    : '#{asset_path('star-on.png')}',
-                        starHalf  : '#{asset_path('star-half.png')}',
-                        half      : true,
-                        readOnly  : true,
-                        score     : #{@thealbum.rate},
-                      });
-              tr
-                th.active = t('albums.show.genre')
-                td.post-sedebar__title
-                  - if params[:locale] == 'ja'
-                    = @thealbum.genre.name
-                  - else
-                    = @thealbum.genre.en_name
-              tr
-                th.active = t('albums.edit.f_budget')
-                td.post-sedebar__title
-                  = @thealbum.budget
-              tr
-                th.active = t('albums.edit.f_people')
-                td.post-sedebar__title
-                  = @thealbum.people
-              tr
-                th.active = t('albums.show.comment')
-                td.post-sedebar__title
-                  = @thealbum.comment
-              tr
-                th.active = t('albums.show.create')
-                td.post-sedebar__title
-                  = time_fmt @thealbum.created_at
-      .row
-        h2
-          = t('albums.show.posts')
-        .col-xs-12
-          .album-posts-list
-            = render @posts
+              .col-xs-10
+                .post-show-main__image
+                  = attachment_image_tag @thealbum, :image, fallback:"img/image_icon.png", class:"field", size:"200x200"
+            - if current_user == @thealbum.user
+              .row
+                .col-xs-10.post-show-main__top-btn
+                  = link_to(edit_album_path(@thealbum), method: :get) do
+                    span.btn.btn-default.btn-md.col-xs-8.form-window.glyphicon.glyphicon-cog
+                      span
+                        = t('albums.show.edit_btn')
+              .row
+                .col-xs-10.post-show-main__top-btn
+                  = link_to(album_path(@thealbum), method: :delete, data: { confirm: t('app.common.confirm_del') }) do
+                    span.btn.btn-danger.btn-md.col-xs-8.glyphicon.glyphicon-trash.btn-icon-color
+                      span
+                        = t('albums.show.delete_btn')
+          .col-xs-8
+            table.table.table-bordered.post-show-main__table
+              thead
+                tr
+                  th = t('albums.show.user')
+                  td.post-sidebar__title
+                    = @thealbum.user.name
+                tr
+                  th = t('albums.show.title')
+                  td.post-sidebar__title
+                    = @thealbum.title
+                tr
+                  th = t('albums.show.no_posts')
+                  td.post-sidebar__title
+                    = @thealbum.posts.count
+                tr
+                  th = t('albums.show.rate')
+                  td.post-sidebar__title
+                    h5.md-e
+                      = @thealbum.rate
+                    div id="star-rate-#{@thealbum.id}"
+                      javascript:
+                        $('#star-rate-#{@thealbum.id}').raty({
+                          size      : 36,
+                          starOff   : '#{asset_path('star-off.png')}',
+                          starOn    : '#{asset_path('star-on.png')}',
+                          starHalf  : '#{asset_path('star-half.png')}',
+                          half      : true,
+                          readOnly  : true,
+                          score     : #{@thealbum.rate},
+                        });
+                tr
+                  th = t('albums.show.genre')
+                  td.post-sidebar__title
+                    - if params[:locale] == 'ja'
+                      = @thealbum.genre.name
+                    - else
+                      = @thealbum.genre.en_name
+                tr
+                  th = t('albums.edit.f_budget')
+                  td.post-sidebar__title
+                    = @thealbum.budget
+                tr
+                  th = t('albums.edit.f_people')
+                  td.post-sidebar__title
+                    = @thealbum.people
+                tr
+                  th = t('albums.show.comment')
+                  td.post-sidebar__title
+                    = @thealbum.comment
+                tr
+                  th = t('albums.show.create')
+                  td.post-sidebar__title
+                    - if params[:locale] == 'ja'
+                      = ja_time_fmt @thealbum.created_at
+                    - else
+                      = time_fmt @thealbum.created_at
+        .row
+          h2
+            = t('albums.show.posts')
+          .col-xs-12
+            .album-posts-list
+              = render @posts
 
-            .text-center
-              = paginate @posts
+              .text-center
+                = paginate @posts

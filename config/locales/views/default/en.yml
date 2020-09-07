@@ -1,11 +1,13 @@
 en:
   app:
     common:
+      cancel: 'Cancel'
       back: 'Back'
       delete: 'Delete'
       no_data: 'NO DATA'
       no_post: 'NO POST'
       no_album: 'NO ALBUM'
+      confirm: 'CONFIRMATION'
       confirm_del: 'Are you sure?'
       confirm_withdraw: 'Are you really sure to withdraw??'
     link:
