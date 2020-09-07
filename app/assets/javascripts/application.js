@@ -21,10 +21,49 @@
 //= require_tree .
 
 //-------------------------- DateTimePicker-calendarForm
-var data = {'data-date-format': 'YYYY-MM-DD hh:mm' };
+//var data = {'data-date-format': 'yyyy/MM/dd hh:mm' };
 $(function(){
-  $('.datetimepicker').attr(data);
-  $('.datetimepicker').datetimepicker({
-    format: 'YYYY-MM-DD hh:mm',
+  //$('.datetimepicker').attr(data);
+  $(".datetimepicker").datetimepicker({
+    //format: 'YYYY/MM/DD hh:mm',
   });
+});
+
+//-------------------------- ModalWindow(Delete)
+
+document.addEventListener("DOMContentLoaded", function() {
+  let modal_open = document.getElementById('js-modal-open-btn');
+  modal_open.onclick = function() {
+    $('#js-overlay').fadeIn();
+    document.getElementById('js-modal-close-btn').onclick = function() {
+      $('#js-overlay').fadeOut();
+    };
+    document.getElementById("js-delete-confirmation-btn").onclick = function () {
+        document.getElementById("js-item-delete-btn").click();
+    };
+  };
+});
+
+//-------------------------- ModalWindow(Album)
+
+document.addEventListener("DOMContentLoaded", function() {
+  let modal_open = document.getElementById('js-album-btn');
+  modal_open.onclick = function() {
+    $('#js-album-modal').fadeIn();
+    document.getElementById('js-album-close-btn').onclick = function() {
+      $('#js-album-modal').fadeOut();
+    };
+  };
+});
+
+//-------------------------- ModalWindow(Post)
+
+document.addEventListener("DOMContentLoaded", function() {
+  let modal_open = document.getElementById('js-post-btn');
+  modal_open.onclick = function() {
+    $('#js-post-modal').fadeIn();
+    document.getElementById('js-post-close-btn').onclick = function() {
+      $('#js-post-modal').fadeOut();
+    };
+  };
 });

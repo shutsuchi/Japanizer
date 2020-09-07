@@ -1,6 +1,7 @@
 en:
   app:
     common:
+      check: 'Check'
       cancel: 'Cancel'
       back: 'Back'
       delete: 'Delete'

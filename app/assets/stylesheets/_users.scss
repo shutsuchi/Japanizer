@@ -124,10 +124,6 @@ input[type="password"] {
   display : none;
 }
 //----- form-box
-.calender-box {
-  &__cal {
-  }
-}
 .event-form {
   margin: 80px auto;
   height: 500px;
@@ -226,10 +222,6 @@ input[type="password"] {
   }
   &__count {
     padding-left: 30px;
-    &--like {
-    }
-    &--comment {
-    }
     &--bookmark {
       margin-left: 10px;
       color: #eee;
@@ -293,12 +285,11 @@ input[type="password"] {
   padding-bottom: 400px;
   width: 100%;
   height: auto;
-  //background: rgb(80, 126, 149);
   background-color: rgb(27, 39, 56);
-  color: #ddd;
 }
 .withdraw-top {
   padding-top: 100px;
+  color: #ddd;
 }
 .withdraw-text p {
   font-size: 20px;

@@ -80,3 +80,13 @@
 
   .col-xs-8.post-main__detail
     = render 'edit_form',  thepost: @thepost, user_albums: @user_albums
+
+  div id='js-overlay'
+    div id='js-modal-window'
+      .modal-message-box
+        div
+          = t('app.common.confirm')
+        div
+          = t('app.common.confirm_del')
+      button id='js-modal-close-btn' = t('app.common.cancel')
+      = link_to t('posts.edit.delete'), post_path(@thepost), method: :delete, id:'js-delete-confirmation-btn', class:'modal-delete-btn'

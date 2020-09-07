@@ -46,7 +46,7 @@ ja:
       city: '市町村郡'
       create: '作成日'
       update: '最終更新日'
-      back: 'マイページ'
+      back: '詳細ページ'
       delete: '削除'
 
       edit_form: '編集する？'

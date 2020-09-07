@@ -20,10 +20,8 @@
                         = t('albums.show.edit_btn')
               .row
                 .col-xs-10.post-show-main__top-btn
-                  = link_to(album_path(@thealbum), method: :delete, data: { confirm: t('app.common.confirm_del') }) do
-                    span.btn.btn-danger.btn-md.col-xs-8.glyphicon.glyphicon-trash.btn-icon-color
-                      span
-                        = t('albums.show.delete_btn')
+                  button#js-modal-open-btn.btn.btn-danger.btn-md.col-xs-8.glyphicon.glyphicon-trash.btn-icon-color
+                    = t('posts.edit.delete')
           .col-xs-8
             table.table.table-bordered.post-show-main__table
               thead
@@ -90,3 +88,13 @@
 
               .text-center
                 = paginate @posts
+
+  div id='js-overlay'
+    div id='js-modal-window'
+      .modal-message-box
+        div
+          = t('app.common.confirm')
+        div
+          = t('app.common.confirm_del')
+      button id='js-modal-close-btn' = t('app.common.cancel')
+      = link_to t('posts.edit.delete'), album_path(@thealbum), method: :delete, id:'js-delete-confirmation-btn', class:'modal-delete-btn'
