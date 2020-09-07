@@ -44,11 +44,10 @@ Travelers of all ages form all over the world(including people in Japan) or work
 Planning itenerary in Japan which suit with traveler, and obtain information or trend of popular spots in Japan.
 
 ## 設計書 - Documentation
-* テーブル設計図 - Table Design
-<br>
+* テーブル設計図 - Table Design  
 https://drive.google.com/file/d/1VKU5MB11sPT2XpxYjsAjiyD4Yz5e53zW/view?usp=sharing
 <br>
-* テーブル定義書 - Table Definition
+* テーブル定義書 - Table Definition  
 https://docs.google.com/spreadsheets/d/115smM2AqfYlr7t8LhWpUxJIpmDCgJtYhGzmRImmbIGA/edit?usp=sharing
 
 ## 機能一覧 - Features List
