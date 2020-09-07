@@ -1,16 +1,17 @@
-.top-wrapper
-  .row
-    .col-xs-12.text-center
-      h1
-        = t('bookmarks.pagetitle')
-    .col-xs-12.text-center
-      - if @albums.present?
-        .col-xs-12
-          - @albums.each do |album|
-            /h2
-              = album.title
-            = render 'albums/album', album: album
+.bookmark-page-bg
+  .top-wrapper
+    .row
+      .col-xs-12.bkmk-index__title
+        h1
+          = t('bookmarks.pagetitle')
+      .col-xs-12.bkmk-index__content
+        - if @albums.present?
+          .col-xs-12
+            - @albums.each do |album|
+              /h2
+                = album.title
+              = render 'albums/album', album: album
 
-      - else
-        h2.bg-danger
-          = t('app.common.no_album')
+        - else
+          h2.bg-danger
+            = t('app.common.no_album')

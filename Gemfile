@@ -96,9 +96,6 @@ gem 'jquery-rails', '~> 4.3', '>= 4.3.3'
 # ENV-mng
 gem 'dotenv-rails', '~> 2.7.5'
 
-# Google-map
-gem 'geocoder', '~> 1.6.2'
-
 # For SearchFunc
 gem 'ransack', '~> 2.3.2'
 
@@ -111,8 +108,6 @@ gem 'momentjs-rails'
 
 # For Internationalization
 gem 'rails-i18n', '~> 5.1.3'
-# For Internationalization(javascript)
-gem 'i18n-js'
 
 ### For Management
 # For Authority-mng
@@ -127,3 +122,6 @@ gem 'html2slim', '~> 0.2.0'
 
 # Country & Area-name
 gem 'carmen-rails', git: 'https://github.com/Studiosity/carmen-rails.git', branch: 'master'
+
+# depict graph for ranking
+gem 'lazy_high_charts', '~> 1.6.1'

@@ -1,4 +1,4 @@
-.top-wrapper
+.genre-page-bg
   .row
     .col-xs-12.text-center
       h1
@@ -26,7 +26,7 @@
       //年代リスト
       = render 'age_list'
 
-.top-wrapper
+.genre-page-bg
   .row
     .tab-menu
       ul.nav.nav-tabs.text-center role="tablist"
@@ -37,12 +37,12 @@
           a.text-cetner aria-control="tab_b" data-toggle="tab" href="#tab_b" role="tab"
             = t('genres.subtitle_a')
 
-  .top-wrapper
+  .row
     .album-index
       .tab-content
         .tab-pane.active id="tab_a" role="tabpanel"
           .album-index__title
-            h2
+            .genre-index__subtitle
               = t('genres.subtitle_p')
             .col-xs-12
               - if @posts_pg.present?
@@ -57,9 +57,9 @@
         .tab-pane id="tab_b" role="tabpanel"
           .album-index
             .album-index__title
-              h2
+              .genre-index__subtitle
                 = t('genres.subtitle_a')
-              .col-xs-12
+              .col-xs-12.genre-index__album-color
                 - if @albums_pg.present?
                   - @albums_pg.each do |album|
                     = render 'albums/album', album: album

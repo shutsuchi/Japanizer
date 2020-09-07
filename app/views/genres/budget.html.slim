@@ -1,4 +1,4 @@
-.margin-wrapper
+.genre-page-bg
   .top-wrapper
     .row
       .col-xs-12.text-center
@@ -82,18 +82,17 @@
             .col-xs-12
               li
                 = link_to t('genres.budget.over'), budget_path(budget_range: 10)
-  .top-wrapper
-    .row
-      .album-index
-        .album-index__title
-          h2
-            = t('genres.subtitle_a')
-        .col-xs-12
-          - if @albums_pg.present?
-            - @albums_pg.each do |album|
-              = render 'albums/album', album: album
-            .col-xs-12.text-center
-              = paginate @albums_pg
-          - else
-            h3.bg-danger.text-center
-              = t('app.common.no_album')
+  .row
+    .album-index
+      .album-index__title
+        .genre-index__subtitle
+          = t('genres.subtitle_a')
+      .col-xs-12.genre-index__album-color
+        - if @albums_pg.present?
+          - @albums_pg.each do |album|
+            = render 'albums/album', album: album
+          .col-xs-12.text-center
+            = paginate @albums_pg
+        - else
+          h3.bg-danger.text-center
+            = t('app.common.no_album')

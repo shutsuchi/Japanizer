@@ -2,21 +2,35 @@
 // They will automatically be included in application.css.
 // You can use Sass (SCSS) here: http://sass-lang.com/
 
+.pref-page-bg {
+  padding: 30px;
+  width: 100%;
+  height: auto;
+  background-color: rgb(27, 39, 56);
+  color: #ddd;
+}
 .area-pick {
-  padding-top: 150px;
   &__japan-map {
-    margin: 20px auto;
-    height: 800px;
+    margin: 0 auto;
+    height: 900px;
     width: 100%;
-    background-color: lightblue;
   }
 }
 .prefs {
   width: 70%;
-  margin-bottom: 5px;
+  margin-bottom: 10px;
   margin-left: 30px;
   padding-left: 30px;
-  border-left: solid 5px #7db4e6;
+  border-left: solid 5px rgb(45, 102, 246);
+  background: rgb(184, 217, 246);
+  line-height: 25px;
+  &__map-bg {
+    margin: 80px auto;
+    padding: 80px;
+    width: 100%;
+    height: auto;
+    background: rgb(55, 179, 246);
+  }
   &__name {
     font-size: 15px;
   }
@@ -34,7 +48,7 @@
   border-left: solid 6px #2d8fdd;
   border-bottom: solid 3px #2d8fdd;
   background: #f1f8ff;
-  margin-bottom: 15px;
+  margin-bottom: 5px;
   line-height: 2.5;
   padding: 10px;
   list-style-type: none!important;
@@ -193,7 +207,7 @@
   background: transparent url(img/jp.png) 0px -4000px no-repeat;
 }
 
-/* ●日本地図下の地域リスト */
+/* 日本地図左の地域リスト */
 #area {
   margin: 20px auto;
   width: 600px;
