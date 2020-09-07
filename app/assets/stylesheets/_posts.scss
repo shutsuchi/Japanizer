@@ -333,10 +333,9 @@ li {
   }
 }
 
-//----- Album Partial
+//----- Album Modal Partial
 .post-album-box {
     margin: 10px auto;
-
   &__book {
     margin: 0 10px 0 10px;
     height: 155px;
@@ -368,9 +367,7 @@ li {
       padding-top: 15px;
       margin-bottom: 10px;
     }
-
   }
-
   &__detail {
     margin: 0 auto;
     padding: 5px 3px 3px 5px;

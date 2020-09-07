@@ -65,6 +65,8 @@
             .form-window.row
               = f.label t('albums.edit.f_post'), class:'post-main__color'
               br
+                button.btn.btn-sm.btn-default type='button' id='js-post-btn' = t('app.common.check')
+              br
               .album-select
                 = f.collection_check_boxes :post_quantity, user_posts, :id, :title, class:'album-select', prompt:'Please select',
                   include_hidden: false, class:'post-main__color' do |a|
@@ -73,3 +75,59 @@
                     br
             .form-submit.row
               = f.submit t('albums.edit.f_submit'), class:"btn btn-md btn-base-1 btn-primary pull-left"
+
+div id='js-post-modal'
+  .modal-post-box
+    .post-post-form
+      .col-xs-12
+        .post-post-form__title
+          .col-xs-12
+            .col-xs-11
+            .col-xs-1.post-post-form__title--btn
+              button type='button' class='btn btn-default' id='js-post-close-btn'
+                | X
+      .col-xs-12
+        .post-post-form__form
+          - user_posts.each do |post|
+            .col-xs-2
+              .post-edit-box
+              .post-edit-box__image
+                = link_to post_path(post), method: :get do
+                  = attachment_image_tag post, :image, fallback:"img/no_photo.png", class:"field post-edit-box__image--pic", size:"190x75"
+              .post-edit-box__detail
+                .row
+                  .col-xs-12
+                    .post-edit-box__detail-element
+                      .post-edit-box__detail-element-others
+                        .col-xs-12
+                          .post-edit-box__detail-element-others--title.text-center
+                            = post.title
+                        .col-xs-6
+                            .post-edit-box__detail-element-others--genre
+                              col-xs-12
+                                = t('posts.partial.genre')
+                            .post-edit-box__detail-element-others--pref
+                              col-xs-12
+                                = t('posts.partial.place')
+                            .post-edit-box__detail-element-others--time
+                              col-xs-12
+                                = t('posts.partial.create')
+                        .col-xs-6
+                            .post-edit-box__detail-element-others--genre
+                              col-xs-12
+                                - if params[:locale] == 'ja'
+                                  = post.genre.name
+                                - else
+                                  = post.genre.en_name
+                            .post-edit-box__detail-element-others--pref
+                              col-xs-12
+                                - if params[:locale] == 'ja'
+                                  = post.prefecture.name
+                                - else
+                                  = post.prefecture.en_name
+                            .post-edit-box__detail-element-others--time
+                              col-xs-12
+                                - if params[:locale] == 'ja'
+                                  = ja_time_fmt post.created_at
+                                - else
+                                  = time_fmt post.created_at

@@ -1,6 +1,7 @@
 ja:
   app:
     common:
+      check: '確認'
       cancel: 'キャンセル'
       back: '戻る'
       delete: '削除する'
