@@ -1,22 +1,10 @@
 .post-main__box
   .row
-    .col-xs-4.post-main__color
-      h2
-        = t('posts.edit.edit_form')
-    .col-xs-2
-      .post-main__top-btn
-        = link_to(post_path(thepost), method: :get) do
-          span.btn.btn-primary.btn-md.col-xs-8.glyphicon.glyphicon-arrow-left.btn-icon-color
-    .col-xs-2
-      .post-main__top-btn
-        = link_to(post_path(thepost), method: :delete, data: { confirm: t('app.common.confirm_del') }) do
-          span.btn.btn-danger.btn-md.col-xs-8.glyphicon.glyphicon-trash.btn-icon-color
     .col-xs-12
       .col-xs-6
         = render 'layouts/error_message', model: thepost
-      .col-xs-6
   .row
-    .col-xs-6
+    .col-xs-12
       .post-main__new-form
         = form_with(model: thepost, local: true) do |f|
           .post-main__image
@@ -67,6 +55,8 @@
             .form-window.row
               = f.label t('posts.edit.f_album'), class:"post-main__color"
               br
+                button.btn.btn-sm.btn-default type='button' id='js-album-btn' 確認
+              br
               = f.collection_select :album_id, user_albums, :id, :title, prompt: "Please select"
-            .form-submit.row
-              = f.submit t('posts.edit.f_submit'), class:"btn btn-md btn-base-1 btn-primary pull-left"
+            .form-submit.row.post-main__top-btn
+              = f.submit t('posts.edit.f_submit'), class:"btn btn-lg btn-base-1 btn-primary pull-left"

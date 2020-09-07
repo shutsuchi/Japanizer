@@ -4,7 +4,7 @@
 
 //*----- Index -----*//
 .post-page-bg {
-  padding: 20px;
+  padding: 30px;
   width: 100%;
   height: auto;
   background-color: rgb(27, 39, 56);
@@ -157,51 +157,22 @@ li {
 }
 
 //*----- Show -----*//
-.post-show-comment {
-  width: 100%;
-  margin-top: 30px;
-  margin-left: 10px;
-}
-.post-show-new-form {
-  margin-top: 30px;
-  &__title {
-  }
-  &__form {
-    margin-left: 50px;
-    padding: 50px;
-    height: 400px;
-    width: 90%;
-    background-color: #b0c4de;
-  }
-}
-.comm-btn {
-  margin-right: 10px;
-}
-
-
-//*----- Edit -----*//
-
-//*----- Sidebar
-.post-sidebar {
-  padding-bottom: 20px;
-  padding-right: 20px;
-  height: 500px;
-  &__image {
-    margin: 15px 0 15px 30px;
-  }
-  &__detail {
-    margin-left: 10px;
-    margin-bottom: 50px;
-  }
-  &__btn {
-    margin-left: 30px;
-    margin-top: 25px;
-  }
-}
-//*----- Edit Form
-.post-main {
+.post-show-main {
   margin: 0 auto;
   width: 100%;
+  color: #ddd;
+  &__table {
+    margin-top: 80px;
+    margin-left: 50px;
+  }
+  &__table th {
+    background: #222;
+    color: #ddd;
+  }
+  &__table td {
+    background: #fff;
+    color: #000;
+  }
   &__detail {
     padding: 25px 0 0 20px;
     background-color: #d9e5ff;
@@ -215,6 +186,91 @@ li {
     margin-left: 30px;
   }
   &__image {
+    margin: 30px auto;
+  }
+  &__new-form {
+    margin: 0 auto;
+  }
+  &__comment-form {
+    margin-left: 30px;
+  }
+  &__detail-form {
+    margin-left: 50px;
+  }
+  &__top-btn {
+    margin-top: 20px;
+  }
+}
+.post-show-comment {
+  width: 100%;
+  margin-top: 30px;
+  margin-left: 10px;
+  color: #ddd;
+}
+.post-show-new-form {
+  margin-top: 30px;
+  &__form {
+    margin-left: 50px;
+    padding: 50px;
+    height: 400px;
+    width: 90%;
+    background-color: #b0c4de;
+  }
+}
+.comm-btn {
+  margin-right: 10px;
+}
+
+//*----- Edit -----*//
+.post-edit-page-bg {
+  padding: 0;
+  width: 100%;
+  height: 1410px;
+  background: rgb(80, 126, 149);
+}
+//*----- Sidebar
+.post-sidebar {
+  padding-bottom: 20px;
+  padding-right: 20px;
+  height: 500px;
+  &__image {
+    margin: 15px 0 15px 30px;
+  }
+  &__detail {
+    margin-left: 10px;
+    margin-bottom: 50px;
+  }
+  &__detail th {
+    background: #222;
+    color: #ddd;
+  }
+  &__detail td {
+    background: #fff;
+    color: #000;
+  }
+  &__btn {
+    margin-left: 30px;
+    margin-top: 25px;
+  }
+}
+//*----- Edit Form
+.post-main {
+  margin: 0 auto;
+  width: 100%;
+  &__detail {
+    padding: 25px 0 0 20px;
+    height: 1400px;
+    border-left: 10px double #2f4f4f;
+    background-color: rgb(27, 39, 56);
+  }
+  &__color {
+    //color: #ddd;
+    color: rgb(55, 139, 246);
+    font-size: 15px;
+  }
+  &__box {
+    margin-left: 30px;
+    padding: 50px;
   }
   &__new-form {
     margin: 0 auto;
@@ -231,6 +287,134 @@ li {
 }
 .btn-icon-color {
   color: white;
+}
+
+//----- Album Browse Modal
+#js-album-modal {
+  width: 100%;
+  height: 100%;
+  position: fixed;
+  top: 0;
+  left: 0;
+  background: rgba(0, 0, 0, 0.3);
+  display: none;
+  z-index: 1;
+}
+
+.modal-album-box {
+  width: 100%;
+  height: calc(100% - 30px);
+  text-align: center;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-around;
+}
+
+.post-album-form {
+  margin: 80px auto;
+  height: 800px;
+  width: 90%;
+  background-color: rgb(74, 116, 143);
+  color: #333;
+  &__title {
+    padding-left: 50px;
+    &--btn {
+      margin-top: 30px;
+    }
+  }
+  &__title button {
+    border-radius: 50%;
+  }
+  &__form {
+    padding-left: 50px;
+    &--btn {
+      margin-top: 30px;
+    }
+  }
+}
+
+//----- Album Partial
+.post-album-box {
+    margin: 10px auto;
+
+  &__book {
+    margin: 0 10px 0 10px;
+    height: 155px;
+    width: 100%;
+    background-color: #004400;
+    border: 3px solid #000000;
+    border-top-right-radius: 20px 20px;
+    border-bottom-right-radius: 20px 20px;
+    border-top-left-radius: 20px 20px;
+    border-bottom-left-radius: 20px 20px;
+  }
+  &__image {
+    margin: 0 auto;
+    padding: 5px 3px 3px 5px;
+    height: 150px;
+    width: 100%;
+    border-right: 3px solid #000000;
+    border-top-right-radius: 20px 20px;
+    border-bottom-right-radius: 20px 20px;
+    background-color: #004400;
+    &--content {
+      margin-top: 3px;
+      margin-bottom: 3px;
+      padding-left: 10px;
+      height: 130px;
+      background-color: #ddd;
+    }
+    &--pic {
+      padding-top: 15px;
+      margin-bottom: 10px;
+    }
+
+  }
+
+  &__detail {
+    margin: 0 auto;
+    padding: 5px 3px 3px 5px;
+    height: 150px;
+    width: 100%;
+    border-left: 3px solid #000000;
+    border-top-left-radius: 20px 20px;
+    border-bottom-left-radius: 20px 20px;
+    background-color: #004400;
+    &--content {
+      margin: 1px;
+      height: 130px;
+      background-color: #ddd;
+    }
+  }
+  &__detail-element {
+    height: 25px;
+  }
+  &__detail-element-others {
+    padding: 10px 0 0 0;
+    &--title {
+      padding-bottom: 3px;
+      margin-bottom: 3px;
+      border-bottom: 1px solid #777;
+    }
+    &--item {
+      margin-bottom: 5px;
+    }
+    &--genre {
+      margin-bottom: 10px;
+    }
+    &--budget {
+      margin-bottom: 10px;
+    }
+  }
+  &__detail-icon {
+    margin-top: 5px;
+  }
+  &__detail-icon-bookmark {
+    &--icon {
+    }
+    &--count {
+    }
+  }
 }
 
 //*----- Detail-Image
@@ -287,16 +471,16 @@ li {
 .post-comment-box {
   margin-right: 30px;
   width: 100%;
-  &__user-name {
-    background-color: #008080;
-    color: #ffffff;
+  & th {
+    background-color: rgb(82, 146, 171);
+    color: #ddd;
   }
-  &__rate {
+  & td {
+    background-color: rgb(54, 121, 118);
+    color: #ddd;
   }
   &__title {
     font-weight: bold;
     font-size: 15px;
-  }
-  &__comment {
   }
 }

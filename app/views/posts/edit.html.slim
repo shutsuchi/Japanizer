@@ -1,5 +1,5 @@
-.row
-  .col-xs-3
+.post-edit-page-bg
+  .col-xs-4
     .post-sidebar
       .top-wrapper
         h1
@@ -12,16 +12,16 @@
             table.table.table-bordered
               thead
                 tr
-                  th.bg-primary = t('posts.edit.user')
+                  th = t('posts.edit.user')
                   td.post-sidebar__title
                     = @thepost.user.name
                 tr
-                  th.active = t('posts.edit.title')
+                  th = t('posts.edit.title')
                   td.post-sidebar__title
                     = @thepost.title
                 tr
                   //rate javascript RO
-                  th.active = t('posts.edit.rate')
+                  th = t('posts.edit.rate')
                   td.post-sidebar__title
                     h5.md-3
                       = @thepost.rate
@@ -37,36 +37,46 @@
                           score     : #{@thepost.rate},
                         });
                 tr
-                  th.active = t('posts.edit.genre')
+                  th = t('posts.edit.genre')
                   td.post-sidebar__title
                     = @thepost.genre.name
                 tr
-                  th.active = t('posts.edit.place')
+                  th = t('posts.edit.place')
                   td.post-sidebar__title
                     = @thepost.prefecture.name
                 tr
-                  th.active = t('posts.edit.city')
+                  th = t('posts.edit.city')
                   td.post-sidebar__title
                     = @thepost.city.name
                 tr
-                  th.active = t('posts.edit.comment')
+                  th = t('posts.edit.comment')
                   td.post-sidebar__title
                     = @thepost.comment
                 tr
-                  th.active = t('posts.edit.create')
+                  th = t('posts.edit.create')
                   td.post-sidebar__title
                     - if params[:locale] == 'ja'
                       = ja_time_fmt @thepost.created_at
                     - else
                       = time_fmt @thepost.created_at
                 tr
-                  th.active = t('posts.edit.update')
+                  th = t('posts.edit.update')
                   td.post-sidebar__title
                     - if params[:locale] == 'ja'
                       = ja_time_fmt @thepost.updated_at
                     - else
                       = time_fmt @thepost.updated_at
+        .row
+          .col-xs-8
+            .col-xs-12
+              .post-main__top-btn
+                = link_to post_path(@thepost), method: :get do
+                  span.btn.btn-success.btn-lg.col-xs-8.btn-icon-color
+                    = t('posts.edit.back')
+            .col-xs-12
+              .post-main__top-btn
+                button#js-modal-open-btn.btn.btn-danger.btn-lg.col-xs-8.glyphicon.glyphicon-trash.btn-icon-color
+                  = t('posts.edit.delete')
 
-  .col-xs-9
-    .post-main.post-main__detail
-      = render 'edit_form',  thepost: @thepost, user_albums: @user_albums
+  .col-xs-8.post-main__detail
+    = render 'edit_form',  thepost: @thepost, user_albums: @user_albums

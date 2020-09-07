@@ -77,7 +77,7 @@ input[type="password"] {
 }
 //-------- Show Page --------//
 .user-page-bg {
-  padding: 20px;
+  padding: 15px;
   width: 100%;
   height: auto;
   background-color: rgb(27, 39, 56);
@@ -289,6 +289,17 @@ input[type="password"] {
 }
 
 //-------- Withdraw Page --------//
+.withdraw-page-bg {
+  padding-bottom: 400px;
+  width: 100%;
+  height: auto;
+  //background: rgb(80, 126, 149);
+  background-color: rgb(27, 39, 56);
+  color: #ddd;
+}
+.withdraw-top {
+  padding-top: 100px;
+}
 .withdraw-text p {
   font-size: 20px;
 }
@@ -297,11 +308,73 @@ input[type="password"] {
   font-weight: bold;
 }
 .withdraw-btn {
-  margin-top: 50px;
+  margin-top: 100px;
+  color: #ddd;
 }
 
 
 //-------- Edit Page --------//
+.user-edit-page-bg {
+  padding: 0;
+  width: 100%;
+  height: 1200px;
+  background: rgb(80, 126, 149);
+}
+.user-sidebar {
+  padding-bottom: 20px;
+  padding-right: 20px;
+  height: 500px;
+  &__image {
+    margin: 15px 0 15px 30px;
+  }
+  &__img {
+    border-radius: 50%;
+  }
+  &__detail {
+    margin: 30px auto;
+  }
+  &__detail th {
+    background: #222;
+    color: #ddd;
+  }
+  &__detail td {
+    background: #fff;
+    color: #000;
+  }
+  &__btn {
+    margin-left: 30px;
+    margin-top: 25px;
+  }
+}
+.user-main {
+  margin: 0 auto;
+  width: 100%;
+  &__detail {
+    padding: 25px 0 0 20px;
+    height: 1200px;
+    border-left: 10px double #2f4f4f;
+    background-color: rgb(27, 39, 56);
+  }
+  &__color {
+    color: #ddd;
+  }
+  &__box {
+    margin-left: 30px;
+    padding: 50px;
+  }
+  &__new-form {
+    margin: 0 auto;
+  }
+  &__comment-form {
+    margin-left: 30px;
+  }
+  &__detail-form {
+    margin-left: 50px;
+  }
+  &__top-btn {
+    margin-top: 20px;
+  }
+}
 .update-btn {
   margin-bottom: 30px;
 }

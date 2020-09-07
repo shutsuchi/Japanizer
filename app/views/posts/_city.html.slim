@@ -1,5 +1,5 @@
 
-= label :city_id, t('posts.index.f_city')
+= label :city_id, t('posts.index.f_city'), class:"post-main__color"
 br
 - if params[:locale] == 'ja'
   = collection_select :post, :city_id, City.where(prefecture_id: prefecture_id), :id, :name, prompt: "Please select"

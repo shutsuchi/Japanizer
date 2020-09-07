@@ -1,66 +1,65 @@
-.top-wrapper
-  .row
-    .col-xs-12.post-main.post-main__detail-form
-      .post-detail_box
+.post-page-bg
+  .top-wrapper
+    .row
+      .col-xs-12.post-show-main.post-show-main__detail-form
         .row
           h1
             = t('posts.show.pagetitle')
         .row
           .col-xs-3
             .row
-              .col-xs-10
-                .post-sidebar__image
+              .col-xs-12
+                .post-show-main__image
                   = attachment_image_tag @thepost, :image, fallback:"img/no_photo.png", class:"field", size:"300x300"
             - if @thepost.user == current_user
-              .row
-                .col-xs-10.post-main__top-btn
+              .col-xs-12.post-show-main__top-btn
                   = link_to(edit_post_path(@thepost), method: :get) do
                     span.btn.btn-default.btn-md.col-xs-8.form-window.glyphicon.glyphicon-cog
                       span
                         = t('posts.show.edit_btn')
-              .row
-                .col-xs-10.post-main__top-btn
-                  = link_to(post_path(@thepost), method: :delete, data: { confirm: t('app.common.confirm_del') }) do
-                    span.btn.btn-danger.btn-md.col-xs-8.glyphicon.glyphicon-trash.btn-icon-color
-                      span
-                        = t('posts.show.delete_btn')
+              .col-xs-12.post-show-main__top-btn
+                = link_to(post_path(@thepost), method: :delete, data: { confirm: t('app.common.confirm_del') }) do
+              .col-xs-12
+                  span.btn.btn-danger.btn-md.col-xs-8.glyphicon.glyphicon-trash.btn-icon-color
+                    span
+                      = t('posts.show.delete_btn')
           .col-xs-7
             = render 'posts/detail', thepost: @thepost
-- if @thepost.user != current_user
-  .col-xs-6
-    .col-xs-12
-      .post-show-new-form__title.text-center
-        h2
-          = t('posts.show.new_comment')
-    .post-show-new-form
-      .post-show-comment#comment-form-js
-        = render 'posts/comment_form', thepost: @thepost, comment: @comment
-  .col-xs-6
-    .col-xs-12
-      .post-show-new-form__title.text-center
-        h2
-          = t('posts.show.c_comment')
-          | (
-          = @comments.count
-          | )
-        .col-xs-12
-          = render 'posts/area_comment', comments: @comments_pg, post: @thepost, comment: @comment
-        .col-xs-12
-          .text-center
-            = paginate @comments_pg
-- else
-  .row
-    .col-xs-2
-    .col-xs-8
-      .post-show-comment
-        .col-xs-12.text-center
+  - if @thepost.user != current_user
+    .col-xs-6
+      .col-xs-12
+        .post-show-new-form__title.text-center
+          h2
+            = t('posts.show.new_comment')
+      .post-show-new-form
+        .post-show-comment#comment-form-js
+          = render 'posts/comment_form', thepost: @thepost, comment: @comment
+    .col-xs-6
+      .col-xs-12
+        .post-show-new-form__title.text-center
           h2
             = t('posts.show.c_comment')
             | (
             = @comments.count
             | )
           .col-xs-12
-            = render 'posts/area_comment', comments: @comments_pg, post: @thepost
+            = render 'posts/area_comment', comments: @comments_pg, post: @thepost, comment: @comment, comment: @comment
           .col-xs-12
             .text-center
               = paginate @comments_pg
+  - else
+    .row
+      .col-xs-2
+      .col-xs-8
+        .post-show-comment
+          .col-xs-12.text-center
+            h2
+              = t('posts.show.c_comment')
+              | (
+              = @comments.count
+              | )
+            .col-xs-12
+              = render 'posts/area_comment', comments: @comments_pg, post: @thepost, comment: @comment
+            .col-xs-12
+              .text-center
+                = paginate @comments_pg

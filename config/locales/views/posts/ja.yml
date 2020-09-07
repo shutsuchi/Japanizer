@@ -46,6 +46,8 @@ ja:
       city: '市町村郡'
       create: '作成日'
       update: '最終更新日'
+      back: 'マイページ'
+      delete: '削除'
 
       edit_form: '編集する？'
       f_image: '画像'
@@ -56,6 +58,9 @@ ja:
       f_place: '都道府県'
       f_city: '市町村郡'
       f_album: '追加したいアルバム'
+      al_genre: 'ジャンル: '
+      al_budget: '予算: '
+      al_create: '作成: '
       f_submit: '更新する'
 
     show:

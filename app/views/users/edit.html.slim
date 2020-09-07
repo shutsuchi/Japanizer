@@ -1,50 +1,51 @@
-.top-wrapper
-  .col-xs-3
-    .post-sidebar
+.user-edit-page-bg
+  .col-xs-4
+    .user-sidebar
       .top-wrapper
         h1
           = t('users.edit.pagetitle')
         .row
-          .post-sidebar__image
-            = attachment_image_tag @theuser, :image, fallback:"img/no_image.png", class:"field", size:"200x200"
+          .user-sidebar__image
+            = attachment_image_tag @theuser, :image, fallback:"img/no_image.png", class:"field user-sidebar__img", size:"200x200"
         .row
-          .post-sidebar__detail
+          .user-sidebar__detail
             table.table.table-bordered
               thead
                 tr
-                  th.bg-primary = t('users.common.name')
-                  td.post-sidebar__title
+                  th = t('users.common.name')
+                  td.user-sidebar__title
                     = @theuser.name
                 tr
-                  th.active = t('users.common.age')
-                  td.post-sidebar__title
+                  th = t('users.common.age')
+                  td.user-sidebar__title
                     = @theuser.age
                 tr
-                  th.active = t('users.common.nation')
-                  td.post-sidebar__title
+                  th = t('users.common.nation')
+                  td.user-sidebar__title
                     = @theuser.country_code
                 tr
-                  th.active = t('users.common.email')
-                  td.post-sidebar__title
+                  th = t('users.common.email')
+                  td.user-sidebar__title
                     = @theuser.email
                 tr
-                  th.active = t('users.common.created')
-                  td.post-sidebar__title
+                  th = t('users.common.created')
+                  td.user-sidebar__title
                     - if params[:locale] == 'ja'
                       = ja_time_fmt @theuser.created_at
                     - else
                       = time_fmt @theuser.created_at
         .row
-          .col-xs-6
-            .post-main__top-btn
-              = link_to user_path(@theuser), method: :get  do
-                span.btn.btn-success.btn-md.col-xs-12.btn-icon-color
-                  = t('users.edit.back')
-          .col-xs-6
-            .post-main__top-btn
-              = link_to withdraw_path(current_user), method: :get  do
-                span.btn.btn-danger.btn-md.col-xs-12.btn-icon-color
-                  = t('users.edit.withdraw_btn')
+          .col-xs-8
+            .col-xs-12
+              .post-main__top-btn
+                = link_to user_path(@theuser), method: :get  do
+                  span.btn.btn-success.btn-lg.col-xs-12.btn-icon-color
+                    = t('users.edit.back')
+            .col-xs-12
+              .post-main__top-btn
+                = link_to withdraw_path(current_user), method: :get  do
+                  span.btn.btn-danger.btn-lg.col-xs-12.btn-icon-color
+                    = t('users.edit.withdraw_btn')
 
-  .col-xs-9.post-main__detail
+  .col-xs-8.user-main__detail
     = render 'edit_form', theuser: @theuser

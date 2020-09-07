@@ -2,9 +2,9 @@
   = render 'layouts/error_message', model: comment
 .col-xs-12
   - comments.each do |comment|
-    thead id="comment-#{ comment.id }"
+    thead.post-comment-box id="comment-#{ comment.id }"
       tr
-        td.post-comment-box__user-name
+        td
           .col-xs-4
             p
               = t('posts.show.title')
@@ -33,7 +33,7 @@
             - else
               = time_fmt comment.created_at
       tr
-        th.post-comment-box__comment
+        th
           .col-xs-9
             div id="js-comment-label-#{ comment.id }"
               = comment.comment
