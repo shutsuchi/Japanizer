@@ -29,19 +29,19 @@
               thead
                 tr
                   th = t('albums.show.user')
-                  td.post-sedebar__title
+                  td.post-sidebar__title
                     = @thealbum.user.name
                 tr
                   th = t('albums.show.title')
-                  td.post-sedebar__title
+                  td.post-sidebar__title
                     = @thealbum.title
                 tr
                   th = t('albums.show.no_posts')
-                  td.post-sedebar__title
+                  td.post-sidebar__title
                     = @thealbum.posts.count
                 tr
                   th = t('albums.show.rate')
-                  td.post-sedebar__title
+                  td.post-sidebar__title
                     h5.md-e
                       = @thealbum.rate
                     div id="star-rate-#{@thealbum.id}"
@@ -57,26 +57,26 @@
                         });
                 tr
                   th = t('albums.show.genre')
-                  td.post-sedebar__title
+                  td.post-sidebar__title
                     - if params[:locale] == 'ja'
                       = @thealbum.genre.name
                     - else
                       = @thealbum.genre.en_name
                 tr
                   th = t('albums.edit.f_budget')
-                  td.post-sedebar__title
+                  td.post-sidebar__title
                     = @thealbum.budget
                 tr
                   th = t('albums.edit.f_people')
-                  td.post-sedebar__title
+                  td.post-sidebar__title
                     = @thealbum.people
                 tr
                   th = t('albums.show.comment')
-                  td.post-sedebar__title
+                  td.post-sidebar__title
                     = @thealbum.comment
                 tr
                   th = t('albums.show.create')
-                  td.post-sedebar__title
+                  td.post-sidebar__title
                     - if params[:locale] == 'ja'
                       = ja_time_fmt @thealbum.created_at
                     - else
