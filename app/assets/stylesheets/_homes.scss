@@ -2,10 +2,9 @@
 // They will automatically be included in application.css.
 // You can use Sass (SCSS) here: http://sass-lang.com/
 
-//-------- About Page --------
-.about-wrapper {
-  margin-top: 30px;
-}
+//------------------------------------
+//------------ About Page ------------
+//------------------------------------
 .title-row {
   width: 100%;
   height: 700px;
@@ -167,6 +166,7 @@
     }
   }
 }
+
 .global-nav {
   position: fixed;
   left: -320px;
@@ -222,6 +222,8 @@
     background-color: #eee;
   }
 }
+
+
 .black-bg {
   position: fixed;
   right: 0;
@@ -276,11 +278,11 @@
     margin-top: 90px;
     margin-left: 50px;
     &--pic1 {
-    width: 100%;
-    height: 150px;
-    background-image: url(img/jp_flag.jpg);
-    background-size: cover;
-    background-position: center;
+      width: 100%;
+      height: 150px;
+      background-image: url(img/jp_flag.jpg);
+      background-size: cover;
+      background-position: center;
     }
     &--pic2 {
       width: 100%;
@@ -355,6 +357,7 @@
     }
   }
 }
+
 .slide-wrapper {
   height: 80vh;
   display: flex;
@@ -473,7 +476,9 @@
   opacity: 1;
 }
 
-//-------- Top Page --------
+//----------------------------------
+//------------ Top Page ------------
+//----------------------------------
 //------ MAIN
 .top-mainmain {
   padding-top: 40px;
@@ -496,7 +501,6 @@
     margin-bottom: 30px;
   }
   &__subtitle {
-    //background: #333;
     &--text {
       width: 100%;
       position: relative;
@@ -677,7 +681,6 @@
 //------ SIDEBAR
 .rank-page {
   &__subtitle {
-    //background: #333;
     &--text {
       width: 100%;
       position: relative;
@@ -836,5 +839,145 @@
   &__table, td {
     background: #fff;
     color: #000;
+  }
+}
+
+@media screen and (max-width:425px) {
+  .title-row {
+    height: 300px;
+    &__bg {
+      height: 300px;
+    }
+    &__row-title {
+      font-size: 70px;
+      line-height: 300px;
+    }
+    &__switch {
+      height: 40px;
+      right: 20px;
+    }
+    &__btn-box {
+      width: 60px;
+      font-size: 10px;
+      padding: 5px 10px;
+      border: 2px solid #fff;
+      &:hover {
+        font-size: 10px;
+      }
+      &:before {
+        border-bottom: 2px solid #fff;
+        border-left: 2px solid #fff;
+      }
+      &:after {
+        border-top: 2px solid #fff;
+        border-right: 2px solid #fff;
+      }
+    }
+    &__btn-box2 {
+      width: 60px;
+      font-size: 10px;
+      padding: 5px 10px;
+      border: 2px solid #000;
+      &:hover {
+        font-size: 10px;
+        border: 2px solid transparent;
+      }
+      &:before {
+        border-bottom: 2px solid #000;
+        border-left: 2px solid #000;
+      }
+      &:after {
+        border-top: 2px solid #000;
+        border-right: 2px solid #000;
+      }
+    }
+    &__menu-box {
+      font-size: 15px;
+      width: 60px;
+      height: 40px;
+      line-height: 40px;
+      font-weight: normal;
+      box-shadow: 0px 2px 2px rgba(0, 0, 0, 0.29);
+      border-bottom: solid 2px #bd6565;
+    }
+  }
+  .global-nav {
+    width: 50vw;
+    padding-top: 20px;
+    &__close {
+      margin-left: 10em;
+      margin-bottom: 3em;
+    }
+  }
+  .black-bg {
+    width: 55vw;
+  }
+  .nav-open .global-nav {
+    left: 0;
+  }
+  .nav-open .black-bg {
+    opacity: .8;
+    visibility: visible;
+  }
+  .nav-open .title-row__menu-box {
+    transform: rotate(45deg);
+    top: 20px;
+  }
+  .black-row {
+    height: 300px;
+    &__left {
+      margin-top: 10px;
+      margin-left: 10px;
+      &--pic1 {
+        width: 100%;
+        height: 100px;
+      }
+      &--pic2 {
+        height: 120px;
+        margin-top: 10px;
+        font-size: 20px;
+      }
+      &--pic3 {
+        height: 120px;
+        margin-top: 10px;
+        font-size: 20px;
+      }
+      &--pic4 {
+        height: 100px;
+        margin-top: 10px;
+      }
+    }
+    &__right {
+      margin-top: 10px;
+      &--line-title {
+        margin-bottom: 10px;
+      }
+      &--row-title {
+        font-size: 20px;
+      }
+      &--row-title2 {
+        font-size: 15px;
+      }
+      &--line1 {
+        display: none;
+      }
+      &--line2 {
+        display: none;
+      }
+    }
+  }
+  .slide-wrapper {
+    height: 30vh;
+  }
+  .slide-caption {
+    right: 10%;
+  }
+  .slide-caption__title {
+    font-size: 2.5em;
+    line-height: 1.05em;
+  }
+  .slide-caption__subtitle {
+    font-size: 1.0em;
+    line-height: 0.75em;
   }
 }
