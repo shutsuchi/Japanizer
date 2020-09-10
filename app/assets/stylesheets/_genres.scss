@@ -155,7 +155,7 @@
     margin: 20px;
     height: 300px;
     width: 100%;
-    background-image: url('img/age_1.png');
+    background-image: image-url('img/age_1.png');
     background-repeat: no-repeat;
     background-size: contain;
     background-position: top;
@@ -164,7 +164,7 @@
     margin: 20px;
     height: 300px;
     width: 100%;
-    background-image: url('img/age_2.jpeg');
+    background-image: image-url('img/age_2.jpeg');
     background-repeat: no-repeat;
     background-size: contain;
     background-position: top;
@@ -173,7 +173,7 @@
     margin: 20px;
     height: 300px;
     width: 100%;
-    background-image: url('img/age_3.jpg');
+    background-image: image-url('img/age_3.jpg');
     background-repeat: no-repeat;
     background-size: contain;
     background-position: top;
@@ -182,7 +182,7 @@
     margin: 20px;
     height: 300px;
     width: 100%;
-    background-image: url('img/age_4.jpeg');
+    background-image: image-url('img/age_4.jpeg');
     background-repeat: no-repeat;
     background-size: contain;
     background-position: top;
@@ -191,7 +191,7 @@
     margin: 20px;
     height: 300px;
     width: 100%;
-    background-image: url('img/age_5.jpg');
+    background-image: image-url('img/age_5.jpg');
     background-repeat: no-repeat;
     background-size: contain;
     background-position: top;
@@ -200,7 +200,7 @@
     margin: 20px;
     height: 300px;
     width: 100%;
-    background-image: url('img/age_6.jpeg');
+    background-image: image-url('img/age_6.jpeg');
     background-repeat: no-repeat;
     background-size: contain;
     background-position: top;
@@ -209,7 +209,7 @@
     margin: 20px;
     height: 300px;
     width: 100%;
-    background-image: url('img/age_7.jpg');
+    background-image: image-url('img/age_7.jpg');
     background-repeat: no-repeat;
     background-size: contain;
     background-position: top;
@@ -218,7 +218,7 @@
     margin: 20px;
     height: 300px;
     width: 100%;
-    background-image: url('img/age_default.jpg');
+    background-image: image-url('img/age_default.jpg');
     background-repeat: no-repeat;
     background-size: contain;
     background-position: top;
@@ -233,7 +233,7 @@
     margin: 20px;
     height: 450px;
     width: 100%;
-    background-image: url('img/under.jpeg');
+    background-image: image-url('img/under.jpeg');
     background-repeat: no-repeat;
     background-size: contain;
     background-position: top;
@@ -242,7 +242,7 @@
     margin: 20px;
     height: 450px;
     width: 100%;
-    background-image: url('img/yen.jpeg');
+    background-image: image-url('img/yen.jpeg');
     background-repeat: no-repeat;
     background-size: contain;
     background-position: top;
@@ -250,7 +250,7 @@
   &__3 {
     height: 450px;
     width: 100%;
-    background-image: url('img/3yen.jpg');
+    background-image: image-url('img/3yen.jpg');
     background-repeat: no-repeat;
     background-size: contain;
     background-position: top;
@@ -258,7 +258,7 @@
   &__4 {
     height: 450px;
     width: 100%;
-    background-image: url('img/5yen.jpeg');
+    background-image: image-url('img/5yen.jpeg');
     background-repeat: no-repeat;
     background-size: contain;
     background-position: top;
@@ -266,7 +266,7 @@
   &__5 {
     height: 450px;
     width: 100%;
-    background-image: url('img/7yen.jpeg');
+    background-image: image-url('img/7yen.jpeg');
     background-repeat: no-repeat;
     background-size: contain;
     background-position: center;
@@ -275,7 +275,7 @@
     margin: 20px;
     height: 450px;
     width: 100%;
-    background-image: url('img/10yen.jpg');
+    background-image: image-url('img/10yen.jpg');
     background-repeat: no-repeat;
     background-size: contain;
     background-position: center;
@@ -284,7 +284,7 @@
     margin: 20px;
     height: 450px;
     width: 100%;
-    background-image: url('img/20yen.jpeg');
+    background-image: image-url('img/20yen.jpeg');
     background-repeat: no-repeat;
     background-size: contain;
     background-position: center;
@@ -293,7 +293,7 @@
     margin: 20px;
     height: 450px;
     width: 100%;
-    background-image: url('img/30yen.jpeg');
+    background-image: image-url('img/30yen.jpeg');
     background-repeat: no-repeat;
     background-size: contain;
     background-position: center;
@@ -302,7 +302,7 @@
     margin: 20px;
     height: 450px;
     width: 100%;
-    background-image: url('img/40yen.jpeg');
+    background-image: image-url('img/40yen.jpeg');
     background-repeat: no-repeat;
     background-size: contain;
     background-position: center;
@@ -310,7 +310,7 @@
   &__10 {
     height: 450px;
     width: 100%;
-    background-image: url('img/over.jpeg');
+    background-image: image-url('img/over.jpeg');
     background-repeat: no-repeat;
     background-size: contain;
     background-position: center;
@@ -318,7 +318,7 @@
   &__default {
     height: 450px;
     width: 100%;
-    background-image: url('img/default_yen.png');
+    background-image: image-url('img/default_yen.png');
     background-repeat: no-repeat;
     background-size: contain;
     background-position: center;
@@ -326,7 +326,7 @@
   &__question {
     height: 450px;
     width: 100%;
-    background-image: url('img/q_yen.png');
+    background-image: image-url('img/q_yen.png');
     background-repeat: no-repeat;
     background-size: contain;
     background-position: center;
@@ -342,7 +342,7 @@
   &__1 {
     height: 450px;
     width: 100%;
-    background-image: url('img/jp_flag.jpg');
+    background-image: image-url('img/jp_flag.jpg');
     background-repeat: no-repeat;
     background-size: contain;
     background-position: center;
@@ -350,7 +350,7 @@
   &__2 {
     height: 450px;
     width: 100%;
-    background-image: url('img/nation_2.jpg');
+    background-image: image-url('img/nation_2.jpg');
     background-repeat: no-repeat;
     background-size: contain;
     background-position: center;
@@ -358,7 +358,7 @@
   &__default {
     height: 450px;
     width: 100%;
-    background-image: url('img/top_nation.jpg');
+    background-image: image-url('img/top_nation.jpg');
     background-repeat: no-repeat;
     background-size: contain;
     background-position: center;
