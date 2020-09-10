@@ -1,7 +1,7 @@
 User.create!(
   id:              1,
   name:            "admin",
-  image:           open("./db/fixtures/icon_01.jpg"),
+  images:           open("#{Rails.root}app/assets/images/fixtures/icon_01.jpg"),
   email:           "admin@admin",
   age:             26,
   country_code:    "JP",
@@ -13,7 +13,7 @@ User.create!(
 User.create!(
   id:              2,
   name:            "田中太郎",
-  image:           open("./db/fixtures/icon_02.jpg"),
+  images:           open("#{Rails.root}app/assets/images/fixtures/icon_02.jpg"),
   email:           "tanaka@email.com",
   age:             24,
   country_code:    "JP",
@@ -25,7 +25,7 @@ User.create!(
 User.create!(
   id:              3,
   name:            "山田次郎",
-  image:           open("./db/fixtures/icon_03.jpg"),
+  images:           open("#{Rails.root}app/assets/images/fixtures/icon_03.jpg"),
   email:           "jirojiro@email.com",
   age:             41,
   country_code:    "JP",
@@ -37,7 +37,7 @@ User.create!(
 User.create!(
   id:              4,
   name:            "John Smith",
-  image:           open("./db/fixtures/icon_04.jpg"),
+  images:           open("#{Rails.root}app/assets/images/fixtures/icon_04.jpg"),
   email:           "john1222@ezweb.com",
   age:             31,
   country_code:    "US",
@@ -49,7 +49,7 @@ User.create!(
 User.create!(
   id:              5,
   name:            "黄秀英",
-  image:           open("./db/fixtures/icon_05.jpg"),
+  images:           open("#{Rails.root}app/assets/images/fixtures/icon_05.jpg"),
   email:           "fanfan@gmail.com",
   age:             18,
   country_code:    "CN",
@@ -61,7 +61,7 @@ User.create!(
 User.create!(
   id:              6,
   name:            "Andrea Muller",
-  image:           open("./db/fixtures/icon_06.jpg"),
+  images:           open("#{Rails.root}app/assets/images/fixtures/icon_06.jpg"),
   email:           "eeeeand@gmail.com",
   age:             42,
   country_code:    "DE",
@@ -73,7 +73,7 @@ User.create!(
 User.create!(
   id:              7,
   name:            "金 本貫",
-  image:           open("./db/fixtures/icon_07.jpg"),
+  images:           open("#{Rails.root}app/assets/images/fixtures/icon_07.jpg"),
   email:           "kimkim@gmail.com",
   age:             42,
   country_code:    "KR",
