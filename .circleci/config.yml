@@ -24,7 +24,7 @@ commands:
           keys:
             - v1-source-code-{{ .Environment.CIRCLE_SHA1 }}
             - v1-source-code-
-  save_source-code:
+  save_source_code:
     steps:
       - save_cache:
           key: v1-source-code{{ .Environment.CIRCLE_SHA1 }}
@@ -40,11 +40,11 @@ commands:
   install_bundler:
     steps:
       - run:
-        name: Install bundler
-        command: |
-          BUNDLER_VERSION=$(cat Gemfile.lock | tail -1 | tr -d " ")
-          echo $BUNDLER_VERSION
-          gem install bundler:$BUNDLER_VERSION
+          name: Install bundler
+          command: |
+            BUNDLER_VERSION=$(cat Gemfile.lock | tail -1 | tr -d " ")
+            echo $BUNDLER_VERSION
+            gem install bundler:$BUNDLER_VERSION
   install_bundle_dependencies:
     steps:
       - run:
@@ -116,7 +116,7 @@ jobs:
   rubocop_job:
     executor: default
     steps:
-      - restore_source_cde
+      - restore_source_code
       - restore_bundle_dependencies
       - install_bundler
       - run_rubocop
@@ -130,8 +130,21 @@ jobs:
       - set_up_database
       - run_rspec
 
+workflows:
+  build_test:
+    jobs:
+      - checkout_code
+      - bundle_dependencies:
+          requires:
+            - checkout_code
+      - rubocop_job:
+          requires:
+            - bundle_dependencies
+      - rspec_job:
+          requires:
+            - bundle_dependencies
   nginx-deploy:
-    step:
+    jobs:
       - aws-ecr/build-and-push-image:
           account-url: AWS_ECR_ACCOUNT_URL
           region: AWS_REGION
@@ -145,13 +158,14 @@ jobs:
             branches:
               only: master
       - aws-ecs/deploy-service-update:
+          requires:
+            - aws-ecr/build-and-push-image
           family: 'nginx-rails-app'
           cluster-name: 'arn:aws:ecs:ap-northeast-1:311078544828:cluster/Nginx-Rails'
           service-name: 'ecs-rails-service'
           container-image-name-updates: "container=nginx,tag=${CIRCLE_SHA1}"
-
   rails-deploy:
-    step:
+    jobs:
       - aws-ecr/build-and-push-image:
           account-url: AWS_ECR_ACCOUNT_URL
           region: AWS_REGION
@@ -165,30 +179,9 @@ jobs:
             branches:
               only: master
       - aws-ecs/deploy-service-update:
+          requires:
+            - aws-ecr/build-and-push-image
           family: 'nginx-rails-app'
           cluster-name: 'arn:aws:ecs:ap-northeast-1:311078544828:cluster/Nginx-Rails'
           service-name: 'ecs-rails-service'
           container-image-name-updates: "container=rails,tag=${CIRCLE_SHA1}"
-
-
-workflows:
-  build_test_deploy:
-    job:
-      - checkout_code:
-      - bundle_dependencies:
-        requires:
-          - checkout_code
-      - rubocop_job:
-        requires:
-          - bundle_dependencies
-      - rspec_job:
-        requires:
-          - bundle_dependencies
-      - nginx-deploy:
-        requires:
-          - rubocop_job
-          - rspec_job
-      - rails-deploy:
-        requires:
-          - rubocop_job
-          - rspec_job
