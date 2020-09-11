@@ -1,0 +1,197 @@
+version: 2.1
+ orbs:
+   aws-ecr: circleci/aws-ecr@6.7.0
+   aws-ecs: circleci/aws-ecs@1.1.0
+   aws-cli: circleci/aws-cli@0.1.19
+
+executors:
+  default:
+    working_directory: ~/repo
+    docker:
+      - image: circleci/ruby:2.5.1-node-browsers
+        environment:
+          - BUNDLER_VERSION: 2.1.4
+      - image: circleci/mysql:5.7
+        environment:
+          - MYSQL_ALLOW_EMPTY_PASSWORD: 'true'
+          - MYSQL_ROOT_HOST: '%'
+
+commands:
+  restore_source_code:
+    steps:
+      - restore_cache:
+          name: Restore source code cache
+          keys:
+            - v1-source-code-{{ .Environment.CIRCLE_SHA1 }}
+            - v1-source-code-
+  save_source-code:
+    steps:
+      - save_cache:
+          key: v1-source-code{{ .Environment.CIRCLE_SHA1 }}
+          paths:
+            - ~/repo
+  restore_bundle_dependencies:
+    steps:
+      - restore_cache:
+          name: Restore bundle dependencies cache
+          keys:
+            - v1-dependencies-{{ checksum "Gemfile.lock" }}
+            - v1-dependencies-
+  install_bundler:
+    steps:
+      - run:
+        name: Install bundler
+        command: |
+          BUNDLER_VERSION=$(cat Gemfile.lock | tail -1 | tr -d " ")
+          echo $BUNDLER_VERSION
+          gem install bundler:$BUNDLER_VERSION
+  install_bundle_dependencies:
+    steps:
+      - run:
+          name: Install bundle dependencies
+          command: |
+            bundle install --jobs=4 --retry=3 --path vendor/bundle
+  save_bundle_dependencies:
+    steps:
+      - save_cache:
+          key: v1-bundle-dependencies-{{ checksum "Gemfile.lock" }}
+          paths:
+            - ~/repo/vendor/bundle
+
+  wait_for_db_start_up:
+    steps:
+      - run:
+          name: Wait for db start up
+          command: dockerize -wait tcp://127.0.0.1:5432 -timeout 1m
+  set_up_database:
+    steps:
+      - run:
+          name: Set up database
+          command: |
+            pwd
+            echo $(cat Gemfile.lock | tail -1 | tr -d " ")
+            mv config/database.yml.ci config/database.yml
+            bin/rails db:create --trace
+            bin/rails db:schema:load --trace
+  run_rubocop
+    steps:
+      - run:
+          name: Run rubocop
+          command: bundle exec rubocop
+  run_rspec
+    steps:
+      - run:
+          name: Run rspec
+          command: |
+            mkdir /tmp/test-results
+            TEST_FILES="$(circleci tests glob "spec/**/*_spec.rb" | \
+              circleci tests split --split-by=timings)"
+            bundle exec rspec \
+              --format progress \
+              --format RspecJunitFormatter \
+              --out /tmp/test-results/rspec.xml \
+              --format progress \
+              $TEST_FILES
+      - store_test_results:
+          path: /tmp/test-results
+      - store_artifacts:
+          path: /tmp/test-results
+          destination: test-results
+
+jobs:
+  checkout_code:
+    executor: default
+    steps:
+      - checkout
+      - save_source_code
+  bundle_dependencies:
+    executor: default
+    steps:
+      - restore_source_code
+      - restore_bundle_dependencies
+      - install_bundler
+      - install_bundle_dependencies
+      - save_bundle_dependencies
+
+  rubocop_job:
+    executor: default
+    steps:
+      - restore_source_cde
+      - restore_bundle_dependencies
+      - install_bundler
+      - run_rubocop
+  rspec_job:
+    executor: default
+    steps:
+      - restore_source_code
+      - restore_bundle_dependencies
+      - install_bundler
+      - wait_for_db_start_up
+      - set_up_database
+      - run_rspec
+
+  nginx-deploy:
+    step:
+      - aws-ecr/build-and-push-image:
+          account-url: AWS_ECR_ACCOUNT_URL
+          region: AWS_REGION
+          aws-access-key-id: AWS_ACCESS_KEY_ID
+          aws-secret-access-key: AWS_SECRET_ACCESS_KEY
+          create-repo: true
+          dockerfile: ./docker/nginx/Dockerfile
+          repo: nginx
+          tag: "${CIRCLE_SHA1}"
+          filters:
+            branches:
+              only: master
+      - aws-ecs/deploy-service-update:
+          family: 'nginx-rails-app'
+          cluster-name: 'arn:aws:ecs:ap-northeast-1:311078544828:cluster/Nginx-Rails'
+          service-name: 'ecs-rails-service'
+          container-image-name-updates: "container=nginx,tag=${CIRCLE_SHA1}"
+
+  rails-deploy
+    step:
+      - aws-ecr/build-and-push-image:
+          account-url: AWS_ECR_ACCOUNT_URL
+          region: AWS_REGION
+          aws-access-key-id: AWS_ACCESS_KEY_ID
+          aws-secret-access-key: AWS_SECRET_ACCESS_KEY
+          create-repo: true
+          dockerfile: ./docker/rails/Dockerfile
+          repo: rails
+          tag: "${CIRCLE_SHA1}"
+          filters:
+            branches:
+              only: master
+      - aws-ecs/deploy-service-update:
+          family: 'nginx-rails-app'
+          cluster-name: 'arn:aws:ecs:ap-northeast-1:311078544828:cluster/Nginx-Rails'
+          service-name: 'ecs-rails-service'
+          container-image-name-updates: "container=rails,tag=${CIRCLE_SHA1}"
+
+
+workflows:
+  build_test_deploy
+    job:
+      - checkout_code
+      - bundle_dependencies:
+        requires:
+          - checkout_code
+      - rubocop_job
+        requires:
+          - bundle_dependencies
+      - rspec_job
+        requires:
+          - bundle_dependencies
+      - nginx-deploy
+        requires:
+          - rubocop_job
+          - rspec_job
+      - rails-deploy
+        requires:
+          - rubocop_job
+          - rspec_job
+
+
+#AWS_ECR_ACCOUNT_URL => ${アカウントID}.dkr.ecr.${リージョン}.amazonaws.com
