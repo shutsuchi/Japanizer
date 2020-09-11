@@ -32,6 +32,7 @@ module RankData
   def pref_rank_10(obj)
     obj.group(:prefecture_id).order(Arel.sql('count(prefecture_id) desc')).limit(3).pluck(:prefecture_id)
   end
+
   def genre_rank_10(obj)
     obj.group(:genre_id).order(Arel.sql('count(genre_id) desc')).limit(3).pluck(:genre_id)
   end
@@ -46,48 +47,26 @@ module RankData
     end
     n = 0
     c_all = 0
-    while n < 3 do
+    while n < 3
       c_all += genres[n][2]
       n += 1
     end
-    rate_0 = (genres[0][2].to_f/c_all*100).round
-    rate_1 = (genres[1][2].to_f/c_all*100).round
-    rate_2 = (genres[2][2].to_f/c_all*100).round
-    #rate_3 = (genres[3][2].to_f/c_all*100).round
-    #rate_4 = (genres[4][2].to_f/c_all*100).round
-    #rate_5 = (genres[5][2].to_f/c_all*100).round
-    #rate_6 = (genres[6][2].to_f/c_all*100).round
-    #rate_7 = (genres[7][2].to_f/c_all*100).round
-    #rate_8 = (genres[8][2].to_f/c_all*100).round
-    #rate_9 = (genres[9][2].to_f/c_all*100).round
+    rate0 = (genres[0][2].to_f / c_all * 100).round
+    rate1 = (genres[1][2].to_f / c_all * 100).round
+    rate2 = (genres[2][2].to_f / c_all * 100).round
     case locale
     when 'ja'
-      name_0 = genres[0][0]
-      name_1 = genres[1][0]
-      name_2 = genres[2][0]
-      #name_3 = genres[3][0]
-      #name_4 = genres[4][0]
-      #name_5 = genres[5][0]
-      #name_6 = genres[6][0]
-      #name_7 = genres[7][0]
-      #name_8 = genres[8][0]
-      #name_9 = genres[9][0]
+      name0 = genres[0][0]
+      name1 = genres[1][0]
+      name2 = genres[2][0]
     when 'en'
-      name_0 = genres[0][1]
-      name_1 = genres[1][1]
-      name_2 = genres[2][1]
-      #name_3 = genres[3][1]
-      #name_4 = genres[4][1]
-      #name_5 = genres[5][1]
-      #name_6 = genres[6][1]
-      #name_7 = genres[7][1]
-      #name_8 = genres[8][1]
-      #name_9 = genres[9][1]
+      name0 = genres[0][1]
+      name1 = genres[1][1]
+      name2 = genres[2][1]
     end
-    return data = [[name_0, rate_0],[name_1, rate_1],[name_2, rate_2]]
-            #[name_3, rate_3],[name_4, rate_4],[name_5, rate_5],
-            #[name_6, rate_6],[name_7, rate_7],[name_8, rate_8],[name_9, rate_9]]
+    @data = [[name0, rate0], [name1, rate1], [name2, rate2]]
   end
+
   def highchart_p_clc(obj, locale)
     prefs = []
     obj.each do |pref|
@@ -98,34 +77,39 @@ module RankData
     end
     n = 0
     c_all = 0
-    while n < 3 do
+    while n < 3
       c_all += prefs[n][2]
       n += 1
     end
-    rate_0 = (prefs[0][2].to_f/c_all*100).round
-    rate_1 = (prefs[1][2].to_f/c_all*100).round
-    rate_2 = (prefs[2][2].to_f/c_all*100).round
+    rate0 = (prefs[0][2].to_f / c_all * 100).round
+    rate1 = (prefs[1][2].to_f / c_all * 100).round
+    rate2 = (prefs[2][2].to_f / c_all * 100).round
     case locale
     when 'ja'
-      name_0 = prefs[0][0]
-      name_1 = prefs[1][0]
-      name_2 = prefs[2][0]
+      name0 = prefs[0][0]
+      name1 = prefs[1][0]
+      name2 = prefs[2][0]
+    when 'en'
+      name0 = prefs[0][1]
+      name1 = prefs[1][1]
+      name2 = prefs[2][1]
     end
-    return data = [[name_0, rate_0],[name_1, rate_1],[name_2, rate_2]]
+    @data = [[name0, rate0], [name1, rate1], [name2, rate2]]
   end
+
   def highchart_b_clc(obj)
     album = obj.group(:budget).order(Arel.sql('count(budget) desc')).pluck(:budget)
     first = album.first
     second = album.second
     third = album.third
-    c_1 = Album.all.where(budget: first).count
-    c_2 = Album.all.where(budget: second).count
-    c_3 = Album.all.where(budget: third).count
-    c_all = c_1 + c_2 + c_3
+    c1 = Album.all.where(budget: first).count
+    c2 = Album.all.where(budget: second).count
+    c3 = Album.all.where(budget: third).count
+    c_all = c1 + c2 + c3
 
-    rate_0 = (c_1.to_f/c_all*100).round
-    rate_1 = (c_2.to_f/c_all*100).round
-    rate_2 = (c_3.to_f/c_all*100).round
-    return data = [[first, rate_0],[second, rate_1],[third, rate_2]]
+    rate0 = (c1.to_f / c_all * 100).round
+    rate1 = (c2.to_f / c_all * 100).round
+    rate2 = (c3.to_f / c_all * 100).round
+    @data = [[first, rate0], [second, rate1], [third, rate2]]
   end
 end

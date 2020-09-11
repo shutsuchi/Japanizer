@@ -30,40 +30,24 @@ class AnalysesController < ApplicationController
       f.chart({ defaultSeriesType: 'pie', margin: [50, 200, 60, 170] })
       f.title(text: t('analyses.data.graph_genre_t'))
       f.series(name: t('analyses.data.graph_genre_n'), data: @jp_genre_data, type: 'pie')
-      f.legend(align: 'right', layout: 'vertical', style: {left: 'auto', bottom: 'auto', right: '100px', top: '100px'})
-      f.plot_options(pie: {
-        allowPointSelect: true, cursor: "pointer",
-        dataLabels: {
-          enabled: true, color: "white", style: { fontSize: '15px', font: "33px Trebuchet MS, Verdana, sans-serif" }
-        }
-        #showInLegend: true
-      })
+      f.legend(align: 'right', layout: 'vertical', style: { left: 'auto', bottom: 'auto', right: '100px', top: '100px' })
+      f.plot_options(pie: { allowPointSelect: true, cursor: 'pointer', dataLabels: { enabled: true, color: 'white', style: { fontSize: '15px', font: '33px Trebuchet MS, Verdana, sans-serif' } } })
     end
     @jp_pref_data = highchart_p_clc(@jp_10_pref_ranks, locale)
     @jp_pref_graph = LazyHighCharts::HighChart.new('pie') do |f|
       f.chart({ defaultSeriesType: 'pie', margin: [50, 200, 60, 170] })
       f.title(text: t('analyses.data.graph_pref_t'))
       f.series(name: t('analyses.data.graph_pref_n'), data: @jp_pref_data, type: 'pie')
-      f.legend(align: 'right', layout: 'vertical', style: {left: 'auto', bottom: 'auto', right: '50px', top: '100px'})
-      f.plot_options(pie: {
-        allowPointSelect: true, cursor: "pointer",
-        dataLabels: {
-          enabled: true, color: "white", style: { fontSize: '15px', font: "33px Trebuchet MS, Verdana, sans-serif" }
-        }
-      })
+      f.legend(align: 'right', layout: 'vertical', style: { left: 'auto', bottom: 'auto', right: '50px', top: '100px' })
+      f.plot_options(pie: { allowPointSelect: true, cursor: 'pointer', dataLabels: { enabled: true, color: 'white', style: { fontSize: '15px', font: '33px Trebuchet MS, Verdana, sans-serif' } } })
     end
     @jp_budget_data = highchart_b_clc(albums_jp)
     @jp_budget_graph = LazyHighCharts::HighChart.new('pie') do |f|
       f.chart({ defaultSeriesType: 'pie', margin: [50, 200, 60, 170] })
       f.title(text: t('analyses.data.graph_budget_t'))
       f.series(name: t('analyses.data.graph_budget_n'), data: @jp_budget_data, type: 'pie')
-      f.legend(align: 'right', layout: 'vertical', style: {left: 'auto', bottom: 'auto', right: '50px', top: '100px'})
-      f.plot_options(pie: {
-        allowPointSelect: true, cursor: "pointer",
-        dataLabels: {
-          enabled: true, color: "white", style: { fontSize: "15px", font: "33px Trebuchet MS, Verdana, sans-serif" }
-        }
-      })
+      f.legend(align: 'right', layout: 'vertical', style: { left: 'auto', bottom: 'auto', right: '50px', top: '100px' })
+      f.plot_options(pie: { allowPointSelect: true, cursor: 'pointer', dataLabels: { enabled: true, color: 'white', style: { fontSize: '15px', font: '33px Trebuchet MS, Verdana, sans-serif' } } })
     end
     @chart_globals = LazyHighCharts::HighChartGlobals.new do |f|
       f.global(useUTC: false)
@@ -71,21 +55,21 @@ class AnalysesController < ApplicationController
         backgroundColor: {
           linearGradient: [0, 0, 500, 500],
           stops: [
-            [0, "rgb(23, 35, 60)"],
-            [1, "rgb(23, 35, 60)"]
+            [0, 'rgb(23, 35, 60)'],
+            [1, 'rgb(23, 35, 60)']
           ]
         },
         borderWidth: 5,
-        plotBackgroundColor: "rgb(27, 39, 56)",
+        plotBackgroundColor: 'rgb(27, 39, 56)',
         plotShadow: true,
         marginBottom: 40,
         marginLeft: 40,
         marginRight: 40
       )
-      f.lang(thousandsSep: ",")
-      f.colors(["#f7a35c", "#8085e9", "#f15c80", "#90ed7d", "#e4d354"])
+      f.lang(thousandsSep: ',')
+      f.colors(['#f7a35c', '#8085e9', '#f15c80', '#90ed7d', '#e4d354'])
       f.title(
-        style: { "color": "#fff", "font-size": "25px" },
+        style: { 'color': '#fff', 'font-size': '25px' },
         align: 'center',
         widthAdjust: '-20'
       )
@@ -93,44 +77,29 @@ class AnalysesController < ApplicationController
     @others_genre_data = highchart_g_clc(@others_10_genre_ranks, locale)
     @others_genre_graph = LazyHighCharts::HighChart.new('pie') do |f|
       f.chart({ defaultSeriesType: 'pie', margin: [50, 200, 60, 170] })
-      f.colors(["#4682B4", "#2E8B57", "#e4d354"])
+      f.colors(['#4682B4', '#2E8B57', '#e4d354'])
       f.title(text: t('analyses.data.graph_genre_t'))
       f.series(name: t('analyses.data.graph_genre_n'), data: @others_genre_data, type: 'pie')
-      f.legend(align: 'right', layout: 'vertical', style: {left: 'auto', bottom: 'auto', right: '100px', top: '100px'})
-      f.plot_options(pie: {
-        allowPointSelect: true, cursor: "pointer",
-        dataLabels: {
-          enabled: true, color: "white", style: { fontSize: '15px', font: "33px Trebuchet MS, Verdana, sans-serif" }
-        }
-      })
+      f.legend(align: 'right', layout: 'vertical', style: { left: 'auto', bottom: 'auto', right: '100px', top: '100px' })
+      f.plot_options(pie: { allowPointSelect: true, cursor: 'pointer', dataLabels: { enabled: true, color: 'white', style: { fontSize: '15px', font: '33px Trebuchet MS, Verdana, sans-serif' } } })
     end
     @others_pref_data = highchart_p_clc(@others_10_pref_ranks, locale)
     @others_pref_graph = LazyHighCharts::HighChart.new('pie') do |f|
       f.chart({ defaultSeriesType: 'pie', margin: [50, 200, 60, 170] })
-      f.colors(["#4682B4", "#2E8B57", "#e4d354"])
+      f.colors(['#4682B4', '#2E8B57', '#e4d354'])
       f.title(text: t('analyses.data.graph_pref_t'))
       f.series(name: t('analyses.data.graph_pref_n'), data: @others_pref_data, type: 'pie')
-      f.legend(align: 'right', layout: 'vertical', style: {left: 'auto', bottom: 'auto', right: '100px', top: '100px'})
-      f.plot_options(pie: {
-        allowPointSelect: true, cursor: "pointer",
-        dataLabels: {
-          enabled: true, color: "white", style: { fontSize: '15px', font: "33px Trebuchet MS, Verdana, sans-serif" }
-        }
-      })
+      f.legend(align: 'right', layout: 'vertical', style: { left: 'auto', bottom: 'auto', right: '100px', top: '100px' })
+      f.plot_options(pie: { allowPointSelect: true, cursor: 'pointer', dataLabels: { enabled: true, color: 'white', style: { fontSize: '15px', font: '33px Trebuchet MS, Verdana, sans-serif' } } })
     end
     @others_budget_data = highchart_b_clc(albums)
     @others_budget_graph = LazyHighCharts::HighChart.new('pie') do |f|
       f.chart({ defaultSeriesType: 'pie', margin: [50, 200, 60, 170] })
-      f.colors(["#4682B4", "#2E8B57", "#e4d354"])
+      f.colors(['#4682B4', '#2E8B57', '#e4d354'])
       f.title(text: t('analyses.data.graph_budget_t'))
       f.series(name: t('analyses.data.graph_budget_n'), data: @others_budget_data, type: 'pie')
-      f.legend(align: 'right', layout: 'vertical', style: {left: 'auto', bottom: 'auto', right: '50px', top: '100px'})
-      f.plot_options(pie: {
-        allowPointSelect: true, cursor: "pointer",
-        dataLabels: {
-          enabled: true, color: "white", style: { fontSize: "15px", font: "33px Trebuchet MS, Verdana, sans-serif" }
-        }
-      })
+      f.legend(align: 'right', layout: 'vertical', style: { left: 'auto', bottom: 'auto', right: '50px', top: '100px' })
+      f.plot_options(pie: { allowPointSelect: true, cursor: 'pointer', dataLabels: { enabled: true, color: 'white', style: { fontSize: '15px', font: '33px Trebuchet MS, Verdana, sans-serif' } } })
     end
   end
 
