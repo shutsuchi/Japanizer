@@ -8,9 +8,9 @@ executors:
   default:
     working_directory: ~/repo
     docker:
-      - image: circleci/ruby:2.5.1-node-browsers
+      - image: circleci/ruby:2.5.7-node-browsers
         environment:
-          - BUNDLER_VERSION: 2.1.4
+          - BUNDLER_VERSION: 1.17.3
       - image: circleci/mysql:5.7
         environment:
           - MYSQL_ALLOW_EMPTY_PASSWORD: 'true'
