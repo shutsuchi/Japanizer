@@ -69,7 +69,7 @@ commands:
           command: |
             pwd
             echo $(cat Gemfile.lock | tail -1 | tr -d " ")
-            mv config/database.yml.ci config/database.yml
+            mv .circleci/database.yml.ci config/database.yml
             bin/rails db:create --trace
             bin/rails db:schema:load --trace
   run_rubocop:
