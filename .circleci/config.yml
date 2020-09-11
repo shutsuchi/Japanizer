@@ -11,6 +11,7 @@ executors:
       - image: circleci/ruby:2.5.7-node-browsers
         environment:
           - BUNDLER_VERSION: 1.17.3
+          - RAILS_ENV: 'test'
       - image: circleci/mysql:5.7
         environment:
           - MYSQL_ALLOW_EMPTY_PASSWORD: 'true'
