@@ -7,7 +7,7 @@ Post.create!(
   city_id:        678,
   genre_id:       2,
   album_id:       1,
-  image:          open('#{Rails.root}/app/assets/images/fixtures/post_01.jpg'),
+  image:          open("#{Rails.root}/app/assets/images/fixtures/post_01.jpg"),
   rate:           2,
   title:          "いざ高尾山",
   comment:        "レンタカーしてドライブしたけど、安かったせいか、ナビが古くて運転が大変でしたよ。。",

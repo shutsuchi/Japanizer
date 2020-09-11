@@ -39,5 +39,3 @@ https://drive.google.com/file/d/1jD9RX3jgDxPhwYcbY3qAEBtdWdkliURX/view?usp=shari
 
 ## 機能一覧 - Features List  
 https://docs.google.com/spreadsheets/d/141FbmfG4j3t6OtdURnItRFzQxImdU7picuxVJAs_XcY/edit?usp=sharing
-
-
