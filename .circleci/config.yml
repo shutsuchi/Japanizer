@@ -12,10 +12,6 @@ executors:
         environment:
           - BUNDLER_VERSION: 1.17.3
           - RAILS_ENV: 'test'
-      - image: circleci/mysql:5.7
-        environment:
-          - MYSQL_ALLOW_EMPTY_PASSWORD: 'true'
-          - MYSQL_ROOT_HOST: '%'
 
 commands:
   restore_source_code:
