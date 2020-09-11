@@ -13,6 +13,7 @@
 # ローカル変数指定
 #######################################################
 APPPATH="~/Desktop/work/Japanizer"    # application path
+CPATH=`pwd`
 ASSETSPATH="${APP_PATH}/app/assets"
 PUSHFILE="${APP_PATH}/gitpush.txt"     # git status結果内容ファイル
 CBRANCH=`git branch | grep "*"`
@@ -26,7 +27,7 @@ if [ $CBRANCH = "master" ]; then
 fi
 
 ## Precompile 実行
-if [ `git status | grep $ASSETSPATH` ]; then
+if [ `cd ${APP_PATH} | git status | grep $ASSETSPATH` ]; then
   docker compose run --rm rails assets:precompile RAILS_ENV=production
   while ps | grep "docker compose run --rm rails assets:precompile" | cut -c -5 ; do sleep 60; done; echo "end"
 fi
@@ -41,3 +42,5 @@ cat `git status | grep modified | cut -c 14- | tr "\n" " "` >> $PUSHFILE
 git add $PUSHFILE
 git commit $PUSHFILE -m "[add] precompile実行ファイル"
 git push origin $CBRANCH
+
+cd $CPATH
