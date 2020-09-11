@@ -1,8 +1,8 @@
 version: 2.1
- orbs:
-   aws-ecr: circleci/aws-ecr@6.7.0
-   aws-ecs: circleci/aws-ecs@1.1.0
-   aws-cli: circleci/aws-cli@0.1.19
+orbs:
+  aws-ecr: circleci/aws-ecr@6.7.0
+  aws-ecs: circleci/aws-ecs@1.1.0
+  aws-cli: circleci/aws-cli@0.1.19
 
 executors:
   default:
@@ -73,12 +73,12 @@ commands:
             mv config/database.yml.ci config/database.yml
             bin/rails db:create --trace
             bin/rails db:schema:load --trace
-  run_rubocop
+  run_rubocop:
     steps:
       - run:
           name: Run rubocop
           command: bundle exec rubocop
-  run_rspec
+  run_rspec:
     steps:
       - run:
           name: Run rspec
@@ -150,7 +150,7 @@ jobs:
           service-name: 'ecs-rails-service'
           container-image-name-updates: "container=nginx,tag=${CIRCLE_SHA1}"
 
-  rails-deploy
+  rails-deploy:
     step:
       - aws-ecr/build-and-push-image:
           account-url: AWS_ECR_ACCOUNT_URL
@@ -172,26 +172,23 @@ jobs:
 
 
 workflows:
-  build_test_deploy
+  build_test_deploy:
     job:
-      - checkout_code
+      - checkout_code:
       - bundle_dependencies:
         requires:
           - checkout_code
-      - rubocop_job
+      - rubocop_job:
         requires:
           - bundle_dependencies
-      - rspec_job
+      - rspec_job:
         requires:
           - bundle_dependencies
-      - nginx-deploy
+      - nginx-deploy:
         requires:
           - rubocop_job
           - rspec_job
-      - rails-deploy
+      - rails-deploy:
         requires:
           - rubocop_job
           - rspec_job
-
-
-#AWS_ECR_ACCOUNT_URL => ${アカウントID}.dkr.ecr.${リージョン}.amazonaws.com
