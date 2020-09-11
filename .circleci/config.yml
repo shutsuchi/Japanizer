@@ -16,6 +16,7 @@ executors:
 commands:
   restore_source_code:
     steps:
+      - checkout
       - restore_cache:
           name: Restore source code cache
           keys:
@@ -23,6 +24,7 @@ commands:
             - v1-source-code-
   save_source_code:
     steps:
+      - checkout
       - save_cache:
           key: v1-source-code{{ .Environment.CIRCLE_SHA1 }}
           paths:
@@ -99,7 +101,6 @@ jobs:
   checkout_code:
     executor: default
     steps:
-      - checkout
       - save_source_code
   bundle_dependencies:
     executor: default
