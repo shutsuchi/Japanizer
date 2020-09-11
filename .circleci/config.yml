@@ -12,14 +12,11 @@ executors:
         environment:
           - BUNDLER_VERSION: 1.17.3
           - RAILS_ENV: 'test'
-      - image: circleci/mysql:5.7
-        environment:
-          - MYSQL_ALLOW_EMPTY_PASSWORD: 'true'
-          - MYSQL_ROOT_HOST: '%'
 
 commands:
   restore_source_code:
     steps:
+      - checkout
       - restore_cache:
           name: Restore source code cache
           keys:
@@ -27,6 +24,7 @@ commands:
             - v1-source-code-
   save_source_code:
     steps:
+      - checkout
       - save_cache:
           key: v1-source-code{{ .Environment.CIRCLE_SHA1 }}
           paths:
@@ -103,7 +101,6 @@ jobs:
   checkout_code:
     executor: default
     steps:
-      - checkout
       - save_source_code
   bundle_dependencies:
     executor: default
@@ -120,6 +117,7 @@ jobs:
       - restore_source_code
       - restore_bundle_dependencies
       - install_bundler
+      - install_bundle_dependencies
       - run_rubocop
   rspec_job:
     executor: default
@@ -127,7 +125,7 @@ jobs:
       - restore_source_code
       - restore_bundle_dependencies
       - install_bundler
-      - wait_for_db_start_up
+      - install_bundle_dependencies
       - set_up_database
       - run_rspec
 
