@@ -117,6 +117,7 @@ jobs:
       - restore_source_code
       - restore_bundle_dependencies
       - install_bundler
+      - install_bundle_dependencies
       - run_rubocop
   rspec_job:
     executor: default
@@ -124,6 +125,7 @@ jobs:
       - restore_source_code
       - restore_bundle_dependencies
       - install_bundler
+      - install_bundle_dependencies
       - wait_for_db_start_up
       - set_up_database
       - run_rspec
