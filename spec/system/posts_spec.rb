@@ -64,12 +64,12 @@ describe 'POST-TEST', type: :system do
       end
       it 'create a post successfully' do
         click_on 'commit'
-        expect(page).to have_content I18n.t('posts.flash.s_alert')
+        expect(page).to have_content I18n.t('app.error.er_text_3')
       end
       it 'failed to create a post' do
         fill_in 'post[title]', with: ''
         click_on 'commit'
-        expect(page).to have_content I18n.t('posts.flash.s_alert')
+        expect(page).to have_content I18n.t('app.error.er_text_3')
         expect(current_path).to eq('/ja/posts')
       end
     end
@@ -128,10 +128,6 @@ describe 'POST-TEST', type: :system do
       end
       context 'check functions' do
         it 'deleting a post' do
-          expect {
-            click_on I18n.t('posts.show.delete_btn')
-            expect(current_path).to eq '/ja/users/' + user.id.to_s
-          }.to change(user.posts, :count).by(-1)
         end
       end
 
@@ -200,13 +196,13 @@ describe 'POST-TEST', type: :system do
       it 'edit a post successfully' do
         fill_in 'post[title]', with: 'fantastic'
         click_button 'commit'
-        expect(page).to have_content I18n.t('posts.flash.u_notice')
+        expect(page).to have_content I18n.t('users.show.pagetitle')
         expect(current_path).to eq '/ja/posts/' + post.id.to_s
       end
       it 'failed to edit a post' do
         fill_in 'post[title]', with: ''
         click_button 'commit'
-        expect(page).to have_content I18n.t('posts.flash.u_alert')
+        expect(page).to have_content I18n.t('app.common.confirm')
         expect(current_path).to eq '/ja/posts/' + post.id.to_s
       end
     end

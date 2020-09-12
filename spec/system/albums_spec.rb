@@ -62,7 +62,7 @@ describe 'ALBUM-TEST', type: :system do
       end
       it 'failed to create a album' do
         click_on 'commit'
-        expect(page).to have_content I18n.t('albums.flash.s_alert')
+        expect(page).to have_content I18n.t('app.error.er_text_3')
         expect(current_path).to eq('/ja/albums')
       end
     end
@@ -182,7 +182,7 @@ describe 'ALBUM-TEST', type: :system do
       it 'failed to edit a album' do
         fill_in 'album[title]', with: ''
         click_button 'commit'
-        expect(page).to have_content I18n.t('albums.flash.u_alert')
+        expect(page).to have_content I18n.t('app.error.er_text_3')
         expect(current_path).to eq '/ja/albums/' + album.id.to_s
       end
     end

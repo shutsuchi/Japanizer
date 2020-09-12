@@ -21,9 +21,6 @@ describe 'HOME-TEST', type: :system do
         it 'contains a subtitle_1' do
           expect(page).to have_content(I18n.t('homes.top.subtitle_1'))
         end
-        it 'contains a subtitle_2' do
-          expect(page).to have_content(I18n.t('homes.top.subtitle_2'))
-        end
         it 'contains a data_title' do
           expect(page).to have_content(I18n.t('homes.top.data_title'))
         end
@@ -175,15 +172,23 @@ describe 'HOME-TEST', type: :system do
         expect(page).to have_content(I18n.t('homes.about.post_text_1'))
         expect(page).to have_content(I18n.t('homes.about.post_text_2'))
       end
-      it 'contains a subtitle_2' do
-        expect(page).to have_content(I18n.t('homes.about.subtitle_2'))
+      it 'contains slide caption title activity' do
+        expect(page).to have_content(I18n.t('homes.about.activity'))
       end
-      it 'contains a click-icon-text' do
-        expect(page).to have_content(I18n.t('homes.about.click_text_1'))
-        expect(page).to have_content(I18n.t('homes.about.click_text_2'))
+      it 'contains slide caption text activity' do
+        expect(page).to have_content(I18n.t('homes.about.activity_text'))
       end
-      it 'contains a subtitle_3' do
-        expect(page).to have_content(I18n.t('homes.about.subtitle_3'))
+      it 'contains slide caption title sightseeing' do
+        expect(page).to have_content(I18n.t('homes.about.sight'))
+      end
+      it 'contains slide caption text sightseeing' do
+        expect(page).to have_content(I18n.t('homes.about.sight_text'))
+      end
+      it 'contains slide caption title food' do
+        expect(page).to have_content(I18n.t('homes.about.food'))
+      end
+      it 'contains slide caption text food' do
+        expect(page).to have_content(I18n.t('homes.about.food_text'))
       end
     end
   end

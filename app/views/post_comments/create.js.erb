@@ -1,4 +1,4 @@
-$('#table-comment-js').html("<%= j(render 'posts/area_comment',  comments: @comments_pg, post: @thepost ) %>");
+$('#table-comment-js').html("<%= j(render 'posts/area_comment',  comments: @comments_pg, post: @thepost, comment: @comment ) %>");
 $('#comment-form-js').html("<%= j(render 'posts/comment_form', thepost: @thepost, comment: @comment, comments: @comments) %>");
 $('#error-pop').remove();
 $('#comment-title').val('');

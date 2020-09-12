@@ -14,7 +14,7 @@
         .col-xs-7
           .col-xs-6
             .col-xs-12
-              = attachment_image_tag @theuser, :image, fallback:'img/no_icon.png', class:'user-detail-box__img'
+              = attachment_image_tag @theuser, :image, fallback:'img/no_image.png', class:'user-detail-box__img'
             .col-xs-12.user-detail-box__item
               .col-xs-4
                 = t('users.common.name')
@@ -84,7 +84,7 @@
                           = event.title
                           = t('users.show.notice_text_2')
                         - else
-                          = hour_fmt event.create_at
+                          = hour_fmt event.created_at
                           = t('users.show.notice_text_1')
                           = event.title
 

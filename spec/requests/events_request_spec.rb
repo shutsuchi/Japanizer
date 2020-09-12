@@ -61,12 +61,12 @@ RSpec.describe 'EVENTS-TEST', type: :request do
         let(:event) { create(:event) }
         let(:event_params) { attributes_for(:event) }
         it 'returns a 200 status code' do
-          post events_path, params: { event: event_params }
+          post events_path, params: { event: event_params }, xhr: true
           expect(response).to have_http_status(200)
         end
         it 'creates a event record' do
           expect do
-            post events_path, params: { event: event_params }
+            post events_path, params: { event: event_params }, xhr: true
           end.to change(user.events, :count).by(0)
         end
         it 'redirects the page to /users/:id' do
@@ -77,24 +77,24 @@ RSpec.describe 'EVENTS-TEST', type: :request do
 # ------------------------------- NO transcation(end) -----------------------------#
       context 'with invalid attributes' do
         before do
-          post events_path, params: { event: event_params }
+          post events_path, params: { event: event_params }, xhr: true
         end
         let(:event_params) { attributes_for(:event, genre: genre, user: another_user, start: 'Sat, 15 Aug 2020 08:09:17 +0000', end: 'Sat, 15 Aug 2020 08:09:17 +0000') }
         it 'returns a 200 status code' do
           expect(response).to have_http_status(200)
         end
         it 'contains a specific word' do
-          expect(response.body).to include(I18n.t('users.show.pagetitle'))
+          expect(response.body).to include(I18n.t('errors.messages.blank'))
         end
       end
     end
     context 'as a guest user' do
       before do
-        post events_path, params: { event: event_params }
+        post events_path, params: { event: event_params }, xhr: true
       end
       let(:event_params) { attributes_for(:event) }
-      it 'returns a 302 response' do
-        expect(response).to have_http_status(302)
+      it 'returns a 401 response' do
+        expect(response).to have_http_status(401)
       end
     end
   end
@@ -169,7 +169,7 @@ RSpec.describe 'EVENTS-TEST', type: :request do
         let(:event) { create(:event, user: user) }
         it 'deletes a event record ' do
           expect do
-            delete event_path(id: event)
+            delete event_path(id: event), xhr: true
           end.to change(Event, :count).by(0)
         end
         it 'redirect the page to /user/:id' do
@@ -187,13 +187,13 @@ RSpec.describe 'EVENTS-TEST', type: :request do
     end
     context 'as a guest user' do
       before do
-        delete event_path(id: 1)
+        delete event_path(id: 1), xhr: true
       end
-      it 'returns a 302 status code' do
-        expect(response).to have_http_status(302)
+      it 'returns a 401 status code' do
+        expect(response).to have_http_status(401)
       end
       it 'redirect the page to /users/sign_in' do
-        expect(response).to redirect_to(new_user_session_path)
+        expect(response.body).to include(I18n.t('devise.failure.unauthenticated'))
       end
     end
   end
