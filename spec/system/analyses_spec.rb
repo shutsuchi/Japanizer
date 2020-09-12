@@ -2,10 +2,10 @@ require 'rails_helper'
 
 describe 'ANALYSES-TEST', type: :system do
   describe '# DATA-page-test' do
-    let(:post){ (create(:post)) }
-    let(:album){ (create(:album)) }
-    let(:genre){ (create(:genre)) }
-    let(:prefecture){ (create(:prefecture)) }
+    let(:post) { create(:post) }
+    let(:album) { create(:album) }
+    let(:genre) { create(:genre) }
+    let(:prefecture) { create(:prefecture) }
     before do
       # visit data_path
     end
