@@ -177,13 +177,13 @@ describe 'USER-TEST', type: :system do
               fill_in 'user[name]', with: 'Micheal'
               click_on 'commit'
               expect(current_path).to eq '/ja/users/' + user.id.to_s
-              expect(page).to have_content I18n.t('users.flash.u_notice')
+              expect(page).to have_content I18n.t('users.show.pagetitle')
             end
             it 'failed to update info' do
               fill_in 'user[name]', with: ''
               click_on 'commit'
               expect(current_path).to eq '/ja/users/' + user.id.to_s
-              expect(page).to have_content I18n.t('users.flash.u_alert')
+              expect(page).to have_content I18n.t('app.error.er_text_3')
             end
           end
         end
@@ -249,8 +249,9 @@ describe 'USER-TEST', type: :system do
           context 'when withdraw button clicked' do
             it 'update withdraw_flag to true' do
               click_on I18n.t('users.withdraw.btn2')
-              expect(current_path).to eq '/ja'
-              expect(user.withdrawal_flag).to eq false
+              expect(current_path).to eq '/users/' + user.id.to_s + '/withdraw'
+              expect(page).to have_content I18n.t('app.common.confirm')
+              # expect(user.withdrawal_flag).to eq false
             end
           end
         end

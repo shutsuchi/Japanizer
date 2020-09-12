@@ -55,7 +55,7 @@ RSpec.describe 'POSTCOMMENTS-TEST', type: :request do
 
       it 'deletes a post_comment' do
         expect do
-          delete post_post_comments_path(id: comment, post_id: post), xhr: true
+          delete post_post_comment_path(id: comment, post_id: post), xhr: true
         end.to change(user.post_comments, :count).by(0)
       end
     end

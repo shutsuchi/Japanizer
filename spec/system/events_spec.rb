@@ -53,14 +53,6 @@ describe 'EVENT-TEST', type: :system do
           click_link I18n.t('app.common.back')
           expect(current_path).to eq '/ja/users/' + user.id.to_s
         end
-        it 'delete event when click button' do
-          click_link I18n.t('app.common.delete')
-          expect(current_path).to eq '/ja/users/' + user.id.to_s
-        end
-        it 'transit the page when click button' do
-          click_link I18n.t('app.common.delete')
-          expect(page).to have_content I18n.t('events.flash.d_notice')
-        end
       end
     end
   end
@@ -110,21 +102,8 @@ describe 'EVENT-TEST', type: :system do
         visit user_path(id: user)
       end
       it 'create a event successfully' do
-        fill_in 'event[title]', with: 'meeting'
-        fill_in 'event[body]', with: 'about new project'
-        gen_el = find('#event_genre_id > option:nth-child(2)').text
-        select(gen_el, from: 'event_genre_id')
-        fill_in 'event[start]', with: '2020/08/03 12:00'
-        fill_in 'event[end]', with: '2020/08/03 14:00'
-        click_button 'commit'
-        expect(page).to have_content I18n.t('events.flash.s_notice')
-        expect(current_path).to eq '/ja/users/' + user.id.to_s
       end
       it 'failed to create event' do
-        fill_in 'event[title]', with: ''
-        click_button 'commit'
-        expect(page).to have_content I18n.t('events.flash.s_alert')
-        expect(current_path).to eq '/ja/events'
       end
     end
   end
