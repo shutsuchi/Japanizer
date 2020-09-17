@@ -50,11 +50,19 @@ ja:
       got: '獲得数'
       gave: '実行数'
 
+      notice_like: 'にいいね'
+      notice_like_text: 'しました。'
+      notice_comment: 'にコメント'
+      notice_comment_text: 'しました。'
+      notice_bookmark: 'にブックマーク'
+      notice_bookmark_text: 'しました。'
+      notice_post: 'あなたの投稿'
+      notice_album: 'あなたのアルバム'
+      no_notice: '通知はありません'
       3days_event: '3日後までのイベント'
       event_notice: 'イベント作成履歴(最新10件)'
       notice_text_1: 'に "'
       notice_text_2: '" を作成しました。'
-
       user_notice: '最新情報(10件)'
 
     edit:

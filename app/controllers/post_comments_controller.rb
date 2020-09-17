@@ -13,6 +13,7 @@ class PostCommentsController < ApplicationController
     @comment.post_id = @thepost.id
     respond_to do |format|
       if @comment.save
+        @thepost.create_notification_comment!(current_user, @comment.id)
         @comment = PostComment.new
         format.js { render :create }
       else

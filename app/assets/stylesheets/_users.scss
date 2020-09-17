@@ -268,7 +268,7 @@ input[type="password"] {
   &__title {
     margin-top: 20px;
     margin-bottom: 20px;
-    color: #ddd;
+    color: rgb(255, 121, 69);
     font-size: 20px;
     font-weight: bold;
   }
@@ -278,6 +278,9 @@ input[type="password"] {
   }
   &__item {
     margin-top: 10px;
+  }
+  &__time {
+    color: #777;
   }
 }
 

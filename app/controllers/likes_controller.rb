@@ -6,6 +6,7 @@ class LikesController < ApplicationController
   def create
     @post = find_post(params[:post_id])
     like = current_user.likes.new(post_id: @post.id)
+    @post.create_notification_like!(current_user)
     respond_to do |format|
       format.js if like.save
     end

@@ -11,6 +11,7 @@ en:
       confirm: 'CONFIRMATION'
       confirm_del: 'Are you sure?'
       confirm_withdraw: 'Are you really sure to withdraw??'
+      notification: 'You got new notifications!'
     link:
       both: '=> look for Posts or Albums with another condition: '
       area: 'Area'

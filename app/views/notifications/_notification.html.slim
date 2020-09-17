@@ -1,0 +1,60 @@
+- case params[:locale]
+- when 'ja'
+  .col-xs-3
+    .pull-right.user-cal-history__time
+      = time_ago_in_words(notification.created_at)
+      = '前'
+  .col-xs-9
+    span
+      = notification.visitor.name
+      = 'さんが'
+      - case notification.action
+      - when 'like' then
+        = link_to(t('users.show.notice_post'), notification.post)
+        = t('users.show.notice_like')
+        i.fa.fa-heart style="color:red; font-size:15px;"
+        = t('users.show.notice_like_text')
+      - when 'bookmark' then
+        = link_to(t('users.show.notice_album'), notification.album)
+        = t('users.show.notice_bookmark')
+        i.glyphicon.glyphicon-comment style="font-size:15px;"
+        = t('users.show.notice_bookmark_text')
+      - when 'comment' then
+        - if notification.post.user_id == notification.visited.id
+          = link_to(t('users.show.notice_post'), notification.post)
+        - else
+          span
+            = link_to post_path(notification.post) do
+              = notification.post.user.name + 'さんの投稿'
+        = t('users.show.notice_comment')
+        i.glyphicon.glyphicon-bookmark style="color:blue; font-size:15px;"
+        = t('users.show.notice_comment_text')
+        = PostComment.find_by(id: notification.post_comment_id)&.title
+
+- when 'en'
+  .col-xs-4
+    .pull-right.user-cal-history__time
+      = time_ago_in_words(l(notification.created_at))
+      = ' ago'
+  .col-xs-8
+    = notification.visitor.name
+    |  
+    - case notification.action
+    - when 'like' then
+      = t('users.show.notice_like')
+      |  
+      = link_to(t('users.show.notice_post'), notification.post)
+    - when 'bookmark' then
+      = t('users.show.notice_bookmark')
+      |  
+      = link_to(t('users.show.notice_album'), notification.album)
+    - when 'comment' then
+      = t('users.show.notice_comment')
+      |  
+      - if notification.post.user_id == notification.visited.id
+        = link_to(t('users.show.notice_post'), notification.post)
+      - else
+        span
+          = link_to post_path(notification.post) do
+            = notification.post.user.name + "'s post"
+      = PostComment.find_by(id: notification.post_comment_id)&.title

@@ -11,6 +11,7 @@ ja:
       confirm: '確認'
       confirm_del: '削除しますか？'
       confirm_withdraw: '本当に退会しますか？'
+      notification: '新しい通知があります。'
     link:
       both: '=> 他の条件からアルバムや投稿を探しますか？'
       area: '地域'

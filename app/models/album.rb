@@ -53,6 +53,21 @@ class Album < ApplicationRecord
     bookmarks.where(user_id: user.id).exists?
   end
 
+  def create_notification_bookmark!(current_user)
+    temp = Notification.where(["visitor_id = ? and visited_id = ? and album_id = ? and action = ? ", current_user.id, user_id, id, 'bookmark'])
+    if temp.blank?
+      notification = current_user.active_notifications.new(
+        album_id: id,
+        visited_id: user_id,
+        action: 'bookmark'
+      )
+      if notification.visitor_id = notification.visited_id
+        notification.checked = true
+      end
+      notification.save if notification.valid?
+    end
+  end
+
   def self.params_album_search(genre, time, nation)
     albums = Album.genre_search(genre, nation)
     if time == 'anytime_search'

@@ -14,6 +14,7 @@ class BookmarksController < ApplicationController
   def create
     @album = find_album(params[:album_id])
     bookmark = current_user.bookmarks.new(album_id: @album.id)
+    @album.create_notification_bookmark!(current_user)
     respond_to do |format|
       format.js if bookmark.save
     end

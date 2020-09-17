@@ -55,6 +55,11 @@
                 = t('users.show.user_notice')
             .col-xs-12
               .user-cal-history__items
+                - if @notice_by_others.exists?
+                  = render @notice_by_others
+                  = paginate @notice_by_others
+                - else
+                  = t('users.show.no_notice')
 
     .row
       .calendar-box
@@ -73,33 +78,46 @@
                 = t('users.show.3days_event')
             .col-xs-12
               .user-cal-history__items
-                - @events_3days.each do |event|
+                - if @events_3days.exists?
+                  - @events_3days.each do |event|
+                    .col-xs-12
+                      |  -  
+                      = event.title
+                      | (
+                      = event.genre.name
+                      | ) :  
+                      = event.body
+                - else
                   .col-xs-12
-                    |  -  
-                    = event.title
-                    | (
-                    = event.genre.name
-                    | ) :  
-                    = event.body
+                    = t('users.show.no_notice')
             .col-xs-12
               .user-cal-history__title
                 = t('users.show.event_notice')
             .col-xs-12
               .user-cal-history__items
-                - @events.each.with_index do |event, i|
-                  - if i < 6
-                    .col-xs-12
-                      .user-cal-history__item
-                        - if params[:locale] == 'ja'
-                          = ja_hour_fmt event.created_at
-                          |  
-                          = t('users.show.notice_text_1')
-                          = event.title
-                          = t('users.show.notice_text_2')
-                        - else
-                          = hour_fmt event.created_at
-                          = t('users.show.notice_text_1')
-                          = event.title
+                - if @events.exists?
+                  - @events.each.with_index do |event, i|
+                    - if i < 6
+                      .col-xs-12
+                        .user-cal-history__item
+                          - if params[:locale] == 'ja'
+                            = ja_hour_fmt event.created_at
+                            |  
+                            = t('users.show.notice_text_1')
+                            |  
+                            = event.title
+                            |  
+                            = t('users.show.notice_text_2')
+                          - else
+                            = hour_fmt event.created_at
+                            |  
+                            = t('users.show.notice_text_1')
+                            |  
+                            = event.title
+                - else
+                  .col-xs-12
+                    .user-cal-history__item
+                      = t('users.show.no_notice')
 
     .row
       .tab-menu
