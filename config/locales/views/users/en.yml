@@ -48,6 +48,7 @@ en:
       got: 'Got'
       gave: 'Gave'
 
+      3days_event: 'Event in 3 days'
       event_notice: 'Created Event History(latest 10)'
       notice_text_1: 'created'
 

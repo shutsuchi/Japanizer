@@ -50,6 +50,7 @@ ja:
       got: '獲得数'
       gave: '実行数'
 
+      3days_event: '3日後までのイベント'
       event_notice: 'イベント作成履歴(最新10件)'
       notice_text_1: 'に "'
       notice_text_2: '" を作成しました。'

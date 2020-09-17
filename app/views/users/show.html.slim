@@ -70,11 +70,24 @@
           .user-cal-history
             .col-xs-12
               .user-cal-history__title
+                = t('users.show.3days_event')
+            .col-xs-12
+              .user-cal-history__items
+                - @events_3days.each do |event|
+                  .col-xs-12
+                    |  -  
+                    = event.title
+                    | (
+                    = event.genre.name
+                    | ) :  
+                    = event.body
+            .col-xs-12
+              .user-cal-history__title
                 = t('users.show.event_notice')
             .col-xs-12
               .user-cal-history__items
                 - @events.each.with_index do |event, i|
-                  - if i < 11
+                  - if i < 6
                     .col-xs-12
                       .user-cal-history__item
                         - if params[:locale] == 'ja'

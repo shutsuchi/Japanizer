@@ -15,6 +15,9 @@ class UsersController < ApplicationController
     @albums_pg = type_page_6(@theuser.albums, pg_a)
     @event = Event.new
     @events = current_user.events.order(created_at: 'DESC')
+    from = Time.current
+    to = Time.current.since(3.days)
+    @events_3days = current_user.events.where(start: from...to)
     # Count User Got
     @posts = @theuser.posts
     @albums = @theuser.albums
