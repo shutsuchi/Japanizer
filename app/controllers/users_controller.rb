@@ -13,8 +13,16 @@ class UsersController < ApplicationController
     @theuser = current_user
     @posts_pg = type_page_8(@theuser.posts, pg_p)
     @albums_pg = type_page_6(@theuser.albums, pg_a)
+    notifications = page_5(current_user.passive_notifications)
+    notifications.where(checked: false).each do |notification|
+      notification.update(checked: true)
+    end
+    @notice_by_others = notifications.where.not(visitor_id: current_user.id)
     @event = Event.new
     @events = current_user.events.order(created_at: 'DESC')
+    from = Time.current
+    to = Time.current.since(3.days)
+    @events_3days = current_user.events.where(start: from...to)
     # Count User Got
     @posts = @theuser.posts
     @albums = @theuser.albums

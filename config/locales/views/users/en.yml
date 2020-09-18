@@ -48,10 +48,17 @@ en:
       got: 'Got'
       gave: 'Gave'
 
+      notice_like: 'Liked'
+      notice_comment: 'Commented'
+      notice_bookmark: 'Bookmarded'
+      notice_post: 'your post'
+      notice_album: 'your album'
+      no_notice: 'No notification'
+      3days_event: 'Event in 3 days'
       event_notice: 'Created Event History(latest 10)'
       notice_text_1: 'created'
-
       user_notice: 'User Notice'
+
     edit:
       pagetitle: 'User Setting'
       back: 'My page'

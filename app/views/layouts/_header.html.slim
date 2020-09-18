@@ -29,6 +29,15 @@
               = link_to('日本語', :locale => 'ja')
             - elsif I18n.locale.to_s == "ja"
               = link_to('English', :locale => 'en')
+          li.common-bar__link-text
+            - if unchecked_notifications == true
+              span.fa-stack.common-bar__notice-bell
+                i.far.fa-bell.fa-lg.fa-stack-2x style="font-size: 1.5em;"
+                i.fas.fa-circle.n-circle.fa-stack-1x
+              .common-bar__pop-up
+                = t('app.common.notification')
+            - else
+              i.far.fa-bell.fa-lg style="font-size: 1.5em;"
           li.common-bar__link-text.pull-right#search-icon
             i.fas.fa-search style="font-size:20px; color:#2c7cff;"
     - else

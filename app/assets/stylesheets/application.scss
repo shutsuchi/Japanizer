@@ -221,9 +221,47 @@ h3:after {
 }
 
 //*----------- NavBar -----------*/
+.n-circle {
+  position: absolute;
+  padding-left: 1rem;
+  padding-top: 0rem;
+  color: #efa04c;
+}
 .common-bar {
   background-color: #eee;
   display: block;
+  &__notice-bell {
+    position: relative;
+    &:hover + .common-bar__pop-up {
+      display: block;
+    }
+  }
+  &__pop-up {
+    display: none;
+    width: 100px;
+    position: absolute;
+    top: 200px;
+    right: 8em;
+    padding: 15px;
+    border-radius: 5px;
+    background: #33cc99;
+    color: #fff;
+    font-weight: bold;
+    &:before {
+      position: absolute;
+      width: 0;
+      height: 0;
+      left: 0;
+      top: -19px;
+      margin-left: 10px;
+      border: solid transparent;
+      border-color: rgba(51, 204, 153, 0);
+      border-top-color: #33cc99;
+      border-width: 10px;
+      pointer-events: none;
+      content: " ";
+    }
+  }
   &__time-line {
     padding: 5px 0 5px 10px
   }
