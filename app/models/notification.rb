@@ -26,6 +26,6 @@ class Notification < ApplicationRecord
   belongs_to :post_comment, optional: true
   belongs_to :album, optional: true
 
-  belongs_to :visitor, class_name: 'User', foreign_key: 'visitor_id', optional: true, inverse_of: :notification
-  belongs_to :visited, class_name: 'User', foreign_key: 'visited_id', optional: true, inverse_of: :notification
+  belongs_to :visitor, class_name: 'User', foreign_key: 'visitor_id', optional: true, inverse_of: :active_notifications
+  belongs_to :visited, class_name: 'User', foreign_key: 'visited_id', optional: true, inverse_of: :passive_notifications
 end

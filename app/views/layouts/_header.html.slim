@@ -30,7 +30,7 @@
             - elsif I18n.locale.to_s == "ja"
               = link_to('English', :locale => 'en')
           li.common-bar__link-text
-            - if unchecked_notifications.any?
+            - if unchecked_notifications == true
               span.fa-stack.common-bar__notice-bell
                 i.far.fa-bell.fa-lg.fa-stack-2x style="font-size: 1.5em;"
                 i.fas.fa-circle.n-circle.fa-stack-1x
