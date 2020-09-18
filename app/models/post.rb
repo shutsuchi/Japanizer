@@ -24,7 +24,6 @@ class Post < ApplicationRecord
   has_many :likes, dependent: :destroy
   has_many :post_comments, dependent: :destroy
   has_many :notifications, dependent: :destroy
-
   attachment :image
 
   validates :title, presence: true,
@@ -39,7 +38,6 @@ class Post < ApplicationRecord
   scope :age_60, -> { where(users: { age: 50..60 }) }
   scope :age_70, -> { where(users: { age: 60..70 }) }
   scope :age_80, -> { where(users: { age: 70..80 }) }
-
   scope :jp, -> { where(users: { country_code: 'JP' }) }
   scope :other, -> { where.not(users: { country_code: 'JP' }) }
 
@@ -48,18 +46,16 @@ class Post < ApplicationRecord
   end
 
   def create_notification_like!(current_user)
-    temp = Notification.where(["visitor_id = ? and visited_id = ? and post_id = ? and action = ? ", current_user.id, user_id, id, 'like'])
-    if temp.blank?
-      notification = current_user.active_notifications.new(
-        post_id: id,
-        visited_id: user_id,
-        action: 'like'
-      )
-      if notification.visitor_id == notification.visited_id
-        notification.checked = true
-      end
-      notification.save if notification.valid?
-    end
+    temp = Notification.where(['visitor_id = ? and visited_id = ? and post_id = ? and action = ? ', current_user.id, user_id, id, 'like'])
+    return if temp.present?
+
+    notification = current_user.active_notifications.new(
+      post_id: id,
+      visited_id: user_id,
+      action: 'like'
+    )
+    notification.checked = true if notification.visitor_id == notification.visited_id
+    notification.save if notification.valid?
   end
 
   def create_notification_comment!(current_user, comment_id)
@@ -77,9 +73,7 @@ class Post < ApplicationRecord
       visited_id: visited_id,
       action: 'comment'
     )
-    if notification.visitor_id = notification.visited_id
-      notification.checked = true
-    end
+    notification.checked = true if notification.visitor_id == notification.visited_id
     notification.save if notification.valid?
   end
 

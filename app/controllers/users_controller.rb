@@ -15,7 +15,7 @@ class UsersController < ApplicationController
     @albums_pg = type_page_6(@theuser.albums, pg_a)
     notifications = page_5(current_user.passive_notifications)
     notifications.where(checked: false).each do |notification|
-      notification.update_attributes(checked: true)
+      notification.update(checked: true)
     end
     @notice_by_others = notifications.where.not(visitor_id: current_user.id)
     @event = Event.new
